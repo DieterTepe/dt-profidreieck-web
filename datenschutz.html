@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung – DT-ProfiDreieck</title>
+<meta name="description" content="Datenschutzerklärung von DT-ProfiDreieck.">
+<meta name="robots" content="noindex">
+
+<!--
+  ============================================================================
+  DT-ProfiDreieck – DATENSCHUTZ   |   v0.1.0   |   2026-06-07
+  ============================================================================
+  Inhalt aus Pflichttexte_Entwurf, Abschnitt 2 (1:1 übernommen).
+  Design = gleiche Tokens wie index.html (Werkstatt-Blueprint).
+  KEINE externen Schriften/Skripte. Liegt im selben Ordner wie index.html.
+  Hinweis: keine Rechtsberatung – vor Veröffentlichung gegenprüfen.
+  ============================================================================
+-->
+
+<style>
+  :root{
+    --bg:#eaedf3; --bg2:#dde3ec; --card:#ffffff; --surface:#f5f7fb;
+    --ink:#0f1b2d; --muted:#5d6b80; --line:#e4e9f0; --line-strong:#d4dbe6;
+    --accent:#0d7d8c; --accent-strong:#0a5f6b; --accent-soft:#dcf0f1;
+    --shadow:0 1px 2px rgba(15,27,45,.05), 0 14px 34px -16px rgba(15,27,45,.30);
+    --radius:18px; --radius-sm:12px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:var(--font); color:var(--ink); line-height:1.65;
+    background:
+      radial-gradient(1000px 500px at 50% -200px,#fff 0%,transparent 60%),
+      linear-gradient(165deg,var(--bg) 0%,var(--bg2) 100%);
+    background-attachment:fixed; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-strong);}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  header.topbar{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(150%) blur(8px);
+    background:rgba(234,237,243,.82); border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:12px 24px;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink); text-decoration:none;}
+  .back{font-size:15px; font-weight:600; color:var(--muted); text-decoration:none;}
+  .back:hover{color:var(--accent-strong);}
+
+  main{padding:48px 0 64px;}
+  .doc{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); box-shadow:var(--shadow); padding:clamp(24px,5vw,44px);
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--accent); background:var(--accent-soft); padding:6px 13px; border-radius:999px;
+  }
+  h1{font-size:clamp(26px,5vw,36px); font-weight:800; letter-spacing:-.02em; margin:16px 0 8px;}
+  h2{font-size:18px; font-weight:700; color:var(--accent-strong); margin:30px 0 8px;}
+  h2 .num{color:var(--muted); font-weight:700;}
+  p{margin:0 0 12px;}
+  .addr{margin:0 0 12px; line-height:1.8;}
+  .note{
+    margin-top:28px; padding:14px 16px; border-left:3px solid var(--accent);
+    background:var(--surface); border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    font-size:14px; color:var(--muted);
+  }
+
+  footer.site{border-top:1px solid var(--line); padding:32px 0; color:var(--muted); font-size:14px;}
+  footer.site .wrap{display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between; align-items:center;}
+  footer.site a{color:var(--muted); text-decoration:none; margin-right:16px;}
+  footer.site a:hover{color:var(--accent-strong);}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3 L21 20 L3 20 Z" fill="none" stroke="#0d7d8c" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="12" cy="14.5" r="4.2" fill="none" stroke="#b9791c" stroke-width="1.4"/>
+      </svg>
+      DT-ProfiDreieck
+    </a>
+    <a class="back" href="index.html">← Zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="doc">
+      <span class="eyebrow">Rechtliches</span>
+      <h1>Datenschutzerklärung</h1>
+
+      <h2><span class="num">1.</span> Verantwortlicher</h2>
+      <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+      <p class="addr">
+        Dieter Tepe<br>
+        Mühlenstraße 2, 48477 Dreierwalde<br>
+        E-Mail: <a href="mailto:Dieter.Tepe@live.de">Dieter.Tepe@live.de</a>
+      </p>
+
+      <h2><span class="num">2.</span> Hosting (GitHub Pages)</h2>
+      <p>Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub Inc. (USA). Beim Aufruf der Seiten werden technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit des Zugriffs, abgerufene Datei) verarbeitet, um die Website ausliefern und ihre Stabilität und Sicherheit gewährleisten zu können. Rechtsgrundlage ist unser berechtigtes Interesse an einem sicheren und zuverlässigen Betrieb (Art. 6 Abs. 1 lit. f DSGVO). Da GitHub Daten auch in den USA verarbeiten kann, kann es zu einer Übermittlung in ein Drittland kommen. Einzelheiten zur Datenverarbeitung durch GitHub findest du in deren Datenschutzerklärung.</p>
+
+      <h2><span class="num">3.</span> Server-Logfiles</h2>
+      <p>Der Hosting-Anbieter erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die dein Browser automatisch übermittelt (Browsertyp/-version, Betriebssystem, Referrer-URL, Hostname, Uhrzeit der Anfrage, IP-Adresse). Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und dienen ausschließlich dem technischen Betrieb.</p>
+
+      <h2><span class="num">4.</span> Kontaktaufnahme per E-Mail</h2>
+      <p>Wenn du uns per E-Mail kontaktierst, werden deine Angaben (E-Mail-Adresse, Name, Inhalt der Nachricht) zur Bearbeitung deiner Anfrage gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Die Daten werden gelöscht, sobald sie für den Zweck nicht mehr erforderlich sind.</p>
+
+      <h2><span class="num">5.</span> Externe Links (YouTube u. a.)</h2>
+      <p>Diese Website verlinkt auf externe Inhalte, u. a. ein Video auf YouTube. Es handelt sich um einfache Links – beim bloßen Aufruf unserer Seite werden <strong>keine</strong> Inhalte oder Skripte von YouTube/Google geladen. Erst wenn du einen solchen Link anklickst und die externe Seite öffnest, gelten dort die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+
+      <h2><span class="num">6.</span> Weiterleitung zum Kauf (Digistore24)</h2>
+      <p>Für den Kauf der Vollversion wirst du über einen Button zur Bestell- und Bezahlseite von Digistore24 (Digistore24 GmbH) weitergeleitet. Die Zahlungsabwicklung sowie die dabei erhobenen Daten unterliegen der Datenschutzerklärung von Digistore24. Auf unserer Website selbst werden für den Kauf keine personenbezogenen Daten erhoben.</p>
+
+      <h2><span class="num">7.</span> Cookies und Analyse</h2>
+      <p>Diese Website setzt <strong>keine</strong> Cookies zu Analyse- oder Marketingzwecken ein und nutzt <strong>keine</strong> Tracking- oder Statistik-Dienste.</p>
+
+      <h2><span class="num">8.</span> Deine Rechte</h2>
+      <p>Du hast jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch (Art. 21). Zudem steht dir ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu. Wende dich für die Ausübung deiner Rechte an die oben genannte Kontaktadresse.</p>
+
+      <div class="note">
+        Entwurf – vor Veröffentlichung zur Sicherheit über einen aktuellen
+        Generator (z. B. e-recht24.de oder datenschutz-generator.de) gegenprüfen.
+        Keine Rechtsberatung.
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Dieter Tepe · DT-ProfiDreieck</div>
+    <div>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
