@@ -3,100 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DT-ProfiDreieck – Dreiecke berechnen & als DXF an die CNC</title>
-<meta name="description" content="Komplexe Dreiecke berechnen und direkt als DXF an die CNC. Offline, eine Datei, keine Installation – für Werkstatt, CAD und CNC.">
+<title>DT-ProfiTools – Dreiecksberechnung & Schraubenberechnung nach VDI 2230</title>
+<meta name="description" content="Zwei Berechnungswerkzeuge für Profis: DT-ProfiDreieck (Dreiecke berechnen, DXF an die CNC) und DT-ProfiSchraube (Schraubenverbindungen nach VDI 2230 Blatt 1). Offline, eine Datei, keine Installation.">
 
 <!--
   ============================================================================
-  DT-ProfiDreieck – Landingpage   |   GRUNDGERÜST  v0.1.0   |   2026-06-07
+  DT-ProfiTools – Landingpage für BEIDE Programme  |  v1.0.0  |  2026-07-09
   ============================================================================
-  WICHTIG (Datenschutz / Masterplan 4.3):
-    - KEINE externen Schriften (kein Google Fonts), KEINE fremden Skripte.
-    - Alles liegt in dieser Datei. Bilder liegen relativ daneben im selben Ordner.
-    - Eigenes Video (V1.mp4) ist eingebettet und liegt daneben – lädt nur vom
-      eigenen GitHub-Pages-Server. Fremde Embeds (YouTube) bleiben tabu, weil
-      sie Google-Skripte nachladen.
+  DATENSCHUTZ (hart):
+    - KEINE externen Schriften, KEINE fremden Skripte, KEINE CDN-Einbindungen.
+    - Alle Medien liegen relativ im selben Ordner (GitHub Pages, self-hosted).
+    - Scroll-Animationen: eigener IntersectionObserver (unten im <script>).
 
-  AUFBAU (zum leichten Erweitern):
-    1) DESIGN-TOKENS  -> :root  (Farben/Abstände aus der App; eine Stelle ändern)
-    2) BASIS-STILE    -> Grundlayout, Typo
-    3) BAUSTEINE      -> .btn, .card, .section ... (wiederverwendbar)
-    4) SEKTIONEN      -> jede <section> hat eine id (Sprunganker)
-  Neue Sektion = neuen <section id="..."> einsetzen; Stile aus den Bausteinen
-  wiederverwenden. So bleibt die Seite flexibel.
+  LINKS: werden zentral aus config.js gelesen (liegt daneben).
+    data-link="kauf-dreieck" | "kauf-schraube" | "test-dreieck" | "test-schraube"
+    -> Digistore-Links NUR in config.js eintragen, HTML bleibt unberührt.
 
-  LINKS (Platzhalter – hier später echte Adressen eintragen):
-    - data-link="kauf"   -> Digistore24-Warenkorb           (Masterplan 3.5)
-    - data-link="test"   -> DT-ProfiDreieck_Test_1-1-0.html  (gleicher Ordner)
-    - V1.mp4             -> eigenes Demo-Video (selbst gehostet, Sektion #beweis)
-    - Footer             -> impressum.html / datenschutz.html (Phase 3)
+  MEDIEN (gleicher Ordner):
+    Dreieck : app-zeichnung.jpg, app-eingabe.jpg, app-ergebnis.jpg, V1.mp4, V2.mp4
+    Schraube: schraube-teaser.mp4, schraube-start.jpg, schraube-rechenweg.jpg,
+              schraube-schaubild.jpg, schraube-flansch.jpg, schraube-hilfe.jpg,
+              schraube-word.jpg
+
+  AUFBAU: 1) Tokens  2) Basis  3) Bausteine  4) Sektionen (je eine id)
   ============================================================================
 -->
 
 <style>
   /* ============================================================
-     1) DESIGN-TOKENS  (aus der App übernommen – Werkstatt-Blueprint)
+     1) DESIGN-TOKENS (Werkstatt-Blueprint, wie App & Rechtsseiten)
+     Dreieck = Petrol-Teal · Schraube = Messing/Stahl-Cyan
      ============================================================ */
   :root{
-    --bg:#eaedf3;
-    --bg2:#dde3ec;
-    --card:#ffffff;
-    --surface:#f5f7fb;
-    --ink:#0f1b2d;            /* tiefes Graphit-Navy */
-    --muted:#5d6b80;          /* Schiefer */
-    --line:#e4e9f0;           /* feine Haarlinie */
-    --line-strong:#d4dbe6;
-    --accent:#0d7d8c;         /* Petrol-Teal */
-    --accent-strong:#0a5f6b;
-    --accent-2:#b9791c;       /* gedämpftes Messing */
-    --accent-soft:#dcf0f1;    /* zarter Teal-Ton */
-    --panel:#0a1220;          /* Blueprint-Hintergrund (dunkel) */
-    --panel-grid:#16233c;
+    --bg:#eaedf3; --bg2:#dde3ec; --card:#ffffff; --surface:#f5f7fb;
+    --ink:#0f1b2d; --muted:#5d6b80;
+    --line:#e4e9f0; --line-strong:#d4dbe6;
+    --accent:#0d7d8c; --accent-strong:#0a5f6b; --accent-soft:#dcf0f1;
+    --brass:#b9791c; --brass-strong:#96610f; --brass-soft:#f6ecd9;
+    --steel:#34c3d4;                       /* Cyan auf dunklen Panels */
+    --panel:#0a1220; --panel-grid:#16233c; /* Blueprint dunkel */
     --ok:#0f9d6e;
     --shadow:0 1px 2px rgba(15,27,45,.05), 0 14px 34px -16px rgba(15,27,45,.30);
     --shadow-lg:0 2px 4px rgba(15,27,45,.06), 0 30px 60px -22px rgba(15,27,45,.34);
-    --radius:18px;
-    --radius-sm:12px;
+    --radius:18px; --radius-sm:12px;
     --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif;
-
-    /* Abstands-Raster (8px-Schritte, wie bei Linear-Bauprinzip) */
+    --mono:ui-monospace,"SF Mono","Cascadia Mono","Segoe UI Mono",Consolas,monospace;
     --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:32px;
     --sp-6:48px; --sp-8:64px; --sp-12:96px;
-    --maxw:1080px;
+    --maxw:1120px;
   }
 
   /* ============================================================
-     2) BASIS-STILE
+     2) BASIS
      ============================================================ */
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    font-family:var(--font);
-    color:var(--ink);
+    margin:0; font-family:var(--font); color:var(--ink); line-height:1.6;
     background:
-      radial-gradient(1200px 600px at 50% -200px, #ffffff 0%, transparent 60%),
+      radial-gradient(1200px 600px at 50% -200px,#ffffff 0%,transparent 60%),
       linear-gradient(165deg,var(--bg) 0%,var(--bg2) 100%);
-    background-attachment:fixed;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
+    background-attachment:fixed; -webkit-font-smoothing:antialiased;
   }
-  img{max-width:100%; height:auto; display:block;}  /* Bilder skalieren automatisch */
+  img{max-width:100%; height:auto; display:block;}
   a{color:var(--accent-strong);}
-
-  h1,h2,h3{line-height:1.18; letter-spacing:-.02em; margin:0;}
-  h1{font-size:clamp(30px,7vw,52px); font-weight:800;}
+  h1,h2,h3{line-height:1.16; letter-spacing:-.02em; margin:0;}
+  h1{font-size:clamp(30px,6.4vw,52px); font-weight:800;}
   h2{font-size:clamp(23px,4.5vw,34px); font-weight:800;}
-  h3{font-size:clamp(17px,2.6vw,21px); font-weight:700;}
+  h3{font-size:clamp(17px,2.6vw,20px); font-weight:700;}
   p{margin:0;}
+  :focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px;}
 
   /* ============================================================
-     3) WIEDERVERWENDBARE BAUSTEINE
+     3) BAUSTEINE
      ============================================================ */
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 var(--sp-3);}
-
   .section{padding:var(--sp-12) 0;}
   .section--tight{padding:var(--sp-8) 0;}
+
+  /* Positionsnummern wie in einer Stückliste – Signatur der Seite */
+  .pos{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:13px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent);
+  }
+  .pos::before{content:""; width:34px; height:1.5px; background:currentColor; opacity:.6;}
+  .pos--brass{color:var(--brass);}
 
   .eyebrow{
     display:inline-flex; align-items:center; gap:7px;
@@ -104,12 +96,12 @@
     color:var(--accent); background:var(--accent-soft);
     padding:6px 13px; border-radius:999px;
   }
-  .lead{color:var(--muted); font-size:clamp(16px,2.4vw,19px); max-width:60ch;}
+  .eyebrow--brass{color:var(--brass-strong); background:var(--brass-soft);}
+  .lead{color:var(--muted); font-size:clamp(16px,2.4vw,19px); max-width:62ch;}
 
   .card{
     background:var(--card); border:1px solid var(--line);
-    border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:var(--sp-3);
+    border-radius:var(--radius); box-shadow:var(--shadow); padding:var(--sp-3);
   }
 
   .btn{
@@ -121,42 +113,47 @@
     white-space:nowrap;
   }
   .btn:active{transform:translateY(1px);}
-  .btn--primary{
-    background:var(--accent); color:#fff;
-    box-shadow:0 8px 20px -8px var(--accent);
-  }
-  .btn--primary:hover{background:var(--accent-strong); box-shadow:0 12px 26px -8px var(--accent);}
-  .btn--ghost{
-    background:#fff; color:var(--ink); border-color:var(--line-strong);
-  }
+  .btn--primary{background:var(--accent); color:#fff; box-shadow:0 8px 20px -8px var(--accent);}
+  .btn--primary:hover{background:var(--accent-strong);}
+  .btn--brass{background:var(--brass); color:#fff; box-shadow:0 8px 20px -8px var(--brass);}
+  .btn--brass:hover{background:var(--brass-strong);}
+  .btn--ghost{background:#fff; color:var(--ink); border-color:var(--line-strong);}
   .btn--ghost:hover{border-color:var(--accent); color:var(--accent-strong);}
   .btn--lg{font-size:17px; padding:16px 30px;}
 
-  .price-tag{
-    font-size:clamp(34px,6vw,46px); font-weight:800; letter-spacing:-.03em;
-    color:var(--ink);
-  }
-  .price-tag small{font-size:16px; font-weight:600; color:var(--muted); letter-spacing:0;}
+  .price-tag{font-size:clamp(32px,5.5vw,44px); font-weight:800; letter-spacing:-.03em; font-variant-numeric:tabular-nums;}
+  .price-tag small{font-size:15px; font-weight:600; color:var(--muted); letter-spacing:0;}
 
-  /* kleines Werkzeug: Bild in einen „Geräte-Rahmen" stellen */
-  .shot{
-    border:1px solid var(--line); border-radius:var(--radius);
-    box-shadow:var(--shadow-lg); overflow:hidden; background:#fff;
+  .blueprint{
+    background:
+      linear-gradient(var(--panel-grid) 1px,transparent 1px) 0 0/28px 28px,
+      linear-gradient(90deg,var(--panel-grid) 1px,transparent 1px) 0 0/28px 28px,
+      var(--panel);
+    border-radius:var(--radius); padding:10px; box-shadow:var(--shadow-lg);
   }
+  .blueprint img,.blueprint video{border-radius:10px;}
+  .shot{border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow-lg); overflow:hidden; background:#fff;}
+  .demo-video{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; background:var(--panel);}
 
-  /* zweispaltiges Raster, das auf dem Handy untereinander rutscht */
   .grid-2{display:grid; grid-template-columns:1fr; gap:var(--sp-6); align-items:center;}
   .features{display:grid; grid-template-columns:1fr; gap:var(--sp-2);}
-  @media(min-width:780px){
+  .grid-3{display:grid; grid-template-columns:1fr; gap:var(--sp-2);}
+  @media(min-width:820px){
     .grid-2{grid-template-columns:1.05fr .95fr;}
     .features{grid-template-columns:1fr 1fr;}
+    .grid-3{grid-template-columns:1fr 1fr 1fr;}
   }
 
-  .placeholder{
-    border:2px dashed var(--line-strong); border-radius:var(--radius);
-    padding:var(--sp-4); text-align:center; color:var(--muted);
-    background:rgba(255,255,255,.5);
+  .feature{display:flex; gap:12px; align-items:flex-start;}
+  .feature .ico{
+    flex:none; width:40px; height:40px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-family:var(--mono); font-size:13px;
+    background:var(--accent-soft); color:var(--accent-strong);
   }
+  .feature--brass .ico{background:var(--brass-soft); color:var(--brass-strong);}
+  .feature h3{margin-bottom:2px;}
+  .feature p{color:var(--muted); font-size:15px;}
 
   /* ============================================================
      4a) KOPFLEISTE
@@ -164,83 +161,125 @@
   header.topbar{
     position:sticky; top:0; z-index:50;
     backdrop-filter:saturate(150%) blur(8px);
-    background:rgba(234,237,243,.82);
-    border-bottom:1px solid var(--line);
+    background:rgba(234,237,243,.85); border-bottom:1px solid var(--line);
   }
-  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:12px; padding-bottom:12px;}
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:12px; padding-bottom:12px;}
   .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.01em; color:var(--ink); text-decoration:none;}
   .brand svg{flex:none;}
-  .topbar .btn{padding:10px 18px; font-size:15px;}
-  .topbar-cta{display:flex; gap:10px; align-items:center;}
   .nav-links{display:none; gap:var(--sp-3);}
   .nav-links a{color:var(--muted); text-decoration:none; font-weight:600; font-size:15px;}
   .nav-links a:hover{color:var(--accent-strong);}
-  @media(min-width:880px){ .nav-links{display:flex;} }
+  @media(min-width:900px){.nav-links{display:flex;}}
+  .topbar .btn{padding:10px 16px; font-size:14px;}
 
   /* ============================================================
-     4b) HERO
+     4b) HERO mit zwei Werkzeugkarten
      ============================================================ */
-  .hero{padding-top:var(--sp-8);}
-  .hero h1{margin:var(--sp-2) 0 var(--sp-2);}
-  .hero .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--sp-3);}
-  .hero .reassure{margin-top:var(--sp-2); color:var(--muted); font-size:14px;}
-
-  /* Blueprint-Panel als Bildrahmen (dunkel, wie die Zeichnung in der App) */
-  .blueprint{
-    background:
-      linear-gradient(var(--panel-grid) 1px, transparent 1px) 0 0/28px 28px,
-      linear-gradient(90deg, var(--panel-grid) 1px, transparent 1px) 0 0/28px 28px,
-      var(--panel);
-    border-radius:var(--radius); padding:10px; box-shadow:var(--shadow-lg);
+  .hero{padding-top:var(--sp-8); text-align:center;}
+  .hero h1{margin:var(--sp-2) auto var(--sp-2); max-width:22ch;}
+  .hero .lead{margin:0 auto;}
+  .tool-grid{display:grid; grid-template-columns:1fr; gap:var(--sp-3); margin-top:var(--sp-6); text-align:left;}
+  @media(min-width:780px){.tool-grid{grid-template-columns:1fr 1fr;}}
+  .tool{
+    display:flex; flex-direction:column; gap:var(--sp-2);
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow-lg); padding:var(--sp-3);
+    border-top:4px solid var(--accent);
   }
-  .blueprint img,
-  .blueprint video{border-radius:10px;}
+  .tool--brass{border-top-color:var(--brass);}
+  .tool-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .tool-head .price{font-weight:800; font-size:22px; font-variant-numeric:tabular-nums;}
+  .tool-head .price small{font-size:13px; font-weight:600; color:var(--muted);}
+  .tool p.desc{color:var(--muted); font-size:15px;}
+  .tool ul{list-style:none; margin:0; padding:0; display:grid; gap:7px;}
+  .tool li{display:flex; gap:9px; align-items:flex-start; font-size:15px; color:var(--muted);}
+  .tool li::before{content:"✓"; color:var(--ok); font-weight:800;}
+  .tool .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:auto;}
+  .tool .mini{border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--line);}
 
-  /* App-Demo-Video: liegt als V1.mp4 daneben, selbst gehostet (kein Embed). */
-  .demo-video{
-    display:block; width:100%; height:auto;
-    aspect-ratio:16/9; object-fit:cover; background:var(--panel);
+  /* Vertrauens-Leiste */
+  .badges{display:flex; flex-wrap:wrap; gap:10px 14px; justify-content:center; margin-top:var(--sp-6);}
+  .badges span{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:14px; font-weight:600; color:var(--muted);
+    background:#fff; border:1px solid var(--line); border-radius:999px; padding:8px 16px;
   }
+  .badges b{color:var(--ok);}
 
   /* ============================================================
-     4c) FEATURE-EINTRAG
-     ============================================================ */
-  .feature{display:flex; gap:12px; align-items:flex-start;}
-  .feature .ico{
-    flex:none; width:38px; height:38px; border-radius:10px;
-    background:var(--accent-soft); color:var(--accent-strong);
-    display:flex; align-items:center; justify-content:center; font-weight:800;
-  }
-  .feature h3{margin-bottom:2px;}
-  .feature p{color:var(--muted); font-size:15px;}
-
-  /* ============================================================
-     4d) KAUF-BLOCK
+     4c) KAUF-BLOCK
      ============================================================ */
   .buy{
-    background:linear-gradient(180deg,#fff, var(--surface));
+    background:linear-gradient(180deg,#fff,var(--surface));
     border:1px solid var(--line); border-radius:var(--radius);
-    box-shadow:var(--shadow-lg); padding:var(--sp-6); text-align:center;
+    box-shadow:var(--shadow-lg); padding:var(--sp-6) var(--sp-3); text-align:center;
   }
   .buy ul{list-style:none; margin:var(--sp-3) 0; padding:0; display:inline-grid; gap:8px; text-align:left;}
   .buy li{display:flex; gap:9px; align-items:center; color:var(--muted);}
   .buy li::before{content:"✓"; color:var(--ok); font-weight:800;}
+  .buy .fine{margin-top:16px; font-size:13px; color:var(--muted);}
 
   /* ============================================================
-     4e) FUSSBEREICH
+     4d) VERGLEICH
      ============================================================ */
+  .compare{width:100%; border-collapse:collapse; font-size:15px; background:#fff;
+    border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);}
+  .compare th,.compare td{padding:14px 16px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line);}
+  .compare tr:last-child th,.compare tr:last-child td{border-bottom:0;}
+  .compare thead th{font-size:14px; letter-spacing:.02em;}
+  .compare thead th:nth-child(2){color:var(--accent-strong);}
+  .compare thead th:nth-child(3){color:var(--brass-strong);}
+  .compare tbody th{font-weight:600; color:var(--muted); white-space:nowrap; width:1%;}
+  .compare-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  @media(max-width:560px){.compare th,.compare td{padding:11px 10px; font-size:13.5px;} .compare tbody th{white-space:normal;}}
+
+  /* ============================================================
+     4e) FAQ
+     ============================================================ */
+  .faq{display:grid; gap:12px; max-width:760px; margin:var(--sp-6) auto 0;}
+  .faq details{background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm); box-shadow:var(--shadow);}
+  .faq summary{
+    cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px;
+    padding:16px 18px; font-weight:700; font-size:16px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:"+"; font-weight:800; color:var(--accent); font-size:20px; line-height:1;}
+  .faq details[open] summary::after{content:"–";}
+  .faq details p{padding:0 18px 16px; color:var(--muted); font-size:15px;}
+
+  /* ============================================================
+     4f) SCHLUSS-CTA & FUSS
+     ============================================================ */
+  .cta-band{
+    background:
+      linear-gradient(var(--panel-grid) 1px,transparent 1px) 0 0/28px 28px,
+      linear-gradient(90deg,var(--panel-grid) 1px,transparent 1px) 0 0/28px 28px,
+      var(--panel);
+    border-radius:var(--radius); box-shadow:var(--shadow-lg);
+    padding:var(--sp-8) var(--sp-3); text-align:center; color:#eef2f8;
+  }
+  .cta-band h2{color:#fff;}
+  .cta-band p{color:#9aa8bd; margin:12px auto 0; max-width:56ch;}
+  .cta-band .cta-row{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:var(--sp-4);}
+
   footer.site{border-top:1px solid var(--line); padding:var(--sp-6) 0; color:var(--muted); font-size:14px;}
-  footer.site .wrap{display:flex; flex-wrap:wrap; gap:var(--sp-3); justify-content:space-between; align-items:center;}
+  footer.site .wrap{display:flex; flex-wrap:wrap; gap:var(--sp-3); justify-content:space-between; align-items:flex-start;}
   footer.site a{color:var(--muted); text-decoration:none; margin-right:var(--sp-2);}
   footer.site a:hover{color:var(--accent-strong);}
+  footer.site .hint{max-width:52ch; font-size:13px;}
 
-  /* dezente, datenschutzfreundliche Einblend-Animation (rein CSS) */
-  @media(prefers-reduced-motion:no-preference){
-    .reveal{opacity:0; transform:translateY(14px); animation:rise .7s ease forwards;}
-    .reveal.d1{animation-delay:.08s;} .reveal.d2{animation-delay:.16s;} .reveal.d3{animation-delay:.24s;}
-    @keyframes rise{to{opacity:1; transform:none;}}
+  /* ============================================================
+     Einblend-Animation (eigener IntersectionObserver, kein CDN)
+     ============================================================ */
+  html.js .reveal{opacity:0; transform:translateY(16px);
+    transition:opacity .65s ease, transform .65s ease;}
+  html.js .reveal.in{opacity:1; transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    html.js .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
   }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
@@ -248,125 +287,304 @@
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#start">
-      <!-- Logo: inline-SVG (kein externes Bild) -->
       <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M12 3 L21 20 L3 20 Z" fill="none" stroke="#0d7d8c" stroke-width="2" stroke-linejoin="round"/>
         <circle cx="12" cy="14.5" r="4.2" fill="none" stroke="#b9791c" stroke-width="1.4"/>
       </svg>
-      DT-ProfiDreieck
+      DT-ProfiTools
     </a>
     <nav class="nav-links">
-      <a href="#beweis">Praxis</a>
-      <a href="#vorteile">Funktionen</a>
-      <a href="#kaufen">Kaufen</a>
+      <a href="#dreieck">Dreieck</a>
+      <a href="#schraube">Schraube</a>
+      <a href="#vergleich">Vergleich</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="topbar-cta">
-      <a class="btn btn--ghost" data-link="test" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis testen</a>
-      <a class="btn btn--primary" data-link="kauf" href="#kaufen">Kaufen · 69 €</a>
+      <a class="btn btn--primary" href="#start">Gratis testen</a>
     </div>
   </div>
 </header>
 
 <main>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO: beide Werkzeuge ============ -->
   <section id="start" class="section hero">
-    <div class="wrap grid-2">
-      <div>
-        <span class="eyebrow reveal">◬ Geometrie-Werkzeug für die Werkstatt</span>
-        <h1 class="reveal d1">Dreiecke berechnen und<br>direkt als <span style="color:var(--accent)">DXF an die CNC</span>.</h1>
-        <p class="lead reveal d2">Drei Größen eingeben – alles andere wird berechnet, gezeichnet und als DXF, SVG oder PDF exportiert. Läuft offline als eine einzige Datei. Keine Installation.</p>
-        <div class="cta-row reveal d2">
-          <a class="btn btn--primary btn--lg" data-link="test" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen →</a>
-          <a class="btn btn--ghost btn--lg" data-link="kauf" href="#kaufen">Vollversion · 69 €</a>
-        </div>
-        <p class="reassure reveal d3">✓ Offline &nbsp; ✓ Eine Datei &nbsp; ✓ Handy · Tablet · PC</p>
-      </div>
-      <div class="reveal d2">
-        <div class="blueprint">
-          <img src="app-zeichnung.jpg" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis, Inkreis und Hilfslinien">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRAXIS-BEWEIS (Werkstattvideo V2 oben + App-Demo V1 tiefer) ============ -->
-  <section id="beweis" class="section section--tight">
-    <div class="wrap" style="text-align:center;">
-      <span class="eyebrow">In der Praxis</span>
-      <h2 style="margin:16px auto 12px;">Vom Wert zum fertigen DXF</h2>
-      <p class="lead" style="margin:0 auto 24px;">Kurzes Werkstattvideo: ein Winkel am Werkstück, in Sekunden als DXF in CAD und CNC.</p>
-
-      <!-- Werkstattvideo V2.mp4 (liegt im selben Ordner). -->
-      <figure class="blueprint reveal" style="max-width:860px; margin:0 auto;">
-        <video class="demo-video" controls preload="metadata" playsinline
-               aria-label="DT-ProfiDreieck – Werkstattvideo">
-          <source src="V2.mp4" type="video/mp4">
-          <p style="color:#cdd6e6; padding:24px 16px;">
-            Ihr Browser kann das Video nicht abspielen.
-            <a href="V2.mp4" style="color:#fff; text-decoration:underline;">Video herunterladen</a>
-          </p>
-        </video>
-      </figure>
-
-      <!-- App-Demo-Video sitzt tiefer und hat einen eigenen Titel. V1.mp4 liegt im selben Ordner. -->
-      <h3 style="margin:48px 0 6px;">Von der Eingabe bis zum Ergebnis</h3>
-      <p style="margin:0 auto 24px; color:var(--muted);">Leicht zu bedienen.</p>
-      <figure class="blueprint reveal" style="max-width:860px; margin:0 auto;">
-        <video class="demo-video" controls preload="metadata" playsinline
-               aria-label="DT-ProfiDreieck – kurzes Demo-Video">
-          <source src="V1.mp4" type="video/mp4">
-          <p style="color:#cdd6e6; padding:24px 16px;">
-            Ihr Browser kann das Video nicht abspielen.
-            <a href="V1.mp4" style="color:#fff; text-decoration:underline;">Video herunterladen</a>
-          </p>
-        </video>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ============ VORTEILE / FUNKTIONEN ============ -->
-  <section id="vorteile" class="section">
     <div class="wrap">
-      <div style="text-align:center; max-width:62ch; margin:0 auto var(--sp-6);">
-        <span class="eyebrow">Was die Vollversion kann</span>
-        <h2 style="margin-top:16px;">Berechnet, was kein Gratis-Tool kann</h2>
+      <span class="eyebrow reveal">◬ Berechnungswerkzeuge für Werkstatt &amp; Konstruktion</span>
+      <h1 class="reveal">Präzise rechnen.<br>Sauber <span style="color:var(--accent)">dokumentieren</span>. Sofort <span style="color:var(--brass)">fertigen</span>.</h1>
+      <p class="lead reveal">Zwei Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC – und Schraubenverbindungen nach VDI 2230 mit vollem Rechenweg. Beide laufen offline, als eine einzige Datei, ohne Installation.</p>
+
+      <div class="tool-grid">
+        <!-- Werkzeugkarte 1: Dreieck -->
+        <article class="tool reveal">
+          <div class="tool-head">
+            <h3>DT-ProfiDreieck</h3>
+            <span class="price">69 €<small> einmalig</small></span>
+          </div>
+          <p class="desc">Drei Größen eingeben – das ganze Dreieck wird berechnet, maßstäblich gezeichnet und als DXF, SVG oder PDF exportiert.</p>
+          <div class="mini blueprint" style="padding:6px;"><img src="app-zeichnung.jpg" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
+          <ul>
+            <li>DXF direkt in CAD &amp; CNC importierbar</li>
+            <li>Auch aus Umkreis, Inkreis, Fläche, Höhen</li>
+            <li>Voller Rechenweg, Schritt für Schritt</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--primary" data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis testen</a>
+            <a class="btn btn--ghost" href="#dreieck">Details ↓</a>
+          </div>
+        </article>
+
+        <!-- Werkzeugkarte 2: Schraube -->
+        <article class="tool tool--brass reveal">
+          <div class="tool-head">
+            <h3>DT-ProfiSchraube</h3>
+            <span class="price">159 €<small> einmalig</small></span>
+          </div>
+          <p class="desc">Schraubenverbindungen nach VDI 2230 Blatt 1 auslegen – mit Sicherheits-Nachweisen, Assistenten und dokumentiertem Rechenweg.</p>
+          <div class="mini"><img src="schraube-start.jpg" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
+          <ul>
+            <li>Nachweise: Fließen, Dauerhaltbarkeit, Pressung, Gleiten, Einschraubtiefe</li>
+            <li>Assistenten für Flansch &amp; Dehnschraube</li>
+            <li>Export als Word-Bericht, PDF und CSV</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--brass" data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis testen</a>
+            <a class="btn btn--ghost" href="#schraube">Details ↓</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="badges reveal">
+        <span><b>✓</b> 100 % offline</span>
+        <span><b>✓</b> Eine Datei – keine Installation</span>
+        <span><b>✓</b> Handy · Tablet · PC</span>
+        <span><b>✓</b> Keine Konten, kein Tracking</span>
+        <span><b>✓</b> Sichere Zahlung über Digistore24</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WARUM ============ -->
+  <section id="warum" class="section section--tight">
+    <div class="wrap">
+      <div style="text-align:center; max-width:64ch; margin:0 auto var(--sp-6);">
+        <span class="pos reveal">Warum diese Werkzeuge</span>
+        <h2 class="reveal" style="margin-top:14px;">Falsch gerechnet ist teuer gefertigt</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal">
+          <h3>Ausschuss kostet doppelt</h3>
+          <p style="color:var(--muted); font-size:15px; margin-top:8px;">Ein falscher Winkel oder eine zu schwach ausgelegte Verbindung bedeutet Material, Maschinenzeit und Nacharbeit. Verlässliche Zahlen vor dem ersten Schnitt sparen bares Geld.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Online-Rechner reichen nicht</h3>
+          <p style="color:var(--muted); font-size:15px; margin-top:8px;">Gratis-Tools rechnen Standardfälle, brauchen Internet und liefern weder DXF noch einen prüffähigen Rechenweg. In der Halle ohne Empfang helfen sie gar nicht.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Norm-Nachweis per Hand dauert</h3>
+          <p style="color:var(--muted); font-size:15px; margin-top:8px;">Eine Auslegung nach VDI 2230 von Hand füllt schnell einen Nachmittag. Mit dokumentiertem Rechenweg auf Knopfdruck bleibt die Zeit fürs Konstruieren.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POS. 01 · DT-PROFIDREIECK ============ -->
+  <section id="dreieck" class="section">
+    <div class="wrap">
+      <div class="grid-2" style="margin-bottom:var(--sp-8);">
+        <div>
+          <span class="pos reveal">Pos. 01 · Geometrie</span>
+          <h2 class="reveal" style="margin:14px 0 12px;">DT-ProfiDreieck:<br>vom Maß zur <span style="color:var(--accent)">DXF an die CNC</span></h2>
+          <p class="lead reveal">Drei Größen eingeben – alles andere wird berechnet, maßstäblich gezeichnet und exportiert. Auch aus Spezialgrößen wie Umkreis, Inkreis, Fläche oder Höhen, an denen Gratis-Tools scheitern.</p>
+          <div class="cta-row reveal" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--sp-3);">
+            <a class="btn btn--primary btn--lg" data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen →</a>
+            <a class="btn btn--ghost btn--lg" href="#kauf-dreieck">Vollversion · 69 €</a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="blueprint">
+            <img src="app-zeichnung.jpg" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
+          </div>
+        </div>
       </div>
 
       <div class="features">
-        <div class="feature"><div class="ico">DXF</div><div><h3>Direkt für CAD &amp; CNC</h3><p>Echtes DXF in realen Einheiten, sauber nach Layern getrennt – sofort importierbar.</p></div></div>
-        <div class="feature"><div class="ico">R r</div><div><h3>Umkreis, Inkreis, Fläche, Höhen</h3><p>Aus Spezialgrößen das ganze Dreieck rekonstruieren – der Burggraben der Vollversion.</p></div></div>
-        <div class="feature"><div class="ico">∑</div><div><h3>Voller Rechenweg</h3><p>Schritt für Schritt nachvollziehbar, ideal für Werkstatt-Doku und Ausbildung.</p></div></div>
-        <div class="feature"><div class="ico">⤓</div><div><h3>Export überall</h3><p>PNG, SVG, DXF und Drucken/PDF – alles offline verfügbar.</p></div></div>
+        <div class="feature reveal"><div class="ico">DXF</div><div><h3>Direkt für CAD &amp; CNC</h3><p>Echtes DXF in realen Einheiten, sauber nach Layern getrennt – sofort importierbar.</p></div></div>
+        <div class="feature reveal"><div class="ico">R·r</div><div><h3>Spezialfälle statt Standardfälle</h3><p>Aus Umkreis, Inkreis, Fläche und Höhen das ganze Dreieck rekonstruieren – das kann kein Gratis-Tool.</p></div></div>
+        <div class="feature reveal"><div class="ico">∑</div><div><h3>Voller Rechenweg</h3><p>Jeder Schritt mit Formel und eingesetzten Werten – ideal für Werkstatt-Doku und Ausbildung.</p></div></div>
+        <div class="feature reveal"><div class="ico">⤓</div><div><h3>Export überall</h3><p>PNG, SVG, DXF und Drucken/PDF – komplett offline verfügbar.</p></div></div>
       </div>
 
-      <!-- zwei App-Belege -->
+      <!-- Praxisvideos -->
+      <div style="text-align:center; margin-top:var(--sp-8);">
+        <h3 class="reveal" style="margin-bottom:6px;">Kurz gezeigt: ein Winkel am Werkstück, Sekunden später als DXF in CAD und CNC</h3>
+        <figure class="blueprint reveal" style="max-width:860px; margin:var(--sp-3) auto 0;">
+          <video class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF">
+            <source src="V2.mp4" type="video/mp4">
+            <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="V2.mp4" style="color:#fff;">Video herunterladen</a></p>
+          </video>
+        </figure>
+        <h3 class="reveal" style="margin:var(--sp-6) 0 6px;">Von der Eingabe bis zum Ergebnis – leicht zu bedienen</h3>
+        <figure class="blueprint reveal" style="max-width:860px; margin:var(--sp-3) auto 0;">
+          <video class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Demo: Eingabe bis Ergebnis">
+            <source src="V1.mp4" type="video/mp4">
+            <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="V1.mp4" style="color:#fff;">Video herunterladen</a></p>
+          </video>
+        </figure>
+      </div>
+
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot"><img src="app-eingabe.jpg" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen"></div>
-        <div class="shot"><img src="app-ergebnis.jpg" alt="Ergebnis: alle Seiten, Winkel, Fläche, Höhen, Radien und Mittelpunkte auf einen Blick"></div>
+        <div class="shot reveal"><img src="app-eingabe.jpg" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
+        <div class="shot reveal"><img src="app-ergebnis.jpg" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ KAUF-BLOCK ============ -->
-  <section id="kaufen" class="section">
-    <div class="wrap" style="max-width:640px;">
-      <div class="buy">
+      <!-- Kaufblock Dreieck -->
+      <div id="kauf-dreieck" class="buy reveal" style="max-width:620px; margin:var(--sp-8) auto 0;">
         <span class="eyebrow">Vollversion</span>
         <h2 style="margin:16px 0 10px;">DT-ProfiDreieck Pro</h2>
         <div class="price-tag">69 €<small> &nbsp;einmalig</small></div>
         <ul>
           <li>Sofortiger Download nach dem Kauf</li>
-          <li>Läuft offline, keine Installation</li>
-          <li>Sichere Abwicklung über Digistore24</li>
           <li>Alle Spezialfälle &amp; Exporte freigeschaltet</li>
+          <li>Läuft offline – Handy, Tablet, PC</li>
+          <li>Sichere Abwicklung über Digistore24</li>
         </ul>
-        <div>
-          <a class="btn btn--primary btn--lg" data-link="kauf" href="#">Jetzt kaufen →</a>
+        <div><a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POS. 02 · DT-PROFISCHRAUBE ============ -->
+  <section id="schraube" class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div style="text-align:center; max-width:66ch; margin:0 auto var(--sp-6);">
+        <span class="pos pos--brass reveal">Pos. 02 · Verbindungstechnik</span>
+        <h2 class="reveal" style="margin:14px 0 12px;">DT-ProfiSchraube: Auslegung<br>nach <span style="color:var(--brass)">VDI 2230 Blatt 1</span> – nachvollziehbar</h2>
+        <p class="lead reveal" style="margin:0 auto;">Von der Klemmkraft bis zur Einschraubtiefe: fünf Sicherheits-Nachweise mit Ampel-Bewertung, jeder Rechenschritt dokumentiert mit Formel, eingesetzten Werten und Normverweis.</p>
+      </div>
+
+      <!-- Teaser-Video (selbst gehostet) -->
+      <figure class="blueprint reveal" style="max-width:860px; margin:0 auto;">
+        <video class="demo-video" controls preload="none" playsinline poster="schraube-start.jpg" aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick">
+          <source src="schraube-teaser.mp4" type="video/mp4">
+          <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="schraube-teaser.mp4" style="color:#fff;">Video herunterladen</a></p>
+        </video>
+      </figure>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nachweise, Rechenweg, Schaubild, Assistenten, Export.</p>
+
+      <div class="features" style="margin-top:var(--sp-8);">
+        <div class="feature feature--brass reveal"><div class="ico">VDI</div><div><h3>Fünf Nachweise mit Ampel</h3><p>Fließen, Dauerhaltbarkeit, Flächenpressung, Gleiten/Reibschluss und Einschraubtiefe – auf einen Blick bewertet.</p></div></div>
+        <div class="feature feature--brass reveal"><div class="ico">∑</div><div><h3>Rechenweg wie im Lehrbuch</h3><p>Jeder Schritt: allgemeine Formel, eingesetzte Werte, Ergebnis, Normverweis. Prüffähig für Doku und Kunden.</p></div></div>
+        <div class="feature feature--brass reveal"><div class="ico">⚙</div><div><h3>Assistenten für Sonderfälle</h3><p>Flansch-Assistent (Querkraft aus Drehmoment), Dehnschraube mit Taillenquerschnitt, thermische Effekte.</p></div></div>
+        <div class="feature feature--brass reveal"><div class="ico">📈</div><div><h3>Verspannungsschaubild live</h3><p>Kraft-Verformungs-Diagramm mit F_M, F_V, F_SA und F_PA – direkt aus den eigenen Werten gezeichnet.</p></div></div>
+        <div class="feature feature--brass reveal"><div class="ico">ⓘ</div><div><h3>Hilfe direkt am Feld</h3><p>Jede Eingabe mit Erklärtext und empfohlenen Werten – in Deutsch, Englisch und Portugiesisch.</p></div></div>
+        <div class="feature feature--brass reveal"><div class="ico">⤓</div><div><h3>Berichte auf Knopfdruck</h3><p>Word (.rtf), Drucken/PDF, CSV und Bild – dazu Speichern und Laden kompletter Berechnungsfälle.</p></div></div>
+      </div>
+
+      <div class="grid-2" style="margin-top:var(--sp-8);">
+        <div class="shot reveal"><img src="schraube-rechenweg.jpg" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
+        <div class="shot reveal"><img src="schraube-schaubild.jpg" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
+      </div>
+      <div class="grid-3" style="margin-top:var(--sp-3);">
+        <div class="shot reveal"><img src="schraube-flansch.jpg" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
+        <div class="shot reveal"><img src="schraube-hilfe.jpg" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
+        <div class="shot reveal"><img src="schraube-word.jpg" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
+      </div>
+
+      <p class="reveal" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
+        Abgesichert durch über <span style="color:var(--brass); font-variant-numeric:tabular-nums;">2,2 Millionen</span> automatisierte Rechen-Tests.
+      </p>
+
+      <!-- Kaufblock Schraube -->
+      <div id="kauf-schraube" class="buy reveal" style="max-width:620px; margin:var(--sp-6) auto 0;">
+        <span class="eyebrow eyebrow--brass">Vollversion</span>
+        <h2 style="margin:16px 0 10px;">DT-ProfiSchraube Pro</h2>
+        <div class="price-tag">159 €<small> &nbsp;einmalig</small></div>
+        <ul>
+          <li>Sofortiger Download nach dem Kauf</li>
+          <li>Alle Nachweise, Assistenten &amp; Exporte</li>
+          <li>Läuft offline – Handy, Tablet, PC</li>
+          <li>Sichere Abwicklung über Digistore24</li>
+        </ul>
+        <div><a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis-Version testen</a></p>
+        <p class="fine">Hinweis: Auslegungswerkzeug – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VERGLEICH ============ -->
+  <section id="vergleich" class="section section--tight">
+    <div class="wrap" style="max-width:860px;">
+      <div style="text-align:center; margin-bottom:var(--sp-4);">
+        <span class="pos reveal">Entscheidungshilfe</span>
+        <h2 class="reveal" style="margin-top:14px;">Welches Werkzeug passt zu dir?</h2>
+      </div>
+      <div class="compare-scroll reveal">
+        <table class="compare">
+          <thead>
+            <tr><th></th><th>DT-ProfiDreieck</th><th>DT-ProfiSchraube</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Für wen</th><td>Metallbau, CNC, Werkstatt, Ausbildung</td><td>Konstruktion, Berechnung, Maschinenbau</td></tr>
+            <tr><th>Aufgabe</th><td>Dreiecke aus 3 Größen berechnen &amp; zeichnen</td><td>Schraubenverbindungen nach VDI 2230 auslegen</td></tr>
+            <tr><th>Stärke</th><td>DXF-Export direkt an CAD &amp; CNC</td><td>Fünf Nachweise mit dokumentiertem Rechenweg</td></tr>
+            <tr><th>Export</th><td>DXF, SVG, PNG, Drucken/PDF</td><td>Word (.rtf), Drucken/PDF, CSV, Bild</td></tr>
+            <tr><th>Preis</th><td><b>69 €</b> einmalig</td><td><b>159 €</b> einmalig</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:14px;">Beide: offline, eine Datei, keine Installation, kein Konto.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" class="section section--tight">
+    <div class="wrap">
+      <div style="text-align:center;">
+        <span class="pos reveal">Häufige Fragen</span>
+        <h2 class="reveal" style="margin-top:14px;">Kurz beantwortet</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
+          <summary>Läuft das wirklich komplett offline?</summary>
+          <p>Ja. Jedes Programm ist eine einzelne HTML-Datei, die im Browser läuft – auf Handy, Tablet und PC. Nach dem Download ist keine Internetverbindung nötig, es gibt kein Konto und keine Installation.</p>
+        </details>
+        <details class="reveal">
+          <summary>Wie läuft der Kauf ab?</summary>
+          <p>Der Kauf-Button führt zur Bestellseite von Digistore24 (gängige Zahlungsarten, Rechnung inklusive). Direkt nach der Zahlung steht die Vollversion zum Download bereit.</p>
+        </details>
+        <details class="reveal">
+          <summary>Was unterscheidet Test- und Vollversion?</summary>
+          <p>Die Gratis-Version zeigt die Bedienung mit eingeschränktem Funktionsumfang. Die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei.</p>
+        </details>
+        <details class="reveal">
+          <summary>Werden Daten übertragen oder gespeichert?</summary>
+          <p>Nein. Die Programme rechnen lokal im Browser. Diese Website nutzt weder Cookies noch Tracking; Details stehen in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+        </details>
+        <details class="reveal">
+          <summary>Ersetzt DT-ProfiSchraube die Normprüfung?</summary>
+          <p>Es ist ein Auslegungswerkzeug nach VDI 2230 Blatt 1 mit vollständig dokumentiertem Rechenweg. Für Produktivbauteile gilt wie immer: Ergebnisse gegen die Originalnorm und den Anwendungsfall prüfen.</p>
+        </details>
+        <details class="reveal">
+          <summary>An wen wende ich mich bei Fragen?</summary>
+          <p>Einfach eine E-Mail an <a href="mailto:Dieter.Tepe@live.de">Dieter.Tepe@live.de</a> – Antwort kommt direkt vom Entwickler.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SCHLUSS-CTA ============ -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2>Heute testen, morgen sicher fertigen</h2>
+        <p>Beide Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
+        <div class="cta-row">
+          <a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#kauf-dreieck">Dreieck · 69 €</a>
+          <a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#kauf-schraube">Schraube · 159 €</a>
         </div>
-        <p style="margin-top:16px; font-size:13px; color:var(--muted);">
-          Lieber erst ausprobieren? <a data-link="test" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen</a>
-        </p>
       </div>
     </div>
   </section>
@@ -376,13 +594,51 @@
 <!-- ============ FUSSBEREICH ============ -->
 <footer class="site">
   <div class="wrap">
-    <div>© 2026 Dieter Tepe · DT-ProfiDreieck</div>
     <div>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
+      <div>© 2026 Dieter Tepe · DT-ProfiTools</div>
+      <div style="margin-top:8px;">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="mailto:Dieter.Tepe@live.de">Kontakt</a>
+      </div>
     </div>
+    <p class="hint">Kauf und Zahlungsabwicklung erfolgen über Digistore24. Beim Klick auf einen Kauf-Button verlässt du diese Website; es gelten die Datenschutzbestimmungen von Digistore24.</p>
   </div>
 </footer>
+
+<!-- Zentrale Links laden (Digistore, Testversionen) -->
+<script src="config.js"></script>
+<script>
+  // ---- Links aus config.js anwenden -------------------------------------
+  (function(){
+    var map = window.DT_CONFIG || {};
+    var keys = {
+      "kauf-dreieck":  map.kaufDreieck,
+      "kauf-schraube": map.kaufSchraube,
+      "test-dreieck":  map.testDreieck,
+      "test-schraube": map.testSchraube
+    };
+    document.querySelectorAll("[data-link]").forEach(function(a){
+      var url = keys[a.getAttribute("data-link")];
+      if (url) a.setAttribute("href", url);
+    });
+  })();
+
+  // ---- Dezente Einblendung beim Scrollen (kein CDN, DSGVO-sauber) --------
+  (function(){
+    var els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function(el){ el.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
