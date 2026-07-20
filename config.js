@@ -89,40 +89,34 @@ window.DT_CONFIG = {
 
   /* ======================================================================
      MEDIEN – DT-PROFIPASSUNG   (Ordner: Passung_Daten/)
-     ----------------------------------------------------------------------
-     Noch keine Dateien vorhanden -> Einträge leer lassen ("").
-     Die Seite zeigt an diesen Stellen automatisch "folgt in Kürze".
-     Sobald Screenshots/Video fertig sind: hochladen nach
-     Passung_Daten/bilder/ bzw. Passung_Daten/videos/ und hier die
-     vollständige URL eintragen (Beispielnamen stehen als Muster dabei).
      ====================================================================== */
   passung: {
 
-    // Startansicht: Hero-Werkzeugkarte oben UND Poster des Teaser-Videos.
-    // Querformat, ca. 1500 px breit, JPG < 300 KB
-    // Beispiel: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-start.jpg"
-    bildStart: "",
+    // Startansicht (Eingabe + Ergebnis, Sprachumschalter sichtbar):
+    // Hero-Werkzeugkarte oben UND Vorschaubild (Poster) des Teaser-Videos.
+    // Querformat, ca. 1300-1500 px breit, JPG < 300 KB
+    bildStart: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-start.jpg",
 
-    // Teaser-/Demovideo oben in Pos. 03
-    // MP4 (H.264), 1280x720, 30-60 s, < 10 MB
-    // Beispiel: ".../Passung_Daten/videos/passung-teaser.mp4"
-    videoTeaser: "",
+    // 40-Sekunden-Teaser oben in Pos. 03
+    // MP4 (H.264), 1280x720, < 10 MB
+    videoTeaser: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/videos/passung-teaser.mp4",
 
     // Großes Screenshot-Paar – links: Toleranzfeld-Schaubild
-    // (Bohrung grün, Welle blau – der stärkste Blickfang!)
-    bildSchaubild: "",
+    // (Bohrung grün, Welle blau, inkl. Lage bei Betriebstemperatur)
+    bildSchaubild: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-schaubild.jpg",
 
-    // Großes Screenshot-Paar – rechts: aufgeklappter Rechenweg mit Häkchen
-    bildRechenweg: "",
+    // Großes Screenshot-Paar – rechts: selbstprüfender Rechenweg mit Häkchen
+    bildRechenweg: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-rechenweg.jpg",
 
-    // Dreierreihe – links: Passungs-Assistent mit Empfehlung
-    bildAssistent: "",
+    // Dreierreihe – links: Passungs-Assistent mit Vorschlägen und Begründung
+    bildAssistent: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-assistent.jpg",
 
-    // Dreierreihe – Mitte: Sprachumschalter DE / EN / PT
-    bildSprachen: "",
+    // Dreierreihe – Mitte: Pressverband nach DIN 7190
+    // (Fugendrücke, Sicherheiten, Moment, Fügetemperaturen)
+    bildPressverband: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-pressverband.jpg",
 
-    // Dreierreihe – rechts: Praxis-Beratung (Kostenampel, Messmittel)
-    bildBeratung: ""
+    // Dreierreihe – rechts: Praxis-Beratung (Thermik, Kostenampel, Messmittel)
+    bildBeratung: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-beratung.jpg"
   }
 
   /* ----------------------------------------------------------------------
