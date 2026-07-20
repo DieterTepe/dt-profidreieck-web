@@ -307,6 +307,12 @@
   .tool--green{border-top-color:var(--green);}
   .feature--green .ico{background:var(--green-soft); color:var(--green-strong);}
   .compare thead th:nth-child(4){color:var(--green-strong);}
+  /* Dreierreihen mit Screenshots: einheitlich hohe Kacheln (4:3).
+     Unterschiedliche Bildformate werden dunkel aufgefuellt statt weiss –
+     passt zu den dunklen App-Screenshots und vertraegt jedes kuenftige
+     Seitenverhaeltnis (wichtig fuer die spaeteren Passung-Bilder). */
+  .grid-3 .shot{background:var(--panel);}
+  .grid-3 .shot img{width:100%; aspect-ratio:4/3; object-fit:contain;}
   .media-slot.media-missing{position:relative; display:flex; align-items:center; justify-content:center;
     min-height:190px; border:2px dashed var(--line-strong); border-radius:var(--radius);
     background:var(--surface); box-shadow:none; padding:0;}
