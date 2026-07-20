@@ -3,33 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DT-ProfiTools – Dreiecksberechnung & Schraubenberechnung nach VDI 2230</title>
-<meta name="description" content="Zwei Berechnungswerkzeuge für Profis: DT-ProfiDreieck (Dreiecke berechnen, DXF an die CNC) und DT-ProfiSchraube (Schraubenverbindungen nach VDI 2230 Blatt 1). Offline, eine Datei, keine Installation.">
+<title>DT-ProfiTools – Dreieck, Schraube & Passung: Profi-Berechnung offline</title>
+<meta name="description" content="Drei Berechnungswerkzeuge für Profis: DT-ProfiDreieck (DXF an die CNC), DT-ProfiSchraube (VDI 2230 Blatt 1) und DT-ProfiPassung (ISO 286, Pressverband DIN 7190). Offline, eine Datei, keine Installation.">
 <meta name="theme-color" content="#eaedf3">
 
-<!-- Icons (self-hosted, liegen im selben Ordner) -->
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon.png" type="image/png" sizes="48x48">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Icons (self-hosted, Ordner Landigpage_Daten/) -->
+<link rel="icon" href="Landigpage_Daten/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="Landigpage_Daten/favicon.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="Landigpage_Daten/apple-touch-icon.png">
 
 <!-- Social-Vorschau für WhatsApp, LinkedIn & Co.
-     ACHTUNG: og:url und og:image brauchen ABSOLUTE Adressen.
+     ACHTUNG: og:url und og:image brauchen ABSOLUTE Adressen und bleiben
+     bewusst fest im HTML – Messenger führen kein JavaScript aus.
      Bei einem Umzug auf eine eigene Domain nur diese zwei Zeilen anpassen. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DT-ProfiTools">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="DT-ProfiTools – Dreieck &amp; Schraube: Profi-Berechnung offline">
-<meta property="og:description" content="Dreiecke berechnen mit DXF-Export für die CNC – Schraubenverbindungen nach VDI 2230 Blatt 1. Offline, eine Datei, keine Installation.">
+<meta property="og:title" content="DT-ProfiTools – Dreieck, Schraube &amp; Passung: Profi-Berechnung offline">
+<meta property="og:description" content="Dreiecke mit DXF-Export für die CNC – Schrauben nach VDI 2230 – Passungen nach ISO 286. Offline, eine Datei, keine Installation.">
 <meta property="og:url" content="https://dietertepe.github.io/dt-profidreieck-web/">
-<meta property="og:image" content="https://dietertepe.github.io/dt-profidreieck-web/og-card.jpg">
+<meta property="og:image" content="https://dietertepe.github.io/dt-profidreieck-web/Landigpage_Daten/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="DT-ProfiTools – Berechnungswerkzeuge für Werkstatt und Konstruktion">
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- Zentrale Konfiguration MUSS im head geladen werden, damit
+     window.DT_CONFIG beim Rendern bereits global verfügbar ist -->
+<script src="config.js"></script>
+
 <!--
   ============================================================================
-  DT-ProfiTools – Landingpage für BEIDE Programme  |  v1.0.0  |  2026-07-09
+  DT-ProfiTools – Landingpage für DREI Programme  |  v1.1.0  |  2026-07-20
   ============================================================================
   DATENSCHUTZ (hart):
     - KEINE externen Schriften, KEINE fremden Skripte, KEINE CDN-Einbindungen.
@@ -37,15 +42,16 @@
     - Scroll-Animationen: eigener IntersectionObserver (unten im <script>).
 
   LINKS: werden zentral aus config.js gelesen (liegt daneben).
-    data-link="kauf-dreieck" | "kauf-schraube" | "test-dreieck" | "test-schraube"
+    data-link="kauf-dreieck" | "kauf-schraube" | "kauf-passung"
+              | "test-dreieck" | "test-schraube" | "test-passung"
     -> Digistore-Links NUR in config.js eintragen, HTML bleibt unberührt.
 
-  MEDIEN (gleicher Ordner):
-    Dreieck : app-zeichnung.jpg, app-eingabe.jpg, app-ergebnis.jpg, V1.mp4, V2.mp4
-    Schraube: schraube-teaser.mp4, schraube-start.jpg, schraube-rechenweg.jpg,
-              schraube-schaubild.jpg, schraube-flansch.jpg, schraube-hilfe.jpg,
-              schraube-word.jpg
-    Sonstiges: favicon.svg, favicon.png, apple-touch-icon.png, og-card.jpg
+  MEDIEN: saemtliche Bild- und Videoquellen kommen aus config.js
+    (absolute URLs; Ordner Dreieck_Daten/, Schraube_Daten/, Passung_Daten/).
+    Im HTML stehen nur leere src-Attribute mit eindeutigen IDs – der
+    Verteiler am Dateiende traegt die Pfade beim Laden ein. Leere Eintraege
+    in der config zeigen automatisch einen "folgt in Kuerze"-Platzhalter.
+    Favicons + og-card.jpg liegen fest im <head> (Ordner Landigpage_Daten/).
 
   AUFBAU: 1) Tokens  2) Basis  3) Bausteine  4) Sektionen (je eine id)
   ============================================================================
@@ -64,7 +70,7 @@
     --brass:#b9791c; --brass-strong:#96610f; --brass-soft:#f6ecd9;
     --steel:#34c3d4;                       /* Cyan auf dunklen Panels */
     --panel:#0a1220; --panel-grid:#16233c; /* Blueprint dunkel */
-    --ok:#0f9d6e;
+    --ok:#0f9d6e; --green:#0f9d6e; --green-strong:#0b7a56; --green-soft:#def1e8;
     --shadow:0 1px 2px rgba(15,27,45,.05), 0 14px 34px -16px rgba(15,27,45,.30);
     --shadow-lg:0 2px 4px rgba(15,27,45,.06), 0 30px 60px -22px rgba(15,27,45,.34);
     --radius:18px; --radius-sm:12px;
@@ -201,7 +207,8 @@
   .hero h1{margin:var(--sp-2) auto var(--sp-2); max-width:22ch;}
   .hero .lead{margin:0 auto;}
   .tool-grid{display:grid; grid-template-columns:1fr; gap:var(--sp-3); margin-top:var(--sp-6); text-align:left;}
-  @media(min-width:780px){.tool-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:680px){.tool-grid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:1020px){.tool-grid{grid-template-columns:1fr 1fr 1fr;}}
   .tool{
     display:flex; flex-direction:column; gap:var(--sp-2);
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -291,6 +298,23 @@
   footer.site .hint{max-width:52ch; font-size:13px;}
 
   /* ============================================================
+     Drittes Produkt (Passung, Gruen) + Platzhalter fuer fehlende Medien
+     ============================================================ */
+  .pos--green{color:var(--green-strong);}
+  .eyebrow--green{color:var(--green-strong); background:var(--green-soft);}
+  .btn--green{background:var(--green-strong); color:#fff; box-shadow:0 8px 20px -8px var(--green-strong);}
+  .btn--green:hover{background:#095f43;}
+  .tool--green{border-top-color:var(--green);}
+  .feature--green .ico{background:var(--green-soft); color:var(--green-strong);}
+  .compare thead th:nth-child(4){color:var(--green-strong);}
+  .media-slot.media-missing{position:relative; display:flex; align-items:center; justify-content:center;
+    min-height:190px; border:2px dashed var(--line-strong); border-radius:var(--radius);
+    background:var(--surface); box-shadow:none; padding:0;}
+  .media-slot.media-missing img,.media-slot.media-missing video{display:none;}
+  .media-slot.media-missing::after{content:attr(data-hinweis); color:var(--muted);
+    font-weight:600; font-size:14px; padding:18px; text-align:center; max-width:36ch;}
+
+  /* ============================================================
      Einblend-Animation (eigener IntersectionObserver, kein CDN)
      ============================================================ */
   html.js .reveal{opacity:0; transform:translateY(16px);
@@ -318,6 +342,7 @@
     <nav class="nav-links">
       <a href="#dreieck">Dreieck</a>
       <a href="#schraube">Schraube</a>
+      <a href="#passung">Passung</a>
       <a href="#vergleich">Vergleich</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -334,7 +359,7 @@
     <div class="wrap">
       <span class="eyebrow reveal">◬ Berechnungswerkzeuge für Werkstatt &amp; Konstruktion</span>
       <h1 class="reveal">Präzise rechnen.<br>Sauber <span style="color:var(--accent)">dokumentieren</span>. Sofort <span style="color:var(--brass)">fertigen</span>.</h1>
-      <p class="lead reveal">Zwei Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC – und Schraubenverbindungen nach VDI 2230 mit vollem Rechenweg. Beide laufen offline, als eine einzige Datei, ohne Installation.</p>
+      <p class="lead reveal">Drei Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230 – und Passungen nach ISO 286 mit selbstprüfendem Rechenweg. Alle laufen offline, als eine einzige Datei, ohne Installation.</p>
 
       <div class="tool-grid">
         <!-- Werkzeugkarte 1: Dreieck -->
@@ -344,7 +369,7 @@
             <span class="price">69 €<small> einmalig</small></span>
           </div>
           <p class="desc">Drei Größen eingeben – das ganze Dreieck wird berechnet, maßstäblich gezeichnet und als DXF, SVG oder PDF exportiert.</p>
-          <div class="mini blueprint" style="padding:6px;"><img src="app-zeichnung.jpg" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
+          <div class="mini blueprint" style="padding:6px;"><img id="img-dreieck-karte" src="" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
           <ul>
             <li>DXF direkt in CAD &amp; CNC importierbar</li>
             <li>Auch aus Umkreis, Inkreis, Fläche, Höhen</li>
@@ -363,7 +388,7 @@
             <span class="price">159 €<small> einmalig</small></span>
           </div>
           <p class="desc">Schraubenverbindungen nach VDI 2230 Blatt 1 auslegen – mit Sicherheits-Nachweisen, Assistenten und dokumentiertem Rechenweg.</p>
-          <div class="mini"><img src="schraube-start.jpg" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
+          <div class="mini"><img id="img-schraube-karte" src="" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
           <ul>
             <li>Nachweise: Fließen, Dauerhaltbarkeit, Pressung, Gleiten, Einschraubtiefe</li>
             <li>Assistenten für Flansch &amp; Dehnschraube</li>
@@ -372,6 +397,25 @@
           <div class="cta-row">
             <a class="btn btn--brass" data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis testen</a>
             <a class="btn btn--ghost" href="#schraube">Details ↓</a>
+          </div>
+        </article>
+
+        <!-- Werkzeugkarte 3: Passung -->
+        <article class="tool tool--green reveal">
+          <div class="tool-head">
+            <h3>DT-ProfiPassung</h3>
+            <span class="price">139 €<small> einmalig</small></span>
+          </div>
+          <p class="desc">Passungen und Toleranzen nach ISO 286 in Sekunden – mit selbstprüfendem Rechenweg, Pressverband nach DIN 7190 und geführtem Assistenten.</p>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-passung-karte" src="" alt="DT-ProfiPassung: Toleranz- und Passungsrechner nach ISO 286" loading="lazy"></div>
+          <ul>
+            <li>Schnelleingabe wie „Ø50 H7/g6“</li>
+            <li>Rechenweg mit Häkchen für jeden Schritt</li>
+            <li>Gratis-Version mit vollem Funktionsumfang</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--green" data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis testen</a>
+            <a class="btn btn--ghost" href="#passung">Details ↓</a>
           </div>
         </article>
       </div>
@@ -425,7 +469,7 @@
         </div>
         <div class="reveal">
           <div class="blueprint">
-            <img src="app-zeichnung.jpg" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
+            <img id="img-dreieck-zeichnung" src="" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
           </div>
         </div>
       </div>
@@ -441,23 +485,17 @@
       <div style="text-align:center; margin-top:var(--sp-8);">
         <h3 class="reveal" style="margin-bottom:6px;">Kurz gezeigt: ein Winkel am Werkstück, Sekunden später als DXF in CAD und CNC</h3>
         <figure class="blueprint reveal" style="max-width:860px; margin:var(--sp-3) auto 0;">
-          <video class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF">
-            <source src="V2.mp4" type="video/mp4">
-            <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="V2.mp4" style="color:#fff;">Video herunterladen</a></p>
-          </video>
+          <video id="video-dreieck-werkstatt" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF"></video>
         </figure>
         <h3 class="reveal" style="margin:var(--sp-6) 0 6px;">Von der Eingabe bis zum Ergebnis – leicht zu bedienen</h3>
         <figure class="blueprint reveal" style="max-width:860px; margin:var(--sp-3) auto 0;">
-          <video class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Demo: Eingabe bis Ergebnis">
-            <source src="V1.mp4" type="video/mp4">
-            <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="V1.mp4" style="color:#fff;">Video herunterladen</a></p>
-          </video>
+          <video id="video-dreieck-demo" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Demo: Eingabe bis Ergebnis"></video>
         </figure>
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot reveal"><img src="app-eingabe.jpg" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
-        <div class="shot reveal"><img src="app-ergebnis.jpg" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-dreieck-eingabe" src="" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-dreieck-ergebnis" src="" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
       </div>
 
       <!-- Kaufblock Dreieck -->
@@ -488,10 +526,7 @@
 
       <!-- Teaser-Video (selbst gehostet) -->
       <figure class="blueprint reveal" style="max-width:860px; margin:0 auto;">
-        <video class="demo-video" controls preload="none" playsinline poster="schraube-start.jpg" aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick">
-          <source src="schraube-teaser.mp4" type="video/mp4">
-          <p style="color:#cdd6e6; padding:24px 16px;">Das Video kann nicht abgespielt werden. <a href="schraube-teaser.mp4" style="color:#fff;">Video herunterladen</a></p>
-        </video>
+        <video id="video-schraube-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick"></video>
       </figure>
       <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nachweise, Rechenweg, Schaubild, Assistenten, Export.</p>
 
@@ -505,13 +540,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot reveal"><img src="schraube-rechenweg.jpg" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
-        <div class="shot reveal"><img src="schraube-schaubild.jpg" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-schraube-rechenweg" src="" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-schraube-schaubild" src="" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot reveal"><img src="schraube-flansch.jpg" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
-        <div class="shot reveal"><img src="schraube-hilfe.jpg" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
-        <div class="shot reveal"><img src="schraube-word.jpg" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-schraube-flansch" src="" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-schraube-hilfe" src="" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
+        <div class="shot reveal"><img id="img-schraube-word" src="" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
       </div>
 
       <p class="reveal" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -536,6 +571,60 @@
     </div>
   </section>
 
+  <!-- ============ POS. 03 · DT-PROFIPASSUNG ============ -->
+  <section id="passung" class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div style="text-align:center; max-width:66ch; margin:0 auto var(--sp-6);">
+        <span class="pos pos--green reveal">Pos. 03 · Toleranzen &amp; Passungen</span>
+        <h2 class="reveal" style="margin:14px 0 12px;">DT-ProfiPassung: Passungen<br><span style="color:var(--green-strong)">bestimmen · verstehen · belegen</span></h2>
+        <p class="lead reveal" style="margin:0 auto;">„Ø50 H7/g6“ eintippen – Sekunden später stehen Abmaße, Grenzmaße, Spiel oder Übermaß und die Passtoleranz nach ISO 286. Und jeder Schritt ist belegt: mit aufklappbarem, selbstprüfendem Rechenweg statt Blättern im Tabellenwerk.</p>
+      </div>
+
+      <figure class="blueprint media-slot reveal" data-hinweis="Demo-Video folgt in Kürze – die Gratis-Version läuft schon: einfach oben „Gratis testen“ antippen" style="max-width:860px; margin:0 auto;">
+        <video id="video-passung-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiPassung – Überblick"></video>
+      </figure>
+
+      <div class="features" style="margin-top:var(--sp-8);">
+        <div class="feature feature--green reveal"><div class="ico">ISO</div><div><h3>ISO 286 in Sekunden</h3><p>Abmaße, Höchst- und Mindestmaß, Spiel/Übermaß und Passtoleranz – als Einheitsbohrung oder Einheitswelle, per Auswahl oder Schnelleingabe.</p></div></div>
+        <div class="feature feature--green reveal"><div class="ico">✓</div><div><h3>Selbstprüfender Rechenweg</h3><p>Formel, eingesetzte Werte und ein Häkchen je Schritt – belegbar für Fertigung, QS, Kunden und Ausbildung.</p></div></div>
+        <div class="feature feature--green reveal"><div class="ico">⌀</div><div><h3>Toleranzfeld-Schaubild + Thermik</h3><p>Die Lage von Bohrung (grün) und Welle (blau) auf einen Blick – auf Wunsch verschoben „bei T °C“.</p></div></div>
+        <div class="feature feature--green reveal"><div class="ico">DIN</div><div><h3>Pressverband &amp; Freimaße</h3><p>DIN 7190: Fugendruck, Sicherheiten, übertragbares Moment und Fügetemperatur – dazu Allgemeintoleranzen nach ISO 2768.</p></div></div>
+        <div class="feature feature--green reveal"><div class="ico">⚙</div><div><h3>Assistent &amp; Praxis-Beratung</h3><p>Geführte Passungsempfehlung mit Begründung, dazu Kostenampel, Messmittel- und Oberflächenhinweise.</p></div></div>
+        <div class="feature feature--green reveal"><div class="ico">ⓘ</div><div><h3>Dreisprachig mit Laien-Hilfe</h3><p>Deutsch, Englisch und Portugiesisch komplett – inklusive Rechenweg; antippbares ⓘ an jedem Feld. Export als Word-Bericht (.rtf), Druck, Speichern &amp; Laden.</p></div></div>
+      </div>
+
+      <div class="grid-2" style="margin-top:var(--sp-8);">
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Toleranzfeld-Schaubild – Bohrung grün, Welle blau"><img id="img-passung-schaubild" src="" alt="Toleranzfeld-Schaubild: Lage von Bohrung und Welle mit Spiel- bzw. Übermaßzone" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: aufgeklappter Rechenweg mit Häkchen je Schritt"><img id="img-passung-rechenweg" src="" alt="Selbstprüfender Rechenweg: Formel, eingesetzte Werte und Häkchen für jeden Schritt" loading="lazy"></div>
+      </div>
+      <div class="grid-3" style="margin-top:var(--sp-3);">
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Passungs-Assistent"><img id="img-passung-assistent" src="" alt="Passungs-Assistent: geführte Empfehlung nach Einsatzzweck mit Begründung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Sprachumschalter DE · EN · PT"><img id="img-passung-sprachen" src="" alt="Dreisprachige Oberfläche mit Umschalter Deutsch, Englisch, Portugiesisch" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Praxis-Beratung mit Kostenampel"><img id="img-passung-beratung" src="" alt="Praxis-Beratung: Kostenampel, Messmittel und Oberflächenhinweise" loading="lazy"></div>
+      </div>
+
+      <p class="reveal" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
+        Die Gratis-Version rechnet bereits mit <span style="color:var(--green-strong)">vollem Funktionsumfang</span> – nur Speichern, Druck und Export bleiben der Vollversion vorbehalten.
+      </p>
+
+      <!-- Kaufblock Passung -->
+      <div id="kauf-passung" class="buy reveal" style="max-width:620px; margin:var(--sp-6) auto 0;">
+        <span class="eyebrow eyebrow--green">Vollversion</span>
+        <h2 style="margin:16px 0 10px;">DT-ProfiPassung Pro</h2>
+        <div class="price-tag">139 €<small> &nbsp;einmalig</small></div>
+        <ul>
+          <li>Sofortiger Download nach dem Kauf</li>
+          <li>Speichern &amp; Laden, Word-Bericht, Druck &amp; Export freigeschaltet</li>
+          <li>Läuft offline – Handy, Tablet, PC</li>
+          <li>Sichere Abwicklung über Digistore24</li>
+        </ul>
+        <div><a class="btn btn--green btn--lg" data-link="kauf-passung" href="#">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis-Version mit vollem Funktionsumfang testen</a></p>
+        <p class="fine">Hinweis: Berechnung ohne Gewähr – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ VERGLEICH ============ -->
   <section id="vergleich" class="section section--tight">
     <div class="wrap" style="max-width:860px;">
@@ -546,18 +635,18 @@
       <div class="compare-scroll reveal">
         <table class="compare">
           <thead>
-            <tr><th></th><th>DT-ProfiDreieck</th><th>DT-ProfiSchraube</th></tr>
+            <tr><th></th><th>DT-ProfiDreieck</th><th>DT-ProfiSchraube</th><th>DT-ProfiPassung</th></tr>
           </thead>
           <tbody>
-            <tr><th>Für wen</th><td>Metallbau, CNC, Werkstatt, Ausbildung</td><td>Konstruktion, Berechnung, Maschinenbau</td></tr>
-            <tr><th>Aufgabe</th><td>Dreiecke aus 3 Größen berechnen &amp; zeichnen</td><td>Schraubenverbindungen nach VDI 2230 auslegen</td></tr>
-            <tr><th>Stärke</th><td>DXF-Export direkt an CAD &amp; CNC</td><td>Fünf Nachweise mit dokumentiertem Rechenweg</td></tr>
-            <tr><th>Export</th><td>DXF, SVG, PNG, Drucken/PDF</td><td>Word (.rtf), Drucken/PDF, CSV, Bild</td></tr>
-            <tr><th>Preis</th><td><b>69 €</b> einmalig</td><td><b>159 €</b> einmalig</td></tr>
+            <tr><th>Für wen</th><td>Metallbau, CNC, Werkstatt, Ausbildung</td><td>Konstruktion, Berechnung, Maschinenbau</td><td>Konstruktion, Fertigung, QS, Ausbildung</td></tr>
+            <tr><th>Aufgabe</th><td>Dreiecke aus 3 Größen berechnen &amp; zeichnen</td><td>Schraubenverbindungen nach VDI 2230 auslegen</td><td>Passungen &amp; Toleranzen nach ISO 286 bestimmen</td></tr>
+            <tr><th>Stärke</th><td>DXF-Export direkt an CAD &amp; CNC</td><td>Fünf Nachweise mit dokumentiertem Rechenweg</td><td>Selbstprüfender Rechenweg, Pressverband, Assistent</td></tr>
+            <tr><th>Export</th><td>DXF, SVG, PNG, Drucken/PDF</td><td>Word (.rtf), Drucken/PDF, CSV, Bild</td><td>Word (.rtf), Druck, Speichern &amp; Laden</td></tr>
+            <tr><th>Preis</th><td><b>69 €</b> einmalig</td><td><b>159 €</b> einmalig</td><td><b>139 €</b> einmalig</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:14px;">Beide: offline, eine Datei, keine Installation, kein Konto.</p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:14px;">Alle drei: offline, eine Datei, keine Installation, kein Konto.</p>
     </div>
   </section>
 
@@ -579,7 +668,7 @@
         </details>
         <details class="reveal">
           <summary>Was unterscheidet Test- und Vollversion?</summary>
-          <p>Die Gratis-Version zeigt die Bedienung mit eingeschränktem Funktionsumfang. Die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei.</p>
+          <p>Bei DT-ProfiDreieck und DT-ProfiSchraube zeigt die Gratis-Version die Bedienung mit eingeschränktem Funktionsumfang; die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei. Bei DT-ProfiPassung rechnet die Gratis-Version bereits mit vollem Funktionsumfang – nur Speichern, Druck und Export sind der Vollversion vorbehalten.</p>
         </details>
         <details class="reveal">
           <summary>Werden Daten übertragen oder gespeichert?</summary>
@@ -602,10 +691,11 @@
     <div class="wrap">
       <div class="cta-band reveal">
         <h2>Heute testen, morgen sicher fertigen</h2>
-        <p>Beide Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
+        <p>Alle drei Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
         <div class="cta-row">
           <a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#kauf-dreieck">Dreieck · 69 €</a>
           <a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#kauf-schraube">Schraube · 159 €</a>
+          <a class="btn btn--green btn--lg" data-link="kauf-passung" href="#kauf-passung">Passung · 139 €</a>
         </div>
       </div>
     </div>
@@ -628,38 +718,85 @@
   </div>
 </footer>
 
-<!-- Zentrale Links laden (Digistore, Testversionen) -->
-<script src="config.js"></script>
+<!-- Verteiler: traegt Links und Medien aus config.js in die Seite ein -->
 <script>
-  // ---- Links aus config.js anwenden -------------------------------------
-  (function(){
-    var map = window.DT_CONFIG || {};
-    var keys = {
-      "kauf-dreieck":  map.kaufDreieck,
-      "kauf-schraube": map.kaufSchraube,
-      "test-dreieck":  map.testDreieck,
-      "test-schraube": map.testSchraube
-    };
-    document.querySelectorAll("[data-link]").forEach(function(a){
-      var url = keys[a.getAttribute("data-link")];
-      if (url) a.setAttribute("href", url);
-    });
-  })();
+document.addEventListener("DOMContentLoaded", function() {
+  var c = window.DT_CONFIG || {};
 
-  // ---- Dezente Einblendung beim Scrollen (kein CDN, DSGVO-sauber) --------
-  (function(){
-    var els = document.querySelectorAll(".reveal");
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(function(el){ el.classList.add("in"); });
-      return;
-    }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    els.forEach(function(el){ io.observe(el); });
-  })();
+  // ---- 1) Links: data-link statt fester IDs, weil sich mehrere Buttons
+  //         (z. B. Kaufblock + Schluss-CTA) denselben Link teilen ---------
+  var links = {
+    "kauf-dreieck":  c.kaufDreieck,
+    "kauf-schraube": c.kaufSchraube,
+    "kauf-passung":  c.kaufPassung,
+    "test-dreieck":  c.testDreieck,
+    "test-schraube": c.testSchraube,
+    "test-passung":  c.testPassung
+  };
+  document.querySelectorAll("[data-link]").forEach(function(a){
+    var url = links[a.getAttribute("data-link")];
+    if (url) a.setAttribute("href", url);
+  });
+
+  // ---- 2) Bilder: leere URL -> Platzhalter "folgt in Kuerze" ------------
+  function bild(id, url){
+    var el = document.getElementById(id); if (!el) return;
+    if (url) { el.src = url; return; }
+    var slot = el.closest(".media-slot");
+    if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
+  }
+
+  // ---- 3) Videos: src direkt am <video>-Tag setzen und .load() aufrufen -
+  function video(id, url, poster){
+    var el = document.getElementById(id); if (!el) return;
+    if (url) { if (poster) el.poster = poster; el.src = url; el.load(); return; }
+    var slot = el.closest(".media-slot");
+    if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
+  }
+
+  var d = c.dreieck || {}, s = c.schraube || {}, p = c.passung || {};
+
+  // DT-ProfiDreieck
+  bild("img-dreieck-karte",        d.bildZeichnung);
+  bild("img-dreieck-zeichnung",    d.bildZeichnung);
+  video("video-dreieck-werkstatt", d.videoWerkstatt);
+  video("video-dreieck-demo",      d.videoDemo);
+  bild("img-dreieck-eingabe",      d.bildEingabe);
+  bild("img-dreieck-ergebnis",     d.bildErgebnis);
+
+  // DT-ProfiSchraube
+  bild("img-schraube-karte",       s.bildStart);
+  video("video-schraube-teaser",   s.videoTeaser, s.bildStart);
+  bild("img-schraube-rechenweg",   s.bildRechenweg);
+  bild("img-schraube-schaubild",   s.bildSchaubild);
+  bild("img-schraube-flansch",     s.bildFlansch);
+  bild("img-schraube-hilfe",       s.bildHilfe);
+  bild("img-schraube-word",        s.bildWord);
+
+  // DT-ProfiPassung (Eintraege noch leer -> Platzhalter erscheinen)
+  bild("img-passung-karte",        p.bildStart);
+  video("video-passung-teaser",    p.videoTeaser, p.bildStart);
+  bild("img-passung-schaubild",    p.bildSchaubild);
+  bild("img-passung-rechenweg",    p.bildRechenweg);
+  bild("img-passung-assistent",    p.bildAssistent);
+  bild("img-passung-sprachen",     p.bildSprachen);
+  bild("img-passung-beratung",     p.bildBeratung);
+});
+
+// ---- Dezente Einblendung beim Scrollen (kein CDN, DSGVO-sauber) ---------
+(function(){
+  var els = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(function(el){ el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  els.forEach(function(el){ io.observe(el); });
+})();
 </script>
 
 </body>
