@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DT-ProfiTools – Dreieck, Schraube & Passung: Profi-Berechnung offline</title>
-<meta name="description" content="Drei Berechnungswerkzeuge für Profis: DT-ProfiDreieck (DXF an die CNC), DT-ProfiSchraube (VDI 2230 Blatt 1) und DT-ProfiPassung (ISO 286, Pressverband DIN 7190). Offline, eine Datei, keine Installation.">
+<title>DT-ProfiTools – Dreieck, Schraube, Passung & Schweißnaht: Profi-Berechnung offline</title>
+<meta name="description" content="Vier Berechnungswerkzeuge für Profis: DT-ProfiDreieck (DXF an die CNC), DT-ProfiSchraube (VDI 2230 Blatt 1), DT-ProfiPassung (ISO 286, Pressverband DIN 7190) und DT-ProfiSchweissnaht (EN 1993-1-8). Offline, eine Datei, keine Installation.">
 <meta name="theme-color" content="#eaedf3">
 
 <!-- Icons (self-hosted, Ordner Landigpage_Daten/) -->
@@ -19,8 +19,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DT-ProfiTools">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="DT-ProfiTools – Dreieck, Schraube &amp; Passung: Profi-Berechnung offline">
-<meta property="og:description" content="Dreiecke mit DXF-Export für die CNC – Schrauben nach VDI 2230 – Passungen nach ISO 286. Offline, eine Datei, keine Installation.">
+<meta property="og:title" content="DT-ProfiTools – vier Werkzeuge für Werkstatt &amp; Konstruktion">
+<meta property="og:description" content="Dreiecke mit DXF-Export für die CNC · Schrauben nach VDI 2230 · Passungen nach ISO 286 · Schweißnähte nach EN 1993-1-8. Offline, eine Datei, keine Installation.">
 <meta property="og:url" content="https://dietertepe.github.io/dt-profidreieck-web/">
 <meta property="og:image" content="https://dietertepe.github.io/dt-profidreieck-web/Landigpage_Daten/og-card.jpg">
 <meta property="og:image:width" content="1200">
@@ -34,23 +34,23 @@
 
 <!--
   ============================================================================
-  DT-ProfiTools – Landingpage für DREI Programme  |  v1.1.0  |  2026-07-20
+  DT-ProfiTools – Landingpage für VIER Programme  |  v1.2.0  |  2026-08-09
   ============================================================================
   DATENSCHUTZ (hart):
     - KEINE externen Schriften, KEINE fremden Skripte, KEINE CDN-Einbindungen.
-    - Alle Medien liegen relativ im selben Ordner (GitHub Pages, self-hosted).
+    - Alle Medien liegen im eigenen GitHub-Repository (self-hosted).
     - Scroll-Animationen: eigener IntersectionObserver (unten im <script>).
 
   LINKS: werden zentral aus config.js gelesen (liegt daneben).
-    data-link="kauf-dreieck" | "kauf-schraube" | "kauf-passung"
-              | "test-dreieck" | "test-schraube" | "test-passung"
+    data-link="kauf-dreieck" | "kauf-schraube" | "kauf-passung" | "kauf-schweissnaht"
+              | "test-dreieck" | "test-schraube" | "test-passung" | "test-schweissnaht"
     -> Digistore-Links NUR in config.js eintragen, HTML bleibt unberührt.
 
   MEDIEN: saemtliche Bild- und Videoquellen kommen aus config.js
-    (absolute URLs; Ordner Dreieck_Daten/, Schraube_Daten/, Passung_Daten/).
-    Im HTML stehen nur leere src-Attribute mit eindeutigen IDs – der
-    Verteiler am Dateiende traegt die Pfade beim Laden ein. Leere Eintraege
-    in der config zeigen automatisch einen "folgt in Kuerze"-Platzhalter.
+    (absolute URLs; Ordner Dreieck_Daten/, Schraube_Daten/, Passung_Daten/,
+    Schweissnaht_Daten/). Im HTML stehen nur leere src-Attribute mit
+    eindeutigen IDs – der Verteiler am Dateiende traegt die Pfade beim Laden
+    ein. Leere Eintraege zeigen automatisch "folgt in Kuerze".
     Favicons + og-card.jpg liegen fest im <head> (Ordner Landigpage_Daten/).
 
   AUFBAU: 1) Tokens  2) Basis  3) Bausteine  4) Sektionen (je eine id)
@@ -60,7 +60,8 @@
 <style>
   /* ============================================================
      1) DESIGN-TOKENS (Werkstatt-Blueprint, wie App & Rechtsseiten)
-     Dreieck = Petrol-Teal · Schraube = Messing/Stahl-Cyan
+     Dreieck = Petrol-Teal · Schraube = Messing · Passung = Gruen
+     Schweissnaht = Glut-Orange
      ============================================================ */
   :root{
     --bg:#eaedf3; --bg2:#dde3ec; --card:#ffffff; --surface:#f5f7fb;
@@ -68,9 +69,11 @@
     --line:#e4e9f0; --line-strong:#d4dbe6;
     --accent:#0d7d8c; --accent-strong:#0a5f6b; --accent-soft:#dcf0f1;
     --brass:#b9791c; --brass-strong:#96610f; --brass-soft:#f6ecd9;
+    --green:#0f9d6e; --green-strong:#0b7a56; --green-soft:#def1e8;
+    --glut:#d4560a; --glut-strong:#a8410a; --glut-soft:#fbe7d9;
     --steel:#34c3d4;                       /* Cyan auf dunklen Panels */
     --panel:#0a1220; --panel-grid:#16233c; /* Blueprint dunkel */
-    --ok:#0f9d6e; --green:#0f9d6e; --green-strong:#0b7a56; --green-soft:#def1e8;
+    --ok:#0f9d6e;
     --shadow:0 1px 2px rgba(15,27,45,.05), 0 14px 34px -16px rgba(15,27,45,.30);
     --shadow-lg:0 2px 4px rgba(15,27,45,.06), 0 30px 60px -22px rgba(15,27,45,.34);
     --radius:18px; --radius-sm:12px;
@@ -117,6 +120,8 @@
   }
   .pos::before{content:""; width:34px; height:1.5px; background:currentColor; opacity:.6;}
   .pos--brass{color:var(--brass);}
+  .pos--green{color:var(--green-strong);}
+  .pos--glut{color:var(--glut);}
 
   .eyebrow{
     display:inline-flex; align-items:center; gap:7px;
@@ -125,6 +130,8 @@
     padding:6px 13px; border-radius:999px;
   }
   .eyebrow--brass{color:var(--brass-strong); background:var(--brass-soft);}
+  .eyebrow--green{color:var(--green-strong); background:var(--green-soft);}
+  .eyebrow--glut{color:var(--glut-strong); background:var(--glut-soft);}
   .lead{color:var(--muted); font-size:clamp(16px,2.4vw,19px); max-width:62ch;}
 
   .card{
@@ -145,6 +152,10 @@
   .btn--primary:hover{background:var(--accent-strong);}
   .btn--brass{background:var(--brass); color:#fff; box-shadow:0 8px 20px -8px var(--brass);}
   .btn--brass:hover{background:var(--brass-strong);}
+  .btn--green{background:var(--green-strong); color:#fff; box-shadow:0 8px 20px -8px var(--green-strong);}
+  .btn--green:hover{background:#095f43;}
+  .btn--glut{background:var(--glut); color:#fff; box-shadow:0 8px 20px -8px var(--glut);}
+  .btn--glut:hover{background:var(--glut-strong);}
   .btn--ghost{background:#fff; color:var(--ink); border-color:var(--line-strong);}
   .btn--ghost:hover{border-color:var(--accent); color:var(--accent-strong);}
   .btn--lg{font-size:17px; padding:16px 30px;}
@@ -171,6 +182,10 @@
     .features{grid-template-columns:1fr 1fr;}
     .grid-3{grid-template-columns:1fr 1fr 1fr;}
   }
+  /* Screenshot-Reihen: Kacheln strecken sich NICHT auf die Hoehe des
+     hoechsten Nachbarn – jeder Rahmen ist exakt so hoch wie sein Bild
+     (wie in der Handy-Ansicht). Keine leeren weissen Restflaechen. */
+  .grid-3 > .shot{align-self:start;}
 
   .feature{display:flex; gap:12px; align-items:flex-start;}
   .feature .ico{
@@ -180,8 +195,18 @@
     background:var(--accent-soft); color:var(--accent-strong);
   }
   .feature--brass .ico{background:var(--brass-soft); color:var(--brass-strong);}
+  .feature--green .ico{background:var(--green-soft); color:var(--green-strong);}
+  .feature--glut .ico{background:var(--glut-soft); color:var(--glut-strong);}
   .feature h3{margin-bottom:2px;}
   .feature p{color:var(--muted); font-size:15px;}
+
+  /* Platzhalter fuer noch fehlende Medien */
+  .media-slot.media-missing{position:relative; display:flex; align-items:center; justify-content:center;
+    min-height:190px; border:2px dashed var(--line-strong); border-radius:var(--radius);
+    background:var(--surface); box-shadow:none; padding:0;}
+  .media-slot.media-missing img,.media-slot.media-missing video{display:none;}
+  .media-slot.media-missing::after{content:attr(data-hinweis); color:var(--muted);
+    font-weight:600; font-size:14px; padding:18px; text-align:center; max-width:36ch;}
 
   /* ============================================================
      4a) KOPFLEISTE
@@ -194,21 +219,20 @@
   .topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:12px; padding-bottom:12px;}
   .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.01em; color:var(--ink); text-decoration:none;}
   .brand svg{flex:none;}
-  .nav-links{display:none; gap:var(--sp-3);}
+  .nav-links{display:none; gap:var(--sp-2);}
   .nav-links a{color:var(--muted); text-decoration:none; font-weight:600; font-size:15px;}
   .nav-links a:hover{color:var(--accent-strong);}
-  @media(min-width:900px){.nav-links{display:flex;}}
+  @media(min-width:980px){.nav-links{display:flex;}}
   .topbar .btn{padding:10px 16px; font-size:14px;}
 
   /* ============================================================
-     4b) HERO mit zwei Werkzeugkarten
+     4b) HERO mit vier Werkzeugkarten
      ============================================================ */
   .hero{padding-top:var(--sp-8); text-align:center;}
   .hero h1{margin:var(--sp-2) auto var(--sp-2); max-width:22ch;}
   .hero .lead{margin:0 auto;}
   .tool-grid{display:grid; grid-template-columns:1fr; gap:var(--sp-3); margin-top:var(--sp-6); text-align:left;}
-  @media(min-width:680px){.tool-grid{grid-template-columns:1fr 1fr;}}
-  @media(min-width:1020px){.tool-grid{grid-template-columns:1fr 1fr 1fr;}}
+  @media(min-width:700px){.tool-grid{grid-template-columns:1fr 1fr;}}
   .tool{
     display:flex; flex-direction:column; gap:var(--sp-2);
     background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
@@ -216,6 +240,8 @@
     border-top:4px solid var(--accent);
   }
   .tool--brass{border-top-color:var(--brass);}
+  .tool--green{border-top-color:var(--green);}
+  .tool--glut{border-top-color:var(--glut);}
   .tool-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
   .tool-head .price{font-weight:800; font-size:22px; font-variant-numeric:tabular-nums;}
   .tool-head .price small{font-size:13px; font-weight:600; color:var(--muted);}
@@ -258,8 +284,11 @@
   .compare thead th{font-size:14px; letter-spacing:.02em;}
   .compare thead th:nth-child(2){color:var(--accent-strong);}
   .compare thead th:nth-child(3){color:var(--brass-strong);}
+  .compare thead th:nth-child(4){color:var(--green-strong);}
+  .compare thead th:nth-child(5){color:var(--glut-strong);}
   .compare tbody th{font-weight:600; color:var(--muted); white-space:nowrap; width:1%;}
   .compare-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .compare-scroll .compare{min-width:760px;}
   @media(max-width:560px){.compare th,.compare td{padding:11px 10px; font-size:13.5px;} .compare tbody th{white-space:normal;}}
 
   /* ============================================================
@@ -298,27 +327,6 @@
   footer.site .hint{max-width:52ch; font-size:13px;}
 
   /* ============================================================
-     Drittes Produkt (Passung, Gruen) + Platzhalter fuer fehlende Medien
-     ============================================================ */
-  .pos--green{color:var(--green-strong);}
-  .eyebrow--green{color:var(--green-strong); background:var(--green-soft);}
-  .btn--green{background:var(--green-strong); color:#fff; box-shadow:0 8px 20px -8px var(--green-strong);}
-  .btn--green:hover{background:#095f43;}
-  .tool--green{border-top-color:var(--green);}
-  .feature--green .ico{background:var(--green-soft); color:var(--green-strong);}
-  .compare thead th:nth-child(4){color:var(--green-strong);}
-  /* Screenshot-Reihen: Kacheln strecken sich NICHT auf die Hoehe des
-     hoechsten Nachbarn – jeder Rahmen ist exakt so hoch wie sein Bild
-     (wie in der Handy-Ansicht). Keine leeren weissen Restflaechen. */
-  .grid-3 > .shot{align-self:start;}
-  .media-slot.media-missing{position:relative; display:flex; align-items:center; justify-content:center;
-    min-height:190px; border:2px dashed var(--line-strong); border-radius:var(--radius);
-    background:var(--surface); box-shadow:none; padding:0;}
-  .media-slot.media-missing img,.media-slot.media-missing video{display:none;}
-  .media-slot.media-missing::after{content:attr(data-hinweis); color:var(--muted);
-    font-weight:600; font-size:14px; padding:18px; text-align:center; max-width:36ch;}
-
-  /* ============================================================
      Einblend-Animation (eigener IntersectionObserver, kein CDN)
      ============================================================ */
   html.js .reveal{opacity:0; transform:translateY(16px);
@@ -347,6 +355,7 @@
       <a href="#dreieck">Dreieck</a>
       <a href="#schraube">Schraube</a>
       <a href="#passung">Passung</a>
+      <a href="#schweissnaht">Schweißnaht</a>
       <a href="#vergleich">Vergleich</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -358,12 +367,12 @@
 
 <main>
 
-  <!-- ============ HERO: beide Werkzeuge ============ -->
+  <!-- ============ HERO: vier Werkzeuge ============ -->
   <section id="start" class="section hero">
     <div class="wrap">
       <span class="eyebrow reveal">◬ Berechnungswerkzeuge für Werkstatt &amp; Konstruktion</span>
       <h1 class="reveal">Präzise rechnen.<br>Sauber <span style="color:var(--accent)">dokumentieren</span>. Sofort <span style="color:var(--brass)">fertigen</span>.</h1>
-      <p class="lead reveal">Drei Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230 – und Passungen nach ISO 286 mit selbstprüfendem Rechenweg. Alle laufen offline, als eine einzige Datei, ohne Installation.</p>
+      <p class="lead reveal">Vier Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230, Passungen nach ISO 286 – und Schweißnähte nach EN 1993-1-8. Alle laufen offline, als eine einzige Datei, ohne Installation.</p>
 
       <div class="tool-grid">
         <!-- Werkzeugkarte 1: Dreieck -->
@@ -380,7 +389,7 @@
             <li>Voller Rechenweg, Schritt für Schritt</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--primary" data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis testen</a>
+            <a class="btn btn--primary" data-link="test-dreieck" href="#dreieck">Gratis testen</a>
             <a class="btn btn--ghost" href="#dreieck">Details ↓</a>
           </div>
         </article>
@@ -399,7 +408,7 @@
             <li>Export als Word-Bericht, PDF und CSV</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--brass" data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis testen</a>
+            <a class="btn btn--brass" data-link="test-schraube" href="#schraube">Gratis testen</a>
             <a class="btn btn--ghost" href="#schraube">Details ↓</a>
           </div>
         </article>
@@ -418,8 +427,27 @@
             <li>Gratis-Version mit vollem Funktionsumfang</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--green" data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis testen</a>
+            <a class="btn btn--green" data-link="test-passung" href="#passung">Gratis testen</a>
             <a class="btn btn--ghost" href="#passung">Details ↓</a>
+          </div>
+        </article>
+
+        <!-- Werkzeugkarte 4: Schweissnaht -->
+        <article class="tool tool--glut reveal">
+          <div class="tool-head">
+            <h3>DT-ProfiSchweissnaht</h3>
+            <span class="price">169 €<small> einmalig</small></span>
+          </div>
+          <p class="desc">Schweißnähte nachweisen oder das a-Maß auslegen – mit echtem Nahtbild, über dreißig Rechenschritten und benannter Quelle je Schritt.</p>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schweissnaht-karte" src="" alt="DT-ProfiSchweissnaht: Ergebnis mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt" loading="lazy"></div>
+          <ul>
+            <li>Nahtbild aus Profil und geschweißten Kanten</li>
+            <li>Rechenproben laufen bei jeder Berechnung mit</li>
+            <li>Testversion rechnet alles – gesperrt sind nur die Ausgaben</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn--glut" data-link="test-schweissnaht" href="#schweissnaht">Gratis testen</a>
+            <a class="btn btn--ghost" href="#schweissnaht">Details ↓</a>
           </div>
         </article>
       </div>
@@ -452,7 +480,7 @@
         </div>
         <div class="card reveal">
           <h3>Norm-Nachweis per Hand dauert</h3>
-          <p style="color:var(--muted); font-size:15px; margin-top:8px;">Eine Auslegung nach VDI 2230 von Hand füllt schnell einen Nachmittag. Mit dokumentiertem Rechenweg auf Knopfdruck bleibt die Zeit fürs Konstruieren.</p>
+          <p style="color:var(--muted); font-size:15px; margin-top:8px;">Eine Auslegung von Hand füllt schnell einen Nachmittag. Mit dokumentiertem Rechenweg auf Knopfdruck bleibt die Zeit fürs Konstruieren.</p>
         </div>
       </div>
     </div>
@@ -467,7 +495,7 @@
           <h2 class="reveal" style="margin:14px 0 12px;">DT-ProfiDreieck:<br>vom Maß zur <span style="color:var(--accent)">DXF an die CNC</span></h2>
           <p class="lead reveal">Drei Größen eingeben – alles andere wird berechnet, maßstäblich gezeichnet und exportiert. Auch aus Spezialgrößen wie Umkreis, Inkreis, Fläche oder Höhen, an denen Gratis-Tools scheitern.</p>
           <div class="cta-row reveal" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--sp-3);">
-            <a class="btn btn--primary btn--lg" data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen →</a>
+            <a class="btn btn--primary btn--lg" data-link="test-dreieck" href="#dreieck">Gratis-Version testen →</a>
             <a class="btn btn--ghost btn--lg" href="#kauf-dreieck">Vollversion · 69 €</a>
           </div>
         </div>
@@ -485,7 +513,6 @@
         <div class="feature reveal"><div class="ico">⤓</div><div><h3>Export überall</h3><p>PNG, SVG, DXF und Drucken/PDF – komplett offline verfügbar.</p></div></div>
       </div>
 
-      <!-- Praxisvideos -->
       <div style="text-align:center; margin-top:var(--sp-8);">
         <h3 class="reveal" style="margin-bottom:6px;">Kurz gezeigt: ein Winkel am Werkstück, Sekunden später als DXF in CAD und CNC</h3>
         <figure class="blueprint reveal" style="max-width:860px; margin:var(--sp-3) auto 0;">
@@ -502,7 +529,6 @@
         <div class="shot reveal"><img id="img-dreieck-ergebnis" src="" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
       </div>
 
-      <!-- Kaufblock Dreieck -->
       <div id="kauf-dreieck" class="buy reveal" style="max-width:620px; margin:var(--sp-8) auto 0;">
         <span class="eyebrow">Vollversion</span>
         <h2 style="margin:16px 0 10px;">DT-ProfiDreieck Pro</h2>
@@ -514,7 +540,7 @@
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
         <div><a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-dreieck" href="DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen</a></p>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-dreieck" href="#dreieck">Gratis-Version testen</a></p>
       </div>
     </div>
   </section>
@@ -528,7 +554,6 @@
         <p class="lead reveal" style="margin:0 auto;">Von der Klemmkraft bis zur Einschraubtiefe: fünf Sicherheits-Nachweise mit Ampel-Bewertung, jeder Rechenschritt dokumentiert mit Formel, eingesetzten Werten und Normverweis.</p>
       </div>
 
-      <!-- Teaser-Video (selbst gehostet) -->
       <figure class="blueprint reveal" style="max-width:860px; margin:0 auto;">
         <video id="video-schraube-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick"></video>
       </figure>
@@ -557,7 +582,6 @@
         Abgesichert durch über <span style="color:var(--brass); font-variant-numeric:tabular-nums;">2,2 Millionen</span> automatisierte Rechen-Tests.
       </p>
 
-      <!-- Kaufblock Schraube -->
       <div id="kauf-schraube" class="buy reveal" style="max-width:620px; margin:var(--sp-6) auto 0;">
         <span class="eyebrow eyebrow--brass">Vollversion</span>
         <h2 style="margin:16px 0 10px;">DT-ProfiSchraube Pro</h2>
@@ -569,7 +593,7 @@
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
         <div><a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis-Version testen</a></p>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schraube" href="#schraube">Gratis-Version testen</a></p>
         <p class="fine">Hinweis: Auslegungswerkzeug – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
       </div>
     </div>
@@ -611,7 +635,6 @@
         Die Gratis-Version rechnet bereits mit <span style="color:var(--green-strong)">vollem Funktionsumfang</span> – nur Speichern, Druck und Export bleiben der Vollversion vorbehalten.
       </p>
 
-      <!-- Kaufblock Passung -->
       <div id="kauf-passung" class="buy reveal" style="max-width:620px; margin:var(--sp-6) auto 0;">
         <span class="eyebrow eyebrow--green">Vollversion</span>
         <h2 style="margin:16px 0 10px;">DT-ProfiPassung Pro</h2>
@@ -623,15 +646,70 @@
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
         <div><a class="btn btn--green btn--lg" data-link="kauf-passung" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis-Version mit vollem Funktionsumfang testen</a></p>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-passung" href="#passung">Gratis-Version mit vollem Funktionsumfang testen</a></p>
         <p class="fine">Hinweis: Berechnung ohne Gewähr – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POS. 04 · DT-PROFISCHWEISSNAHT ============ -->
+  <section id="schweissnaht" class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div style="text-align:center; max-width:66ch; margin:0 auto var(--sp-6);">
+        <span class="pos pos--glut reveal">Pos. 04 · Schweißtechnik</span>
+        <h2 class="reveal" style="margin:14px 0 12px;">DT-ProfiSchweissnaht:<br>Berechnung, die zeigt, <span style="color:var(--glut)">wie sie rechnet</span></h2>
+        <p class="lead reveal" style="margin:0 auto;">Rechnet Schweißnähte im Stahlbau nach EN 1993-1-8 und im klassischen Maschinenbau – und zeigt dabei jeden einzelnen Schritt: vom Nahtbild über Schwerpunkt, Flächenmomente und Hauptachsen bis zur Vergleichsspannung am maßgebenden Punkt. Kein Nachweis ohne Rechenweg, keine Zahl ohne Quelle.</p>
+      </div>
+
+      <figure class="blueprint media-slot reveal" data-hinweis="Video folgt in Kürze" style="max-width:860px; margin:0 auto;">
+        <video id="video-schweissnaht-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchweissnaht – 40-Sekunden-Überblick"></video>
+      </figure>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nahtbild, Rechenweg mit Quellen, Rechenproben – und die Grenzen der Berechnung.</p>
+
+      <div class="features" style="margin-top:var(--sp-8);">
+        <div class="feature feature--glut reveal"><div class="ico">◫</div><div><h3>Nahtbild statt Nahtlänge</h3><p>Aus Profil und tatsächlich geschweißten Kanten entsteht die echte Nahtgeometrie: Segmente, Schwerpunkt, Flächenmomente, Hauptachsen, Widerstandsmomente – und daraus der maßgebende Punkt. Das Nahtbild wird gezeichnet, mit Schwerpunktkreuz und Achsen.</p></div></div>
+        <div class="feature feature--glut reveal"><div class="ico">∑</div><div><h3>Der Rechenweg ist das Produkt</h3><p>Über dreißig Schritte, jeder mit Formel, eingesetzten Zahlen, Ergebnis und Quelle – Norm, Fachbuch oder ausdrücklich als Praxisrichtwert gekennzeichnet.</p></div></div>
+        <div class="feature feature--glut reveal"><div class="ico">✓</div><div><h3>Es prüft sich selbst – und sagt es</h3><p>Rechenproben laufen bei jeder Berechnung mit: Sind die statischen Momente null? Ergibt I_p wirklich I_y + I_z? Ein fehlendes Häkchen heißt Rechenfehler im Programm – getrennt ausgewiesen von einem nicht erfüllten Nachweis.</p></div></div>
+        <div class="feature feature--glut reveal"><div class="ico">!</div><div><h3>Es sagt, was es nicht prüft</h3><p>Jede Ausgabe trägt eine Liste der Punkte, die dieses Programm bewusst nicht prüft – Grundwerkstoff, Beulen und Stabilität, Bauteilsteifigkeit, Ausführung und weitere. Im Nachweis selbst, nicht im Kleingedruckten.</p></div></div>
+        <div class="feature feature--glut reveal"><div class="ico">EN</div><div><h3>Vier Bemessungswelten</h3><p>Stahlbau nach EN 1993-1-8, nichtrostende Stähle nach EN 1993-1-4, Aluminium nach EN 1999-1-1 und klassischer Maschinenbau (Roloff/Matek, Decker) – getrennt gehalten, nie vermischt. Wahlweise Nachweis oder Auslegung des a-Maßes.</p></div></div>
+        <div class="feature feature--glut reveal"><div class="ico">⤓</div><div><h3>Mehr als die Naht</h3><p>Wärmeführung und Vorwärmung nach EN 1011-2, Kosten, Zeit und Drahtbedarf sowie Zeichnungssymbole nach EN ISO 2553. Ausgaben: Drucken/PDF, Word (.rtf) mit Nahtbild und ein eigenes Dateiformat (.dts), das Eingaben statt Ergebnisse speichert.</p></div></div>
+      </div>
+
+      <div class="grid-2" style="margin-top:var(--sp-8);">
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: gezeichnetes Nahtbild mit Schwerpunkt"><img id="img-schweissnaht-nahtbild" src="" alt="Gezeichnetes Nahtbild eines I-Profils mit Flansch-, Steg- und Stirnkantennähten, Schwerpunktkreuz und Achsen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenweg mit Quellenangabe je Schritt"><img id="img-schweissnaht-rechenweg" src="" alt="Rechenweg: Segmente, Nahtfläche, Schwerpunkt und Flächenmoment mit Formel, Zahlen, Häkchen und Quellenangabe" loading="lazy"></div>
+      </div>
+      <div class="grid-3" style="margin-top:var(--sp-3);">
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: geführter Assistent"><img id="img-schweissnaht-assistent" src="" alt="Geführter Assistent: Auswahl der Bemessungswelt mit Erklärung und Empfehlung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenproben mit Häkchen"><img id="img-schweissnaht-proben" src="" alt="Rechenproben: Kontrolle der Flächenmomente und Hauptachsen mit bestandenen Häkchen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Liste „Was NICHT geprüft wird“"><img id="img-schweissnaht-grenzen" src="" alt="Liste „Was NICHT geprüft wird“ mit den Grenzen dieser Berechnung" loading="lazy"></div>
+      </div>
+
+      <p class="reveal" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
+        Die Testversion rechnet <span style="color:var(--glut)">alles</span> – mit dem kompletten Rechenweg auf dem Bildschirm. Gesperrt sind ausschließlich die Ausgaben.
+      </p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:8px;">Sie ist ausdrücklich zum Weitergeben gedacht – an Kollegen, Azubis oder ins Büro nebenan.</p>
+
+      <div id="kauf-schweissnaht" class="buy reveal" style="max-width:620px; margin:var(--sp-6) auto 0;">
+        <span class="eyebrow eyebrow--glut">Vollversion</span>
+        <h2 style="margin:16px 0 10px;">DT-ProfiSchweissnaht Pro</h2>
+        <div class="price-tag">169 €<small> &nbsp;einmalig</small></div>
+        <ul>
+          <li>Sofortiger Download nach dem Kauf</li>
+          <li>Speichern &amp; Öffnen (.dts), Drucken/PDF und Word (.rtf) freigeschaltet</li>
+          <li>Läuft offline – Handy, Tablet, PC</li>
+          <li>Sichere Abwicklung über Digistore24</li>
+        </ul>
+        <div><a class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="#">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schweissnaht" href="#schweissnaht">Gratis-Version testen</a></p>
+        <p class="fine">Hinweis: Hilfsmittel für fachkundige Anwender. Der Nachweis gilt der Naht, nicht dem Bauteil – Ergebnisse gegen die Originalnormen und die eigene Abnahme prüfen.</p>
       </div>
     </div>
   </section>
 
   <!-- ============ VERGLEICH ============ -->
   <section id="vergleich" class="section section--tight">
-    <div class="wrap" style="max-width:860px;">
+    <div class="wrap">
       <div style="text-align:center; margin-bottom:var(--sp-4);">
         <span class="pos reveal">Entscheidungshilfe</span>
         <h2 class="reveal" style="margin-top:14px;">Welches Werkzeug passt zu dir?</h2>
@@ -639,18 +717,18 @@
       <div class="compare-scroll reveal">
         <table class="compare">
           <thead>
-            <tr><th></th><th>DT-ProfiDreieck</th><th>DT-ProfiSchraube</th><th>DT-ProfiPassung</th></tr>
+            <tr><th></th><th>DT-ProfiDreieck</th><th>DT-ProfiSchraube</th><th>DT-ProfiPassung</th><th>DT-ProfiSchweissnaht</th></tr>
           </thead>
           <tbody>
-            <tr><th>Für wen</th><td>Metallbau, CNC, Werkstatt, Ausbildung</td><td>Konstruktion, Berechnung, Maschinenbau</td><td>Konstruktion, Fertigung, QS, Ausbildung</td></tr>
-            <tr><th>Aufgabe</th><td>Dreiecke aus 3 Größen berechnen &amp; zeichnen</td><td>Schraubenverbindungen nach VDI 2230 auslegen</td><td>Passungen &amp; Toleranzen nach ISO 286 bestimmen</td></tr>
-            <tr><th>Stärke</th><td>DXF-Export direkt an CAD &amp; CNC</td><td>Fünf Nachweise mit dokumentiertem Rechenweg</td><td>Selbstprüfender Rechenweg, Pressverband, Assistent</td></tr>
-            <tr><th>Export</th><td>DXF, SVG, PNG, Drucken/PDF</td><td>Word (.rtf), Drucken/PDF, CSV, Bild</td><td>Word (.rtf), Druck, Speichern &amp; Laden</td></tr>
-            <tr><th>Preis</th><td><b>69 €</b> einmalig</td><td><b>159 €</b> einmalig</td><td><b>139 €</b> einmalig</td></tr>
+            <tr><th>Für wen</th><td>Metallbau, CNC, Werkstatt, Ausbildung</td><td>Konstruktion, Berechnung, Maschinenbau</td><td>Konstruktion, Fertigung, QS, Ausbildung</td><td>Stahl- und Maschinenbau, Schweißfachingenieure, Technische Büros</td></tr>
+            <tr><th>Aufgabe</th><td>Dreiecke aus 3 Größen berechnen &amp; zeichnen</td><td>Schraubenverbindungen nach VDI 2230 auslegen</td><td>Passungen &amp; Toleranzen nach ISO 286 bestimmen</td><td>Schweißnähte nachweisen oder a-Maß auslegen</td></tr>
+            <tr><th>Stärke</th><td>DXF-Export direkt an CAD &amp; CNC</td><td>Fünf Nachweise mit dokumentiertem Rechenweg</td><td>Selbstprüfender Rechenweg, Pressverband, Assistent</td><td>Echtes Nahtbild, Rechenweg mit Quellen, Rechenproben</td></tr>
+            <tr><th>Export</th><td>DXF, SVG, PNG, Drucken/PDF</td><td>Word (.rtf), Drucken/PDF, CSV, Bild</td><td>Word (.rtf), Druck, Speichern &amp; Laden</td><td>Word (.rtf), Drucken/PDF, Speichern (.dts)</td></tr>
+            <tr><th>Preis</th><td><b>69 €</b> einmalig</td><td><b>159 €</b> einmalig</td><td><b>139 €</b> einmalig</td><td><b>169 €</b> einmalig</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:14px;">Alle drei: offline, eine Datei, keine Installation, kein Konto.</p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:14px;">Alle vier: offline, eine Datei, keine Installation, kein Konto.</p>
     </div>
   </section>
 
@@ -672,19 +750,27 @@
         </details>
         <details class="reveal">
           <summary>Was unterscheidet Test- und Vollversion?</summary>
-          <p>Bei DT-ProfiDreieck und DT-ProfiSchraube zeigt die Gratis-Version die Bedienung mit eingeschränktem Funktionsumfang; die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei. Bei DT-ProfiPassung rechnet die Gratis-Version bereits mit vollem Funktionsumfang – nur Speichern, Druck und Export sind der Vollversion vorbehalten.</p>
+          <p>Bei DT-ProfiDreieck und DT-ProfiSchraube zeigt die Gratis-Version die Bedienung mit eingeschränktem Funktionsumfang; die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei. Bei DT-ProfiPassung und DT-ProfiSchweissnaht wird bereits vollständig gerechnet – dort sind ausschließlich die Ausgaben gesperrt: Speichern, Öffnen, Drucken und Word.</p>
         </details>
         <details class="reveal">
           <summary>Werden Daten übertragen oder gespeichert?</summary>
           <p>Nein. Die Programme rechnen lokal im Browser. Diese Website nutzt weder Cookies noch Tracking; Details stehen in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
         </details>
         <details class="reveal">
-          <summary>Ersetzt DT-ProfiSchraube die Normprüfung?</summary>
-          <p>Es ist ein Auslegungswerkzeug nach VDI 2230 Blatt 1 mit vollständig dokumentiertem Rechenweg. Für Produktivbauteile gilt wie immer: Ergebnisse gegen die Originalnorm und den Anwendungsfall prüfen.</p>
+          <summary>Ersetzen die Programme den Fachingenieur?</summary>
+          <p>Nein, und sie versuchen es nicht. Sie rechnen nachvollziehbar und benennen ihre Grenzen. Die fachliche Verantwortung für Lastannahmen, Werkstoffwahl, Ausführung und Abnahme bleibt beim Anwender; jedes Ergebnis ist gegen die Originalnormen und die eigene Abnahme zu prüfen.</p>
+        </details>
+        <details class="reveal">
+          <summary>Nach welchen Regelwerken wird gerechnet?</summary>
+          <p>DT-ProfiSchraube nach VDI 2230 Blatt 1, DT-ProfiPassung nach ISO 286, DIN 7190 und ISO 2768, DT-ProfiSchweissnaht nach EN 1993-1-8, EN 1993-1-4, EN 1999-1-1, EN 1011-2 und EN ISO 2553 sowie im Maschinenbau nach Roloff/Matek und Decker. Jeder Rechenschritt nennt seine Quelle.</p>
+        </details>
+        <details class="reveal">
+          <summary>Kann ich Tabellenwerte überschreiben?</summary>
+          <p>Ja. Bei DT-ProfiSchweissnaht lässt sich jeder vorbelegte Wert per Haken durch einen eigenen ersetzen. Das Programm unterscheidet dabei sichtbar zwischen Tabellenwert aus der Norm, Anhaltswert aus der Praxis und Preisannahme mit Jahresangabe.</p>
         </details>
         <details class="reveal">
           <summary>An wen wende ich mich bei Fragen?</summary>
-          <p>Einfach eine E-Mail an <a href="mailto:Dieter.Tepe@live.de">Dieter.Tepe@live.de</a> – Antwort kommt direkt vom Entwickler.</p>
+          <p>Einfach eine E-Mail an <a href="mailto:Dieter.Tepe@live.de">Dieter.Tepe@live.de</a> – Antwort kommt direkt vom Entwickler. Rückmeldungen aus der Praxis fließen in die Updates ein.</p>
         </details>
       </div>
     </div>
@@ -695,11 +781,12 @@
     <div class="wrap">
       <div class="cta-band reveal">
         <h2>Heute testen, morgen sicher fertigen</h2>
-        <p>Alle drei Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
+        <p>Alle vier Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
         <div class="cta-row">
           <a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#kauf-dreieck">Dreieck · 69 €</a>
           <a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#kauf-schraube">Schraube · 159 €</a>
           <a class="btn btn--green btn--lg" data-link="kauf-passung" href="#kauf-passung">Passung · 139 €</a>
+          <a class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="#kauf-schweissnaht">Schweißnaht · 169 €</a>
         </div>
       </div>
     </div>
@@ -730,12 +817,14 @@ document.addEventListener("DOMContentLoaded", function() {
   // ---- 1) Links: data-link statt fester IDs, weil sich mehrere Buttons
   //         (z. B. Kaufblock + Schluss-CTA) denselben Link teilen ---------
   var links = {
-    "kauf-dreieck":  c.kaufDreieck,
-    "kauf-schraube": c.kaufSchraube,
-    "kauf-passung":  c.kaufPassung,
-    "test-dreieck":  c.testDreieck,
-    "test-schraube": c.testSchraube,
-    "test-passung":  c.testPassung
+    "kauf-dreieck":      c.kaufDreieck,
+    "kauf-schraube":     c.kaufSchraube,
+    "kauf-passung":      c.kaufPassung,
+    "kauf-schweissnaht": c.kaufSchweissnaht,
+    "test-dreieck":      c.testDreieck,
+    "test-schraube":     c.testSchraube,
+    "test-passung":      c.testPassung,
+    "test-schweissnaht": c.testSchweissnaht
   };
   document.querySelectorAll("[data-link]").forEach(function(a){
     var url = links[a.getAttribute("data-link")];
@@ -758,7 +847,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
   }
 
-  var d = c.dreieck || {}, s = c.schraube || {}, p = c.passung || {};
+  var d = c.dreieck || {}, s = c.schraube || {}, p = c.passung || {}, w = c.schweissnaht || {};
 
   // DT-ProfiDreieck
   bild("img-dreieck-karte",        d.bildZeichnung);
@@ -785,6 +874,15 @@ document.addEventListener("DOMContentLoaded", function() {
   bild("img-passung-assistent",    p.bildAssistent);
   bild("img-passung-pressverband", p.bildPressverband);
   bild("img-passung-beratung",     p.bildBeratung);
+
+  // DT-ProfiSchweissnaht
+  bild("img-schweissnaht-karte",     w.bildStart);
+  video("video-schweissnaht-teaser", w.videoTeaser, w.bildStart);
+  bild("img-schweissnaht-nahtbild",  w.bildNahtbild);
+  bild("img-schweissnaht-rechenweg", w.bildRechenweg);
+  bild("img-schweissnaht-assistent", w.bildAssistent);
+  bild("img-schweissnaht-proben",    w.bildProben);
+  bild("img-schweissnaht-grenzen",   w.bildGrenzen);
 });
 
 // ---- Dezente Einblendung beim Scrollen (kein CDN, DSGVO-sauber) ---------

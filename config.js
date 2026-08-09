@@ -21,14 +21,16 @@
 window.DT_CONFIG = {
 
   /* --- Digistore24-Bestelllinks (Platzhalter ersetzen!) ------------------ */
-  kaufDreieck:  "#kauf-dreieck",
-  kaufSchraube: "#kauf-schraube",
-  kaufPassung:  "#kauf-passung",
+  kaufDreieck:      "#kauf-dreieck",
+  kaufSchraube:     "#kauf-schraube",
+  kaufPassung:      "#kauf-passung",
+  kaufSchweissnaht: "#kauf-schweissnaht",
 
   /* --- Gratis-Testversionen ---------------------------------------------- */
-  testDreieck:  "https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html",
-  testSchraube: "https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html",
-  testPassung:  "https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html",
+  testDreieck:      "https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html",
+  testSchraube:     "https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html",
+  testPassung:      "https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html",
+  testSchweissnaht: "https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html",
 
   /* ======================================================================
      MEDIEN – DT-PROFIDREIECK   (Ordner: Dreieck_Daten/)
@@ -45,11 +47,9 @@ window.DT_CONFIG = {
     videoWerkstatt: "https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/videos/V2.mp4",
 
     // Zweites Video in Pos. 01 ("Von der Eingabe bis zum Ergebnis")
-    // MP4 (H.264), 1280x720, optimiert für Web
     videoDemo: "https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/videos/V1.mp4",
 
     // Screenshot-Paar unter den Videos in Pos. 01 – links: Eingabemaske
-    // Hochkant/Handy-Format ok, ca. 1000-1500 px breit, JPG < 300 KB
     bildEingabe: "https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/bilder/app-eingabe.jpg",
 
     // Screenshot-Paar unter den Videos in Pos. 01 – rechts: Rechenweg/Ergebnis
@@ -61,23 +61,20 @@ window.DT_CONFIG = {
      ====================================================================== */
   schraube: {
 
-    // Startansicht mit grünen Nachweisen: erscheint in der Hero-Werkzeugkarte
-    // UND als Vorschaubild (Poster) des Teaser-Videos in Pos. 02.
-    // Querformat, ca. 1500 px breit, JPG < 300 KB
+    // Startansicht mit grünen Nachweisen: Hero-Werkzeugkarte UND
+    // Vorschaubild (Poster) des Teaser-Videos in Pos. 02.
     bildStart: "https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/bilder/schraube-start.jpg",
 
-    // 40-Sekunden-Teaser oben in Pos. 02
-    // MP4 (H.264), 1280x720, < 10 MB
+    // 40-Sekunden-Teaser oben in Pos. 02 – MP4 (H.264), 1280x720, < 10 MB
     videoTeaser: "https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/videos/schraube-teaser.mp4",
 
     // Großes Screenshot-Paar in Pos. 02 – links: dokumentierter Rechenweg
-    // ca. 1200-1500 px breit, JPG < 300 KB
     bildRechenweg: "https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/bilder/schraube-rechenweg.jpg",
 
     // Großes Screenshot-Paar in Pos. 02 – rechts: Verspannungsschaubild
     bildSchaubild: "https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/bilder/schraube-schaubild.jpg",
 
-    // Dreierreihe darunter – links: Flansch-Assistent (Hochformat ok)
+    // Dreierreihe darunter – links: Flansch-Assistent
     bildFlansch: "https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/bilder/schraube-flansch.jpg",
 
     // Dreierreihe – Mitte: Hilfetext / Anziehverfahren
@@ -92,31 +89,58 @@ window.DT_CONFIG = {
      ====================================================================== */
   passung: {
 
-    // Startansicht (Eingabe + Ergebnis, Sprachumschalter sichtbar):
-    // Hero-Werkzeugkarte oben UND Vorschaubild (Poster) des Teaser-Videos.
-    // Querformat, ca. 1300-1500 px breit, JPG < 300 KB
+    // Startansicht (Eingabe + Ergebnis): Hero-Werkzeugkarte UND
+    // Vorschaubild (Poster) des Teaser-Videos in Pos. 03.
     bildStart: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-start.jpg",
 
     // 40-Sekunden-Teaser oben in Pos. 03
-    // MP4 (H.264), 1280x720, < 10 MB
     videoTeaser: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/videos/passung-teaser.mp4",
 
     // Großes Screenshot-Paar – links: Toleranzfeld-Schaubild
-    // (Bohrung grün, Welle blau, inkl. Lage bei Betriebstemperatur)
     bildSchaubild: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-schaubild.jpg",
 
-    // Großes Screenshot-Paar – rechts: selbstprüfender Rechenweg mit Häkchen
+    // Großes Screenshot-Paar – rechts: selbstprüfender Rechenweg
     bildRechenweg: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-rechenweg.jpg",
 
-    // Dreierreihe – links: Passungs-Assistent mit Vorschlägen und Begründung
+    // Dreierreihe – links: Passungs-Assistent mit Vorschlägen
     bildAssistent: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-assistent.jpg",
 
     // Dreierreihe – Mitte: Pressverband nach DIN 7190
-    // (Fugendrücke, Sicherheiten, Moment, Fügetemperaturen)
     bildPressverband: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-pressverband.jpg",
 
     // Dreierreihe – rechts: Praxis-Beratung (Thermik, Kostenampel, Messmittel)
     bildBeratung: "https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-beratung.jpg"
+  },
+
+  /* ======================================================================
+     MEDIEN – DT-PROFISCHWEISSNAHT   (Ordner: Schweissnaht_Daten/)
+     ====================================================================== */
+  schweissnaht: {
+
+    // Startansicht (Eingabe + Ergebnis mit Ausnutzung, σ_v, maßgebender Punkt):
+    // Hero-Werkzeugkarte oben UND Vorschaubild (Poster) des Teaser-Videos.
+    // Querformat, ca. 1500 px breit, JPG < 300 KB
+    bildStart: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-start.jpg",
+
+    // 40-Sekunden-Teaser oben in Pos. 04
+    // MP4 (H.264), 1280x720, < 10 MB
+    videoTeaser: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4",
+
+    // Großes Screenshot-Paar – links: gezeichnetes Nahtbild mit Schwerpunkt
+    // (das Alleinstellungsmerkmal – Hochformat)
+    bildNahtbild: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-nahtbild.jpg",
+
+    // Großes Screenshot-Paar – rechts: Rechenweg mit Häkchen und Quellenangabe
+    bildRechenweg: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg",
+
+    // Dreierreihe – links: geführter Assistent (Bemessungswelt)
+    bildAssistent: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-assistent.jpg",
+
+    // Dreierreihe – Mitte: Rechenproben mit bestandenen Häkchen
+    bildProben: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-proben.jpg",
+
+    // Dreierreihe – rechts: Liste „Was NICHT geprüft wird“
+    bildGrenzen: "https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-grenzen.jpg"
   }
 
   /* ----------------------------------------------------------------------
