@@ -21,7 +21,7 @@
 window.DT_CONFIG = {
 
   /* --- Digistore24-Bestelllinks (Platzhalter ersetzen!) ------------------ */
-  kaufDreieck:      "#kauf-dreieck",
+  kaufDreieck:      "https://www.checkout-ds24.com/product/722585",
   kaufSchraube:     "#kauf-schraube",
   kaufPassung:      "#kauf-passung",
   kaufSchweissnaht: "#kauf-schweissnaht",
