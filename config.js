@@ -22,9 +22,9 @@ window.DT_CONFIG = {
 
   /* --- Digistore24-Bestelllinks (Platzhalter ersetzen!) ------------------ */
   kaufDreieck:      "https://www.checkout-ds24.com/product/722585",
-  kaufSchraube:     "#kauf-schraube",
-  kaufPassung:      "#kauf-passung",
-  kaufSchweissnaht: "#kauf-schweissnaht",
+  kaufSchraube:     "https://www.checkout-ds24.com/product/722968",
+  kaufPassung:      "https://www.checkout-ds24.com/product/722972",
+  kaufSchweissnaht: "https://www.checkout-ds24.com/product/722975",
 
   /* --- Gratis-Testversionen ---------------------------------------------- */
   testDreieck:      "https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html",
