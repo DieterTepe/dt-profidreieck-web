@@ -1369,12 +1369,18 @@ var I18N_TITLE = {
     }
   }
 
-  // --- 4) Startsprache: Adresse vor Browsersprache ----------------------
+  // --- 4) Startsprache: NUR die Adresse entscheidet ----------------------
+  // Die Browsersprache wird bewusst NICHT mehr abgefragt.
+  // Grund: Der Googlebot meldet Englisch. Vorher hat das Skript die Seite
+  // deshalb fuer Google auf Englisch umgeschaltet - Titel, Beschreibung und
+  // lang="de" inklusive. Google hat die Seite dann als englisches Angebot
+  // gespeichert, und deutsche Suchbegriffe konnten nicht mehr greifen.
+  // Ohne ?lang= bleibt die Seite jetzt deutsch, fuer Besucher wie fuer
+  // Suchmaschinen. Der Sprachumschalter arbeitet unveraendert weiter.
   function startsprache(){
     var p = new URLSearchParams(window.location.search).get("lang");
     if (p && LANGS.indexOf(p.toLowerCase()) !== -1) return p.toLowerCase();
-    var b = (navigator.language || "de").slice(0,2).toLowerCase();
-    return LANGS.indexOf(b) !== -1 ? b : "de";
+    return "de";
   }
 
   document.addEventListener("DOMContentLoaded", function(){
