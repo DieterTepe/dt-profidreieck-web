@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://dt-profidreieck.de/</loc>
+    
+    <!-- Video 1 -->
+    <video:video>
+      <video:thumbnail_loc>https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/bilder/app-zeichnung.jpg</video:thumbnail_loc>
+      <video:title>DT-ProfiDreieck Werkstatt Anwendung</video:title>
+      <video:description>Winkelberechnung am Werkstück und DXF Export.</video:description>
+      <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/videos/V2.mp4</video:content_loc>
+    </video:video>
+
+    <!-- Video 2 -->
+    <video:video>
+      <video:thumbnail_loc>https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/bilder/app-ergebnis.jpg</video:thumbnail_loc>
+      <video:title>DT-ProfiDreieck Demo</video:title>
+      <video:description>Von der Eingabe bis zum Rechenweg.</video:description>
+      <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Dreieck_Daten/videos/V1.mp4</video:content_loc>
+    </video:video>
+
+    <!-- Video 3 -->
+    <video:video>
+      <video:thumbnail_loc>https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/bilder/schraube-start.jpg</video:thumbnail_loc>
+      <video:title>DT-ProfiSchraube Teaser</video:title>
+      <video:description>Schraubenberechnung Übersicht.</video:description>
+      <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Schraube_Daten/videos/schraube-teaser.mp4</video:content_loc>
+    </video:video>
+
+    <!-- Video 4 -->
+    <video:video>
+      <video:thumbnail_loc>https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/bilder/passung-start.jpg</video:thumbnail_loc>
+      <video:title>DT-ProfiPassung Teaser</video:title>
+      <video:description>Toleranzfeld und Pressverband.</video:description>
+      <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Passung_Daten/videos/passung-teaser.mp4</video:content_loc>
+    </video:video>
+
+    <!-- Video 5 -->
+    <video:video>
+      <video:thumbnail_loc>https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/bilder/schweissnaht-start.jpg</video:thumbnail_loc>
+      <video:title>DT-ProfiSchweissnaht Teaser</video:title>
+      <video:description>Schweißnahtberechnung Übersicht.</video:description>
+      <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4</video:content_loc>
+    </video:video>
+  </url>
+</urlset>
