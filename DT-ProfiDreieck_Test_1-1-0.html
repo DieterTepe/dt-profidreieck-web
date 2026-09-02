@@ -1,37 +1,4 @@
 <!DOCTYPE html>
-<!--
-=============================================================================
-  DREIECKSBERECHNUNG  –  eigenständige HTML-Anwendung (online & offline)
-=============================================================================
-  Edition : DT-ProfiDreieck Test  v1.0.0   (Engine 3.0.0)
-  Stand   : 2026-06-04
-  Autor   : Dieter Tepe  (DT-ProfiDreieck)
-
-  DIESE DATEI = GRATIS-TESTVERSION  (abgeleitet aus Engine 3.0.0)
-  --------------------------------------------------------------
-  Unterschiede zur Engine-Basis – ausschliesslich UI-Schicht, Mathematik
-  unveraendert (Solver/Geometry/Renderer/Narrator 1:1 wie 3.0.0):
-    - Spezial-Eingaben R, r, Flaeche A und Hoehen h_a/h_b/h_c sind gesperrt
-      (sichtbar, mit Schloss) und zeigen beim Antippen eine kurze
-      Vollversions-Info statt zu rechnen.
-    - Frei nutzbar: Seiten (a, b, c) und Winkel (alpha, beta, gamma).
-    - Alle Exporte (SVG, DXF, PNG, Drucken/PDF, jsPDF) bleiben frei.
-    - Eigenwerbungs-Banner ueber den Aktionsknoepfen + Vollversions-Hinweis
-      (Link: www.dt-profidreieck.de).
-    - Info-Overlay mit Test-Impressum (Pflichttexte Abschnitt 3a);
-      KEIN Lizenz-/Namensfeld, KEIN Wasserzeichen (das bekommt nur die Pro-Datei).
-    - Bewusst NICHT enthalten (Schnelltest-Fassung laut Masterplan, damit die
-      Datei lesbar feldgetestet werden kann): Zweisprachigkeit DE/EN (I18N) und
-      die Code-Verschleierung (Obfuscation). Beides folgt als eigener Schritt.
-
-  KURZBESCHREIBUNG
-  ----------------
-  Berechnet aus drei gegebenen Größen alle übrigen Werte eines Dreiecks und
-  zeichnet es maßstäblich. Wählbare Größen: Seiten a/b/c, Winkel α/β/γ,
-  Umkreis R, Inkreis r, Fläche A sowie Höhen h_a/h_b/h_c.
-    - Iterative Berechnung; PDF-Export ausschließlich via jsPDF (nur online).
-=============================================================================
--->
 
 <html lang="de">
 <head>
@@ -39,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="description" content="DT-ProfiDreieck ist eine günstige Online-Dreiecksberechnung. Berechnung direkt im Browser mit Rechenwegen, Formeln und berechneten Werten. Günstiger triangle calculator online für professionelle und verständliche Dreiecksberechnungen.">
 <title>DT-ProfiDreieck – Beste günstige Dreiecksberechnung online | Best affordable triangle calculator online</title>
+
 <meta name="google-site-verification" content="9BSa2NL-O8eH_8fuljUCteFRH-Bl496MHtkaKXJxl2M" />
+
 <!-- jsPDF nur ONLINE als Bonus. Offline funktioniert "Drucken / PDF" und "Bild speichern" ohne Bibliothek. -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="window.__noJsPDF=true"></script>
 
