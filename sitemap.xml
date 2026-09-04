@@ -44,4 +44,33 @@
       <video:content_loc>https://dietertepe.github.io/dt-profidreieck-web/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4</video:content_loc>
     </video:video>
   </url>
+
+   <url>
+      <loc>https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html</loc>
+      <lastmod>2026-09-03</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+   <url>
+      <loc>https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html</loc>
+      <lastmod>2026-09-03</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+   <url>
+      <loc>https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html</loc>
+      <lastmod>2026-09-03</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+   <url>
+      <loc>https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html</loc>
+      <lastmod>2026-09-03</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
 </urlset>
