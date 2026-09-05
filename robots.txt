@@ -1,0 +1,15 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://dt-profidreieck.de/sitemap.xml
+
+Sitemap: https://dietertepe.github.io/test-dreieck/sitemap.xml
+
+Sitemap: https://dietertepe.github.io/dt-profischraube-web/sitemap.xml
+
+Sitemap: https://dietertepe.github.io/dt-profipassung-web/sitemap.xml
+
+Sitemap: https://dietertepe.github.io/dt-profischweissnaht-web/sitemap.xml
