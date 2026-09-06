@@ -27,7 +27,7 @@ window.DT_CONFIG = {
   kaufSchweissnaht: "https://www.checkout-ds24.com/product/722975",
 
   /* --- Gratis-Testversionen ---------------------------------------------- */
-  testDreieck:      "https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html",
+  testDreieck:      "https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html",
   testSchraube:     "https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html",
   testPassung:      "https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html",
   testSchweissnaht: "https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html",
