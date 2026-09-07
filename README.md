@@ -1,4 +1,4 @@
-# DT-ProfiDreieck – Dreiecksberechnung mit DXF-Export
+# DT-ProfiTool – Berechnung
 
 DT-ProfiDreieck berechnet Dreiecke aus drei beliebigen bekannten Größen und
 zeichnet sie maßstäblich. Anschließend lässt sich die Zeichnung als DXF
@@ -8,10 +8,8 @@ Gedacht für Werkstatt, Konstruktion, Vorrichtungsbau und für den Unterricht.
 
 ## Testversion
 
-**[DT-ProfiDreieck Testversion starten](https://dietertepe.github.io/dt-profidreieck-web/DT-ProfiDreieck_Test_1-1-0.html)**
-
 Läuft direkt im Browser, ohne Anmeldung und ohne Installation.
-Der Funktionsumfang der Testversion ist eingeschränkt.
+Der Funktionsumfang der Testversion ist nicht eingeschränkt.
 
 ## Vollversion
 
