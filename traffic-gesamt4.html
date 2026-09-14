@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DT-ProfiTools Langzeit-Monitor</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 15px; background: #f4f4f9; margin: 0; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        label { font-weight: bold; display: block; margin-top: 10px; font-size: 14px; }
+        select, input { width: 100%; padding: 12px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; background: #fff; }
+        .btn-group { display: flex; gap: 10px; margin-bottom: 15px; }
+        button { flex: 1; padding: 14px; background: #2ea44f; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px; }
+        button:active { opacity: 0.9; }
+        .view-options { display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; }
+        .view-btn { padding: 6px 12px; font-size: 12px; background: #e1e4e8; color: #24292e; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; width: auto; flex: none; }
+        .view-btn.active { background: #24292e; color: white; }
+        #status { margin: 15px 0; font-size: 14px; color: #555; line-height: 1.4; min-height: 40px; }
+        .chart-container { position: relative; margin-top: 15px; height: 320px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>DT-ProfiTools Langzeit-Monitor</h2>
+    
+    <label for="tokenInput">1. GitHub Token (wird nur lokal auf diesem Gerät gespeichert):</label>
+    <input type="password" id="tokenInput" placeholder="Hier deinen ghp_... Schlüssel einfügen" onchange="saveToken()">
+
+    <label for="repoSelect">2. Projekt auswählen:</label>
+    <select id="repoSelect" onchange="updateUI()">
+        <option value="dietertepe/dt-profidreieck-web">1. DT-ProfiDreieck (Hauptseite)</option>
+        <option value="dietertepe/test-dreieck">2. DT-ProfiDreieck (Testversion)</option>
+        <option value="dietertepe/dt-profischraube-web">3. DT-ProfiSchraube</option>
+        <option value="dietertepe/dt-profipassung-web">4. DT-ProfiPassung</option>
+        <option value="dietertepe/dt-profischweissnaht-web">5. DT-ProfiSchweissnaht</option>
+    </select>
+    
+    <div class="btn-group">
+        <button onclick="fetchGitHubTraffic()">Daten aktualisieren</button>
+    </div>
+
+    <div class="view-options">
+        <button class="view-btn active" id="btn-hourly" onclick="changeView('hourly')">24 Stunden</button>
+        <button class="view-btn" id="btn-daily" onclick="changeView('daily')">30 Tage</button>
+        <button class="view-btn" id="btn-monthly" onclick="changeView('monthly')">Monatsverlauf</button>
+    </div>
+    
+    <div id="status">Lade lokalen Verlauf...</div>
+    
+    <div class="chart-container">
+        <canvas id="trafficChart"></canvas>
+    </div>
+</div>
+
+<script>
+let chartInstance = null;
+let currentView = 'hourly';
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Holt den Token und das letzte Repo automatisch aus dem Handyspeicher
+    document.getElementById('tokenInput').value = localStorage.getItem('gh_secure_token') || "";
+    const lastRepo = localStorage.getItem('gh_last_selected_repo') || "dietertepe/dt-profidreieck-web";
+    document.getElementById('repoSelect').value = lastRepo;
+    updateUI();
+});
+
+function saveToken() {
+    const token = document.getElementById('tokenInput').value.trim();
+    localStorage.setItem('gh_secure_token', token);
+    document.getElementById('status').innerHTML = "✅ Token lokal im Browser gespeichert!";
+}
+
+function changeView(viewType) {
+    currentView = viewType;
+    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`btn-${viewType}`).classList.add('active');
+    updateUI();
+}
+
+async function fetchGitHubTraffic() {
+    const statusDiv = document.getElementById('status');
+    const selectedRepo = document.getElementById('repoSelect').value;
+    const token = localStorage.getItem('gh_secure_token') || document.getElementById('tokenInput').value.trim();
+    
+    localStorage.setItem('gh_last_selected_repo', selectedRepo);
+    
+    if (!token) {
+        statusDiv.innerHTML = "<span style='color: red;'>❌ Bitte füge zuerst deinen ghp_... Token oben in das Feld ein!</span>";
+        return;
+    }
+
+    statusDiv.innerHTML = "🔄 Rufe aktuelle Daten von GitHub ab...";
+
+    try {
+        const response = await fetch(`https://github.com{selectedRepo}/traffic/paths`, {
+            headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github+json' }
+        });
+
+        if (!response.ok) throw new Error("Fehler beim Abruf. Token abgelaufen oder falsch?");
+
+        const data = await response.json();
+        const folderData = data.find(item => item.path === "" || item.path === "/");
+
+        if (!folderData) {
+            statusDiv.innerHTML = `⚠️ Keine Traffic-Daten in den GitHub Top-10 für dieses Projekt gefunden.`;
+            return;
+        }
+
+        const now = new Date();
+        const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
+        const hourStr = now.getHours() + ':00';
+        const monthStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+
+        const storageKey = `gh_langzeit_traffic_${selectedRepo.replace('/', '_')}`;
+        let database = JSON.parse(localStorage.getItem(storageKey)) || { hourly: [], daily: [], monthly: [] };
+
+        // 1. Stündlich
+        const hourTimestamp = now.toLocaleDateString('de-DE') + ' ' + hourStr;
+        database.hourly = database.hourly.filter(e => e.time !== hourTimestamp);
+        database.database = database.hourly.push({ time: hourTimestamp, views: folderData.count, uniques: folderData.uniques });
+        if (database.hourly.length > 48) database.hourly.shift();
+
+        // 2. Täglich
+        database.daily = database.daily.filter(e => e.date !== dateStr);
+        database.daily.push({ date: dateStr, views: folderData.count, uniques: folderData.uniques });
+        if (database.daily.length > 30) database.daily.shift();
+
+        // 3. Monatlich
+        database.monthly = database.monthly.filter(e => e.month !== monthStr);
+        database.monthly.push({ month: monthStr, views: folderData.count, uniques: folderData.uniques });
+
+        localStorage.setItem(storageKey, JSON.stringify(database));
+        statusDiv.innerHTML = `✅ <strong>Daten aktualisiert!</strong><br>Aktuelle 14-Tage-Summe: Views: ${folderData.count} | Besucher: ${folderData.uniques}`;
+        
+        updateUI();
+
+    } catch (error) {
+        statusDiv.innerHTML = `<span style='color: red;'>❌ ${error.message}</span>`;
+    }
+}
+
+function updateUI() {
+    const selectedRepo = document.getElementById('repoSelect').value;
+    const storageKeyNew = `gh_langzeit_traffic_${selectedRepo.replace('/', '_')}`;
+    let database = JSON.parse(localStorage.getItem(storageKeyNew)) || { hourly: [], daily: [], monthly: [] };
+
+    const statusDiv = document.getElementById('status');
+    let chartLabels = [];
+    let viewsData = [];
+    let uniquesData = [];
+
+    if (currentView === 'hourly' && database.hourly && database.hourly.length > 0) {
+        chartLabels = database.hourly.map(e => e.time);
+        viewsData = database.hourly.map(e => e.views);
+        uniquesData = database.hourly.map(e => e.uniques);
+    } else if (currentView === 'daily' && database.daily && database.daily.length > 0) {
+        chartLabels = database.daily.map(e => {
+            const d = e.date.split('-');
+            return `${d[2]}.${d[1]}.`;
+        });
+        viewsData = database.daily.map(e => e.views);
+        uniquesData = database.daily.map(e => e.uniques);
+    } else if (currentView === 'monthly' && database.monthly && database.monthly.length > 0) {
+        chartLabels = database.monthly.map(e => {
+            const m = e.month.split('-');
+            const monate = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
+            return `${monate[parseInt(m[1])-1]} ${m[0]}`;
+        });
+        viewsData = database.monthly.map(e => e.views);
+        uniquesData = database.monthly.map(e => e.uniques);
+    }
+
+    if (chartLabels.length === 0) {
+        statusDiv.innerHTML = "ℹ️ Noch keine Verlaufsdaten für diesen Zeitraum vorhanden. Bitte aktualisieren.";
+        if (chartInstance) chartInstance.destroy();
+        return;
+    }
+
+    const ctx = document.getElementById('trafficChart').getContext('2d');
+    if (chartInstance) chartInstance.destroy();
+
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartLabels,
+            datasets: [
+                { label: 'Aufrufe (Trend)', data: viewsData, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.05)', tension: 0.2, fill: true },
+                { label: 'Echte Besucher', data: uniquesData, borderColor: '#2ecc71', backgroundColor: 'rgba(46, 204, 113, 0.05)', tension: 0.2, fill: true }
+            ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+    });
+}
+</script>
+</body>
+</html>
