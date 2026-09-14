@@ -14,8 +14,14 @@
         button { flex: 1; padding: 14px; background: #2ea44f; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px; }
         button.danger { background: #d73a49; }
         button:active { opacity: 0.9; }
+        
+        /* Fortschrittsbalken Styling */
+        .progress-container { width: 100%; background-color: #e1e4e8; border-radius: 4px; margin: 10px 0; display: none; height: 12px; overflow: hidden; }
+        .progress-bar { width: 0%; height: 100%; background-color: #0366d6; transition: width 0.4s ease; background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 40px 40px; animation: progress-bar-stripes 1s linear infinite; }
+        @keyframes progress-bar-stripes { from { background-position: 40px 0; } to { background-position: 0 0; } }
+
         .view-options { display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; }
-        .view-btn { padding: 6px 12px; font-size: 12px; background: #e1e4e8; color: #24292e; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; width: auto; flex: none; }
+        .view-btn { padding: 8px 14px; font-size: 13px; background: #e1e4e8; color: #24292e; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; width: auto; flex: none; }
         .view-btn.active { background: #24292e; color: white; }
         #status { margin: 15px 0; font-size: 14px; color: #555; line-height: 1.4; min-height: 40px; }
         .chart-container { position: relative; margin-top: 15px; height: 320px; }
@@ -43,29 +49,37 @@
         <button class="danger" onclick="resetLocalStorage()">Speicher zurücksetzen</button>
     </div>
 
+    <!-- Fortschrittsbalken Element -->
+    <div class="progress-container" id="progressContainer">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
     <div class="view-options">
         <button class="view-btn active" id="btn-hourly" onclick="changeView('hourly')">24 Stunden</button>
         <button class="view-btn" id="btn-daily" onclick="changeView('daily')">30 Tage</button>
         <button class="view-btn" id="btn-monthly" onclick="changeView('monthly')">Monatsverlauf</button>
     </div>
     
-    <div id="status">Lade lokalen Verlauf...</div>
+    <div id="status">Bereit...</div>
     
     <div class="chart-container">
         <canvas id="trafficChart"></canvas>
     </div>
 </div>
-
 <script>
 let chartInstance = null;
 let currentView = 'hourly';
 
 document.addEventListener("DOMContentLoaded", () => {
-    const savedToken = localStorage.getItem('gh_secure_token') || "";
-    document.getElementById('tokenInput').value = savedToken;
-    const lastRepo = localStorage.getItem('gh_last_selected_repo') || "dietertepe/dt-profidreieck-web";
-    document.getElementById('repoSelect').value = lastRepo;
-    updateUI();
+    try {
+        const savedToken = localStorage.getItem('gh_secure_token') || "";
+        document.getElementById('tokenInput').value = savedToken;
+        const lastRepo = localStorage.getItem('gh_last_selected_repo') || "dietertepe/dt-profidreieck-web";
+        document.getElementById('repoSelect').value = lastRepo;
+        updateUI();
+    } catch(e) {
+        document.getElementById('status').innerHTML = "<span style='color:red;'>Fehler beim Laden des Speichers. Bitte klicke auf 'Speicher zurücksetzen'.</span>";
+    }
 });
 
 function saveToken() {
@@ -92,6 +106,8 @@ function changeView(viewType) {
 
 async function fetchGitHubTraffic() {
     const statusDiv = document.getElementById('status');
+    const pContainer = document.getElementById('progressContainer');
+    const pBar = document.getElementById('progressBar');
     const selectedRepo = document.getElementById('repoSelect').value;
     
     let token = document.getElementById('tokenInput').value.trim();
@@ -108,10 +124,14 @@ async function fetchGitHubTraffic() {
         return;
     }
 
-    statusDiv.innerHTML = "🔄 Rufe aktuelle Daten von GitHub ab...";
+    // Fortschrittsbalken aktivieren und animieren
+    statusDiv.innerHTML = "🔄 Verbinde mit GitHub-Servern...";
+    pContainer.style.display = "block";
+    pBar.style.width = "20%";
 
     try {
-        // Optimierte API-Anfrage mit standardkonformer Authentifizierung
+        setTimeout(() => { pBar.style.width = "60%"; }, 300);
+
         const response = await fetch(`https://github.com{selectedRepo}/traffic/paths`, {
             method: 'GET',
             headers: { 
@@ -119,6 +139,8 @@ async function fetchGitHubTraffic() {
                 'Accept': 'application/vnd.github+json'
             }
         });
+
+        pBar.style.width = "80%";
 
         if (!response.ok) {
             if(response.status === 401 || response.status === 403) {
@@ -131,6 +153,7 @@ async function fetchGitHubTraffic() {
         const folderData = data.find(item => item.path === "" || item.path === "/");
 
         if (!folderData) {
+            pContainer.style.display = "none";
             statusDiv.innerHTML = `⚠️ Keine Traffic-Daten in den GitHub Top-10 für dieses Projekt gefunden.`;
             return;
         }
@@ -163,11 +186,16 @@ async function fetchGitHubTraffic() {
         database.monthly.push({ month: monthStr, views: folderData.count, uniques: folderData.uniques });
 
         localStorage.setItem(storageKey, JSON.stringify(database));
+        
+        pBar.style.width = "100%";
+        setTimeout(() => { pContainer.style.display = "none"; }, 500);
+        
         statusDiv.innerHTML = `✅ <strong>Daten aktualisiert!</strong><br>Aktuelle 14-Tage-Summe: Aufrufe: ${folderData.count} | Besucher: ${folderData.uniques}`;
         
         updateUI();
 
     } catch (error) {
+        pContainer.style.display = "none";
         statusDiv.innerHTML = `<span style='color: red;'>❌ ${error.message}</span>`;
     }
 }
@@ -188,16 +216,20 @@ function updateUI() {
         uniquesData = database.hourly.map(e => e.uniques);
     } else if (currentView === 'daily' && database.daily && database.daily.length > 0) {
         chartLabels = database.daily.map(e => {
+            if(!e.date) return "";
             const d = e.date.split('-');
-            return `${d[2]}.${d[1]}.`;
+            return d.length > 2 ? `${d[2]}.${d[1]}.` : e.date; // Korrigiertes Datums-Parsing (DD.MM.)
         });
         viewsData = database.daily.map(e => e.views);
         uniquesData = database.daily.map(e => e.uniques);
     } else if (currentView === 'monthly' && database.monthly && database.monthly.length > 0) {
         chartLabels = database.monthly.map(e => {
+            if(!e.month) return "";
             const m = e.month.split('-');
+            if(m.length < 2) return e.month;
             const monate = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
-            return `${monate[parseInt(m[1])-1]} ${m[0]}`;
+            const idx = parseInt(m[1], 10) - 1;
+            return idx >= 0 && idx < 12 ? `${monate[idx]} ${m[0]}` : e.month;
         });
         viewsData = database.monthly.map(e => e.views);
         uniquesData = database.monthly.map(e => e.uniques);
@@ -210,3 +242,21 @@ function updateUI() {
     }
 
     const ctx = document.getElementById('trafficChart').getContext('2d');
+    if (chartInstance) chartInstance.destroy();
+
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartLabels,
+            datasets: [
+                { label: 'Aufrufe', data: viewsData, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.05)', tension: 0.2, fill: true },
+                { label: 'Echte Besucher', data: uniquesData, borderColor: '#2ecc71', backgroundColor: 'rgba(46, 204, 113, 0.05)', tension: 0.2, fill: true }
+            ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+    });
+}
+</script>
+</body>
+</html>
+
