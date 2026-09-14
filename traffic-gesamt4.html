@@ -15,7 +15,6 @@
         button.danger { background: #d73a49; }
         button:active { opacity: 0.9; }
         
-        /* Fortschrittsbalken Styling */
         .progress-container { width: 100%; background-color: #e1e4e8; border-radius: 4px; margin: 10px 0; display: none; height: 12px; overflow: hidden; }
         .progress-bar { width: 0%; height: 100%; background-color: #0366d6; transition: width 0.4s ease; background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 40px 40px; animation: progress-bar-stripes 1s linear infinite; }
         @keyframes progress-bar-stripes { from { background-position: 40px 0; } to { background-position: 0 0; } }
@@ -56,7 +55,6 @@
         <button class="danger" onclick="resetLocalStorage()">Speicher zurücksetzen</button>
     </div>
 
-    <!-- Fortschrittsbalken Element -->
     <div class="progress-container" id="progressContainer">
         <div class="progress-bar" id="progressBar"></div>
     </div>
@@ -145,11 +143,12 @@ async function fetchGitHubTraffic() {
     try {
         setTimeout(() => { pBar.style.width = "60%"; }, 300);
 
-        // KORRIGIERTE API-URL FÜR GITHUB REST API
-        const response = await fetch(`https://api.github.com/repos/${selectedRepo}/traffic/paths`, {
+        const url = `https://api.github.com/repos/${selectedRepo}/traffic/views`;
+
+        const response = await fetch(url, {
             method: 'GET',
             headers: { 
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `token ${token}`,
                 'Accept': 'application/vnd.github+json'
             }
         });
@@ -158,16 +157,18 @@ async function fetchGitHubTraffic() {
 
         if (!response.ok) {
             if(response.status === 401 || response.status === 403) {
-                throw new Error("Zugriff verweigert. Token falsch oder Berechtigung 'repo' fehlt.");
+                throw new Error("Zugriff verweigert (Status 401/403). Token ungültig oder fehlende 'repo'-Berechtigung.");
             }
-            throw new Error(`GitHub meldet Status ${response.status}`);
+            if(response.status === 404) {
+                throw new Error("Repository nicht gefunden (Status 404). Prüfe Namen oder Token-Rechte.");
+            }
+            throw new Error(`GitHub HTTP-Fehler: Status ${response.status}`);
         }
 
         const data = await response.json();
         
-        // Summiere Aufrufe und eindeutige Besucher aus den von GitHub gemeldeten Pfaden
-        const totalViews = data.reduce((sum, item) => sum + item.count, 0);
-        const totalUniques = data.reduce((sum, item) => sum + item.uniques, 0);
+        const totalViews = data.count || 0;
+        const totalUniques = data.uniques || 0;
 
         const now = new Date();
         const dateStr = now.toISOString().split('T')[0];
@@ -181,18 +182,15 @@ async function fetchGitHubTraffic() {
         if (!database.daily) database.daily = [];
         if (!database.monthly) database.monthly = [];
 
-        // 1. Stündlich
         const hourTimestamp = now.toLocaleDateString('de-DE') + ' ' + hourStr;
         database.hourly = database.hourly.filter(e => e.time !== hourTimestamp);
         database.hourly.push({ time: hourTimestamp, views: totalViews, uniques: totalUniques });
         if (database.hourly.length > 48) database.hourly.shift();
 
-        // 2. Täglich
         database.daily = database.daily.filter(e => e.date !== dateStr);
         database.daily.push({ date: dateStr, views: totalViews, uniques: totalUniques });
         if (database.daily.length > 30) database.daily.shift();
 
-        // 3. Monatlich
         database.monthly = database.monthly.filter(e => e.month !== monthStr);
         database.monthly.push({ month: monthStr, views: totalViews, uniques: totalUniques });
 
@@ -201,7 +199,7 @@ async function fetchGitHubTraffic() {
         pBar.style.width = "100%";
         setTimeout(() => { pContainer.style.display = "none"; }, 500);
         
-        statusDiv.innerHTML = `✅ <strong>Daten aktualisiert!</strong><br>Aktuelle 14-Tage-Summe: Aufrufe: ${totalViews} | Besucher: ${totalUniques}`;
+        statusDiv.innerHTML = `✅ <strong>Daten aktualisiert!</strong><br>Aktuelle 14-Tage-Gesamtsumme: Aufrufe: ${totalViews} | Besucher: ${totalUniques}`;
         
         updateUI();
 
