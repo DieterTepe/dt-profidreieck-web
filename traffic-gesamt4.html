@@ -9,10 +9,11 @@
         body { font-family: Arial, sans-serif; padding: 15px; background: #f4f4f9; margin: 0; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         label { font-weight: bold; display: block; margin-top: 10px; font-size: 14px; }
-        select, input { width: 100%; padding: 12px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; background: #fff; }
+        select, input, textarea { width: 100%; padding: 12px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; background: #fff; }
         .btn-group { display: flex; gap: 10px; margin-bottom: 15px; }
         button { flex: 1; padding: 14px; background: #2ea44f; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px; }
         button.danger { background: #d73a49; }
+        button.copy-btn { background: #0366d6; margin-top: 5px; padding: 10px; font-size: 14px; }
         button:active { opacity: 0.9; }
         
         .progress-container { width: 100%; background-color: #e1e4e8; border-radius: 4px; margin: 10px 0; display: none; height: 12px; overflow: hidden; }
@@ -23,6 +24,11 @@
         .view-btn { padding: 8px 14px; font-size: 13px; background: #e1e4e8; color: #24292e; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; width: auto; flex: none; }
         .view-btn.active { background: #24292e; color: white; }
         #status { margin: 15px 0; font-size: 14px; color: #555; line-height: 1.4; min-height: 40px; }
+        
+        /* Debug-Kiste für Handy */
+        #errorBox { display: none; margin-top: 15px; padding: 10px; background: #ffeef0; border: 1px solid #fdaeb7; border-radius: 6px; }
+        #errorText { width: 100%; height: 90px; font-family: monospace; font-size: 12px; color: #86181d; margin: 5px 0; resize: none; }
+
         .chart-container { position: relative; margin-top: 15px; height: 320px; }
         
         .file-list { margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; font-size: 13px; color: #333; }
@@ -66,6 +72,13 @@
     </div>
     
     <div id="status">Bereit...</div>
+
+    <!-- Neue Fehler-Diagnose-Box für mobile Geräte -->
+    <div id="errorBox">
+        <label style="color: #86181d; margin: 0;">⚠️ Exakte Fehlermeldung (zum Kopieren):</label>
+        <textarea id="errorText" readonly></textarea>
+        <button class="copy-btn" onclick="copyErrorDetails()">Fehlermeldung kopieren</button>
+    </div>
     
     <div class="chart-container">
         <canvas id="trafficChart"></canvas>
@@ -95,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('repoSelect').value = lastRepo;
         updateUI();
     } catch(e) {
-        document.getElementById('status').innerHTML = "<span style='color:red;'>Fehler beim Laden des Speichers. Bitte klicke auf 'Speicher zurücksetzen'.</span>";
+        showError("Fehler beim Laden des Speichers: " + e.message);
     }
 });
 
@@ -103,6 +116,7 @@ function saveToken() {
     const token = document.getElementById('tokenInput').value.trim();
     localStorage.setItem('gh_secure_token', token);
     document.getElementById('status').innerHTML = "<span style='color: green;'>✅ Token lokal gespeichert!</span>";
+    hideError();
 }
 
 function resetLocalStorage() {
@@ -110,6 +124,7 @@ function resetLocalStorage() {
         localStorage.clear();
         document.getElementById('tokenInput').value = "";
         document.getElementById('status').innerHTML = "<span style='color: orange;'>⚠️ Speicher wurde vollständig geleert. Bitte trage den Token neu ein.</span>";
+        hideError();
         if (chartInstance) chartInstance.destroy();
     }
 }
@@ -121,11 +136,32 @@ function changeView(viewType) {
     updateUI();
 }
 
+function showError(msgDetails) {
+    const errBox = document.getElementById('errorBox');
+    const errText = document.getElementById('errorText');
+    errBox.style.display = 'block';
+    errText.value = msgDetails;
+}
+
+function hideError() {
+    document.getElementById('errorBox').style.display = 'none';
+}
+
+function copyErrorDetails() {
+    const errText = document.getElementById('errorText');
+    errText.select();
+    errText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(errText.value);
+    alert("Fehlermeldung in Zwischenablage kopiert!");
+}
+
 async function fetchGitHubTraffic() {
     const statusDiv = document.getElementById('status');
     const pContainer = document.getElementById('progressContainer');
     const pBar = document.getElementById('progressBar');
     const selectedRepo = document.getElementById('repoSelect').value;
+    
+    hideError();
     
     let token = document.getElementById('tokenInput').value.trim() || localStorage.getItem('gh_secure_token');
     if (token) localStorage.setItem('gh_secure_token', token);
@@ -156,13 +192,10 @@ async function fetchGitHubTraffic() {
         pBar.style.width = "80%";
 
         if (!response.ok) {
-            if(response.status === 401 || response.status === 403) {
-                throw new Error("Zugriff verweigert (Status 401/403). Token ungültig oder fehlende 'repo'-Berechtigung.");
-            }
-            if(response.status === 404) {
-                throw new Error("Repository nicht gefunden (Status 404). Prüfe Namen oder Token-Rechte.");
-            }
-            throw new Error(`GitHub HTTP-Fehler: Status ${response.status}`);
+            let errorBody = "";
+            try { errorBody = await response.text(); } catch(e){}
+            const errorDetails = `HTTP ${response.status} ${response.statusText}\nURL: ${url}\nResponse: ${errorBody}`;
+            throw new Error(errorDetails);
         }
 
         const data = await response.json();
@@ -205,7 +238,8 @@ async function fetchGitHubTraffic() {
 
     } catch (error) {
         pContainer.style.display = "none";
-        statusDiv.innerHTML = `<span style='color: red;'>❌ ${error.message}</span>`;
+        statusDiv.innerHTML = `<span style='color: red;'>❌ Abruf fehlgeschlagen. Siehe Textfeld unten.</span>`;
+        showError(`FEHLER-ANALYSE:\n${error.message}\nUserAgent: ${navigator.userAgent}`);
     }
 }
 
