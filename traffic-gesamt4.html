@@ -12,6 +12,7 @@
         select, input { width: 100%; padding: 12px; margin: 8px 0 15px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; background: #fff; }
         .btn-group { display: flex; gap: 10px; margin-bottom: 15px; }
         button { flex: 1; padding: 14px; background: #2ea44f; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 16px; }
+        button.danger { background: #d73a49; }
         button:active { opacity: 0.9; }
         .view-options { display: flex; justify-content: center; gap: 5px; margin-bottom: 10px; }
         .view-btn { padding: 6px 12px; font-size: 12px; background: #e1e4e8; color: #24292e; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; width: auto; flex: none; }
@@ -39,6 +40,7 @@
     
     <div class="btn-group">
         <button onclick="fetchGitHubTraffic()">Daten aktualisieren</button>
+        <button class="danger" onclick="resetLocalStorage()">Speicher zurücksetzen</button>
     </div>
 
     <div class="view-options">
@@ -72,6 +74,15 @@ function saveToken() {
     document.getElementById('status').innerHTML = "<span style='color: green;'>✅ Token lokal gespeichert!</span>";
 }
 
+function resetLocalStorage() {
+    if (confirm("Möchtest du den gespeicherten Token und alle aufgezeichneten Verlaufsdaten wirklich löschen?")) {
+        localStorage.clear();
+        document.getElementById('tokenInput').value = "";
+        document.getElementById('status').innerHTML = "<span style='color: orange;'>⚠️ Speicher wurde vollständig geleert. Bitte trage den Token neu ein.</span>";
+        if (chartInstance) chartInstance.destroy();
+    }
+}
+
 function changeView(viewType) {
     currentView = viewType;
     document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
@@ -83,7 +94,6 @@ async function fetchGitHubTraffic() {
     const statusDiv = document.getElementById('status');
     const selectedRepo = document.getElementById('repoSelect').value;
     
-    // Liest den Token frisch aus dem Eingabefeld oder Speicher
     let token = document.getElementById('tokenInput').value.trim();
     if (!token) {
         token = localStorage.getItem('gh_secure_token');
@@ -101,56 +111,54 @@ async function fetchGitHubTraffic() {
     statusDiv.innerHTML = "🔄 Rufe aktuelle Daten von GitHub ab...";
 
     try {
+        // Optimierte API-Anfrage mit standardkonformer Authentifizierung
         const response = await fetch(`https://github.com{selectedRepo}/traffic/paths`, {
             method: 'GET',
             headers: { 
-                'Authorization': `token ${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Accept': 'application/vnd.github+json'
             }
         });
 
         if (!response.ok) {
             if(response.status === 401 || response.status === 403) {
-                throw new Error("Zugriff verweigert. Token abgelaufen, falsch oder Berechtigung 'repo' fehlt.");
+                throw new Error("Zugriff verweigert. Token falsch oder Berechtigung 'repo' fehlt.");
             }
-            throw new Error(`GitHub-Fehler (Status ${response.status})`);
+            throw new Error(`GitHub meldet Status ${response.status}`);
         }
 
         const data = await response.json();
-        
-        // Suche nach Hauptverzeichnis ("" oder "/")
         const folderData = data.find(item => item.path === "" || item.path === "/");
 
         if (!folderData) {
-            statusDiv.innerHTML = `⚠️ Dein Hauptordner hat aktuell 0 Aufrufe oder ist nicht in den Top-10 gelistet.`;
+            statusDiv.innerHTML = `⚠️ Keine Traffic-Daten in den GitHub Top-10 für dieses Projekt gefunden.`;
             return;
         }
 
         const now = new Date();
         const dateStr = now.toISOString().split('T')[0]; // YYYY-MM-DD
         const hourStr = now.getHours() + ':00';
-        const monthStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0'); // YYYY-MM
+        const monthStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
 
         const storageKey = `gh_langzeit_traffic_${selectedRepo.replace('/', '_')}`;
         let database = JSON.parse(localStorage.getItem(storageKey)) || { hourly: [], daily: [], monthly: [] };
 
-        // Falls alte Struktur vorliegt, absichern
         if (!database.hourly) database.hourly = [];
         if (!database.daily) database.daily = [];
         if (!database.monthly) database.monthly = [];
 
-        // 1. Stündlicher Datenpunkt
+        // 1. Stündlich
         const hourTimestamp = now.toLocaleDateString('de-DE') + ' ' + hourStr;
         database.hourly = database.hourly.filter(e => e.time !== hourTimestamp);
         database.hourly.push({ time: hourTimestamp, views: folderData.count, uniques: folderData.uniques });
         if (database.hourly.length > 48) database.hourly.shift();
 
-        // 2. Tägliche Höchstwerte
+        // 2. Täglich
         database.daily = database.daily.filter(e => e.date !== dateStr);
         database.daily.push({ date: dateStr, views: folderData.count, uniques: folderData.uniques });
         if (database.daily.length > 30) database.daily.shift();
 
-        // 3. Monatliche Werte
+        // 3. Monatlich
         database.monthly = database.monthly.filter(e => e.month !== monthStr);
         database.monthly.push({ month: monthStr, views: folderData.count, uniques: folderData.uniques });
 
@@ -202,11 +210,3 @@ function updateUI() {
     }
 
     const ctx = document.getElementById('trafficChart').getContext('2d');
-    if (chartInstance) chartInstance.destroy();
-
-    chartInstance = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: chartLabels,
-            datasets: [
-                { label: 'Aufrufe', data: viewsData, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.05)', tension: 0.2, fill: true },
