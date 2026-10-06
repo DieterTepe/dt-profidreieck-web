@@ -8,7 +8,7 @@ Gedacht für Werkstatt, Konstruktion, Vorrichtungsbau und für den Unterricht.
 
 ## Testversion
 
-**[DT-ProfiSchraube Testversion starten](https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html)**
+**[DT-ProfiDreieck Testversion starten](https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html)**
 
 Läuft direkt im Browser, ohne Anmeldung und ohne Installation.
 Die Testversion rechnet in vollem Umfang. Gesperrt sind ausschließlich die
