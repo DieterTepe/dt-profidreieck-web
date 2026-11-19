@@ -22,8 +22,8 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="DT-ProfiTools – vier Werkzeuge für Werkstatt &amp; Konstruktion">
 <meta property="og:description" content="Dreiecke mit DXF-Export für die CNC · Schrauben nach VDI 2230 · Passungen nach ISO 286 · Schweißnähte nach EN 1993-1-8. Offline, eine Datei, keine Installation.">
-<meta property="og:url" content="https://dietertepe.github.io/dt-profidreieck-web/">
-<meta property="og:image" content="https://dietertepe.github.io/dt-profidreieck-web/Landigpage_Daten/og-card.jpg">
+<meta property="og:url" content="https://dt-profidreieck.de/">
+<meta property="og:image" content="https://dt-profidreieck.de/Landigpage_Daten/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="DT-ProfiTools – Berechnungswerkzeuge für Werkstatt und Konstruktion">
@@ -49,9 +49,11 @@
 
   MEDIEN: saemtliche Bild- und Videoquellen kommen aus config.js
     (absolute URLs; Ordner Dreieck_Daten/, Schraube_Daten/, Passung_Daten/,
-    Schweissnaht_Daten/). Im HTML stehen nur leere src-Attribute mit
-    eindeutigen IDs – der Verteiler am Dateiende traegt die Pfade beim Laden
-    ein. Leere Eintraege zeigen automatisch "folgt in Kuerze".
+    Schweissnaht_Daten/). Die Pfade stehen ZUSAETZLICH fest im HTML (src,
+    poster, href), damit Suchmaschinen und Messenger sie ohne JavaScript
+    sehen. Der Verteiler am Dateiende ueberschreibt sie nur, wenn config.js
+    einen ANDEREN Wert hat. Leere Eintraege zeigen "folgt in Kuerze".
+    Neues Bild/Video dauerhaft? Pfad in config.js UND hier im HTML eintragen.
     Favicons + og-card.jpg liegen fest im <head> (Ordner Landigpage_Daten/).
 
   SPRACHEN: Deutsch steht fest im HTML. Englisch und Portugiesisch liegen
@@ -380,6 +382,199 @@
   }
 </style>
 <script>document.documentElement.classList.add('js');</script>
+<!-- Strukturierte Daten fuer Suchmaschinen (ohne JavaScript lesbar) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://dt-profidreieck.de/#dieter-tepe",
+      "name": "Dieter Tepe",
+      "url": "https://dt-profidreieck.de/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dt-profidreieck.de/#website",
+      "url": "https://dt-profidreieck.de/",
+      "name": "DT-ProfiTools",
+      "inLanguage": "de",
+      "publisher": {
+        "@id": "https://dt-profidreieck.de/#dieter-tepe"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://dt-profidreieck.de/#webpage",
+      "url": "https://dt-profidreieck.de/",
+      "name": "DT-ProfiTools – Dreieck, Schraube, Passung & Schweißnaht",
+      "isPartOf": {
+        "@id": "https://dt-profidreieck.de/#website"
+      },
+      "inLanguage": "de",
+      "primaryImageOfPage": "https://dt-profidreieck.de/Landigpage_Daten/og-card.jpg",
+      "hasPart": [
+        {
+          "@id": "https://dt-profidreieck.de/#dreieck"
+        },
+        {
+          "@id": "https://dt-profidreieck.de/#schraube"
+        },
+        {
+          "@id": "https://dt-profidreieck.de/#passung"
+        },
+        {
+          "@id": "https://dt-profidreieck.de/#schweissnaht"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://dt-profidreieck.de/#dreieck",
+      "name": "DT-ProfiDreieck",
+      "url": "https://dt-profidreieck.de/#dreieck",
+      "description": "Dreiecksberechnung aus drei beliebigen Größen mit maßstäblicher Zeichnung, vollständigem Rechenweg und DXF-Export für CAD und CNC.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Webbrowser (Windows, macOS, Linux, Android, iOS)",
+      "inLanguage": [
+        "de",
+        "en",
+        "pt"
+      ],
+      "image": "https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg",
+      "author": {
+        "@id": "https://dt-profidreieck.de/#dieter-tepe"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Vollversion",
+          "price": "69.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.checkout-ds24.com/product/722585"
+        },
+        {
+          "@type": "Offer",
+          "name": "Gratis-Testversion",
+          "price": "0.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://dt-profidreieck.de/#schraube",
+      "name": "DT-ProfiSchraube",
+      "url": "https://dt-profidreieck.de/#schraube",
+      "description": "Berechnung vorgespannter Schraubenverbindungen nach VDI 2230 Blatt 1 mit fünf Nachweisen, Verspannungsschaubild und dokumentiertem Rechenweg.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Webbrowser (Windows, macOS, Linux, Android, iOS)",
+      "inLanguage": [
+        "de",
+        "en",
+        "pt"
+      ],
+      "image": "https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-start.jpg",
+      "author": {
+        "@id": "https://dt-profidreieck.de/#dieter-tepe"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Vollversion",
+          "price": "159.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.checkout-ds24.com/product/722968"
+        },
+        {
+          "@type": "Offer",
+          "name": "Gratis-Testversion",
+          "price": "0.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://dt-profidreieck.de/#passung",
+      "name": "DT-ProfiPassung",
+      "url": "https://dt-profidreieck.de/#passung",
+      "description": "Toleranzen und Passungen nach ISO 286, Pressverband nach DIN 7190 und Allgemeintoleranzen nach ISO 2768 mit selbstprüfendem Rechenweg.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Webbrowser (Windows, macOS, Linux, Android, iOS)",
+      "inLanguage": [
+        "de",
+        "en",
+        "pt"
+      ],
+      "image": "https://dt-profidreieck.de/Passung_Daten/bilder/passung-start.jpg",
+      "author": {
+        "@id": "https://dt-profidreieck.de/#dieter-tepe"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Vollversion",
+          "price": "139.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.checkout-ds24.com/product/722972"
+        },
+        {
+          "@type": "Offer",
+          "name": "Gratis-Testversion",
+          "price": "0.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html"
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://dt-profidreieck.de/#schweissnaht",
+      "name": "DT-ProfiSchweissnaht",
+      "url": "https://dt-profidreieck.de/#schweissnaht",
+      "description": "Schweißnahtberechnung nach EN 1993-1-8 und Maschinenbau-Ansätzen mit maßstäblichem Nahtbild, Rechenweg und Wärmeführung.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Webbrowser (Windows, macOS, Linux, Android, iOS)",
+      "inLanguage": [
+        "de",
+        "en",
+        "pt"
+      ],
+      "image": "https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg",
+      "author": {
+        "@id": "https://dt-profidreieck.de/#dieter-tepe"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Vollversion",
+          "price": "169.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.checkout-ds24.com/product/722975"
+        },
+        {
+          "@type": "Offer",
+          "name": "Gratis-Testversion",
+          "price": "0.00",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "url": "https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -432,14 +627,14 @@
             <span class="price">69 €<small> einmalig</small></span>
           </div>
           <p class="desc">Drei Größen eingeben – das ganze Dreieck wird berechnet, maßstäblich gezeichnet und als DXF, SVG oder PDF exportiert.</p>
-          <div class="mini blueprint media-slot" style="padding:6px;" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-karte" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
+          <div class="mini blueprint media-slot" style="padding:6px;" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-karte" src="Dreieck_Daten/bilder/app-zeichnung.jpg" width="1120" height="1092" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
           <ul>
             <li>DXF direkt in CAD &amp; CNC importierbar</li>
             <li>Auch aus Umkreis, Inkreis, Fläche, Höhen</li>
             <li>Voller Rechenweg, Schritt für Schritt</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--primary" data-link="test-dreieck" href="#dreieck">Gratis testen</a>
+            <a class="btn btn--primary" data-link="test-dreieck" href="https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html">Gratis testen</a>
             <a class="btn btn--ghost" href="#dreieck">Details ↓</a>
           </div>
         </article>
@@ -451,14 +646,14 @@
             <span class="price">159 €<small> einmalig</small></span>
           </div>
           <p class="desc">Schraubenverbindungen nach VDI 2230 Blatt 1 auslegen – mit Sicherheits-Nachweisen, Assistenten und dokumentiertem Rechenweg.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-karte" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-karte" src="Schraube_Daten/bilder/schraube-start.jpg" width="1500" height="806" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
           <ul>
             <li>Nachweise: Fließen, Dauerhaltbarkeit, Pressung, Gleiten, Einschraubtiefe</li>
             <li>Assistenten für Flansch &amp; Dehnschraube</li>
             <li>Export als Word-Bericht, PDF und CSV</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--brass" data-link="test-schraube" href="#schraube">Gratis testen</a>
+            <a class="btn btn--brass" data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis testen</a>
             <a class="btn btn--ghost" href="#schraube">Details ↓</a>
           </div>
         </article>
@@ -470,14 +665,14 @@
             <span class="price">139 €<small> einmalig</small></span>
           </div>
           <p class="desc">Passungen und Toleranzen nach ISO 286 in Sekunden – mit selbstprüfendem Rechenweg, Pressverband nach DIN 7190 und geführtem Assistenten.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-passung-karte" alt="DT-ProfiPassung: Toleranz- und Passungsrechner nach ISO 286" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-passung-karte" src="Passung_Daten/bilder/passung-start.jpg" width="1344" height="842" alt="DT-ProfiPassung: Toleranz- und Passungsrechner nach ISO 286" loading="lazy"></div>
           <ul>
             <li>Schnelleingabe wie „Ø50 H7/g6“</li>
             <li>Rechenweg mit Häkchen für jeden Schritt</li>
             <li>Gratis-Version mit vollem Funktionsumfang</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--green" data-link="test-passung" href="#passung">Gratis testen</a>
+            <a class="btn btn--green" data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis testen</a>
             <a class="btn btn--ghost" href="#passung">Details ↓</a>
           </div>
         </article>
@@ -489,14 +684,14 @@
             <span class="price">169 €<small> einmalig</small></span>
           </div>
           <p class="desc">Schweißnähte nachweisen oder das a-Maß auslegen – mit echtem Nahtbild, über dreißig Rechenschritten und benannter Quelle je Schritt.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schweissnaht-karte" alt="DT-ProfiSchweissnaht: Ergebnis mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schweissnaht-karte" src="Schweissnaht_Daten/bilder/schweissnaht-start.jpg" width="1500" height="829" alt="DT-ProfiSchweissnaht: Ergebnis mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt" loading="lazy"></div>
           <ul>
             <li>Nahtbild aus Profil und geschweißten Kanten</li>
             <li>Rechenproben laufen bei jeder Berechnung mit</li>
             <li>Testversion rechnet alles – gesperrt sind nur die Ausgaben</li>
           </ul>
           <div class="cta-row">
-            <a class="btn btn--glut" data-link="test-schweissnaht" href="#schweissnaht">Gratis testen</a>
+            <a class="btn btn--glut" data-link="test-schweissnaht" href="https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html">Gratis testen</a>
             <a class="btn btn--ghost" href="#schweissnaht">Details ↓</a>
           </div>
         </article>
@@ -545,13 +740,13 @@
           <h2 class="reveal" data-i18n-html="h2-dreieck" style="margin:14px 0 12px;">DT-ProfiDreieck:<br>vom Maß zur <span style="color:var(--accent)">DXF an die CNC</span></h2>
           <p class="lead reveal">Drei Größen eingeben – alles andere wird berechnet, maßstäblich gezeichnet und exportiert. Auch aus Spezialgrößen wie Umkreis, Inkreis, Fläche oder Höhen, an denen Gratis-Tools scheitern.</p>
           <div class="cta-row reveal" style="display:flex; flex-wrap:wrap; gap:12px; margin-top:var(--sp-3);">
-            <a class="btn btn--primary btn--lg" data-link="test-dreieck" href="#dreieck">Gratis-Version testen →</a>
-            <a class="btn btn--ghost btn--lg" data-link="kauf-dreieck" href="#kauf-dreieck">Vollversion · 69 €</a>
+            <a class="btn btn--primary btn--lg" data-link="test-dreieck" href="https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen →</a>
+            <a rel="nofollow" class="btn btn--ghost btn--lg" data-link="kauf-dreieck" href="https://www.checkout-ds24.com/product/722585">Vollversion · 69 €</a>
           </div>
         </div>
         <div class="reveal">
           <div class="blueprint media-slot" data-hinweis="Screenshot folgt in Kürze">
-            <img id="img-dreieck-zeichnung" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
+            <img id="img-dreieck-zeichnung" src="Dreieck_Daten/bilder/app-zeichnung.jpg" width="1120" height="1092" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
           </div>
         </div>
       </div>
@@ -566,17 +761,19 @@
       <div style="text-align:center; margin-top:var(--sp-8);">
         <h3 class="reveal" style="margin-bottom:6px;">Kurz gezeigt: ein Winkel am Werkstück, Sekunden später als DXF in CAD und CNC</h3>
         <figure class="blueprint media-slot reveal" style="max-width:860px; margin:var(--sp-3) auto 0;" data-hinweis="Video folgt in Kürze">
-          <video id="video-dreieck-werkstatt" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF"></video>
+          <video id="video-dreieck-werkstatt" src="Dreieck_Daten/videos/V2.mp4" poster="Dreieck_Daten/bilder/poster-v2-werkstatt.jpg" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF"></video>
+          <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/dreieck-dxf-werkstatt.html">Video auf eigener Seite ansehen</a></figcaption>
         </figure>
         <h3 class="reveal" style="margin:var(--sp-6) 0 6px;">Von der Eingabe bis zum Ergebnis – leicht zu bedienen</h3>
         <figure class="blueprint media-slot reveal" style="max-width:860px; margin:var(--sp-3) auto 0;" data-hinweis="Video folgt in Kürze">
-          <video id="video-dreieck-demo" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Demo: Eingabe bis Ergebnis"></video>
+          <video id="video-dreieck-demo" src="Dreieck_Daten/videos/V1.mp4" poster="Dreieck_Daten/bilder/poster-v1-demo.jpg" class="demo-video" controls preload="metadata" playsinline aria-label="DT-ProfiDreieck – Demo: Eingabe bis Ergebnis"></video>
+          <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/dreieck-berechnen-demo.html">Video auf eigener Seite ansehen</a></figcaption>
         </figure>
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-eingabe" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-ergebnis" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-eingabe" src="Dreieck_Daten/bilder/app-eingabe.jpg" width="1080" height="2071" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-ergebnis" src="Dreieck_Daten/bilder/app-ergebnis.jpg" width="1080" height="2142" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
       </div>
 
       <div id="kauf-dreieck" class="buy reveal" style="max-width:620px; margin:var(--sp-8) auto 0;">
@@ -589,8 +786,8 @@
           <li>Läuft offline – Handy, Tablet, PC</li>
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
-        <div><a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-dreieck" href="#dreieck">Gratis-Version testen</a></p>
+        <div><a rel="nofollow" class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="https://www.checkout-ds24.com/product/722585">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-dreieck" href="https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html">Gratis-Version testen</a></p>
       </div>
     </div>
   </section>
@@ -605,7 +802,8 @@
       </div>
 
       <figure class="blueprint media-slot reveal" style="max-width:860px; margin:0 auto;" data-hinweis="Video folgt in Kürze">
-        <video id="video-schraube-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick"></video>
+        <video id="video-schraube-teaser" src="Schraube_Daten/videos/schraube-teaser.mp4" poster="Schraube_Daten/bilder/schraube-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick"></video>
+          <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/schraube-vdi-2230.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
       <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nachweise, Rechenweg, Schaubild, Assistenten, Export.</p>
 
@@ -619,13 +817,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-rechenweg" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-schaubild" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-rechenweg" src="Schraube_Daten/bilder/schraube-rechenweg.jpg" width="1400" height="868" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-schaubild" src="Schraube_Daten/bilder/schraube-schaubild.jpg" width="1176" height="1036" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-flansch" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-hilfe" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-word" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-flansch" src="Schraube_Daten/bilder/schraube-flansch.jpg" width="1036" height="1176" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-hilfe" src="Schraube_Daten/bilder/schraube-hilfe.jpg" width="1344" height="854" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-word" src="Schraube_Daten/bilder/schraube-word.jpg" width="1204" height="1008" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-schraube" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -642,8 +840,8 @@
           <li>Läuft offline – Handy, Tablet, PC</li>
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
-        <div><a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schraube" href="#schraube">Gratis-Version testen</a></p>
+        <div><a rel="nofollow" class="btn btn--brass btn--lg" data-link="kauf-schraube" href="https://www.checkout-ds24.com/product/722968">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schraube" href="https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html">Gratis-Version testen</a></p>
         <p class="fine">Hinweis: Auslegungswerkzeug – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
       </div>
     </div>
@@ -659,7 +857,8 @@
       </div>
 
       <figure class="blueprint media-slot reveal" data-hinweis="Demo-Video folgt in Kürze – die Gratis-Version läuft schon: einfach oben „Gratis testen“ antippen" style="max-width:860px; margin:0 auto;">
-        <video id="video-passung-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiPassung – Überblick"></video>
+        <video id="video-passung-teaser" src="Passung_Daten/videos/passung-teaser.mp4" poster="Passung_Daten/bilder/passung-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiPassung – Überblick"></video>
+          <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/passung-iso-286.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
       <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Kurzeingabe, Rechenweg, Toleranzfeld, Assistent, Pressverband.</p>
 
@@ -673,13 +872,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Toleranzfeld-Schaubild – Bohrung grün, Welle blau"><img id="img-passung-schaubild" alt="Toleranzfeld-Schaubild: Lage von Bohrung und Welle mit Spiel- bzw. Übermaßzone" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: aufgeklappter Rechenweg mit Häkchen je Schritt"><img id="img-passung-rechenweg" alt="Selbstprüfender Rechenweg: Formel, eingesetzte Werte und Häkchen für jeden Schritt" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Toleranzfeld-Schaubild – Bohrung grün, Welle blau"><img id="img-passung-schaubild" src="Passung_Daten/bilder/passung-schaubild.jpg" width="632" height="638" alt="Toleranzfeld-Schaubild: Lage von Bohrung und Welle mit Spiel- bzw. Übermaßzone" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: aufgeklappter Rechenweg mit Häkchen je Schritt"><img id="img-passung-rechenweg" src="Passung_Daten/bilder/passung-rechenweg.jpg" width="664" height="766" alt="Selbstprüfender Rechenweg: Formel, eingesetzte Werte und Häkchen für jeden Schritt" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Passungs-Assistent"><img id="img-passung-assistent" alt="Passungs-Assistent: geführte Empfehlung nach Einsatzzweck mit Begründung" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Pressverband nach DIN 7190"><img id="img-passung-pressverband" alt="Pressverband nach DIN 7190: Fugendrücke, Sicherheiten, übertragbares Moment und Fügetemperaturen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Praxis-Beratung mit Kostenampel"><img id="img-passung-beratung" alt="Praxis-Beratung: Kostenampel, Messmittel und Oberflächenhinweise" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Passungs-Assistent"><img id="img-passung-assistent" src="Passung_Daten/bilder/passung-assistent.jpg" width="1344" height="842" alt="Passungs-Assistent: geführte Empfehlung nach Einsatzzweck mit Begründung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Pressverband nach DIN 7190"><img id="img-passung-pressverband" src="Passung_Daten/bilder/passung-pressverband.jpg" width="602" height="438" alt="Pressverband nach DIN 7190: Fugendrücke, Sicherheiten, übertragbares Moment und Fügetemperaturen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Praxis-Beratung mit Kostenampel"><img id="img-passung-beratung" src="Passung_Daten/bilder/passung-beratung.jpg" width="618" height="734" alt="Praxis-Beratung: Kostenampel, Messmittel und Oberflächenhinweise" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-passung" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -696,8 +895,8 @@
           <li>Läuft offline – Handy, Tablet, PC</li>
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
-        <div><a class="btn btn--green btn--lg" data-link="kauf-passung" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-passung" href="#passung">Gratis-Version mit vollem Funktionsumfang testen</a></p>
+        <div><a rel="nofollow" class="btn btn--green btn--lg" data-link="kauf-passung" href="https://www.checkout-ds24.com/product/722972">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-passung" href="https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html">Gratis-Version mit vollem Funktionsumfang testen</a></p>
         <p class="fine">Hinweis: Berechnung ohne Gewähr – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.</p>
       </div>
     </div>
@@ -713,7 +912,8 @@
       </div>
 
       <figure class="blueprint media-slot reveal" data-hinweis="Video folgt in Kürze" style="max-width:860px; margin:0 auto;">
-        <video id="video-schweissnaht-teaser" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchweissnaht – 40-Sekunden-Überblick"></video>
+        <video id="video-schweissnaht-teaser" src="Schweissnaht_Daten/videos/schweissnaht-teaser.mp4" poster="Schweissnaht_Daten/bilder/schweissnaht-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchweissnaht – 40-Sekunden-Überblick"></video>
+          <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/schweissnaht-en-1993-1-8.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
       <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nahtbild, Rechenweg mit Quellen, Rechenproben – und die Grenzen der Berechnung.</p>
 
@@ -727,13 +927,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: gezeichnetes Nahtbild mit Schwerpunkt"><img id="img-schweissnaht-nahtbild" alt="Gezeichnetes Nahtbild eines I-Profils mit Flansch-, Steg- und Stirnkantennähten, Schwerpunktkreuz und Achsen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenweg mit Quellenangabe je Schritt"><img id="img-schweissnaht-rechenweg" alt="Rechenweg: Segmente, Nahtfläche, Schwerpunkt und Flächenmoment mit Formel, Zahlen, Häkchen und Quellenangabe" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: gezeichnetes Nahtbild mit Schwerpunkt"><img id="img-schweissnaht-nahtbild" src="Schweissnaht_Daten/bilder/schweissnaht-nahtbild.jpg" width="1500" height="1601" alt="Gezeichnetes Nahtbild eines I-Profils mit Flansch-, Steg- und Stirnkantennähten, Schwerpunktkreuz und Achsen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenweg mit Quellenangabe je Schritt"><img id="img-schweissnaht-rechenweg" src="Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg" width="1400" height="1820" alt="Rechenweg: Segmente, Nahtfläche, Schwerpunkt und Flächenmoment mit Formel, Zahlen, Häkchen und Quellenangabe" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: geführter Assistent"><img id="img-schweissnaht-assistent" alt="Geführter Assistent: Auswahl der Bemessungswelt mit Erklärung und Empfehlung" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenproben mit Häkchen"><img id="img-schweissnaht-proben" alt="Rechenproben: Kontrolle der Flächenmomente und Hauptachsen mit bestandenen Häkchen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Liste „Was NICHT geprüft wird“"><img id="img-schweissnaht-grenzen" alt="Liste „Was NICHT geprüft wird“ mit den Grenzen dieser Berechnung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: geführter Assistent"><img id="img-schweissnaht-assistent" src="Schweissnaht_Daten/bilder/schweissnaht-assistent.jpg" width="1500" height="1061" alt="Geführter Assistent: Auswahl der Bemessungswelt mit Erklärung und Empfehlung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenproben mit Häkchen"><img id="img-schweissnaht-proben" src="Schweissnaht_Daten/bilder/schweissnaht-proben.jpg" width="1400" height="1210" alt="Rechenproben: Kontrolle der Flächenmomente und Hauptachsen mit bestandenen Häkchen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Liste „Was NICHT geprüft wird“"><img id="img-schweissnaht-grenzen" src="Schweissnaht_Daten/bilder/schweissnaht-grenzen.jpg" width="1400" height="570" alt="Liste „Was NICHT geprüft wird“ mit den Grenzen dieser Berechnung" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-schweissnaht" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -751,8 +951,8 @@
           <li>Läuft offline – Handy, Tablet, PC</li>
           <li>Sichere Abwicklung über Digistore24</li>
         </ul>
-        <div><a class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="#">Jetzt kaufen →</a></div>
-        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schweissnaht" href="#schweissnaht">Gratis-Version testen</a></p>
+        <div><a rel="nofollow" class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="https://www.checkout-ds24.com/product/722975">Jetzt kaufen →</a></div>
+        <p class="fine">Lieber erst ausprobieren? <a data-link="test-schweissnaht" href="https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html">Gratis-Version testen</a></p>
         <p class="fine">Hinweis: Hilfsmittel für fachkundige Anwender. Der Nachweis gilt der Naht, nicht dem Bauteil – Ergebnisse gegen die Originalnormen und die eigene Abnahme prüfen.</p>
       </div>
     </div>
@@ -834,10 +1034,10 @@
         <h2>Heute testen, morgen sicher fertigen</h2>
         <p>Alle vier Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.</p>
         <div class="cta-row">
-          <a class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="#kauf-dreieck">Dreieck · 69 €</a>
-          <a class="btn btn--brass btn--lg" data-link="kauf-schraube" href="#kauf-schraube">Schraube · 159 €</a>
-          <a class="btn btn--green btn--lg" data-link="kauf-passung" href="#kauf-passung">Passung · 139 €</a>
-          <a class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="#kauf-schweissnaht">Schweißnaht · 169 €</a>
+          <a rel="nofollow" class="btn btn--primary btn--lg" data-link="kauf-dreieck" href="https://www.checkout-ds24.com/product/722585">Dreieck · 69 €</a>
+          <a rel="nofollow" class="btn btn--brass btn--lg" data-link="kauf-schraube" href="https://www.checkout-ds24.com/product/722968">Schraube · 159 €</a>
+          <a rel="nofollow" class="btn btn--green btn--lg" data-link="kauf-passung" href="https://www.checkout-ds24.com/product/722972">Passung · 139 €</a>
+          <a rel="nofollow" class="btn btn--glut btn--lg" data-link="kauf-schweissnaht" href="https://www.checkout-ds24.com/product/722975">Schweißnaht · 169 €</a>
         </div>
       </div>
     </div>
@@ -879,13 +1079,13 @@ document.addEventListener("DOMContentLoaded", function() {
   };
   document.querySelectorAll("[data-link]").forEach(function(a){
     var url = links[a.getAttribute("data-link")];
-    if (url) a.setAttribute("href", url);
+    if (url && a.getAttribute("href") !== url) a.setAttribute("href", url);
   });
 
   // ---- 2) Bilder: leere URL -> Platzhalter "folgt in Kuerze" ------------
   function bild(id, url){
     var el = document.getElementById(id); if (!el) return;
-    if (url) { el.src = url; return; }
+    if (url) { if (el.src !== url) el.src = url; return; }
     var slot = el.closest(".media-slot");
     if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
   }
@@ -893,7 +1093,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // ---- 3) Videos: src direkt am <video>-Tag setzen und .load() aufrufen -
   function video(id, url, poster){
     var el = document.getElementById(id); if (!el) return;
-    if (url) { if (poster) el.poster = poster; el.src = url; el.load(); return; }
+    if (url) { if (poster && el.poster !== poster) el.poster = poster;
+               if (el.src !== url) { el.src = url; el.load(); } return; }
     var slot = el.closest(".media-slot");
     if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
   }
@@ -903,8 +1104,8 @@ document.addEventListener("DOMContentLoaded", function() {
   // DT-ProfiDreieck
   bild("img-dreieck-karte",        d.bildZeichnung);
   bild("img-dreieck-zeichnung",    d.bildZeichnung);
-  video("video-dreieck-werkstatt", d.videoWerkstatt);
-  video("video-dreieck-demo",      d.videoDemo);
+  video("video-dreieck-werkstatt", d.videoWerkstatt, d.posterWerkstatt);
+  video("video-dreieck-demo",      d.videoDemo, d.posterDemo);
   bild("img-dreieck-eingabe",      d.bildEingabe);
   bild("img-dreieck-ergebnis",     d.bildErgebnis);
 
