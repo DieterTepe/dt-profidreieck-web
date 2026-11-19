@@ -1,4 +1,5 @@
-# Misst jeden Montag Ladezeit, Barrierefreiheit und SEO aller fuenf Startseiten
+# Misst jeden Montag Ladezeit, Barrierefreiheit und SEO der fuenf Startseiten
+# und der vier Testversionen
 # (Google Lighthouse, Handy-Ansicht). Ergebnis: Actions -> Lighthouse -> Artefakt
 # "lighthouse-berichte" herunterladen und die HTML-Dateien im Browser oeffnen.
 name: Lighthouse
@@ -27,6 +28,9 @@ jobs:
             https://dietertepe.github.io/dt-profipassung-web/
             https://dietertepe.github.io/dt-profischweissnaht-web/
             https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html
+            https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html
+            https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html
+            https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html
           runs: 1
           uploadArtifacts: true
           artifactName: lighthouse-berichte
