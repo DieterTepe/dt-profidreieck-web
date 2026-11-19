@@ -29,9 +29,10 @@
 <meta property="og:image:alt" content="DT-ProfiTools – Berechnungswerkzeuge für Werkstatt und Konstruktion">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Zentrale Konfiguration MUSS im head geladen werden, damit
-     window.DT_CONFIG beim Rendern bereits global verfügbar ist -->
-<script src="config.js"></script>
+<!-- Zentrale Konfiguration: "defer" laedt sie parallel, ohne das erste Bild
+     zu bremsen. Sie ist trotzdem fertig, bevor der Verteiler am Seitenende
+     (DOMContentLoaded) die Werte eintraegt. -->
+<script src="config.js" defer></script>
 
 <!--
   ============================================================================
@@ -136,10 +137,11 @@
   .pos--green{color:var(--green-strong);}
   .pos--glut{color:var(--glut);}
 
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
   .eyebrow{
     display:inline-flex; align-items:center; gap:7px;
     font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--accent); background:var(--accent-soft);
+    color:var(--accent-strong); background:var(--accent-soft);
     padding:6px 13px; border-radius:999px;
   }
   .eyebrow--brass{color:var(--brass-strong); background:var(--brass-soft);}
@@ -163,12 +165,12 @@
   .btn:active{transform:translateY(1px);}
   .btn--primary{background:var(--accent); color:#fff; box-shadow:0 8px 20px -8px var(--accent);}
   .btn--primary:hover{background:var(--accent-strong);}
-  .btn--brass{background:var(--brass); color:#fff; box-shadow:0 8px 20px -8px var(--brass);}
-  .btn--brass:hover{background:var(--brass-strong);}
+  .btn--brass{background:var(--brass-strong); color:#fff; box-shadow:0 8px 20px -8px var(--brass);}
+  .btn--brass:hover{background:#7c500c;}
   .btn--green{background:var(--green-strong); color:#fff; box-shadow:0 8px 20px -8px var(--green-strong);}
   .btn--green:hover{background:#095f43;}
-  .btn--glut{background:var(--glut); color:#fff; box-shadow:0 8px 20px -8px var(--glut);}
-  .btn--glut:hover{background:var(--glut-strong);}
+  .btn--glut{background:var(--glut-strong); color:#fff; box-shadow:0 8px 20px -8px var(--glut);}
+  .btn--glut:hover{background:#8a3508;}
   .btn--ghost{background:#fff; color:var(--ink); border-color:var(--line-strong);}
   .btn--ghost:hover{border-color:var(--accent); color:var(--accent-strong);}
   .btn--lg{font-size:17px; padding:16px 30px;}
@@ -615,19 +617,20 @@
   <!-- ============ HERO: vier Werkzeuge ============ -->
   <section id="start" class="section hero">
     <div class="wrap">
-      <span class="eyebrow reveal">◬ Berechnungswerkzeuge für Werkstatt &amp; Konstruktion</span>
-      <h1 class="reveal" data-i18n-html="hero-h1">Präzise rechnen.<br>Sauber <span style="color:var(--accent)">dokumentieren</span>. Sofort <span style="color:var(--brass)">fertigen</span>.</h1>
-      <p class="lead reveal">Vier Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230, Passungen nach ISO 286 – und Schweißnähte nach EN 1993-1-8. Alle laufen offline, als eine einzige Datei, ohne Installation.</p>
+      <span class="eyebrow">◬ Berechnungswerkzeuge für Werkstatt &amp; Konstruktion</span>
+      <h1 data-i18n-html="hero-h1">Präzise rechnen.<br>Sauber <span style="color:var(--accent)">dokumentieren</span>. Sofort <span style="color:var(--brass)">fertigen</span>.</h1>
+      <p class="lead">Vier Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230, Passungen nach ISO 286 – und Schweißnähte nach EN 1993-1-8. Alle laufen offline, als eine einzige Datei, ohne Installation.</p>
 
+      <h2 class="sr-only">Die vier Werkzeuge</h2>
       <div class="tool-grid">
         <!-- Werkzeugkarte 1: Dreieck -->
-        <article class="tool reveal">
+        <article class="tool">
           <div class="tool-head">
             <h3>DT-ProfiDreieck</h3>
             <span class="price">69 €<small> einmalig</small></span>
           </div>
           <p class="desc">Drei Größen eingeben – das ganze Dreieck wird berechnet, maßstäblich gezeichnet und als DXF, SVG oder PDF exportiert.</p>
-          <div class="mini blueprint media-slot" style="padding:6px;" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-karte" src="Dreieck_Daten/bilder/app-zeichnung.jpg" width="1120" height="1092" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
+          <div class="mini blueprint media-slot" style="padding:6px;" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-karte" src="Dreieck_Daten/bilder/app-zeichnung.jpg" srcset="Dreieck_Daten/bilder/app-zeichnung-480.webp 480w, Dreieck_Daten/bilder/app-zeichnung-800.webp 800w, Dreieck_Daten/bilder/app-zeichnung.webp 1120w" sizes="(max-width: 700px) 88vw, 340px" width="1120" height="1092" alt="DT-ProfiDreieck: maßstäbliche CAD-Zeichnung eines Dreiecks mit Umkreis und Inkreis" loading="lazy"></div>
           <ul>
             <li>DXF direkt in CAD &amp; CNC importierbar</li>
             <li>Auch aus Umkreis, Inkreis, Fläche, Höhen</li>
@@ -640,13 +643,13 @@
         </article>
 
         <!-- Werkzeugkarte 2: Schraube -->
-        <article class="tool tool--brass reveal">
+        <article class="tool tool--brass">
           <div class="tool-head">
             <h3>DT-ProfiSchraube</h3>
             <span class="price">159 €<small> einmalig</small></span>
           </div>
           <p class="desc">Schraubenverbindungen nach VDI 2230 Blatt 1 auslegen – mit Sicherheits-Nachweisen, Assistenten und dokumentiertem Rechenweg.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-karte" src="Schraube_Daten/bilder/schraube-start.jpg" width="1500" height="806" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-karte" src="Schraube_Daten/bilder/schraube-start.jpg" srcset="Schraube_Daten/bilder/schraube-start-480.webp 480w, Schraube_Daten/bilder/schraube-start-800.webp 800w, Schraube_Daten/bilder/schraube-start-1200.webp 1200w, Schraube_Daten/bilder/schraube-start.webp 1500w" sizes="(max-width: 700px) 88vw, 340px" width="1500" height="806" alt="DT-ProfiSchraube: Ergebnisübersicht mit fünf Sicherheitsnachweisen, alle grün" loading="lazy"></div>
           <ul>
             <li>Nachweise: Fließen, Dauerhaltbarkeit, Pressung, Gleiten, Einschraubtiefe</li>
             <li>Assistenten für Flansch &amp; Dehnschraube</li>
@@ -659,13 +662,13 @@
         </article>
 
         <!-- Werkzeugkarte 3: Passung -->
-        <article class="tool tool--green reveal">
+        <article class="tool tool--green">
           <div class="tool-head">
             <h3>DT-ProfiPassung</h3>
             <span class="price">139 €<small> einmalig</small></span>
           </div>
           <p class="desc">Passungen und Toleranzen nach ISO 286 in Sekunden – mit selbstprüfendem Rechenweg, Pressverband nach DIN 7190 und geführtem Assistenten.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-passung-karte" src="Passung_Daten/bilder/passung-start.jpg" width="1344" height="842" alt="DT-ProfiPassung: Toleranz- und Passungsrechner nach ISO 286" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-passung-karte" src="Passung_Daten/bilder/passung-start.jpg" srcset="Passung_Daten/bilder/passung-start-480.webp 480w, Passung_Daten/bilder/passung-start-800.webp 800w, Passung_Daten/bilder/passung-start-1200.webp 1200w, Passung_Daten/bilder/passung-start.webp 1344w" sizes="(max-width: 700px) 88vw, 340px" width="1344" height="842" alt="DT-ProfiPassung: Toleranz- und Passungsrechner nach ISO 286" loading="lazy"></div>
           <ul>
             <li>Schnelleingabe wie „Ø50 H7/g6“</li>
             <li>Rechenweg mit Häkchen für jeden Schritt</li>
@@ -678,13 +681,13 @@
         </article>
 
         <!-- Werkzeugkarte 4: Schweissnaht -->
-        <article class="tool tool--glut reveal">
+        <article class="tool tool--glut">
           <div class="tool-head">
             <h3>DT-ProfiSchweissnaht</h3>
             <span class="price">169 €<small> einmalig</small></span>
           </div>
           <p class="desc">Schweißnähte nachweisen oder das a-Maß auslegen – mit echtem Nahtbild, über dreißig Rechenschritten und benannter Quelle je Schritt.</p>
-          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schweissnaht-karte" src="Schweissnaht_Daten/bilder/schweissnaht-start.jpg" width="1500" height="829" alt="DT-ProfiSchweissnaht: Ergebnis mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt" loading="lazy"></div>
+          <div class="mini media-slot" data-hinweis="Screenshot folgt in Kürze"><img id="img-schweissnaht-karte" src="Schweissnaht_Daten/bilder/schweissnaht-start.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-start-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-start-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-start-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-start.webp 1500w" sizes="(max-width: 700px) 88vw, 340px" width="1500" height="829" alt="DT-ProfiSchweissnaht: Ergebnis mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt" loading="lazy"></div>
           <ul>
             <li>Nahtbild aus Profil und geschweißten Kanten</li>
             <li>Rechenproben laufen bei jeder Berechnung mit</li>
@@ -697,7 +700,7 @@
         </article>
       </div>
 
-      <div class="badges reveal">
+      <div class="badges">
         <span><b>✓</b> 100 % offline</span>
         <span><b>✓</b> Eine Datei – keine Installation</span>
         <span><b>✓</b> Handy · Tablet · PC</span>
@@ -746,7 +749,7 @@
         </div>
         <div class="reveal">
           <div class="blueprint media-slot" data-hinweis="Screenshot folgt in Kürze">
-            <img id="img-dreieck-zeichnung" src="Dreieck_Daten/bilder/app-zeichnung.jpg" width="1120" height="1092" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
+            <img id="img-dreieck-zeichnung" src="Dreieck_Daten/bilder/app-zeichnung.jpg" srcset="Dreieck_Daten/bilder/app-zeichnung-480.webp 480w, Dreieck_Daten/bilder/app-zeichnung-800.webp 800w, Dreieck_Daten/bilder/app-zeichnung.webp 1120w" sizes="(max-width: 780px) 92vw, 560px" width="1120" height="1092" alt="Maßstäbliche Dreieckszeichnung mit Umkreis, Inkreis, Euler-Gerade und Export-Buttons für SVG, DXF, PNG und PDF">
           </div>
         </div>
       </div>
@@ -772,8 +775,8 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-eingabe" src="Dreieck_Daten/bilder/app-eingabe.jpg" width="1080" height="2071" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-ergebnis" src="Dreieck_Daten/bilder/app-ergebnis.jpg" width="1080" height="2142" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-eingabe" src="Dreieck_Daten/bilder/app-eingabe.jpg" srcset="Dreieck_Daten/bilder/app-eingabe-480.webp 480w, Dreieck_Daten/bilder/app-eingabe-800.webp 800w, Dreieck_Daten/bilder/app-eingabe.webp 1080w" sizes="(max-width: 780px) 92vw, 560px" width="1080" height="2071" alt="Eingabemaske: drei Größen aus Seiten, Winkeln, Kreisen, Fläche und Höhen wählen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-dreieck-ergebnis" src="Dreieck_Daten/bilder/app-ergebnis.jpg" srcset="Dreieck_Daten/bilder/app-ergebnis-480.webp 480w, Dreieck_Daten/bilder/app-ergebnis-800.webp 800w, Dreieck_Daten/bilder/app-ergebnis.webp 1080w" sizes="(max-width: 780px) 92vw, 560px" width="1080" height="2142" alt="Dokumentierter Rechenweg: gegebene Größen, Formeln und Ergebnisse Schritt für Schritt" loading="lazy"></div>
       </div>
 
       <div id="kauf-dreieck" class="buy reveal" style="max-width:620px; margin:var(--sp-8) auto 0;">
@@ -817,13 +820,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-rechenweg" src="Schraube_Daten/bilder/schraube-rechenweg.jpg" width="1400" height="868" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-schaubild" src="Schraube_Daten/bilder/schraube-schaubild.jpg" width="1176" height="1036" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-rechenweg" src="Schraube_Daten/bilder/schraube-rechenweg.jpg" srcset="Schraube_Daten/bilder/schraube-rechenweg-480.webp 480w, Schraube_Daten/bilder/schraube-rechenweg-800.webp 800w, Schraube_Daten/bilder/schraube-rechenweg-1200.webp 1200w, Schraube_Daten/bilder/schraube-rechenweg.webp 1400w" sizes="(max-width: 780px) 92vw, 560px" width="1400" height="868" alt="Dokumentierter Rechenweg: Schraubennachgiebigkeit und Plattennachgiebigkeit mit Formeln, Werten und VDI-Normverweisen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-schaubild" src="Schraube_Daten/bilder/schraube-schaubild.jpg" srcset="Schraube_Daten/bilder/schraube-schaubild-480.webp 480w, Schraube_Daten/bilder/schraube-schaubild-800.webp 800w, Schraube_Daten/bilder/schraube-schaubild.webp 1176w" sizes="(max-width: 780px) 92vw, 560px" width="1176" height="1036" alt="Verspannungsschaubild: Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-flansch" src="Schraube_Daten/bilder/schraube-flansch.jpg" width="1036" height="1176" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-hilfe" src="Schraube_Daten/bilder/schraube-hilfe.jpg" width="1344" height="854" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-word" src="Schraube_Daten/bilder/schraube-word.jpg" width="1204" height="1008" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-flansch" src="Schraube_Daten/bilder/schraube-flansch.jpg" srcset="Schraube_Daten/bilder/schraube-flansch-480.webp 480w, Schraube_Daten/bilder/schraube-flansch-800.webp 800w, Schraube_Daten/bilder/schraube-flansch.webp 1036w" sizes="(max-width: 780px) 92vw, 560px" width="1036" height="1176" alt="Flansch-Assistent: Querkraft je Schraube aus Gesamt-Drehmoment und Schraubenzahl" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-hilfe" src="Schraube_Daten/bilder/schraube-hilfe.jpg" srcset="Schraube_Daten/bilder/schraube-hilfe-480.webp 480w, Schraube_Daten/bilder/schraube-hilfe-800.webp 800w, Schraube_Daten/bilder/schraube-hilfe-1200.webp 1200w, Schraube_Daten/bilder/schraube-hilfe.webp 1344w" sizes="(max-width: 780px) 92vw, 560px" width="1344" height="854" alt="Hilfetext zum Anziehverfahren mit Auswahl: streckgrenz-, drehwinkel-, drehmomentgesteuert oder Schlagschrauber" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt in Kürze"><img id="img-schraube-word" src="Schraube_Daten/bilder/schraube-word.jpg" srcset="Schraube_Daten/bilder/schraube-word-480.webp 480w, Schraube_Daten/bilder/schraube-word-800.webp 800w, Schraube_Daten/bilder/schraube-word-1200.webp 1200w, Schraube_Daten/bilder/schraube-word.webp 1204w" sizes="(max-width: 780px) 92vw, 560px" width="1204" height="1008" alt="Word-Bericht mit einem Klick gespeichert – Ergebnisübersicht mit grünen Nachweisen" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-schraube" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -872,13 +875,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Toleranzfeld-Schaubild – Bohrung grün, Welle blau"><img id="img-passung-schaubild" src="Passung_Daten/bilder/passung-schaubild.jpg" width="632" height="638" alt="Toleranzfeld-Schaubild: Lage von Bohrung und Welle mit Spiel- bzw. Übermaßzone" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: aufgeklappter Rechenweg mit Häkchen je Schritt"><img id="img-passung-rechenweg" src="Passung_Daten/bilder/passung-rechenweg.jpg" width="664" height="766" alt="Selbstprüfender Rechenweg: Formel, eingesetzte Werte und Häkchen für jeden Schritt" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Toleranzfeld-Schaubild – Bohrung grün, Welle blau"><img id="img-passung-schaubild" src="Passung_Daten/bilder/passung-schaubild.jpg" srcset="Passung_Daten/bilder/passung-schaubild-480.webp 480w, Passung_Daten/bilder/passung-schaubild.webp 632w" sizes="(max-width: 780px) 92vw, 560px" width="632" height="638" alt="Toleranzfeld-Schaubild: Lage von Bohrung und Welle mit Spiel- bzw. Übermaßzone" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: aufgeklappter Rechenweg mit Häkchen je Schritt"><img id="img-passung-rechenweg" src="Passung_Daten/bilder/passung-rechenweg.jpg" srcset="Passung_Daten/bilder/passung-rechenweg-480.webp 480w, Passung_Daten/bilder/passung-rechenweg.webp 664w" sizes="(max-width: 780px) 92vw, 560px" width="664" height="766" alt="Selbstprüfender Rechenweg: Formel, eingesetzte Werte und Häkchen für jeden Schritt" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Passungs-Assistent"><img id="img-passung-assistent" src="Passung_Daten/bilder/passung-assistent.jpg" width="1344" height="842" alt="Passungs-Assistent: geführte Empfehlung nach Einsatzzweck mit Begründung" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Pressverband nach DIN 7190"><img id="img-passung-pressverband" src="Passung_Daten/bilder/passung-pressverband.jpg" width="602" height="438" alt="Pressverband nach DIN 7190: Fugendrücke, Sicherheiten, übertragbares Moment und Fügetemperaturen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Praxis-Beratung mit Kostenampel"><img id="img-passung-beratung" src="Passung_Daten/bilder/passung-beratung.jpg" width="618" height="734" alt="Praxis-Beratung: Kostenampel, Messmittel und Oberflächenhinweise" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Passungs-Assistent"><img id="img-passung-assistent" src="Passung_Daten/bilder/passung-assistent.jpg" srcset="Passung_Daten/bilder/passung-assistent-480.webp 480w, Passung_Daten/bilder/passung-assistent-800.webp 800w, Passung_Daten/bilder/passung-assistent-1200.webp 1200w, Passung_Daten/bilder/passung-assistent.webp 1344w" sizes="(max-width: 780px) 92vw, 560px" width="1344" height="842" alt="Passungs-Assistent: geführte Empfehlung nach Einsatzzweck mit Begründung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Pressverband nach DIN 7190"><img id="img-passung-pressverband" src="Passung_Daten/bilder/passung-pressverband.jpg" srcset="Passung_Daten/bilder/passung-pressverband-480.webp 480w, Passung_Daten/bilder/passung-pressverband.webp 602w" sizes="(max-width: 780px) 92vw, 560px" width="602" height="438" alt="Pressverband nach DIN 7190: Fugendrücke, Sicherheiten, übertragbares Moment und Fügetemperaturen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Praxis-Beratung mit Kostenampel"><img id="img-passung-beratung" src="Passung_Daten/bilder/passung-beratung.jpg" srcset="Passung_Daten/bilder/passung-beratung-480.webp 480w, Passung_Daten/bilder/passung-beratung.webp 618w" sizes="(max-width: 780px) 92vw, 560px" width="618" height="734" alt="Praxis-Beratung: Kostenampel, Messmittel und Oberflächenhinweise" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-passung" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -927,13 +930,13 @@
       </div>
 
       <div class="grid-2" style="margin-top:var(--sp-8);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: gezeichnetes Nahtbild mit Schwerpunkt"><img id="img-schweissnaht-nahtbild" src="Schweissnaht_Daten/bilder/schweissnaht-nahtbild.jpg" width="1500" height="1601" alt="Gezeichnetes Nahtbild eines I-Profils mit Flansch-, Steg- und Stirnkantennähten, Schwerpunktkreuz und Achsen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenweg mit Quellenangabe je Schritt"><img id="img-schweissnaht-rechenweg" src="Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg" width="1400" height="1820" alt="Rechenweg: Segmente, Nahtfläche, Schwerpunkt und Flächenmoment mit Formel, Zahlen, Häkchen und Quellenangabe" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: gezeichnetes Nahtbild mit Schwerpunkt"><img id="img-schweissnaht-nahtbild" src="Schweissnaht_Daten/bilder/schweissnaht-nahtbild.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-nahtbild-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-nahtbild-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-nahtbild-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-nahtbild.webp 1500w" sizes="(max-width: 780px) 92vw, 560px" width="1500" height="1601" alt="Gezeichnetes Nahtbild eines I-Profils mit Flansch-, Steg- und Stirnkantennähten, Schwerpunktkreuz und Achsen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenweg mit Quellenangabe je Schritt"><img id="img-schweissnaht-rechenweg" src="Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-rechenweg-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-rechenweg-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-rechenweg-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-rechenweg.webp 1400w" sizes="(max-width: 780px) 92vw, 560px" width="1400" height="1820" alt="Rechenweg: Segmente, Nahtfläche, Schwerpunkt und Flächenmoment mit Formel, Zahlen, Häkchen und Quellenangabe" loading="lazy"></div>
       </div>
       <div class="grid-3" style="margin-top:var(--sp-3);">
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: geführter Assistent"><img id="img-schweissnaht-assistent" src="Schweissnaht_Daten/bilder/schweissnaht-assistent.jpg" width="1500" height="1061" alt="Geführter Assistent: Auswahl der Bemessungswelt mit Erklärung und Empfehlung" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenproben mit Häkchen"><img id="img-schweissnaht-proben" src="Schweissnaht_Daten/bilder/schweissnaht-proben.jpg" width="1400" height="1210" alt="Rechenproben: Kontrolle der Flächenmomente und Hauptachsen mit bestandenen Häkchen" loading="lazy"></div>
-        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Liste „Was NICHT geprüft wird“"><img id="img-schweissnaht-grenzen" src="Schweissnaht_Daten/bilder/schweissnaht-grenzen.jpg" width="1400" height="570" alt="Liste „Was NICHT geprüft wird“ mit den Grenzen dieser Berechnung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: geführter Assistent"><img id="img-schweissnaht-assistent" src="Schweissnaht_Daten/bilder/schweissnaht-assistent.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-assistent-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-assistent-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-assistent-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-assistent.webp 1500w" sizes="(max-width: 780px) 92vw, 560px" width="1500" height="1061" alt="Geführter Assistent: Auswahl der Bemessungswelt mit Erklärung und Empfehlung" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Rechenproben mit Häkchen"><img id="img-schweissnaht-proben" src="Schweissnaht_Daten/bilder/schweissnaht-proben.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-proben-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-proben-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-proben-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-proben.webp 1400w" sizes="(max-width: 780px) 92vw, 560px" width="1400" height="1210" alt="Rechenproben: Kontrolle der Flächenmomente und Hauptachsen mit bestandenen Häkchen" loading="lazy"></div>
+        <div class="shot media-slot reveal" data-hinweis="Screenshot folgt: Liste „Was NICHT geprüft wird“"><img id="img-schweissnaht-grenzen" src="Schweissnaht_Daten/bilder/schweissnaht-grenzen.jpg" srcset="Schweissnaht_Daten/bilder/schweissnaht-grenzen-480.webp 480w, Schweissnaht_Daten/bilder/schweissnaht-grenzen-800.webp 800w, Schweissnaht_Daten/bilder/schweissnaht-grenzen-1200.webp 1200w, Schweissnaht_Daten/bilder/schweissnaht-grenzen.webp 1400w" sizes="(max-width: 780px) 92vw, 560px" width="1400" height="570" alt="Liste „Was NICHT geprüft wird“ mit den Grenzen dieser Berechnung" loading="lazy"></div>
       </div>
 
       <p class="reveal" data-i18n-html="trust-schweissnaht" style="text-align:center; margin-top:var(--sp-6); font-weight:700; font-size:clamp(17px,2.8vw,21px);">
@@ -1085,7 +1088,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // ---- 2) Bilder: leere URL -> Platzhalter "folgt in Kuerze" ------------
   function bild(id, url){
     var el = document.getElementById(id); if (!el) return;
-    if (url) { if (el.src !== url) el.src = url; return; }
+    if (url) { if (el.src !== url) { el.removeAttribute("srcset"); el.src = url; } return; }
     var slot = el.closest(".media-slot");
     if (slot) { slot.classList.add("media-missing"); } else { el.style.display = "none"; }
   }
