@@ -16,7 +16,7 @@
 
    DIGISTORE-LINKS EINTRAGEN:
      Das "#kauf-..." durch den echten Bestelllink ersetzen, z. B.:
-     kaufDreieck: "https://www.digistore24.com/product/123456",
+     kaufDreieck: "https://www.checkout-ds24.com/product/DEINE-NUMMER",
      Solange der Platzhalter drinsteht, springt der Button nur zum
      jeweiligen Kaufblock auf der Seite.
    ========================================================================= */
