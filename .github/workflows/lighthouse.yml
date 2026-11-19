@@ -1,6 +1,6 @@
 # Misst jeden Montag Ladezeit, Barrierefreiheit und SEO der fuenf Startseiten
 # und der vier Testversionen
-# (Google Lighthouse, Handy-Ansicht). Ergebnis: Actions -> Lighthouse -> Artefakt
+# (Google Lighthouse, Handy-Ansicht, je Seite 3 Messungen - alle im Artefakt). Ergebnis: Actions -> Lighthouse -> Artefakt
 # "lighthouse-berichte" herunterladen und die HTML-Dateien im Browser oeffnen.
 name: Lighthouse
 
@@ -31,7 +31,7 @@ jobs:
             https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html
             https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html
             https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html
-          runs: 1
+          runs: 3
           uploadArtifacts: true
           artifactName: lighthouse-berichte
           temporaryPublicStorage: false
