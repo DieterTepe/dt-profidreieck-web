@@ -1,52 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://dt-profidreieck.de/</loc>
-    
-    <!-- Video 1: Werkstatt (DT-ProfiDreieck) -->
+    <lastmod>2026-11-19</lastmod>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-eingabe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-ergebnis.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v1-demo.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-assistent.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-beratung.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-pressverband.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-rechenweg.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-schaubild.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-start.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-flansch.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-hilfe.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-rechenweg.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-schaubild.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-start.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-word.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-assistent.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-grenzen.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-nahtbild.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-proben.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/videos/dreieck-dxf-werkstatt.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg</video:thumbnail_loc>
-      <video:title>DT-ProfiDreieck Werkstatt Anwendung</video:title>
-      <video:description>Winkelberechnung am Werkstück und DXF Export.</video:description>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg</video:thumbnail_loc>
+      <video:title>Winkel am Werkstück berechnen und als DXF an die CNC</video:title>
+      <video:description>Kurzvideo: Ein Winkel wird am Werkstück gemessen, mit DT-ProfiDreieck berechnet und Sekunden später als DXF in CAD und CNC übernommen.</video:description>
       <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/V2.mp4</video:content_loc>
+      <video:duration>10</video:duration>
       <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
     </video:video>
-          
-    <!-- Video 2: Demo (DT-ProfiDreieck) -->
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/videos/dreieck-berechnen-demo.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-ergebnis.jpg</video:thumbnail_loc>
-      <video:title>DT-ProfiDreieck Demo</video:title>
-      <video:description>Von der Eingabe bis zum Rechenweg.</video:description>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v1-demo.jpg</video:thumbnail_loc>
+      <video:title>Dreieck berechnen: von der Eingabe bis zum Rechenweg</video:title>
+      <video:description>Kurzvideo: Drei Größen eingeben, Dreieck berechnen lassen und den vollständigen Rechenweg mit Formeln und Zeichnung ansehen – DT-ProfiDreieck im Browser.</video:description>
       <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/V1.mp4</video:content_loc>
+      <video:duration>10</video:duration>
       <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
-    </video:video>          
-
-    <!-- Video 3: Schraube Teaser -->
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/videos/schraube-vdi-2230.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-start.jpg</video:thumbnail_loc>
-      <video:title>DT-ProfiSchraube Teaser</video:title>
-      <video:description>Schraubenberechnung Übersicht.</video:description>
+      <video:title>Schraubenverbindung nach VDI 2230 berechnen – DT-ProfiSchraube im Überblick</video:title>
+      <video:description>40-Sekunden-Überblick: DT-ProfiSchraube berechnet vorgespannte Schraubenverbindungen nach VDI 2230 Blatt 1 mit fünf Nachweisen, Verspannungsschaubild und Rechenweg.</video:description>
       <video:content_loc>https://dt-profidreieck.de/Schraube_Daten/videos/schraube-teaser.mp4</video:content_loc>
+      <video:duration>40</video:duration>
       <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
-    </video:video>          
-
-    <!-- Video 4: Passung Teaser -->
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/videos/passung-iso-286.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-start.jpg</video:thumbnail_loc>
-      <video:title>DT-ProfiPassung Teaser</video:title>
-      <video:description>Toleranzfeld und Pressverband.</video:description>
+      <video:title>Passungen nach ISO 286 und Pressverband nach DIN 7190 – DT-ProfiPassung im Überblick</video:title>
+      <video:description>40-Sekunden-Überblick: DT-ProfiPassung bestimmt Grenzmaße, Spiel und Übermaß nach ISO 286, zeigt das Toleranzfeld und rechnet Pressverbände nach DIN 7190.</video:description>
       <video:content_loc>https://dt-profidreieck.de/Passung_Daten/videos/passung-teaser.mp4</video:content_loc>
+      <video:duration>40</video:duration>
       <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
-    </video:video>          
-
-    <!-- Video 5: Schweissnaht Teaser -->
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/videos/schweissnaht-en-1993-1-8.html</loc>
+    <lastmod>2026-11-19</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg</video:thumbnail_loc>
-      <video:title>DT-ProfiSchweissnaht Teaser</video:title>
-      <video:description>Schweißnahtberechnung Übersicht.</video:description>
+      <video:title>Schweißnaht nach EN 1993-1-8 berechnen – DT-ProfiSchweissnaht im Überblick</video:title>
+      <video:description>40-Sekunden-Überblick: DT-ProfiSchweissnaht weist Kehl- und Stumpfnähte nach EN 1993-1-8 nach, zeichnet das Nahtbild maßstäblich und zeigt den Rechenweg mit Quellen.</video:description>
       <video:content_loc>https://dt-profidreieck.de/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4</video:content_loc>
+      <video:duration>40</video:duration>
       <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
-    </video:video>            
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
 </urlset>
