@@ -462,7 +462,7 @@ function toDate(s){ s = String(s).trim(); let m;
 function colIdx(head){
   const h = head.map(x => String(x).toLowerCase().replace(/^\ufeff/, '').replace(/["']/g, '').trim());
   const f = (re, not) => h.findIndex(x => re.test(x) && !(not && not.test(x)));
-  return {clicks: f(/klick|click|clique/, /rate|ctr|%|position|posição/), impr: f(/impr|eindr|anzeigen|exibi|view/, /position|posição|share|anteil/), ctr: f(/ctr|klickrate|taxa/), pos: f(/position|posi|posição/), head: h};
+  return {clicks: f(/klick|click|clique/, /rate|ctr|%|position|posição/), impr: f(/impr|aufruf|eindr|anzeigen|exibi|view/, /position|posição|share|anteil/), ctr: f(/ctr|klickrate|taxa/), pos: f(/position|posi|posição/), head: h};
 }
 function kindOf(head, name){
   const a = (head[0] || '').toLowerCase() + ' ' + (name || '').toLowerCase();
