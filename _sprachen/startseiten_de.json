@@ -1,0 +1,413 @@
+{
+ "dreieck": {
+  "repo": "test-dreieck",
+  "app": "DT-ProfiDreieck_Test_1-1-0.html",
+  "name": "DT-ProfiDreieck",
+  "preis": 69,
+  "kauf": "https://www.checkout-ds24.com/product/722585",
+  "kat": "Dreiecksrechner mit DXF-Export",
+  "video": "dreieck-dxf-werkstatt",
+  "h1": "Dreieck <em>berechnen</em> – Werte verstehen, Form sehen.",
+  "lead": "Mit <strong>DT-ProfiDreieck</strong> berechnen Sie ein Dreieck aus drei bekannten Größen. Der Dreiecksrechner ermittelt die übrigen Seiten, Winkel, Fläche und weitere Geometriewerte und zeigt das Ergebnis als Zeichnung mit nachvollziehbarem Rechenweg – in der Vollversion auch als DXF für CAD und CNC.",
+  "caption": "Seiten · Winkel · Höhe · Umkreis – Geometrie auf einen Blick",
+  "trust": [
+   [
+    "3 bekannte Größen",
+    "als Ausgangspunkt für die Berechnung"
+   ],
+   [
+    "Rechenweg inklusive",
+    "Formeln und eingesetzte Zahlen nachvollziehen"
+   ],
+   [
+    "DXF für CAD & CNC",
+    "echte Einheiten, sauber nach Ebenen getrennt"
+   ]
+  ],
+  "features": [
+   [
+    "△",
+    "Dreieck aus drei Größen berechnen",
+    "Seiten, Winkel, Umkreisradius, Inkreisradius, Fläche oder Höhen kombinieren. Die übrigen Werte werden daraus bestimmt."
+   ],
+   [
+    "∠",
+    "Seiten und Winkel ermitteln",
+    "Typische Fälle wie SSS, SWS, WSW, SWW und SSW behandeln. Bei mehrdeutigen Eingaben werden null, eine oder zwei Lösungen erkannt."
+   ],
+   [
+    "⌁",
+    "Zeichnung und Geometrie",
+    "Das Dreieck maßstäblich ansehen und Höhen, Mittelsenkrechten, Winkelhalbierende, Euler-Gerade, Feuerbachkreis und Ankreise einblenden."
+   ],
+   [
+    "ƒ",
+    "Nachvollziehbarer Rechenweg",
+    "Formeln, eingesetzte Zahlen und Ergebnisse Schritt für Schritt nachvollziehen – hilfreich zum Lernen, Prüfen und Dokumentieren."
+   ],
+   [
+    "DXF",
+    "Export für CAD und CNC",
+    "In der Vollversion: echtes DXF in realen Einheiten, getrennt nach Ebenen, dazu SVG, PNG und PDF für die Dokumentation."
+   ],
+   [
+    "✓",
+    "Plausibilitätsprüfungen",
+    "Unmögliche oder widersprüchliche Eingaben werden erkannt und erläutert, unter anderem über die Euler-Ungleichung."
+   ]
+  ],
+  "steps": [
+   "Drei bekannte Größen auswählen, zum Beispiel zwei Seiten und einen Winkel.",
+   "Werte eingeben und die gewünschte Längeneinheit wählen.",
+   "„Dreieck berechnen“ anklicken.",
+   "Ergebnisse, Zeichnung und den vollständigen Rechenweg prüfen."
+  ],
+  "box": [
+   "Beispiel: Dreiecksfläche berechnen",
+   "Sind Grundseite und zugehörige Höhe bekannt, lässt sich die Fläche eines Dreiecks so bestimmen:",
+   "A = (g · h) / 2"
+  ],
+  "faq": [
+   [
+    "Wie kann ich ein Dreieck berechnen?",
+    "Wählen Sie drei bekannte Größen, zum Beispiel drei Seiten, zwei Seiten und einen Winkel oder eine Kombination mit Fläche, Höhe, Inkreis- oder Umkreisradius. DT-ProfiDreieck berechnet die weiteren Größen, sofern die Angaben eine Lösung bestimmen."
+   ],
+   [
+    "Welche Werte kann der Dreiecksrechner ermitteln?",
+    "Abhängig von den Eingaben berechnet die Anwendung unter anderem Seitenlängen, Innenwinkel, Umfang, Flächeninhalt, Höhen, Inkreisradius und Umkreisradius."
+   ],
+   [
+    "Kann ich das Dreieck als DXF exportieren?",
+    "Ja, in der Vollversion. Der DXF-Export erfolgt in realen Einheiten und getrennt nach Ebenen für Dreieck, Kreise, Hilfslinien und Beschriftung – direkt für CAD und CNC."
+   ],
+   [
+    "Kann ich die Dreiecksberechnung kostenlos testen?",
+    "Ja. Die Testversion startet direkt im Browser. Die Berechnungen sind nutzbar; Speichern, Laden und Export sind der Vollversion vorbehalten."
+   ],
+   [
+    "Muss ich etwas installieren oder mich anmelden?",
+    "Nein. Die Testversion wird direkt im Browser geöffnet. Eine Installation und ein Benutzerkonto sind dafür nicht erforderlich."
+   ],
+   [
+    "Funktioniert das Programm offline?",
+    "Die Berechnungen laufen auf dem eigenen Gerät im Browser. Nach dem Laden der HTML-Anwendung ist die Berechnung auch ohne Internetverbindung möglich."
+   ]
+  ],
+  "img": null,
+  "accent": null,
+  "accent_dark": null,
+  "img_alt": "Dreieck mit Seiten a, b und c, Winkeln Alpha, Beta und Gamma, Höhen, Umkreis, Inkreis, Feuerbachkreis und Euler-Gerade – Zeichnung aus DT-ProfiDreieck"
+ },
+ "schraube": {
+  "repo": "dt-profischraube-web",
+  "app": "DT-ProfiSchraube_Test.html",
+  "name": "DT-ProfiSchraube",
+  "preis": 159,
+  "kauf": "https://www.checkout-ds24.com/product/722968",
+  "kat": "Schraubenberechnung nach VDI 2230",
+  "video": "schraube-vdi-2230",
+  "h1": "Schraube <em>berechnen</em> nach VDI 2230 – jeder Schritt belegt.",
+  "lead": "Mit <strong>DT-ProfiSchraube</strong> berechnen Sie vorgespannte Schraubenverbindungen nach VDI 2230 Blatt 1. Das Programm zeigt jeden Rechenschritt mit allgemeiner Formel, eingesetzten Werten, Ergebnis und Quelle – eine Handrechnung lässt sich Zeile für Zeile danebenlegen.",
+  "caption": "Fünf Nachweise · Ampelanzeige · Rechenweg mit Quelle",
+  "trust": [
+   [
+    "VDI 2230 Blatt 1",
+    "Rechengang nach der Richtlinie"
+   ],
+   [
+    "Rechenweg mit Quelle",
+    "Formel, Werte und Fundstelle je Schritt"
+   ],
+   [
+    "Direkt im Browser",
+    "ohne Installation und Benutzerkonto"
+   ]
+  ],
+  "features": [
+   [
+    "⚙",
+    "Schraube und Bauteile eingeben",
+    "Schraubenabmessung, Festigkeitsklasse, Werkstoffe, verspannte Teile mit Klemmlänge und Auflagegeometrie, Reibungszahlen in Gewinde und Kopfauflage."
+   ],
+   [
+    "Φ",
+    "Nachgiebigkeit und Kraftverhältnis",
+    "Nachgiebigkeiten von Schraube und Platten, daraus das Kraftverhältnis – mit Krafteinleitung und Anziehfaktor des gewählten Anziehverfahrens."
+   ],
+   [
+    "✓",
+    "Fünf Nachweise mit Ampel",
+    "Auf einen Blick erkennbar, welcher Nachweis kritisch wird – Montage, Betrieb, Flächenpressung und weitere Punkte nach VDI 2230."
+   ],
+   [
+    "⌁",
+    "Verspannungsschaubild",
+    "Kraft über Verformung für Schraube und Platten mit Montagevorspannkraft und Zusatzkräften als Grafik."
+   ],
+   [
+    "ƒ",
+    "Nachvollziehbarer Rechenweg",
+    "Jeder Schritt mit Formel, eingesetzten Werten und Quellenangabe – zum Prüfen, Dokumentieren und für die Lehre."
+   ],
+   [
+    "◉",
+    "Flanschassistent und Hilfen",
+    "Assistent für häufige Flanschfälle und Hilfetexte an den Eingabefeldern, die erklären, welcher Wert gemeint ist."
+   ]
+  ],
+  "steps": [
+   "Schraube, Festigkeitsklasse und Werkstoffe wählen.",
+   "Verspannte Teile, Klemmlänge und Auflage eingeben.",
+   "Betriebskräfte und Anziehverfahren festlegen.",
+   "Nachweise, Schaubild und Rechenweg prüfen."
+  ],
+  "box": [
+   "Beispiel: Kraftverhältnis",
+   "Das Kraftverhältnis beschreibt, welcher Anteil der Betriebskraft zusätzlich in die Schraube geht:",
+   "Φ = δ<sub>P</sub> / (δ<sub>S</sub> + δ<sub>P</sub>)"
+  ],
+  "faq": [
+   [
+    "Nach welcher Norm rechnet DT-ProfiSchraube?",
+    "Nach VDI 2230 Blatt 1 für hochbeanspruchte, zylindrische Einschraubenverbindungen. Jeder Rechenschritt nennt die zugehörige Stelle."
+   ],
+   [
+    "Welche Nachweise werden geführt?",
+    "Fünf Nachweise mit Ampelanzeige, dazu Nachgiebigkeiten, Kraftverhältnis und Verspannungsschaubild."
+   ],
+   [
+    "Wie wurde das Programm geprüft?",
+    "Die Rechenkerne wurden mit über 2,2 Millionen automatisierten Testfällen gegen bekannte Ergebnisse abgeglichen."
+   ],
+   [
+    "Was kann die Testversion?",
+    "Sie rechnet in vollem Umfang. Gesperrt sind nur die Ausgaben: Speichern, Öffnen, Drucken und der Word-Bericht."
+   ],
+   [
+    "Muss ich etwas installieren?",
+    "Nein. Die Testversion läuft direkt im Browser, ohne Anmeldung und ohne Installation."
+   ],
+   [
+    "Funktioniert das Programm offline?",
+    "Ja. Alle Berechnungen laufen auf dem eigenen Gerät; es werden keine Daten an Server übertragen."
+   ]
+  ],
+  "img": [
+   "Schraube_Daten/bilder/schraube-start.jpg",
+   1500,
+   806,
+   "Startansicht von DT-ProfiSchraube mit Eingabe und fünf grünen Sicherheitsnachweisen"
+  ],
+  "accent": "#d99a3c",
+  "accent_dark": "#8a5a12",
+  "img_alt": "Startansicht von DT-ProfiSchraube mit Eingabe und fünf grünen Sicherheitsnachweisen"
+ },
+ "passung": {
+  "repo": "dt-profipassung-web",
+  "app": "DT-ProfiPassung_Testversion.html",
+  "name": "DT-ProfiPassung",
+  "preis": 139,
+  "kauf": "https://www.checkout-ds24.com/product/722972",
+  "kat": "Passungsrechner nach ISO 286",
+  "video": "passung-iso-286",
+  "h1": "Passung <em>berechnen</em> nach ISO 286 – mit Selbstprüfung.",
+  "lead": "Mit <strong>DT-ProfiPassung</strong> ermitteln Sie Grenzmaße, Abmaße, Spiel und Übermaß für Passungen nach ISO 286. Zusätzlich rechnet das Programm Pressverbände nach DIN 7190 und Allgemeintoleranzen nach ISO 2768 – jeder Schritt mit Formel, Werten und Quelle.",
+  "caption": "Grenzmaße · Spiel/Übermaß · Toleranzfeld",
+  "trust": [
+   [
+    "ISO 286 · DIN 7190",
+    "Passungen, Pressverband, ISO 2768"
+   ],
+   [
+    "Selbstprüfung",
+    "Ergebnis auf zweitem Weg gegengerechnet"
+   ],
+   [
+    "Direkt im Browser",
+    "ohne Installation und Benutzerkonto"
+   ]
+  ],
+  "features": [
+   [
+    "⌀",
+    "Schnelleingabe wie gewohnt",
+    "Passung in der üblichen Schreibweise eingeben, etwa Ø50 H7/g6 – oder Nennmaß und Toleranzklassen einzeln wählen."
+   ],
+   [
+    "±",
+    "Abmaße und Grenzmaße",
+    "Oberes und unteres Abmaß, Höchst- und Mindestmaß für Bohrung und Welle, Grundabmaße A bis ZC und a bis zc, IT1 bis IT18."
+   ],
+   [
+    "⇔",
+    "Spiel, Übermaß, Passungsart",
+    "Höchst- und Mindestspiel bzw. -übermaß und die Einordnung als Spiel-, Übergangs- oder Übermaßpassung."
+   ],
+   [
+    "⌁",
+    "Toleranzfeld als Grafik",
+    "Lage von Bohrung und Welle bezogen auf die Nulllinie – sofort erkennbar, wo Spiel oder Übermaß entsteht."
+   ],
+   [
+    "✓",
+    "Selbstprüfender Rechenweg",
+    "Formel, eingesetzte Werte und Quelle je Schritt. Das Programm rechnet auf einem zweiten Weg gegen und meldet Abweichungen."
+   ],
+   [
+    "◉",
+    "Pressverband und Praxis",
+    "Fugendruck, übertragbares Moment und Fügetemperatur nach DIN 7190, Allgemeintoleranzen nach ISO 2768 und Praxishinweise zur Passungswahl."
+   ]
+  ],
+  "steps": [
+   "Passung eingeben, zum Beispiel Ø50 H7/g6.",
+   "Bei Bedarf Pressverband oder Allgemeintoleranz wählen.",
+   "Ergebnis und Toleranzfeld ansehen.",
+   "Rechenweg mit Selbstprüfung kontrollieren."
+  ],
+  "box": [
+   "Beispiel: Höchstspiel",
+   "Das Höchstspiel ergibt sich aus dem Höchstmaß der Bohrung und dem Mindestmaß der Welle:",
+   "P<sub>SH</sub> = G<sub>oB</sub> − G<sub>uW</sub>"
+  ],
+  "faq": [
+   [
+    "Nach welchen Normen rechnet DT-ProfiPassung?",
+    "Passungen nach ISO 286, Pressverbände nach DIN 7190 und Allgemeintoleranzen nach ISO 2768."
+   ],
+   [
+    "Welche Werte liefert der Passungsrechner?",
+    "Abmaße, Höchst- und Mindestmaße, Spiel bzw. Übermaß, Passungsart und das Toleranzfeld als Grafik."
+   ],
+   [
+    "Wie zuverlässig sind die Ergebnisse?",
+    "Das Programm rechnet jedes Ergebnis auf einem zweiten Weg gegen und meldet Abweichungen. Vor verbindlicher Verwendung bitte gegen die Originalnorm prüfen."
+   ],
+   [
+    "Was kann die Testversion?",
+    "Sie rechnet in vollem Umfang. Gesperrt sind nur die Ausgaben: Speichern, Öffnen, Drucken und der Word-Bericht."
+   ],
+   [
+    "Muss ich etwas installieren?",
+    "Nein. Die Testversion läuft direkt im Browser, ohne Anmeldung und ohne Installation."
+   ],
+   [
+    "Funktioniert das Programm offline?",
+    "Ja. Alle Berechnungen laufen auf dem eigenen Gerät; es werden keine Daten an Server übertragen."
+   ]
+  ],
+  "img": [
+   "Passung_Daten/bilder/passung-start.jpg",
+   1344,
+   842,
+   "Startansicht von DT-ProfiPassung mit Eingabe einer Passung und Ergebnis nach ISO 286"
+  ],
+  "accent": "#2fc48f",
+  "accent_dark": "#0b7a56",
+  "img_alt": "Startansicht von DT-ProfiPassung mit Eingabe einer Passung und Ergebnis nach ISO 286"
+ },
+ "schweissnaht": {
+  "repo": "dt-profischweissnaht-web",
+  "app": "DT-ProfiSchweissnaht_Testversion.html",
+  "name": "DT-ProfiSchweissnaht",
+  "preis": 169,
+  "kauf": "https://www.checkout-ds24.com/product/722975",
+  "kat": "Schweißnahtberechnung nach Eurocode 3",
+  "video": "schweissnaht-en-1993-1-8",
+  "h1": "Schweißnaht <em>berechnen</em> nach EN 1993-1-8 – nachvollziehbar.",
+  "lead": "Mit <strong>DT-ProfiSchweissnaht</strong> weisen Sie Schweißnähte nach EN 1993-1-8 (Eurocode 3) und nach klassischen Ansätzen des Maschinenbaus nach. Jeder Rechenschritt steht mit Formel, eingesetzten Werten, Ergebnis und Quelle da – und das Programm sagt offen, was es nicht prüft.",
+  "caption": "Nahtbild · Nachweis · Rechenweg mit Quelle",
+  "trust": [
+   [
+    "EN 1993-1-8",
+    "richtungsbezogen oder vereinfacht"
+   ],
+   [
+    "Maßstäbliches Nahtbild",
+    "die tatsächliche Naht, nicht nur eine Länge"
+   ],
+   [
+    "Direkt im Browser",
+    "ohne Installation und Benutzerkonto"
+   ]
+  ],
+  "features": [
+   [
+    "⌒",
+    "Kehl- und Stumpfnähte",
+    "Nahtart, Geometrie und Nahtvorbereitung eingeben – Werkstoffe und Stahlgüten mit den zugehörigen Festigkeitswerten."
+   ],
+   [
+    "✓",
+    "Nachweis nach Eurocode 3",
+    "Nachweis nach EN 1993-1-8, wahlweise richtungsbezogen oder vereinfacht, mit Teilsicherheitsbeiwerten nach der jeweiligen Norm."
+   ],
+   [
+    "▣",
+    "Maßstäbliches Nahtbild",
+    "Die tatsächliche Naht mit Schwerpunkt wird gezeichnet – Flansch-, Steg- und Stirnkehlnähte sichtbar statt nur eine Nahtlänge."
+   ],
+   [
+    "ƒ",
+    "Rechenweg mit Quellen",
+    "Jeder Schritt mit Formel, eingesetzten Werten und Quellenangabe, dazu Rechenproben für Flächenmomente und Hauptachsen."
+   ],
+   [
+    "°C",
+    "Wärmeführung",
+    "Vorwärmtemperatur und Abkühlzeit t8/5 nach EN 1011-2 sowie Materialmenge, Schweißzeit und Drahtbedarf."
+   ],
+   [
+    "!",
+    "Offen benannte Grenzen",
+    "Eine Liste dessen, was das Programm nicht prüft – was es rechnet, ist damit nachvollziehbar begrenzt."
+   ]
+  ],
+  "steps": [
+   "Werkstoff und Stahlgüte wählen.",
+   "Nahtart und Nahtgeometrie eingeben.",
+   "Einwirkungen und Verfahren festlegen.",
+   "Nahtbild, Nachweis und Rechenweg prüfen."
+  ],
+  "box": [
+   "Beispiel: vereinfachtes Verfahren",
+   "Beim vereinfachten Verfahren nach EN 1993-1-8 wird die Beanspruchung je Längeneinheit der Tragfähigkeit gegenübergestellt:",
+   "F<sub>w,Ed</sub> ≤ f<sub>vw,d</sub> · a"
+  ],
+  "faq": [
+   [
+    "Nach welcher Norm rechnet DT-ProfiSchweissnaht?",
+    "Nach EN 1993-1-8 (Eurocode 3) sowie nach den klassischen Ansätzen des Maschinenbaus; die Wärmeführung nach EN 1011-2."
+   ],
+   [
+    "Welche Nähte werden unterstützt?",
+    "Kehlnähte und Stumpfnähte mit den zugehörigen Nahtvorbereitungen; das Nahtbild wird maßstäblich gezeichnet."
+   ],
+   [
+    "Was prüft das Programm nicht?",
+    "Das Programm listet an mehreren Stellen ausdrücklich auf, was es nicht prüft – zum Beispiel Nachweise außerhalb der Naht selbst."
+   ],
+   [
+    "Was kann die Testversion?",
+    "Sie rechnet in vollem Umfang. Gesperrt sind nur die Ausgaben: Speichern, Öffnen, Drucken und der Word-Bericht. Sie darf weitergegeben werden."
+   ],
+   [
+    "Muss ich etwas installieren?",
+    "Nein. Die Testversion läuft direkt im Browser, ohne Anmeldung und ohne Installation."
+   ],
+   [
+    "Funktioniert das Programm offline?",
+    "Ja. Alle Berechnungen laufen auf dem eigenen Gerät; es werden keine Daten an Server übertragen."
+   ]
+  ],
+  "img": [
+   "Schweissnaht_Daten/bilder/schweissnaht-start.jpg",
+   1500,
+   829,
+   "Startansicht von DT-ProfiSchweissnaht mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt"
+  ],
+  "accent": "#f08a3e",
+  "accent_dark": "#a8430a",
+  "img_alt": "Startansicht von DT-ProfiSchweissnaht mit Ausnutzung, Vergleichsspannung und maßgebendem Punkt"
+ }
+}

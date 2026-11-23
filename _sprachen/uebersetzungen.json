@@ -1,0 +1,751 @@
+{
+ "_hinweis": "Schluessel = deutscher Text aus index.html. Werte: en = Englisch (international), pt = Portugiesisch (Brasilien). Nach Aenderungen: python3 _sprachen/sprachen.py",
+ "texte": {
+  "Dreieck": {
+   "en": "Triangle",
+   "pt": "Triângulo"
+  },
+  "Schraube": {
+   "en": "Bolt",
+   "pt": "Parafuso"
+  },
+  "Passung": {
+   "en": "Fit",
+   "pt": "Ajuste"
+  },
+  "Schweißnaht": {
+   "en": "Weld",
+   "pt": "Solda"
+  },
+  "Vergleich": {
+   "en": "Comparison",
+   "pt": "Comparação"
+  },
+  "Gratis testen": {
+   "en": "Try for free",
+   "pt": "Testar grátis"
+  },
+  "◬ Berechnungswerkzeuge für Werkstatt & Konstruktion": {
+   "en": "◬ Calculation tools for workshop & engineering",
+   "pt": "◬ Ferramentas de cálculo para oficina e engenharia"
+  },
+  "Vier Profi-Werkzeuge aus der Praxis: Dreiecksgeometrie mit DXF-Export für die CNC, Schraubenverbindungen nach VDI 2230, Passungen nach ISO 286 – und Schweißnähte nach EN 1993-1-8. Alle laufen offline, als eine einzige Datei, ohne Installation.": {
+   "en": "Four professional tools straight from practice: triangle geometry with DXF export for the CNC, bolted joints to VDI 2230, fits to ISO 286 – and welds to EN 1993-1-8. All of them run offline, as a single file, without installation.",
+   "pt": "Quatro ferramentas profissionais nascidas da prática: geometria de triângulos com exportação DXF para o CNC, uniões parafusadas conforme VDI 2230, ajustes conforme ISO 286 – e soldas conforme EN 1993-1-8. Todas funcionam offline, em um único arquivo, sem instalação."
+  },
+  "einmalig": {
+   "en": "one-time",
+   "pt": "único"
+  },
+  "Details ↓": {
+   "en": "Details ↓",
+   "pt": "Detalhes ↓"
+  },
+  "Drei Größen eingeben – das ganze Dreieck wird berechnet, maßstäblich gezeichnet und als DXF, SVG oder PDF exportiert.": {
+   "en": "Enter three values – the whole triangle is calculated, drawn to scale and exported as DXF, SVG or PDF.",
+   "pt": "Digite três valores – o triângulo completo é calculado, desenhado em escala e exportado em DXF, SVG ou PDF."
+  },
+  "DXF direkt in CAD & CNC importierbar": {
+   "en": "DXF imports straight into CAD & CNC",
+   "pt": "DXF importável diretamente em CAD e CNC"
+  },
+  "Auch aus Umkreis, Inkreis, Fläche, Höhen": {
+   "en": "Also from circumcircle, incircle, area, heights",
+   "pt": "Também a partir de circunferência circunscrita, inscrita, área e alturas"
+  },
+  "Voller Rechenweg, Schritt für Schritt": {
+   "en": "Full calculation path, step by step",
+   "pt": "Memória de cálculo completa, passo a passo"
+  },
+  "Schraubenverbindungen nach VDI 2230 Blatt 1 auslegen – mit Sicherheits-Nachweisen, Assistenten und dokumentiertem Rechenweg.": {
+   "en": "Design bolted joints to VDI 2230 Part 1 – with safety checks, assistants and a documented calculation path.",
+   "pt": "Dimensione uniões parafusadas conforme VDI 2230 Parte 1 – com verificações de segurança, assistentes e memória de cálculo documentada."
+  },
+  "Nachweise: Fließen, Dauerhaltbarkeit, Pressung, Gleiten, Einschraubtiefe": {
+   "en": "Checks: yielding, fatigue strength, surface pressure, slipping, thread engagement",
+   "pt": "Verificações: escoamento, resistência à fadiga, pressão superficial, deslizamento, profundidade de aperto"
+  },
+  "Assistenten für Flansch & Dehnschraube": {
+   "en": "Assistants for flange & reduced-shank bolt",
+   "pt": "Assistentes para flange e parafuso de haste reduzida"
+  },
+  "Export als Word-Bericht, PDF und CSV": {
+   "en": "Export as Word report, PDF and CSV",
+   "pt": "Exportação como relatório Word, PDF e CSV"
+  },
+  "Passungen und Toleranzen nach ISO 286 in Sekunden – mit selbstprüfendem Rechenweg, Pressverband nach DIN 7190 und geführtem Assistenten.": {
+   "en": "Fits and tolerances to ISO 286 in seconds – with a self-checking calculation path, interference fits to DIN 7190 and a guided assistant.",
+   "pt": "Ajustes e tolerâncias conforme ISO 286 em segundos – com memória de cálculo autoverificada, ajuste por interferência conforme DIN 7190 e assistente guiado."
+  },
+  "Schnelleingabe wie „Ø50 H7/g6“": {
+   "en": "Quick entry such as “Ø50 H7/g6”",
+   "pt": "Entrada rápida como “Ø50 H7/g6”"
+  },
+  "Rechenweg mit Häkchen für jeden Schritt": {
+   "en": "Calculation path with a check mark for every step",
+   "pt": "Memória de cálculo com marca de verificação em cada passo"
+  },
+  "Gratis-Version mit vollem Funktionsumfang": {
+   "en": "Free version with the full range of functions",
+   "pt": "Versão gratuita com todas as funções"
+  },
+  "Schweißnähte nachweisen oder das a-Maß auslegen – mit echtem Nahtbild, über dreißig Rechenschritten und benannter Quelle je Schritt.": {
+   "en": "Verify welds or size the throat thickness – with a real weld layout, more than thirty calculation steps and a named source for each one.",
+   "pt": "Verifique soldas ou dimensione a garganta – com a geometria real do cordão, mais de trinta passos de cálculo e a fonte indicada em cada passo."
+  },
+  "Nahtbild aus Profil und geschweißten Kanten": {
+   "en": "Weld layout from profile and welded edges",
+   "pt": "Geometria do cordão a partir do perfil e das arestas soldadas"
+  },
+  "Rechenproben laufen bei jeder Berechnung mit": {
+   "en": "Arithmetic checks run with every calculation",
+   "pt": "As provas de cálculo acompanham cada cálculo"
+  },
+  "Testversion rechnet alles – gesperrt sind nur die Ausgaben": {
+   "en": "The trial calculates everything – only the outputs are locked",
+   "pt": "A versão de teste calcula tudo – apenas as saídas estão bloqueadas"
+  },
+  "Eine Datei – keine Installation": {
+   "en": "One file – no installation",
+   "pt": "Um arquivo – sem instalação"
+  },
+  "Handy · Tablet · PC": {
+   "en": "Phone · Tablet · PC",
+   "pt": "Celular · Tablet · PC"
+  },
+  "Keine Konten, kein Tracking": {
+   "en": "No accounts, no tracking",
+   "pt": "Sem contas, sem rastreamento"
+  },
+  "Sichere Zahlung über Digistore24": {
+   "en": "Secure payment via Digistore24",
+   "pt": "Pagamento seguro através da Digistore24"
+  },
+  "Warum diese Werkzeuge": {
+   "en": "Why these tools",
+   "pt": "Por que estas ferramentas"
+  },
+  "Falsch gerechnet ist teuer gefertigt": {
+   "en": "A wrong calculation is an expensive part",
+   "pt": "Cálculo errado sai caro na produção"
+  },
+  "Ausschuss kostet doppelt": {
+   "en": "Scrap costs twice",
+   "pt": "O refugo custa em dobro"
+  },
+  "Ein falscher Winkel oder eine zu schwach ausgelegte Verbindung bedeutet Material, Maschinenzeit und Nacharbeit. Verlässliche Zahlen vor dem ersten Schnitt sparen bares Geld.": {
+   "en": "A wrong angle or an under-designed joint means material, machine time and rework. Reliable figures before the first cut save real money.",
+   "pt": "Um ângulo errado ou uma união subdimensionada significa material, tempo de máquina e retrabalho. Números confiáveis antes do primeiro corte economizam dinheiro."
+  },
+  "Online-Rechner reichen nicht": {
+   "en": "Online calculators are not enough",
+   "pt": "As calculadoras online não bastam"
+  },
+  "Gratis-Tools rechnen Standardfälle, brauchen Internet und liefern weder DXF noch einen prüffähigen Rechenweg. In der Halle ohne Empfang helfen sie gar nicht.": {
+   "en": "Free tools handle standard cases, need an internet connection and deliver neither DXF nor a verifiable calculation path. In a workshop without reception they are no help at all.",
+   "pt": "As ferramentas gratuitas resolvem casos padrão, precisam de Internet e não fornecem nem DXF nem memória de cálculo verificável. Em um galpão sem rede, não ajudam em nada."
+  },
+  "Norm-Nachweis per Hand dauert": {
+   "en": "Working to standards by hand takes time",
+   "pt": "Verificar à mão segundo as normas demora"
+  },
+  "Eine Auslegung von Hand füllt schnell einen Nachmittag. Mit dokumentiertem Rechenweg auf Knopfdruck bleibt die Zeit fürs Konstruieren.": {
+   "en": "Designing by hand easily fills an afternoon. With a documented calculation path at the touch of a button, the time stays where it belongs: designing.",
+   "pt": "Um dimensionamento à mão ocupa facilmente uma tarde. Com a memória de cálculo documentada com um toque, o tempo fica para projetar."
+  },
+  "Pos. 01 · Geometrie": {
+   "en": "Item 01 · Geometry",
+   "pt": "Pos. 01 · Geometria"
+  },
+  "Drei Größen eingeben – alles andere wird berechnet, maßstäblich gezeichnet und exportiert. Auch aus Spezialgrößen wie Umkreis, Inkreis, Fläche oder Höhen, an denen Gratis-Tools scheitern.": {
+   "en": "Enter three values – everything else is calculated, drawn to scale and exported. Even from special inputs such as circumcircle, incircle, area or heights, where free tools give up.",
+   "pt": "Digite três valores – tudo o resto é calculado, desenhado em escala e exportado. Mesmo a partir de dados especiais como circunferência circunscrita, inscrita, área ou alturas, onde as ferramentas gratuitas falham."
+  },
+  "Gratis-Version testen →": {
+   "en": "Try the free version →",
+   "pt": "Testar a versão gratuita →"
+  },
+  "Vollversion · 69 €": {
+   "en": "Full version · €69",
+   "pt": "Versão completa · 69 €"
+  },
+  "Direkt für CAD & CNC": {
+   "en": "Straight into CAD & CNC",
+   "pt": "Direto para CAD e CNC"
+  },
+  "Echtes DXF in realen Einheiten, sauber nach Layern getrennt – sofort importierbar.": {
+   "en": "Real DXF in real units, cleanly separated by layers – ready to import.",
+   "pt": "DXF real em unidades reais, separado por camadas – pronto para importar."
+  },
+  "Spezialfälle statt Standardfälle": {
+   "en": "Special cases, not just standard ones",
+   "pt": "Casos especiais, não apenas os padrão"
+  },
+  "Aus Umkreis, Inkreis, Fläche und Höhen das ganze Dreieck rekonstruieren – das kann kein Gratis-Tool.": {
+   "en": "Reconstruct the entire triangle from circumcircle, incircle, area and heights – no free tool does that.",
+   "pt": "Reconstrua o triângulo completo a partir da circunferência circunscrita, inscrita, área e alturas – nenhuma ferramenta gratuita faz isso."
+  },
+  "Voller Rechenweg": {
+   "en": "Full calculation path",
+   "pt": "Memória de cálculo completa"
+  },
+  "Jeder Schritt mit Formel und eingesetzten Werten – ideal für Werkstatt-Doku und Ausbildung.": {
+   "en": "Every step with formula and inserted values – ideal for workshop documentation and training.",
+   "pt": "Cada passo com fórmula e valores aplicados – ideal para documentação de oficina e treinamento."
+  },
+  "Export überall": {
+   "en": "Export anywhere",
+   "pt": "Exportação para tudo"
+  },
+  "PNG, SVG, DXF und Drucken/PDF – komplett offline verfügbar.": {
+   "en": "PNG, SVG, DXF and print/PDF – fully available offline.",
+   "pt": "PNG, SVG, DXF e impressão/PDF – totalmente disponível offline."
+  },
+  "Kurz gezeigt: ein Winkel am Werkstück, Sekunden später als DXF in CAD und CNC": {
+   "en": "Shown briefly: an angle on the workpiece, seconds later a DXF in CAD and CNC",
+   "pt": "Em breve demonstração: um ângulo na peça, segundos depois um DXF em CAD e CNC"
+  },
+  "Von der Eingabe bis zum Ergebnis – leicht zu bedienen": {
+   "en": "From input to result – easy to use",
+   "pt": "Da entrada ao resultado – fácil de usar"
+  },
+  "Vollversion": {
+   "en": "Full version",
+   "pt": "Versão completa"
+  },
+  "Sofortiger Download nach dem Kauf": {
+   "en": "Immediate download after purchase",
+   "pt": "Download imediato após a compra"
+  },
+  "Alle Spezialfälle & Exporte freigeschaltet": {
+   "en": "All special cases & exports unlocked",
+   "pt": "Todos os casos especiais e exportações desbloqueados"
+  },
+  "Läuft offline – Handy, Tablet, PC": {
+   "en": "Runs offline – phone, tablet, PC",
+   "pt": "Funciona offline – celular, tablet, PC"
+  },
+  "Sichere Abwicklung über Digistore24": {
+   "en": "Secure handling via Digistore24",
+   "pt": "Processamento seguro através da Digistore24"
+  },
+  "Jetzt kaufen →": {
+   "en": "Buy now →",
+   "pt": "Comprar agora →"
+  },
+  "Lieber erst ausprobieren?": {
+   "en": "Rather try it first?",
+   "pt": "Prefere testar primeiro?"
+  },
+  "Gratis-Version testen": {
+   "en": "Try the free version",
+   "pt": "Testar a versão gratuita"
+  },
+  "Pos. 02 · Verbindungstechnik": {
+   "en": "Item 02 · Joining technology",
+   "pt": "Pos. 02 · Tecnologia de união"
+  },
+  "Von der Klemmkraft bis zur Einschraubtiefe: fünf Sicherheits-Nachweise mit Ampel-Bewertung, jeder Rechenschritt dokumentiert mit Formel, eingesetzten Werten und Normverweis.": {
+   "en": "From clamping force to thread engagement: five safety checks with a traffic-light rating, every calculation step documented with formula, inserted values and reference to the standard.",
+   "pt": "Da força de aperto à profundidade de aperto: cinco verificações de segurança com semáforo, cada passo documentado com fórmula, valores aplicados e referência à norma."
+  },
+  "40 Sekunden: Nachweise, Rechenweg, Schaubild, Assistenten, Export.": {
+   "en": "40 seconds: checks, calculation path, diagram, assistants, export.",
+   "pt": "40 segundos: verificações, memória de cálculo, diagrama, assistentes, exportação."
+  },
+  "40 Sekunden: Kurzeingabe, Rechenweg, Toleranzfeld, Assistent, Pressverband.": {
+   "en": "40 seconds: quick entry, calculation path, tolerance zones, assistant, interference fit.",
+   "pt": "40 segundos: entrada rápida, memória de cálculo, campos de tolerância, assistente, ajuste por interferência."
+  },
+  "Fünf Nachweise mit Ampel": {
+   "en": "Five checks with traffic lights",
+   "pt": "Cinco verificações com semáforo"
+  },
+  "Fließen, Dauerhaltbarkeit, Flächenpressung, Gleiten/Reibschluss und Einschraubtiefe – auf einen Blick bewertet.": {
+   "en": "Yielding, fatigue strength, surface pressure, slipping/friction grip and thread engagement – rated at a glance.",
+   "pt": "Escoamento, resistência à fadiga, pressão superficial, deslizamento/atrito e profundidade de aperto – avaliados de relance."
+  },
+  "Rechenweg wie im Lehrbuch": {
+   "en": "A calculation path like a textbook",
+   "pt": "Memória de cálculo como no manual"
+  },
+  "Jeder Schritt: allgemeine Formel, eingesetzte Werte, Ergebnis, Normverweis. Prüffähig für Doku und Kunden.": {
+   "en": "Every step: general formula, inserted values, result, reference to the standard. Verifiable for documentation and customers.",
+   "pt": "Cada passo: fórmula geral, valores aplicados, resultado, referência à norma. Verificável para documentação e clientes."
+  },
+  "Assistenten für Sonderfälle": {
+   "en": "Assistants for special cases",
+   "pt": "Assistentes para casos especiais"
+  },
+  "Flansch-Assistent (Querkraft aus Drehmoment), Dehnschraube mit Taillenquerschnitt, thermische Effekte.": {
+   "en": "Flange assistant (transverse force from torque), reduced-shank bolt with waisted section, thermal effects.",
+   "pt": "Assistente de flange (força transversal a partir do torque), parafuso de haste reduzida, efeitos térmicos."
+  },
+  "Verspannungsschaubild live": {
+   "en": "Live joint diagram",
+   "pt": "Diagrama de tensões em direto"
+  },
+  "Kraft-Verformungs-Diagramm mit F_M, F_V, F_SA und F_PA – direkt aus den eigenen Werten gezeichnet.": {
+   "en": "Force–deformation diagram with F_M, F_V, F_SA and F_PA – drawn straight from your own values.",
+   "pt": "Diagrama força–detreinamento com F_M, F_V, F_SA e F_PA – desenhado a partir dos seus valores."
+  },
+  "Hilfe direkt am Feld": {
+   "en": "Help right at the field",
+   "pt": "Ajuda junto a cada campo"
+  },
+  "Jede Eingabe mit Erklärtext und empfohlenen Werten – in Deutsch, Englisch und Portugiesisch.": {
+   "en": "Every input with explanatory text and recommended values – in German, English and Portuguese.",
+   "pt": "Cada campo com texto explicativo e valores recomendados – em alemão, inglês e português."
+  },
+  "Berichte auf Knopfdruck": {
+   "en": "Reports at the touch of a button",
+   "pt": "Relatórios com um toque"
+  },
+  "Word (.rtf), Drucken/PDF, CSV und Bild – dazu Speichern und Laden kompletter Berechnungsfälle.": {
+   "en": "Word (.rtf), print/PDF, CSV and image – plus saving and loading of complete calculation cases.",
+   "pt": "Word (.rtf), impressão/PDF, CSV e imagem – além de salvar e abrir casos de cálculo completos."
+  },
+  "Alle Nachweise, Assistenten & Exporte": {
+   "en": "All checks, assistants & exports",
+   "pt": "Todas as verificações, assistentes e exportações"
+  },
+  "Hinweis: Auslegungswerkzeug – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.": {
+   "en": "Note: a design tool – check results against the original standard before productive use.",
+   "pt": "Nota: ferramenta de dimensionamento – verifique os resultados em relação à norma original antes do uso produtivo."
+  },
+  "Pos. 03 · Toleranzen & Passungen": {
+   "en": "Item 03 · Tolerances & fits",
+   "pt": "Pos. 03 · Tolerâncias e ajustes"
+  },
+  "„Ø50 H7/g6“ eintippen – Sekunden später stehen Abmaße, Grenzmaße, Spiel oder Übermaß und die Passtoleranz nach ISO 286. Und jeder Schritt ist belegt: mit aufklappbarem, selbstprüfendem Rechenweg statt Blättern im Tabellenwerk.": {
+   "en": "Type “Ø50 H7/g6” – seconds later you have the deviations, limit sizes, clearance or interference and the fit tolerance to ISO 286. And every step is documented: with an expandable, self-checking calculation path instead of leafing through tables.",
+   "pt": "Digite “Ø50 H7/g6” – segundos depois você tem os desvios, medidas limite, folga ou interferência e a tolerância do ajuste conforme ISO 286. E cada passo fica documentado: com memória de cálculo expansível e autoverificada, em vez de folhear tabelas."
+  },
+  "ISO 286 in Sekunden": {
+   "en": "ISO 286 in seconds",
+   "pt": "ISO 286 em segundos"
+  },
+  "Abmaße, Höchst- und Mindestmaß, Spiel/Übermaß und Passtoleranz – als Einheitsbohrung oder Einheitswelle, per Auswahl oder Schnelleingabe.": {
+   "en": "Deviations, maximum and minimum size, clearance/interference and fit tolerance – as hole basis or shaft basis, by selection or quick entry.",
+   "pt": "Desvios, medida máxima e mínima, folga/interferência e tolerância do ajuste – no sistema furo-base ou eixo-base, por seleção ou entrada rápida."
+  },
+  "Selbstprüfender Rechenweg": {
+   "en": "Self-checking calculation path",
+   "pt": "Memória de cálculo autoverificada"
+  },
+  "Formel, eingesetzte Werte und ein Häkchen je Schritt – belegbar für Fertigung, QS, Kunden und Ausbildung.": {
+   "en": "Formula, inserted values and a check mark per step – evidence for production, QA, customers and training.",
+   "pt": "Fórmula, valores aplicados e uma marca de verificação por passo – prova para produção, qualidade, clientes e treinamento."
+  },
+  "Toleranzfeld-Schaubild + Thermik": {
+   "en": "Tolerance zone diagram + thermal effects",
+   "pt": "Diagrama das zonas de tolerância + efeitos térmicos"
+  },
+  "Die Lage von Bohrung (grün) und Welle (blau) auf einen Blick – auf Wunsch verschoben „bei T °C“.": {
+   "en": "The position of hole (green) and shaft (blue) at a glance – shifted “at T °C” on request.",
+   "pt": "A posição do furo (verde) e do eixo (azul) de relance – deslocada “a T °C” se desejar."
+  },
+  "Pressverband & Freimaße": {
+   "en": "Interference fit & general tolerances",
+   "pt": "Ajuste por interferência e tolerâncias gerais"
+  },
+  "DIN 7190: Fugendruck, Sicherheiten, übertragbares Moment und Fügetemperatur – dazu Allgemeintoleranzen nach ISO 2768.": {
+   "en": "DIN 7190: joint pressure, safety factors, transmissible torque and joining temperature – plus general tolerances to ISO 2768.",
+   "pt": "DIN 7190: pressão na interface, coeficientes de segurança, torque transmissível e temperatura de montagem – além das tolerâncias gerais conforme ISO 2768."
+  },
+  "Assistent & Praxis-Beratung": {
+   "en": "Assistant & practical advice",
+   "pt": "Assistente e aconselhamento prático"
+  },
+  "Geführte Passungsempfehlung mit Begründung, dazu Kostenampel, Messmittel- und Oberflächenhinweise.": {
+   "en": "A guided fit recommendation with reasoning, plus a cost indicator and notes on gauges and surfaces.",
+   "pt": "Recomendação de ajuste guiada e fundamentada, com indicador de custo e notas sobre instrumentos de medição e acabamento."
+  },
+  "Dreisprachig mit Laien-Hilfe": {
+   "en": "Three languages with plain-language help",
+   "pt": "Trilingue com ajuda em linguagem simples"
+  },
+  "Deutsch, Englisch und Portugiesisch komplett – inklusive Rechenweg; antippbares ⓘ an jedem Feld. Export als Word-Bericht (.rtf), Druck, Speichern & Laden.": {
+   "en": "German, English and Portuguese throughout – including the calculation path; a tappable ⓘ at every field. Export as a Word report (.rtf), print, save & load.",
+   "pt": "Alemão, inglês e português por completo – incluindo a memória de cálculo; um ⓘ tocável em cada campo. Exportação como relatório Word (.rtf), impressão, salvar e abrir."
+  },
+  "Speichern & Laden, Word-Bericht, Druck & Export freigeschaltet": {
+   "en": "Save & load, Word report, print & export unlocked",
+   "pt": "Salvar e abrir, relatório Word, impressão e exportação desbloqueados"
+  },
+  "Gratis-Version mit vollem Funktionsumfang testen": {
+   "en": "Try the free version with the full range of functions",
+   "pt": "Testar a versão gratuita com todas as funções"
+  },
+  "Hinweis: Berechnung ohne Gewähr – Ergebnisse vor Produktivnutzung gegen die Originalnorm prüfen.": {
+   "en": "Note: calculation without warranty – check results against the original standard before productive use.",
+   "pt": "Nota: cálculo sem garantia – verifique os resultados em relação à norma original antes do uso produtivo."
+  },
+  "Pos. 04 · Schweißtechnik": {
+   "en": "Item 04 · Welding technology",
+   "pt": "Pos. 04 · Tecnologia de soldagem"
+  },
+  "Rechnet Schweißnähte im Stahlbau nach EN 1993-1-8 und im klassischen Maschinenbau – und zeigt dabei jeden einzelnen Schritt: vom Nahtbild über Schwerpunkt, Flächenmomente und Hauptachsen bis zur Vergleichsspannung am maßgebenden Punkt. Kein Nachweis ohne Rechenweg, keine Zahl ohne Quelle.": {
+   "en": "Calculates welds in structural steelwork to EN 1993-1-8 and in classical mechanical engineering – showing every single step on the way: from the weld layout via centroid, second moments of area and principal axes to the equivalent stress at the governing point. No result without a calculation path, no figure without a source.",
+   "pt": "Calcula soldas em construção metálica conforme EN 1993-1-8 e na engenharia mecânica clássica – mostrando cada passo do percurso: da geometria do cordão ao centro de gravidade, momentos de inércia e eixos principais, até à tensão equivalente no ponto determinante. Nenhum resultado sem memória de cálculo, nenhum número sem fonte."
+  },
+  "40 Sekunden: Nahtbild, Rechenweg mit Quellen, Rechenproben – und die Grenzen der Berechnung.": {
+   "en": "40 seconds: weld layout, calculation path with sources, arithmetic checks – and the limits of the calculation.",
+   "pt": "40 segundos: geometria do cordão, memória de cálculo com fontes, provas de cálculo – e os limites do cálculo."
+  },
+  "Nahtbild statt Nahtlänge": {
+   "en": "Weld layout instead of weld length",
+   "pt": "Geometria do cordão em vez do comprimento"
+  },
+  "Aus Profil und tatsächlich geschweißten Kanten entsteht die echte Nahtgeometrie: Segmente, Schwerpunkt, Flächenmomente, Hauptachsen, Widerstandsmomente – und daraus der maßgebende Punkt. Das Nahtbild wird gezeichnet, mit Schwerpunktkreuz und Achsen.": {
+   "en": "The real weld geometry arises from the profile and the edges actually welded: segments, centroid, second moments of area, principal axes, section moduli – and from these the governing point. The weld layout is drawn, with centroid cross and axes.",
+   "pt": "A geometria real do cordão resulta do perfil e das arestas efetivamente soldadas: segmentos, centro de gravidade, momentos de inércia, eixos principais, módulos de flexão – e daí o ponto determinante. A geometria é desenhada, com cruz do centro de gravidade e eixos."
+  },
+  "Der Rechenweg ist das Produkt": {
+   "en": "The calculation path is the product",
+   "pt": "A memória de cálculo é o produto"
+  },
+  "Über dreißig Schritte, jeder mit Formel, eingesetzten Zahlen, Ergebnis und Quelle – Norm, Fachbuch oder ausdrücklich als Praxisrichtwert gekennzeichnet.": {
+   "en": "More than thirty steps, each with formula, inserted figures, result and source – standard, textbook or expressly marked as a practical guide value.",
+   "pt": "Mais de trinta passos, cada um com fórmula, valores aplicados, resultado e fonte – norma, manual técnico ou expressamente assinalado como valor prático de referência."
+  },
+  "Es prüft sich selbst – und sagt es": {
+   "en": "It checks itself – and says so",
+   "pt": "Ele mesmo se verifica – e informa isso"
+  },
+  "Rechenproben laufen bei jeder Berechnung mit: Sind die statischen Momente null? Ergibt I_p wirklich I_y + I_z? Ein fehlendes Häkchen heißt Rechenfehler im Programm – getrennt ausgewiesen von einem nicht erfüllten Nachweis.": {
+   "en": "Arithmetic checks run with every calculation: are the static moments zero? Does I_p really equal I_y + I_z? A missing check mark means an arithmetic error in the program – reported separately from a check that is not satisfied.",
+   "pt": "As provas de cálculo acompanham cada cálculo: os momentos estáticos são nulos? I_p é mesmo I_y + I_z? Uma marca de verificação ausente significa erro de cálculo do programa – indicado separadamente de uma verificação não cumprida."
+  },
+  "Es sagt, was es nicht prüft": {
+   "en": "It states what it does not check",
+   "pt": "Diz o que não verifica"
+  },
+  "Jede Ausgabe trägt eine Liste der Punkte, die dieses Programm bewusst nicht prüft – Grundwerkstoff, Beulen und Stabilität, Bauteilsteifigkeit, Ausführung und weitere. Im Nachweis selbst, nicht im Kleingedruckten.": {
+   "en": "Every output carries a list of the points this program deliberately does not check – base material, buckling and stability, component stiffness, execution and more. In the result itself, not in the small print.",
+   "pt": "Cada saída inclui a lista dos pontos que este programa deliberadamente não verifica – material de base, flambagem e estabilidade, rigidez do componente, execução e outros. No próprio resultado, não nas letras miúdas."
+  },
+  "Vier Bemessungswelten": {
+   "en": "Four design worlds",
+   "pt": "Quatro universos de dimensionamento"
+  },
+  "Stahlbau nach EN 1993-1-8, nichtrostende Stähle nach EN 1993-1-4, Aluminium nach EN 1999-1-1 und klassischer Maschinenbau (Roloff/Matek, Decker) – getrennt gehalten, nie vermischt. Wahlweise Nachweis oder Auslegung des a-Maßes.": {
+   "en": "Structural steelwork to EN 1993-1-8, stainless steels to EN 1993-1-4, aluminium to EN 1999-1-1 and classical mechanical engineering (Roloff/Matek, Decker) – kept apart, never mixed. Either verification or sizing of the throat thickness.",
+   "pt": "Construção metálica conforme EN 1993-1-8, aços inoxidáveis conforme EN 1993-1-4, alumínio conforme EN 1999-1-1 e engenharia mecânica clássica (Roloff/Matek, Decker) – mantidos separados, nunca misturados. À escolha: verificação ou dimensionamento da garganta."
+  },
+  "Mehr als die Naht": {
+   "en": "More than the weld",
+   "pt": "Mais do que o cordão"
+  },
+  "Wärmeführung und Vorwärmung nach EN 1011-2, Kosten, Zeit und Drahtbedarf sowie Zeichnungssymbole nach EN ISO 2553. Ausgaben: Drucken/PDF, Word (.rtf) mit Nahtbild und ein eigenes Dateiformat (.dts), das Eingaben statt Ergebnisse speichert.": {
+   "en": "Heat control and preheating to EN 1011-2, cost, time and wire consumption as well as drawing symbols to EN ISO 2553. Outputs: print/PDF, Word (.rtf) including the weld layout and a dedicated file format (.dts) that stores the inputs rather than the results.",
+   "pt": "Controle térmico e pré-aquecimento conforme EN 1011-2, custo, tempo e consumo de fio, bem como simbologia de desenho conforme EN ISO 2553. Saídas: impressão/PDF, Word (.rtf) com a geometria do cordão e um formato próprio (.dts) que salva os dados inseridos, não os resultados."
+  },
+  "Sie ist ausdrücklich zum Weitergeben gedacht – an Kollegen, Azubis oder ins Büro nebenan.": {
+   "en": "It is expressly meant to be passed on – to colleagues, apprentices or the office next door.",
+   "pt": "Pode ser compartilhada à vontade – com colegas, aprendizes ou o escritório ao lado."
+  },
+  "Speichern & Öffnen (.dts), Drucken/PDF und Word (.rtf) freigeschaltet": {
+   "en": "Save & open (.dts), print/PDF and Word (.rtf) unlocked",
+   "pt": "Salvar e abrir (.dts), impressão/PDF e Word (.rtf) desbloqueados"
+  },
+  "Hinweis: Hilfsmittel für fachkundige Anwender. Der Nachweis gilt der Naht, nicht dem Bauteil – Ergebnisse gegen die Originalnormen und die eigene Abnahme prüfen.": {
+   "en": "Note: a tool for qualified users. The verification applies to the weld, not to the component – check results against the original standards and your own approval.",
+   "pt": "Nota: ferramenta para usuários qualificados. A verificação se aplica ao cordão, não ao componente – confirme os resultados em relação às normas originais e à sua própria aprovação."
+  },
+  "Entscheidungshilfe": {
+   "en": "Decision aid",
+   "pt": "Ajuda à decisão"
+  },
+  "Welches Werkzeug passt zu dir?": {
+   "en": "Which tool fits your work?",
+   "pt": "Qual é a ferramenta certa para você?"
+  },
+  "Für wen": {
+   "en": "For whom",
+   "pt": "Para quem"
+  },
+  "Metallbau, CNC, Werkstatt, Ausbildung": {
+   "en": "Metalwork, CNC, workshop, training",
+   "pt": "Serralheria, CNC, oficina, treinamento"
+  },
+  "Konstruktion, Berechnung, Maschinenbau": {
+   "en": "Design, calculation, mechanical engineering",
+   "pt": "Projeto, cálculo, engenharia mecânica"
+  },
+  "Konstruktion, Fertigung, QS, Ausbildung": {
+   "en": "Design, production, QA, training",
+   "pt": "Projeto, produção, qualidade, treinamento"
+  },
+  "Stahl- und Maschinenbau, Schweißfachingenieure, Technische Büros": {
+   "en": "Steel and mechanical engineering, welding engineers, technical offices",
+   "pt": "Construção metálica e mecânica, engenheiros de soldagem, escritórios técnicos"
+  },
+  "Aufgabe": {
+   "en": "Task",
+   "pt": "Tarefa"
+  },
+  "Dreiecke aus 3 Größen berechnen & zeichnen": {
+   "en": "Calculate & draw triangles from 3 values",
+   "pt": "Calcular e desenhar triângulos a partir de 3 valores"
+  },
+  "Schraubenverbindungen nach VDI 2230 auslegen": {
+   "en": "Design bolted joints to VDI 2230",
+   "pt": "Dimensionar uniões parafusadas conforme VDI 2230"
+  },
+  "Passungen & Toleranzen nach ISO 286 bestimmen": {
+   "en": "Determine fits & tolerances to ISO 286",
+   "pt": "Determinar ajustes e tolerâncias conforme ISO 286"
+  },
+  "Schweißnähte nachweisen oder a-Maß auslegen": {
+   "en": "Verify welds or size the throat thickness",
+   "pt": "Verificar soldas ou dimensionar a garganta"
+  },
+  "Stärke": {
+   "en": "Strength",
+   "pt": "Ponto forte"
+  },
+  "DXF-Export direkt an CAD & CNC": {
+   "en": "DXF export straight to CAD & CNC",
+   "pt": "Exportação DXF direta para CAD e CNC"
+  },
+  "Fünf Nachweise mit dokumentiertem Rechenweg": {
+   "en": "Five checks with a documented calculation path",
+   "pt": "Cinco verificações com memória de cálculo documentada"
+  },
+  "Selbstprüfender Rechenweg, Pressverband, Assistent": {
+   "en": "Self-checking calculation path, interference fit, assistant",
+   "pt": "Memória de cálculo autoverificada, ajuste por interferência, assistente"
+  },
+  "Echtes Nahtbild, Rechenweg mit Quellen, Rechenproben": {
+   "en": "Real weld layout, calculation path with sources, arithmetic checks",
+   "pt": "Geometria real do cordão, memória de cálculo com fontes, provas de cálculo"
+  },
+  "Export": {
+   "en": "Export",
+   "pt": "Exportação"
+  },
+  "DXF, SVG, PNG, Drucken/PDF": {
+   "en": "DXF, SVG, PNG, print/PDF",
+   "pt": "DXF, SVG, PNG, impressão/PDF"
+  },
+  "Word (.rtf), Drucken/PDF, CSV, Bild": {
+   "en": "Word (.rtf), print/PDF, CSV, image",
+   "pt": "Word (.rtf), impressão/PDF, CSV, imagem"
+  },
+  "Word (.rtf), Druck, Speichern & Laden": {
+   "en": "Word (.rtf), print, save & load",
+   "pt": "Word (.rtf), impressão, salvar e abrir"
+  },
+  "Word (.rtf), Drucken/PDF, Speichern (.dts)": {
+   "en": "Word (.rtf), print/PDF, save (.dts)",
+   "pt": "Word (.rtf), impressão/PDF, salvar (.dts)"
+  },
+  "Preis": {
+   "en": "Price",
+   "pt": "Preço"
+  },
+  "Alle vier: offline, eine Datei, keine Installation, kein Konto.": {
+   "en": "All four: offline, one file, no installation, no account.",
+   "pt": "Todas: offline, um arquivo, sem instalação, sem conta."
+  },
+  "Häufige Fragen": {
+   "en": "Frequently asked questions",
+   "pt": "Perguntas frequentes"
+  },
+  "Kurz beantwortet": {
+   "en": "Answered briefly",
+   "pt": "Respostas breves"
+  },
+  "Läuft das wirklich komplett offline?": {
+   "en": "Does it really run completely offline?",
+   "pt": "Funciona mesmo totalmente offline?"
+  },
+  "Ja. Jedes Programm ist eine einzelne HTML-Datei, die im Browser läuft – auf Handy, Tablet und PC. Nach dem Download ist keine Internetverbindung nötig, es gibt kein Konto und keine Installation.": {
+   "en": "Yes. Each program is a single HTML file that runs in the browser – on phone, tablet and PC. After the download no internet connection is needed, there is no account and no installation.",
+   "pt": "Sim. Cada programa é um único arquivo HTML que roda no navegador – em celular, tablet e PC. Após o download não é necessária ligação à Internet, não há conta nem instalação."
+  },
+  "Wie läuft der Kauf ab?": {
+   "en": "How does the purchase work?",
+   "pt": "Como decorre a compra?"
+  },
+  "Der Kauf-Button führt zur Bestellseite von Digistore24 (gängige Zahlungsarten, Rechnung inklusive). Direkt nach der Zahlung steht die Vollversion zum Download bereit.": {
+   "en": "The purchase button takes you to the Digistore24 order page (common payment methods, invoice included). The full version is ready to download immediately after payment.",
+   "pt": "O botão de compra leva você à página de encomenda da Digistore24 (métodos de pagamento habituais, fatura incluída). A versão completa fica disponível para download logo após o pagamento."
+  },
+  "Was unterscheidet Test- und Vollversion?": {
+   "en": "What is the difference between trial and full version?",
+   "pt": "Qual a diferença entre a versão de teste e a completa?"
+  },
+  "Bei DT-ProfiDreieck und DT-ProfiSchraube zeigt die Gratis-Version die Bedienung mit eingeschränktem Funktionsumfang; die Vollversion schaltet alle Berechnungsfälle, Assistenten und Exporte frei. Bei DT-ProfiPassung und DT-ProfiSchweissnaht wird bereits vollständig gerechnet – dort sind ausschließlich die Ausgaben gesperrt: Speichern, Öffnen, Drucken und Word.": {
+   "en": "With DT-ProfiDreieck and DT-ProfiSchraube the free version shows how the program works with a limited range of functions; the full version unlocks all calculation cases, assistants and exports. With DT-ProfiPassung and DT-ProfiSchweissnaht the calculation is already complete – there only the outputs are locked: save, open, print and Word.",
+   "pt": "No DT-ProfiDreieck e no DT-ProfiSchraube a versão gratuita mostra o funcionamento com funções limitadas; a versão completa desbloqueia todos os casos de cálculo, assistentes e exportações. No DT-ProfiPassung e no DT-ProfiSchweissnaht o cálculo já é completo – aí apenas as saídas estão bloqueadas: salvar, abrir, imprimir e Word."
+  },
+  "Werden Daten übertragen oder gespeichert?": {
+   "en": "Is any data transmitted or stored?",
+   "pt": "São transmitidos ou armazenados dados?"
+  },
+  "Nein. Die Programme rechnen lokal im Browser. Diese Website nutzt weder Cookies noch Tracking; Details stehen in der": {
+   "en": "No. The programs calculate locally in the browser. This website uses neither cookies nor tracking; the details are in the",
+   "pt": "Não. Os programas calculam localmente no navegador. Este site não usa cookies nem rastreamento; os detalhes estão na"
+  },
+  "Datenschutzerklärung": {
+   "en": "privacy policy (in German)",
+   "pt": "política de privacidade (em alemão)"
+  },
+  "Ersetzen die Programme den Fachingenieur?": {
+   "en": "Do the programs replace the qualified engineer?",
+   "pt": "Os programas substituem o engenheiro?"
+  },
+  "Nein, und sie versuchen es nicht. Sie rechnen nachvollziehbar und benennen ihre Grenzen. Die fachliche Verantwortung für Lastannahmen, Werkstoffwahl, Ausführung und Abnahme bleibt beim Anwender; jedes Ergebnis ist gegen die Originalnormen und die eigene Abnahme zu prüfen.": {
+   "en": "No, and they do not try to. They calculate transparently and name their limits. Professional responsibility for load assumptions, material selection, execution and approval stays with the user; every result has to be checked against the original standards and your own approval.",
+   "pt": "Não, nem tentam. Calculam de forma transparente e indicam os seus limites. A responsabilidade técnica pelas ações, escolha de materiais, execução e aprovação continua a ser do usuário; cada resultado deve ser verificado em relação às normas originais e à sua própria aprovação."
+  },
+  "Nach welchen Regelwerken wird gerechnet?": {
+   "en": "Which sets of rules are used?",
+   "pt": "Segundo que regulamentos se calcula?"
+  },
+  "DT-ProfiSchraube nach VDI 2230 Blatt 1, DT-ProfiPassung nach ISO 286, DIN 7190 und ISO 2768, DT-ProfiSchweissnaht nach EN 1993-1-8, EN 1993-1-4, EN 1999-1-1, EN 1011-2 und EN ISO 2553 sowie im Maschinenbau nach Roloff/Matek und Decker. Jeder Rechenschritt nennt seine Quelle.": {
+   "en": "DT-ProfiSchraube to VDI 2230 Part 1, DT-ProfiPassung to ISO 286, DIN 7190 and ISO 2768, DT-ProfiSchweissnaht to EN 1993-1-8, EN 1993-1-4, EN 1999-1-1, EN 1011-2 and EN ISO 2553 as well as Roloff/Matek and Decker in mechanical engineering. Every calculation step names its source.",
+   "pt": "DT-ProfiSchraube conforme VDI 2230 Parte 1, DT-ProfiPassung conforme ISO 286, DIN 7190 e ISO 2768, DT-ProfiSchweissnaht conforme EN 1993-1-8, EN 1993-1-4, EN 1999-1-1, EN 1011-2 e EN ISO 2553, bem como Roloff/Matek e Decker na engenharia mecânica. Cada passo de cálculo indica a sua fonte."
+  },
+  "Kann ich Tabellenwerte überschreiben?": {
+   "en": "Can I override table values?",
+   "pt": "Posso substituir valores de tabela?"
+  },
+  "Ja. Bei DT-ProfiSchweissnaht lässt sich jeder vorbelegte Wert per Haken durch einen eigenen ersetzen. Das Programm unterscheidet dabei sichtbar zwischen Tabellenwert aus der Norm, Anhaltswert aus der Praxis und Preisannahme mit Jahresangabe.": {
+   "en": "Yes. In DT-ProfiSchweissnaht every preset value can be replaced by your own via a check box. The program visibly distinguishes between a table value from the standard, a practical guide value and a price assumption with its year.",
+   "pt": "Sim. No DT-ProfiSchweissnaht qualquer valor predefinido pode ser substituído por um próprio através de uma caixa. O programa distingue visivelmente entre valor de tabela da norma, valor prático de referência e premissa de preço com indicação do ano."
+  },
+  "An wen wende ich mich bei Fragen?": {
+   "en": "Who do I contact with questions?",
+   "pt": "Com quem falo em caso de dúvidas?"
+  },
+  "Einfach eine E-Mail an": {
+   "en": "Just send an e-mail to",
+   "pt": "Basta enviar um e-mail para"
+  },
+  "– Antwort kommt direkt vom Entwickler. Rückmeldungen aus der Praxis fließen in die Updates ein.": {
+   "en": "– the developer answers personally. Feedback from practice flows into the updates.",
+   "pt": "– a resposta vem diretamente do programador. O retorno da prática entra nas atualizações."
+  },
+  "Heute testen, morgen sicher fertigen": {
+   "en": "Try it today, produce with confidence tomorrow",
+   "pt": "Teste hoje, produza com confiança amanhã"
+  },
+  "Alle vier Gratis-Versionen laufen sofort im Browser – ohne Anmeldung, ohne Risiko.": {
+   "en": "All four free versions run straight in the browser – no sign-up, no risk.",
+   "pt": "As quatro versões gratuitas funcionam logo no navegador – sem cadastro, sem risco."
+  },
+  "Dreieck · 69 €": {
+   "en": "Triangle · €69",
+   "pt": "Triângulo · 69 €"
+  },
+  "Schraube · 159 €": {
+   "en": "Bolt · €159",
+   "pt": "Parafuso · 159 €"
+  },
+  "Passung · 139 €": {
+   "en": "Fit · €139",
+   "pt": "Ajuste · 139 €"
+  },
+  "Schweißnaht · 169 €": {
+   "en": "Weld · €169",
+   "pt": "Solda · 169 €"
+  },
+  "Impressum": {
+   "en": "Legal notice (in German)",
+   "pt": "Aviso legal (em alemão)"
+  },
+  "Datenschutz": {
+   "en": "Privacy (in German)",
+   "pt": "Privacidade (em alemão)"
+  },
+  "Kontakt": {
+   "en": "Contact",
+   "pt": "Contato"
+  },
+  "Kauf und Zahlungsabwicklung erfolgen über Digistore24. Beim Klick auf einen Kauf-Button verlässt du diese Website; es gelten die Datenschutzbestimmungen von Digistore24.": {
+   "en": "Purchase and payment are handled by Digistore24. Clicking a purchase button takes you off this website; the Digistore24 privacy terms then apply.",
+   "pt": "A compra e o pagamento são processados pela Digistore24. Ao clicar em um botão de compra, você sai deste site; passam a valer as condições de privacidade da Digistore24."
+  },
+  "Screenshot folgt in Kürze": {
+   "en": "Screenshot coming soon",
+   "pt": "Captura de tela em breve"
+  },
+  "Video folgt in Kürze": {
+   "en": "Video coming soon",
+   "pt": "Vídeo em breve"
+  },
+  "Demo-Video folgt in Kürze – die Gratis-Version läuft schon: einfach oben „Gratis testen“ antippen": {
+   "en": "Demo video coming soon – the free version is already available: just tap “Try for free” above.",
+   "pt": "Vídeo de demonstração em breve – a versão gratuita já está disponível: toque em “Testar grátis” acima."
+  },
+  "DT-ProfiDreieck – Demo: Eingabe bis Ergebnis": {
+   "en": "DT-ProfiDreieck – demo: from input to result",
+   "pt": "DT-ProfiDreieck – demonstração: da entrada ao resultado"
+  },
+  "DT-ProfiDreieck – Werkstattvideo: vom Wert zum fertigen DXF": {
+   "en": "DT-ProfiDreieck – workshop video: from the value to the finished DXF",
+   "pt": "DT-ProfiDreieck – vídeo de oficina: do valor ao DXF final"
+  },
+  "DT-ProfiSchraube – 40-Sekunden-Überblick": {
+   "en": "DT-ProfiSchraube – 40-second overview",
+   "pt": "DT-ProfiSchraube – visão geral de 40 segundos"
+  },
+  "DT-ProfiPassung – Überblick": {
+   "en": "DT-ProfiPassung – overview",
+   "pt": "DT-ProfiPassung – visão geral"
+  },
+  "DT-ProfiSchweissnaht – 40-Sekunden-Überblick": {
+   "en": "DT-ProfiSchweissnaht – 40-second overview",
+   "pt": "DT-ProfiSchweissnaht – visão geral de 40 segundos"
+  },
+  "Informationen": {
+   "en": "Information",
+   "pt": "Informações"
+  },
+  "Die vier Werkzeuge": {
+   "en": "The four tools",
+   "pt": "As quatro ferramentas"
+  },
+  "Video auf eigener Seite ansehen": {
+   "en": "Watch the video on its own page (German)",
+   "pt": "Ver o vídeo em página própria (em alemão)"
+  }
+ },
+ "html": {
+  "hero-h1": {
+   "en": "Calculate precisely.<br><span style=\"color:var(--accent)\">Document</span> cleanly. Manufacture <span style=\"color:var(--brass)\">right away</span>.",
+   "pt": "Calcular com precisão.<br><span style=\"color:var(--accent)\">Documentar</span> com rigor. <span style=\"color:var(--brass)\">Produzir</span> logo em seguida."
+  },
+  "h2-dreieck": {
+   "en": "DT-ProfiDreieck:<br>from the dimension to the <span style=\"color:var(--accent)\">DXF on the CNC</span>",
+   "pt": "DT-ProfiDreieck:<br>da medida ao <span style=\"color:var(--accent)\">DXF no CNC</span>"
+  },
+  "h2-schraube": {
+   "en": "DT-ProfiSchraube: design to<br><span style=\"color:var(--brass)\">VDI 2230 Part 1</span> – fully traceable",
+   "pt": "DT-ProfiSchraube: dimensionamento<br>conforme <span style=\"color:var(--brass)\">VDI 2230 Parte 1</span> – rastreável"
+  },
+  "h2-passung": {
+   "en": "DT-ProfiPassung: fits<br><span style=\"color:var(--green-strong)\">determined · understood · documented</span>",
+   "pt": "DT-ProfiPassung: ajustes<br><span style=\"color:var(--green-strong)\">determinar · compreender · documentar</span>"
+  },
+  "h2-schweissnaht": {
+   "en": "DT-ProfiSchweissnaht:<br>a calculation that shows <span style=\"color:var(--glut)\">how it calculates</span>",
+   "pt": "DT-ProfiSchweissnaht:<br>um cálculo que mostra <span style=\"color:var(--glut)\">como calcula</span>"
+  },
+  "trust-schraube": {
+   "en": "Backed by more than <span style=\"color:var(--brass); font-variant-numeric:tabular-nums;\">2.2 million</span> automated calculation tests.",
+   "pt": "Suportado por mais de <span style=\"color:var(--brass); font-variant-numeric:tabular-nums;\">2,2 milhões</span> de testes de cálculo automatizados."
+  },
+  "trust-passung": {
+   "en": "The free version already calculates with the <span style=\"color:var(--green-strong)\">full range of functions</span> – only saving, printing and export are reserved for the full version.",
+   "pt": "A versão gratuita já calcula com <span style=\"color:var(--green-strong)\">todas as funções</span> – apenas salvar, imprimir e exportar ficam reservados à versão completa."
+  },
+  "trust-schweissnaht": {
+   "en": "The trial version calculates <span style=\"color:var(--glut)\">everything</span> – with the complete calculation path on screen. Only the outputs are locked.",
+   "pt": "A versão de teste calcula <span style=\"color:var(--glut)\">tudo</span> – com a memória de cálculo completa na tela. Apenas as saídas estão bloqueadas."
+  }
+ }
+}
