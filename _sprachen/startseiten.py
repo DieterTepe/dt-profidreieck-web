@@ -36,6 +36,7 @@ CSS = (HERE / "startseiten.css").read_text(encoding="utf-8") + """
     .langs a { text-decoration:none; font-size:.8rem; font-weight:800; padding:3px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
     .langs a[aria-current="page"] { background:var(--cyan); border-color:var(--cyan); color:#062128; }
 """
+CSS_AUFG = (HERE / "startseiten_aufgaben.css").read_text(encoding="utf-8")
 plain = lambda s: re.sub("<[^>]+>", "", s)
 
 
@@ -52,7 +53,7 @@ def texte(k, l):
     d = DE[k]
     if l == "de":
         return dict(kat=d["kat"], h1=d["h1"], lead=d["lead"], caption=d["caption"], img_alt=d["img_alt"], trust=d["trust"],
-                    features=[(t, x) for _, t, x in d["features"]], steps=d["steps"], box=(d["box"][0], d["box"][1]), faq=d["faq"])
+                    features=[(t, x) for _, t, x in d["features"]], steps=d["steps"], box=(d["box"][0], d["box"][1]), faq=d["faq"], aufgaben=d.get("aufgaben"))
     return T[k][l]
 
 
@@ -86,6 +87,8 @@ def seite(k, l):
          "offers": [
              {"@type": "Offer", "name": ui["start"], "price": "0.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": app},
              {"@type": "Offer", "name": ui["k_eyebrow"], "price": f"{preis:.2f}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": d["kauf"]}]}]}
+    if t.get("aufgaben"):
+        ld["@graph"][1]["featureList"] = [plain(x["h3"]) for x in t["aufgaben"]["items"]]
     alt_links = "".join(f'  <link rel="alternate" hreflang="{x}" href="{base}{DIRS[x]}">\n' for x in DIRS)
     alt_links += f'  <link rel="alternate" hreflang="x-default" href="{base}">\n'
     og_alt = "".join(f'  <meta property="og:locale:alternate" content="{OG[x]}">\n' for x in DIRS if x != l)
@@ -97,6 +100,28 @@ def seite(k, l):
         for (ic, _, _), (ti, tx) in zip(d["features"], t["features"]))
     steps = "\n".join(f"            <li>{s}</li>" for s in t["steps"])
     faq = "\n".join(f"          <details>\n            <summary>{q}</summary>\n            <p>{a}</p>\n          </details>" for q, a in t["faq"])
+    aufg = ""
+    if t.get("aufgaben"):
+        a = t["aufgaben"]
+        karten = "\n".join(
+            f'          <article class="task" id="{x["id"]}">\n            <h3>{x["h3"]}</h3>\n            <p>{x["text"]}</p>\n'
+            + "".join(f'            <div class="formula task-f">{f}</div>\n' for f in x["formeln"]) + "          </article>"
+            for x in a["items"])
+        aufg = f"""
+    <section class="content" id="aufgaben">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">{a["eyebrow"]}</div>
+          <h2>{a["h2"]}</h2>
+          <p class="muted">{a["text"]}</p>
+        </div>
+        <div class="task-grid">
+{karten}
+        </div>
+        <div class="actions task-cta"><a class="button primary" href="{app}">{a["btn"]}</a></div>
+      </div>
+    </section>
+"""
     vurl = f"{DOM}videos/{d['video']}.html"; vposter = VIDEO_POSTER[d["video"]]
     tools = " · ".join((f'<a href="{GH}{DE[x]["repo"]}/{DIRS[l]}">{ui["tools"][x]}</a>' if x != k else f"<span>{ui['tools'][x]}</span>") for x in ORDER)
     short = name.replace("DT-Profi", "")
@@ -132,7 +157,7 @@ def seite(k, l):
 {json.dumps(ld, ensure_ascii=False, indent=2)}
   </script>
 
-  <style>{CSS}{accent}
+  <style>{CSS}{CSS_AUFG if t.get("aufgaben") else ""}{accent}
   </style>
 </head>
 <body>
@@ -180,7 +205,7 @@ def seite(k, l):
         </div>
       </div>
     </section>
-
+{aufg}
     <section class="content">
       <div class="wrap split">
         <div>
