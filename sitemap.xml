@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://dt-profidreieck.de/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dt-profidreieck.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dt-profidreieck.de/"/>
+    <lastmod>2026-11-23</lastmod>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-eingabe.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-ergebnis.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg</image:loc></image:image>
@@ -28,6 +33,22 @@
     <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-proben.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-rechenweg.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/en/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dt-profidreieck.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dt-profidreieck.de/"/>
+  </url>
+  <url>
+    <loc>https://dt-profidreieck.de/pt/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://dt-profidreieck.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://dt-profidreieck.de/"/>
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/dreieck-dxf-werkstatt.html</loc>
