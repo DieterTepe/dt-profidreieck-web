@@ -6,7 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
-<title>DT-ProfiTools Monitor 2.0</title>
+<title>DT-ProfiTools Monitor 2.1</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -61,6 +61,7 @@ th{color:var(--muted);font-weight:600;font-size:.78rem}td.n,th.n{text-align:righ
 svg.chart{width:100%;height:auto;display:block;touch-action:pan-y}
 svg.chart text{fill:var(--muted);font:11px system-ui}
 .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.8rem;color:var(--muted);margin-top:6px}.legend i{display:inline-block;width:12px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.bar{height:8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);margin-top:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
 #chartTip{position:fixed;z-index:9;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:.8rem;display:none;box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .err{color:var(--bad)}.empty{color:var(--muted);font-style:italic;padding:8px 0}
 a{color:var(--accent)}
@@ -69,7 +70,7 @@ a{color:var(--accent)}
 <body>
 <header>
   <div class="hrow">
-    <h1><span class="led" id="led"></span>DT-ProfiTools Monitor <small>2.0</small></h1>
+    <h1><span class="led" id="led"></span>DT-ProfiTools Monitor <small>2.1</small></h1>
     <button class="btn pri" id="btnAll" title="Alle GitHub-Daten abrufen">🔄 Abrufen</button>
   </div>
   <div id="status">Bereit.</div>
@@ -212,6 +213,21 @@ a{color:var(--accent)}
     <div id="bakInfo" class="s muted"></div>
   </div>
   <div class="card">
+    <h2>Speicher &amp; Neuanfang <button class="info" data-tip="tipStore">i</button></h2>
+    <div class="tip" id="tipStore">Der Monitor räumt beim Öffnen und nach jedem Abruf selbst auf: Von den GitHub-Zwischenständen bleibt nur der letzte je Tag, von „Herkunft &amp; Dateien“ höchstens 60 Tage. Tageswerte, Suchdaten und Lighthouse bleiben vollständig. Doppelte Importe überschreiben sich selbst – es entstehen keine Doppelzählungen.</div>
+    <div id="storeInfo" class="s"></div>
+    <details data-id="resetBox"><summary>Daten zurücksetzen (neu anfangen)</summary><div class="s">
+      <p class="muted">Meist nicht nötig. Sinnvoll z. B., wenn versehentlich Daten der falschen Webseite eingelesen wurden. Google- und Bing-Daten kannst du jederzeit neu exportieren (Google: 16 Monate, Bing: 6 Monate zurück) – GitHub-Zahlen dagegen nur 14 Tage.</p>
+      <div class="row"><select id="resetWhat">
+        <option value="search">Suchdaten (Google &amp; Bing)</option>
+        <option value="lh">Lighthouse-Messungen</option>
+        <option value="log">nur Protokoll</option>
+        <option value="github">GitHub-Verlauf</option>
+        <option value="all">Alles (Token bleibt)</option></select>
+        <button class="btn" id="btnReset">🗑️ Zurücksetzen</button></div>
+      <div id="resetInfo" class="s muted"></div></div></details>
+  </div>
+  <div class="card">
     <h2>Als App auf dem Startbildschirm</h2>
     <p class="s">In Chrome oben rechts <b>⋮ → „App installieren“</b> bzw. <b>„Zum Startbildschirm hinzufügen“</b>. Danach öffnet sich der Monitor wie eine eigene App.</p>
     <p class="s muted">Diese Adresse nicht weitergeben – die Seite ist nirgends verlinkt und für Suchmaschinen gesperrt.</p>
@@ -280,7 +296,7 @@ function status(m, led){ $('status').textContent = m; if (led) $('led').classNam
 function showTab(id){
   document.querySelectorAll('section.tab').forEach(s => s.classList.toggle('on', s.id === id));
   document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === id));
-  ui.tab = id; save(K_UI, ui); window.scrollTo(0,0); renderAll();
+  hideTip(); ui.tab = id; save(K_UI, ui); window.scrollTo(0,0); renderAll();
 }
 $('tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) showTab(b.dataset.t); });
 document.addEventListener('click', e => { const b = e.target.closest('.info'); if (b) { e.preventDefault(); $(b.dataset.tip).classList.toggle('on'); } });
@@ -300,15 +316,15 @@ function chart(el, labels, series, opt = {}){
   const W = 640, H = opt.h || 220, L = 38, R = opt.right ? 38 : 10, T = 10, B = 26, iw = W - L - R, ih = H - T - B;
   const n = labels.length, xs = i => L + (n === 1 ? iw/2 : i * iw / (n - 1));
   const left = series.filter(s => !s.right), right = series.filter(s => s.right);
-  const nice = m => { if (m <= 0) return 1; const p = Math.pow(10, Math.floor(Math.log10(m))); return Math.ceil(m / p * 1.1) * p; };
-  const maxL = nice(Math.max(...left.flatMap(s => s.data.map(v => v || 0)))), maxR = right.length ? nice(Math.max(...right.flatMap(s => s.data.map(v => v || 0)))) : 1;
+  const nice = m => { if (m <= 0) return 4; const raw = m / 4, p = Math.pow(10, Math.floor(Math.log10(raw))), st = [1, 2, 2.5, 5, 10].find(f => f * p >= raw) * p; return Math.max(st, 1) * 4; };
+  const minL = opt.min || 0, maxL = opt.max || nice(Math.max(...left.flatMap(s => s.data.map(v => v || 0)))), maxR = right.length ? nice(Math.max(...right.flatMap(s => s.data.map(v => v || 0)))) : 1;
   let g = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img">`;
-  for (let i = 0; i <= 4; i++) { const y = T + ih - i * ih / 4; g += `<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="currentColor" opacity=".12"/><text x="${L-5}" y="${y+4}" text-anchor="end">${fmt(maxL*i/4)}</text>`;
+  for (let i = 0; i <= 4; i++) { const y = T + ih - i * ih / 4; g += `<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="currentColor" opacity=".12"/><text x="${L-5}" y="${y+4}" text-anchor="end">${fmt1(minL + (maxL-minL)*i/4)}</text>`;
     if (right.length) g += `<text x="${W-R+5}" y="${y+4}">${fmt1(maxR*i/4)}</text>`; }
   const step = Math.max(1, Math.ceil(n / 7));
   labels.forEach((l, i) => { if (i % step === 0 || i === n-1) g += `<text x="${xs(i)}" y="${H-8}" text-anchor="middle">${esc(l)}</text>`; });
   series.forEach(s => {
-    const max = s.right ? maxR : maxL, y = v => T + ih - (v || 0) / max * ih;
+    const max = s.right ? maxR : maxL, mn = s.right ? 0 : minL, y = v => T + ih - (Math.max(mn, v || 0) - mn) / (max - mn) * ih;
     if (s.bar) { const bw = Math.max(2, iw / n * .6); s.data.forEach((v, i) => { if (v) g += `<rect x="${xs(i)-bw/2}" y="${y(v)}" width="${bw}" height="${T+ih-y(v)}" fill="${s.color}" opacity=".55" rx="2"/>`; }); }
     else { const pts = s.data.map((v, i) => v == null ? null : `${xs(i)},${y(v)}`).filter(Boolean);
       g += `<polyline points="${pts.join(' ')}" fill="none" stroke="${s.color}" stroke-width="2.4" stroke-linejoin="round" ${s.dash ? 'stroke-dasharray="5 4"' : ''}/>`;
@@ -323,8 +339,12 @@ function chart(el, labels, series, opt = {}){
     tip.innerHTML = `<b>${esc(labels[i])}</b><br>` + series.map(s => `<span style="color:${s.color}">●</span> ${esc(s.name)}: ${s.right ? fmt1(s.data[i]) : fmt(s.data[i])}`).join('<br>');
     tip.style.display = 'block'; tip.style.left = Math.min(innerWidth - 190, p.clientX + 12) + 'px'; tip.style.top = (p.clientY - 70) + 'px'; };
   svg.addEventListener('mousemove', show); svg.addEventListener('touchstart', show, {passive:true}); svg.addEventListener('touchmove', show, {passive:true});
-  const hide = () => tip.style.display = 'none'; svg.addEventListener('mouseleave', hide); svg.addEventListener('touchend', () => setTimeout(hide, 1800));
+  svg.addEventListener('mouseleave', hideTip); svg.addEventListener('touchend', () => { clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 1800); });
 }
+let tipTimer = null;
+function hideTip(){ clearTimeout(tipTimer); const t = $('chartTip'); if (t) t.style.display = 'none'; }
+addEventListener('scroll', hideTip, {passive:true});
+document.addEventListener('touchstart', e => { if (!e.target.closest('svg.chart')) hideTip(); }, {passive:true});
 
 /* ================= GitHub ================= */
 function token(){ return $('token').value.trim(); }
@@ -333,6 +353,19 @@ async function gh(path){
   if (!r.ok) { let m = r.status + ' ' + r.statusText; if (r.status === 401) m = 'Token ungültig oder abgelaufen'; if (r.status === 403) m = 'Token hat keine Berechtigung (siehe „Sicheren Token anlegen“)'; if (r.status === 404) m = 'nicht gefunden oder keine Berechtigung'; throw new Error(m); }
   return r.json();
 }
+/* ================= Speicher aufraeumen =================
+   Stuendliche Zwischenstaende: nur der letzte je Tag (max. 400 Tage).
+   Herkunft/Dateien-Schnappschuesse: nur einer je Tag, max. 60.
+   Tageswerte, Suchdaten und Lighthouse bleiben vollstaendig. */
+function compact(){
+  for (const k of Object.keys(hist)) { const h = hist[k]; if (!h) continue;
+    if (Array.isArray(h.hourly)) { const m = {}; h.hourly.forEach(x => { if (x && x.iso) m[x.iso.slice(0,10)] = x; }); h.hourly = Object.keys(m).sort().slice(-400).map(d => m[d]); }
+    const t = h.traffic; if (t && Array.isArray(t.history)) { const m = {}; t.history.forEach(x => { if (x && x.iso) m[x.iso.slice(0,10)] = x; }); t.history = Object.keys(m).sort().slice(-60).map(d => m[d]); } }
+  search.imports = (search.imports || []).slice(-200);
+}
+function storageKB(){ let n = 0; try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); n += (k.length + (localStorage.getItem(k) || '').length) * 2; } } catch(e){} return n / 1024; }
+function renderStore(){ const el = $('storeInfo'); if (!el) return; const kb = storageKB(), pct = Math.min(100, kb / 5120 * 100);
+  el.innerHTML = `Belegt: <b>${fmt1(kb)} KB</b> von ca. 5.000 KB (${fmt1(pct)} %)<div class="bar"><i style="width:${Math.max(1, pct)}%"></i></div>`; }
 function ensure(key){ if (!hist[key]) hist[key] = {hourly:[], daily:[]}; return hist[key]; }
 function applyViews(key, vd, cd){
   const h = ensure(key), map = {};
@@ -365,7 +398,7 @@ async function fetchAll(){
       autoRuns[r.repo] = (runs.workflow_runs || []).filter(w => !seen[w.name] && (seen[w.name] = true)).map(w => ({name: w.name, status: w.status, conclusion: w.conclusion, url: w.html_url, at: w.updated_at}));
     } catch(e) { errs.push(r.name + ' (Automatiken): ' + e.message); }
   }
-  save(K_HIST, hist); ui.lastFetch = Date.now(); save(K_UI, ui); ui._auto = autoRuns; save(K_AUTO, autoRuns);
+  compact(); save(K_HIST, hist); ui.lastFetch = Date.now(); save(K_UI, ui); ui._auto = autoRuns; save(K_AUTO, autoRuns);
   busy = false; $('btnAll').disabled = false;
   if (errs.length) { status('Teilweise fehlgeschlagen – Details unter „Mehr → Protokoll“.', 'bad'); errs.forEach(log); }
   else status('✅ Abgerufen: ' + new Date().toLocaleString('de-DE'), 'ok');
@@ -427,9 +460,9 @@ function toDate(s){ s = String(s).trim(); let m;
   if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/))) return `${m[3]}-${m[1].padStart(2,'0')}-${m[2].padStart(2,'0')}`;
   return null; }
 function colIdx(head){
-  const h = head.map(x => x.toLowerCase());
-  const f = re => h.findIndex(x => re.test(x));
-  return {clicks: f(/klick|click/), impr: f(/impr/), ctr: f(/ctr|klickrate/), pos: f(/position|posi/)};
+  const h = head.map(x => String(x).toLowerCase().replace(/^\ufeff/, '').replace(/["']/g, '').trim());
+  const f = (re, not) => h.findIndex(x => re.test(x) && !(not && not.test(x)));
+  return {clicks: f(/klick|click|clique/, /rate|ctr|%|position|posição/), impr: f(/impr|eindr|anzeigen|exibi|view/, /position|posição|share|anteil/), ctr: f(/ctr|klickrate|taxa/), pos: f(/position|posi|posição/), head: h};
 }
 function kindOf(head, name){
   const a = (head[0] || '').toLowerCase() + ' ' + (name || '').toLowerCase();
@@ -440,11 +473,13 @@ function kindOf(head, name){
   if (/gerät|device/.test(a)) return 'devices';
   return null;
 }
+let importWarn = [];
 function importTable(src, site, rows, name){
   if (rows.length < 2) return 0;
   const head = rows[0], c = colIdx(head), kind = kindOf(head, name);
   if (c.clicks < 0 && c.impr < 0) return 0;
   const k = src + '|' + site; let n = 0;
+  if (c.impr < 0 || c.clicks < 0) importWarn.push(`${name}: Spalte „${c.impr < 0 ? 'Impressionen' : 'Klicks'}“ nicht erkannt – Spalten: ${c.head.join(' | ')}`);
   if (kind === 'dates') { search.rows[k] = search.rows[k] || {};
     rows.slice(1).forEach(r => { const d = toDate(r[0]); if (!d) return; search.rows[k][d] = {c: num(r[c.clicks]) || 0, i: num(r[c.impr]) || 0, p: c.pos >= 0 ? num(r[c.pos]) : null}; n++; }); }
   else if (kind === 'queries' || kind === 'pages') { const store = search[kind]; store[k] = {at: today(), rows: rows.slice(1).map(r => ({t: r[0], c: num(r[c.clicks]) || 0, i: num(r[c.impr]) || 0, p: c.pos >= 0 ? num(r[c.pos]) : null})).filter(x => x.t)}; n = store[k].rows.length; }
@@ -474,8 +509,12 @@ async function readFiles(fileList){
 }
 $('fileSearch').onchange = async e => {
   const src = $('impSrc').value, site = $('impSite').value; const msgs = [];
+  const skipped = []; importWarn = [];
   try { for (const f of await readFiles(e.target.files)) { if (!/\.csv$/i.test(f.name) && !/csv/i.test(f.name)) continue;
-      const n = importTable(src, site, parseCSV(f.text()), f.name); msgs.push(`${f.name}: ${n ? n + ' Zeilen übernommen' : 'übersprungen (keine Klick-/Impressions-Spalten)'}`); }
+      const n = importTable(src, site, parseCSV(f.text()), f.name); if (n) msgs.push(`${f.name}: ${n} Zeilen`); else skipped.push(f.name.replace(/\.csv$/i, '')); }
+    if (!msgs.length) throw new Error('Keine passende Tabelle gefunden (Datum, Suchanfragen oder Seiten mit Klicks/Impressionen).');
+    if (skipped.length) msgs.push('nicht benötigt: ' + skipped.join(', '));
+    importWarn.forEach(w => msgs.push('⚠️ ' + w));
     search.imports.push({at: new Date().toISOString(), src, site}); save(K_SEARCH, search);
     $('impLog').innerHTML = '✅ ' + msgs.map(esc).join('<br>'); log('Import ' + src + '/' + site + ': ' + msgs.join(' | '));
   } catch(err) { $('impLog').innerHTML = '<span class="err">❌ ' + esc(err.message) + '</span>'; }
@@ -551,9 +590,17 @@ function renderLh(){
     rows.map(p => `<tr><td>${esc(short(p.u))}</td><td class="n">${p.lcp ? fmt1(p.lcp / 1000) + ' s' : '–'}</td><td class="n">${p.cls != null ? (+p.cls).toFixed(3) : '–'}</td><td class="n">${p.tbt != null ? fmt(p.tbt) + ' ms' : '–'}</td></tr>`).join('') +
     '</table><p class="s muted">Gut: LCP unter 2,5 s · CLS unter 0,1 · TBT unter 200 ms. Erklärung im Wörterbuch unter „Mehr“.</p></div></details>';
   const dd = $('lhTable').querySelector('details'); dd.open = !!ui.open.lhTech; dd.addEventListener('toggle', () => { ui.open.lhTech = dd.open; save(K_UI, ui); });
-  if (lh.runs.length > 1) { const urls = [...new Set(lh.runs.flatMap(r => r.pages.map(p => p.u)))].slice(0, 6), cols = ['#38bdf8','#f59e0b','#34d399','#a78bfa','#fb7185','#94a3b8'];
-    chart($('lhChart'), lh.runs.map(r => r.at.slice(8,10) + '.' + r.at.slice(5,7)), urls.map((u, i) => ({name: short(u), color: cols[i], data: lh.runs.map(r => { const p = r.pages.find(x => x.u === u); return p && p.perf != null ? Math.round(p.perf * 100) : null; })})));
-    $('lhChart').insertAdjacentHTML('afterbegin', '<p class="s muted">Verlauf „Leistung“ je Seite</p>'); }
+  if (lh.runs.length > 1) {
+    const cols = ['#f59e0b','#38bdf8','#34d399','#a78bfa','#fb7185','#94a3b8','#facc15','#2dd4bf','#f472b6','#60a5fa'];
+    const val = (r, u) => { const p = r.pages.find(x => x.u === u); return p && p.perf != null ? Math.round(p.perf * 100) : null; };
+    const urls = [...new Set(lh.runs.flatMap(r => r.pages.map(p => p.u)))].sort((a, b) => short(a) < short(b) ? -1 : 1);
+    const perfect = urls.filter(u => lh.runs.every(r => { const v = val(r, u); return v == null || v >= 99; }));
+    const shown = urls.filter(u => !perfect.includes(u));
+    const all = shown.flatMap(u => lh.runs.map(r => val(r, u))).filter(v => v != null), need = all.length ? 100 - Math.min(...all) + 3 : 100, lo = 100 - 4 * (need <= 20 ? 5 : need <= 40 ? 10 : 25);
+    $('lhChart').innerHTML = '<p class="s muted">Verlauf „Leistung“ – nur Seiten, die nicht immer 99–100 haben</p><div id="lhChartIn"></div>' +
+      (perfect.length ? `<p class="s muted">✅ Immer 99–100: ${perfect.map(short).map(esc).join(' · ')}</p>` : '');
+    if (shown.length) chart($('lhChartIn'), lh.runs.map(r => r.at.slice(8,10) + '.' + r.at.slice(5,7)), shown.map((u, i) => ({name: short(u), color: cols[i % cols.length], data: lh.runs.map(r => val(r, u))})), {min: lo, max: 100});
+    else $('lhChartIn').innerHTML = '<div class="empty">Alle Seiten durchgehend 99–100 – nichts zu zeigen. 👍</div>'; }
   else $('lhChart').innerHTML = '<p class="s muted">Ab der zweiten Messung erscheint hier der Verlauf.</p>';
 }
 
@@ -584,11 +631,25 @@ function renderStart(){
 }
 
 /* ================= Sicherung ================= */
-$('btnSave').onclick = () => {
+function backupDownload(prefix){
   const data = {format:'dt-monitor-2', saved: new Date().toISOString(), github: hist, search, lighthouse: lh};
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(data)], {type:'application/json'}));
-  a.download = 'dt-monitor-sicherung-' + today() + '.json'; document.body.appendChild(a); a.click(); a.remove();
-  ui.lastBackup = Date.now(); save(K_UI, ui); $('bakInfo').textContent = '💾 Gespeichert im Download-Ordner.'; renderAll();
+  a.download = (prefix || 'dt-monitor-sicherung-') + today() + '.json'; document.body.appendChild(a); a.click(); a.remove();
+  ui.lastBackup = Date.now(); save(K_UI, ui);
+}
+$('btnReset').onclick = () => {
+  const what = $('resetWhat').value, label = $('resetWhat').selectedOptions[0].textContent;
+  const warn = what === 'github' || what === 'all' ? '\n\nAchtung: GitHub liefert nur die letzten 14 Tage. Ältere GitHub-Zahlen sind danach nur noch in der Sicherungsdatei.' : '';
+  if (!confirm(`„${label}“ wirklich löschen?\n\nVorher wird automatisch eine Sicherung in den Download-Ordner gespeichert.${warn}`)) return;
+  backupDownload('dt-monitor-vor-zuruecksetzen-');
+  if (what === 'search' || what === 'all') { search = {rows:{}, queries:{}, pages:{}, imports:[]}; save(K_SEARCH, search); }
+  if (what === 'lh' || what === 'all') { lh = {runs:[]}; save(K_LH, lh); }
+  if (what === 'github' || what === 'all') { hist = {}; save(K_HIST, hist); }
+  if (what === 'log' || what === 'all') $('log').textContent = '';
+  log('Zurückgesetzt: ' + label + ' (Sicherung vorher heruntergeladen).'); $('resetInfo').textContent = '✅ Erledigt. Die Sicherung liegt im Download-Ordner.'; renderSearch(); renderAll();
+};
+$('btnSave').onclick = () => {
+  backupDownload(); $('bakInfo').textContent = '💾 Gespeichert im Download-Ordner.'; renderAll();
 };
 function mergeHist(imp){
   for (const k of Object.keys(imp)) { if (!safeKey(k)) continue; const nk = k.replace('_dietetepe_','_dietertepe_'), src = imp[k] || {}, dst = ensure(nk), map = {};
@@ -613,16 +674,17 @@ $('fileBak').onchange = async e => {
 };
 
 /* ================= Start ================= */
-function renderAll(){ try { renderStart(); if (ui.tab === 't-search') renderSearch(); if (ui.tab === 't-gh') renderGh(); if (ui.tab === 't-lh') renderLh(); } catch(e) { log('Anzeige-Fehler: ' + e.message); } }
+function renderAll(){ try { renderStart(); renderStore(); if (ui.tab === 't-search') renderSearch(); if (ui.tab === 't-gh') renderGh(); if (ui.tab === 't-lh') renderLh(); } catch(e) { log('Anzeige-Fehler: ' + e.message); } }
 try { $('token').value = sessionStorage.getItem(K_TOK) || localStorage.getItem(K_TOK) || ''; $('tokSession').checked = !!sessionStorage.getItem(K_TOK); } catch(e){}
 $('auto').value = String(load(K_UI, {}).autoMin || 0);
 let timer = null; const setAuto = () => { clearInterval(timer); const m = +$('auto').value; ui.autoMin = m; save(K_UI, ui); if (m) timer = setInterval(fetchAll, m * 60000); };
 $('auto').onchange = setAuto; setAuto();
 segInit('segRange', 'range', renderAll); segInit('segGh', 'ghRange', renderAll);
 autoRuns = load(K_AUTO, {});
+{ const before = storageKB(); compact(); save(K_HIST, hist); save(K_SEARCH, search); const freed = before - storageKB(); if (freed > 5) log(`Speicher aufgeräumt: ${fmt1(freed)} KB frei geworden.`); }
 renderSearch(); showTab(ui.tab || 't-start');
 const nRepos = REPOS.filter(r => hist[keyOf(r.repo)]?.daily?.length).length;
-log('Monitor 2.0 gestartet – GitHub-Historie für ' + nRepos + ' Repos übernommen.');
+log('Monitor 2.1 gestartet – GitHub-Historie für ' + nRepos + ' Repos übernommen.');
 if (ui.lastFetch) status('Letzter Abruf: ' + new Date(ui.lastFetch).toLocaleString('de-DE'), 'ok');
 if (token() && Date.now() - (ui.lastFetch || 0) > 6 * 3600e3) fetchAll();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
