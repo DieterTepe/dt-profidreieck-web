@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# Eigene Werkzeuge (nur fuer Dieter) nicht in Suchmaschinen
+Disallow: /werkzeuge/
 
 Sitemap: https://dt-profidreieck.de/sitemap.xml
 Sitemap: https://dietertepe.github.io/test-dreieck/sitemap_profidreieck.xml
