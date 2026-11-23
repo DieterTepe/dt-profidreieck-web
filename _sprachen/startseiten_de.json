@@ -96,7 +96,44 @@
   "img": null,
   "accent": null,
   "accent_dark": null,
-  "img_alt": "Dreieck mit Seiten a, b und c, Winkeln Alpha, Beta und Gamma, Höhen, Umkreis, Inkreis, Feuerbachkreis und Euler-Gerade – Zeichnung aus DT-ProfiDreieck"
+  "img_alt": "Dreieck mit Seiten a, b und c, Winkeln Alpha, Beta und Gamma, Höhen, Umkreis, Inkreis, Feuerbachkreis und Euler-Gerade – Zeichnung aus DT-ProfiDreieck",
+  "aufgaben": {
+   "eyebrow": "Typische Aufgaben",
+   "h2": "Fläche, Winkel und Höhe eines Dreiecks berechnen",
+   "text": "Drei Fragen tauchen in Werkstatt, Konstruktion und Schule immer wieder auf. Hier sehen Sie die passenden Formeln – DT-ProfiDreieck wählt den Rechenweg automatisch und zeigt ihn Schritt für Schritt.",
+   "items": [
+    {
+     "id": "flaeche",
+     "h3": "Fläche eines Dreiecks berechnen – auch ohne Höhe",
+     "text": "Mit Grundseite und Höhe ist es einfach. Sind nur die drei Seiten bekannt, hilft die Heron-Formel; bei zwei Seiten und dem eingeschlossenen Winkel der Sinus. So lässt sich die Fläche auch für ein unregelmäßiges Dreieck ohne rechten Winkel bestimmen.",
+     "formeln": [
+      "A = ½ · c · h<sub>c</sub>",
+      "A = ½ · a · b · sin γ",
+      "A = √(s·(s−a)·(s−b)·(s−c)), s = (a+b+c)/2"
+     ]
+    },
+    {
+     "id": "winkel",
+     "h3": "Winkel im Dreieck berechnen – aus drei Seiten",
+     "text": "Sind alle Seitenlängen gegeben, liefert der Kosinussatz jeden Winkel. Fehlt nur ein Winkel, reicht die Winkelsumme von 180°. Bei zwei Seiten und einem Winkel (SSW) prüft das Programm, ob es keine, eine oder zwei Lösungen gibt.",
+     "formeln": [
+      "cos α = (b² + c² − a²) / (2·b·c)",
+      "α + β + γ = 180°",
+      "a / sin α = b / sin β = c / sin γ"
+     ]
+    },
+    {
+     "id": "hoehe",
+     "h3": "Höhe eines Dreiecks berechnen – mit Seiten oder Winkel",
+     "text": "Die Höhe steht senkrecht auf einer Seite. Ist ein Winkel bekannt, genügt der Sinus. Sind nur die drei Seiten gegeben, wird zuerst die Fläche berechnet und daraus die Höhe. DT-ProfiDreieck zeigt alle drei Höhen und zeichnet sie maßstäblich ein.",
+     "formeln": [
+      "h<sub>c</sub> = b · sin α",
+      "h<sub>c</sub> = 2 · A / c"
+     ]
+    }
+   ],
+   "btn": "Fläche, Winkel oder Höhe jetzt berechnen →"
+  }
  },
  "schraube": {
   "repo": "dt-profischraube-web",

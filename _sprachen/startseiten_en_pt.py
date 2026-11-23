@@ -261,3 +261,32 @@ T = {
         ("O programa funciona offline?", "Sim. Todos os cálculos rodam no seu dispositivo; nenhum dado é enviado a servidores.")]),
  },
 }
+
+# Abschnitt „Typische Aufgaben“ (nur Dreieck): Fläche, Winkel, Höhe – Suchbegriffe je Sprache
+_F = {"flaeche": ["A = ½ · c · h<sub>c</sub>", "A = ½ · a · b · sin γ", "A = √(s·(s−a)·(s−b)·(s−c)), s = (a+b+c)/2"],
+      "winkel": ["cos α = (b² + c² − a²) / (2·b·c)", "α + β + γ = 180°", "a / sin α = b / sin β = c / sin γ"],
+      "hoehe": ["h<sub>c</sub> = b · sin α", "h<sub>c</sub> = 2 · A / c"]}
+T["dreieck"]["en"]["aufgaben"] = {
+ "eyebrow": "Common tasks",
+ "h2": "Find the area, angles and height of a triangle",
+ "text": "Three questions come up again and again in the workshop, in design and at school. Here are the matching formulas – DT-ProfiDreieck picks the calculation path automatically and shows it step by step.",
+ "items": [
+  {"id": "flaeche", "h3": "Area of a triangle – even without the height", "formeln": _F["flaeche"],
+   "text": "With base and height it is simple. If only the three sides are known, Heron's formula does the job; with two sides and the included angle, the sine. This also works for an irregular triangle without a right angle."},
+  {"id": "winkel", "h3": "Angles of a triangle from three sides", "formeln": _F["winkel"],
+   "text": "If all side lengths are given, the law of cosines returns every angle. If only one angle is missing, the angle sum of 180° is enough. With two sides and a non-included angle (SSA), the program checks whether there are zero, one or two solutions."},
+  {"id": "hoehe", "h3": "Height of a triangle – from sides or an angle", "formeln": _F["hoehe"],
+   "text": "The height (altitude) is perpendicular to a side. If an angle is known, the sine is enough. If only the three sides are given, the area is calculated first and the height follows from it. DT-ProfiDreieck shows all three heights and draws them to scale."}],
+ "btn": "Calculate area, angles or height now →"}
+T["dreieck"]["pt"]["aufgaben"] = {
+ "eyebrow": "Tarefas comuns",
+ "h2": "Calcular área, ângulos e altura do triângulo",
+ "text": "Três perguntas aparecem sempre na oficina, no projeto e na escola. Aqui estão as fórmulas – o DT-ProfiDreieck escolhe o caminho de cálculo automaticamente e o mostra passo a passo.",
+ "items": [
+  {"id": "flaeche", "h3": "Calcular a área do triângulo – também sem a altura", "formeln": _F["flaeche"],
+   "text": "Com base e altura é simples. Se só os três lados forem conhecidos, use a fórmula de Heron; com dois lados e o ângulo entre eles, o seno. Assim dá para calcular a área de qualquer triângulo escaleno, mesmo sem ângulo reto."},
+  {"id": "winkel", "h3": "Calcular os ângulos do triângulo sabendo os lados", "formeln": _F["winkel"],
+   "text": "Com os três lados conhecidos, a lei dos cossenos dá cada ângulo. Se falta só um ângulo, basta a soma de 180°. Com dois lados e um ângulo oposto (LLA), o programa verifica se há nenhuma, uma ou duas soluções."},
+  {"id": "hoehe", "h3": "Calcular a altura do triângulo – pelos lados ou pelo ângulo", "formeln": _F["hoehe"],
+   "text": "A altura é perpendicular a um lado. Com um ângulo conhecido, basta o seno. Se só os três lados forem dados, calcula-se primeiro a área e, a partir dela, a altura. O DT-ProfiDreieck mostra as três alturas e as desenha em escala."}],
+ "btn": "Calcular área, ângulo ou altura agora →"}
