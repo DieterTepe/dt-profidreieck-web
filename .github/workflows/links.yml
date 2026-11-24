@@ -37,4 +37,5 @@ jobs:
             --exclude "checkout-ds24\.com"
             --exclude "localhost"
             --exclude-path "google[0-9a-f]+\.html"
+            --exclude-path "werkzeuge/p-"
             './**/*.html' config.js
