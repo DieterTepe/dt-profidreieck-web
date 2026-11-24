@@ -549,8 +549,10 @@ function renderSearch(){
   if (ds.length > 60) $('chartSearch').dataset.w = '1';
   chart($('chartSearch'), lab, ser, {right:true}); if (ds.length > 60) $('chartSearch').insertAdjacentHTML('afterbegin', '<p class="s muted">Wochensummen (Woche ab Montag)</p>');
   // Tabellen
-  const agg = store => { const m = {}; keys.forEach(k => (store[k]?.rows || []).forEach(r => { m[r.t] = m[r.t] || {c:0, i:0, pw:0}; m[r.t].c += r.c; m[r.t].i += r.i; if (r.p) m[r.t].pw += r.p * r.i; })); return Object.entries(m).sort((a, b) => b[1].c - a[1].c || b[1].i - a[1].i); };
-  const tbl = (list, label, f = x => esc(x)) => list.length ? `<table><tr><th>${label}</th><th class="n">Klicks</th><th class="n">Impr.</th><th class="n">Pos.</th></tr>` + list.slice(0, 25).map(([t, v]) => `<tr><td>${f(t)}</td><td class="n">${fmt(v.c)}</td><td class="n">${fmt(v.i)}</td><td class="n">${v.i ? fmt1(v.pw / v.i) : '–'}</td></tr>`).join('') + '</table>' : '<div class="empty">Noch kein Export mit dieser Tabelle hineingeladen.</div>';
+  // gleiche Seite/Suche zusammenfassen (Bing schreibt z. B. „https://dt-profidreieck.de“ ohne Schrägstrich); Position nur aus Zeilen, die eine haben
+  const normT = t => { t = String(t).trim(); if (/^https?:\/\//i.test(t)) { t = t.replace(/^https?:\/\/(www\.)?/i, ''); if (!t.includes('/')) t += '/'; return t; } return t.toLowerCase(); };
+  const agg = store => { const m = {}; keys.forEach(k => (store[k]?.rows || []).forEach(r => { const t = normT(r.t); m[t] = m[t] || {c:0, i:0, pw:0, pi:0}; m[t].c += r.c; m[t].i += r.i; if (r.p > 0) { m[t].pw += r.p * r.i; m[t].pi += r.i; } })); return Object.entries(m).sort((a, b) => b[1].c - a[1].c || b[1].i - a[1].i); };
+  const tbl = (list, label, f = x => esc(x)) => list.length ? `<table><tr><th>${label}</th><th class="n">Klicks</th><th class="n">Impr.</th><th class="n">Pos.</th></tr>` + list.slice(0, 25).map(([t, v]) => `<tr><td>${f(t)}</td><td class="n">${fmt(v.c)}</td><td class="n">${fmt(v.i)}</td><td class="n">${v.pi ? fmt1(v.pw / v.pi) : '–'}</td></tr>`).join('') + '</table>' : '<div class="empty">Noch kein Export mit dieser Tabelle hineingeladen.</div>';
   const pages = agg(search.pages);
   $('tblQueries').innerHTML = tbl(agg(search.queries), 'Suchbegriff');
   $('tblPages').innerHTML = tbl(pages, 'Seite', u => esc(String(u).replace(/^https?:\/\//, '').replace('dietertepe.github.io/', '')));
