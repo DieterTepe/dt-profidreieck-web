@@ -352,6 +352,10 @@
   ],
   "faq": [
    [
+    "Was bedeutet H7/g6?",
+    "H7 ist das Toleranzfeld der Bohrung (Grundabmaß H, untere Abweichung 0, Toleranzgrad IT7), g6 das der Welle. Zusammen ergibt das eine Spielpassung: Bei Ø 25 mm liegt das Spiel zwischen 7 und 41 µm."
+   ],
+   [
     "Nach welchen Normen rechnet DT-ProfiPassung?",
     "Passungen nach ISO 286, Pressverbände nach DIN 7190 und Allgemeintoleranzen nach ISO 2768."
    ],
@@ -384,7 +388,46 @@
   ],
   "accent": "#2fc48f",
   "accent_dark": "#0b7a56",
-  "img_alt": "Startansicht von DT-ProfiPassung mit Eingabe einer Passung und Ergebnis nach ISO 286"
+  "img_alt": "Startansicht von DT-ProfiPassung mit Eingabe einer Passung und Ergebnis nach ISO 286",
+  "aufgaben": {
+   "eyebrow": "Rechenbeispiele",
+   "h2": "Passung berechnen: H7/g6 und Pressverband H7/s6",
+   "text": "Zwei typische Fälle aus der Werkstatt – eine Gleitpassung und ein Schrumpfsitz. Beide Beispiele sind im Programm hinterlegt; alle Zahlen stammen aus seinem Rechenweg nach ISO 286 und DIN 7190.",
+   "items": [
+    {
+     "id": "h7-g6",
+     "h3": "Spielpassung H7/g6 berechnen – Ø 25 mm",
+     "text": "Der klassische enge Gleitsitz: Die Welle ist immer kleiner als die Bohrung, es bleibt stets ein Spalt. Aus den Abmaßen nach ISO 286 folgen Grenzmaße und Spiel.",
+     "formeln": [
+      "Bohrung 25 H7: ES = +21 µm, EI = 0 → 25,000 … 25,021 mm",
+      "Welle 25 g6: es = −7 µm, ei = −20 µm → 24,980 … 24,993 mm",
+      "Mindestspiel = EI − es = 0 − (−7) = 7 µm",
+      "Höchstspiel = ES − ei = 21 − (−20) = 41 µm"
+     ]
+    },
+    {
+     "id": "pressverband",
+     "h3": "Übermaß und Pressverband – Schrumpfsitz 60 H7/s6",
+     "text": "Zahnrad aus Stahl auf Stahlwelle Ø 60 mm, Nabenaußen-Ø 120 mm, Fugenlänge 50 mm, trocken (µ ≈ 0,14), gefordert 250 N·m. Nach DIN 7190 berechnet das Programm Fugendruck, übertragbares Moment, Einpresskraft und Fügetemperatur.",
+     "formeln": [
+      "Übermaß 23 … 72 µm",
+      "Fugendruck p = 24,3 … 88,6 N/mm² ≤ p<sub>zul</sub> = 153,7 N/mm²",
+      "M<sub>t,max</sub> = 962,2 N·m → Rutschsicherheit S<sub>H</sub> = 3,85",
+      "Einpresskraft F<sub>e</sub> = 116,9 kN · Nabe erwärmen auf 211,3 °C"
+     ]
+    },
+    {
+     "id": "selbst-rechnen",
+     "h3": "So rechnen Sie die Beispiele selbst nach",
+     "text": "In der Testversion unter „Beispiel laden“ den Eintrag „25 H7/g6“ oder „Zahnrad-Schrumpfsitz · 60 H7/s6 · Stahl/Stahl“ wählen und „Berechnen“ drücken. Jede andere Passung lässt sich direkt eintippen, zum Beispiel „50 H7/k6“.",
+     "formeln": [
+      "Spiel bzw. Übermaß = Bohrungsmaß − Wellenmaß",
+      "Passtoleranz = IT<sub>Bohrung</sub> + IT<sub>Welle</sub> = 21 + 13 = 34 µm"
+     ]
+    }
+   ],
+   "btn": "Passung in der Testversion berechnen →"
+  }
  },
  "schweissnaht": {
   "repo": "dt-profischweissnaht-web",
@@ -501,7 +544,7 @@
     {
      "id": "rohr-torsion",
      "h3": "Beispiel: Rundrohr unter Torsion – Kreisnaht nach EN 1993-1-8",
-     "text": "Rundrohr Ø 114,3 × 6 mm auf eine Platte geschweißt, umlaufende Kehlnaht a = 4 mm, S235, Torsionsmoment T = 9 kNm. Bei Torsion läuft die Schubspannung entlang der Naht (τ<sub>∥</sub>); maßgebend ist der äußere Rand der Naht.",
+     "text": "Rundrohr Ø 114,3 × 6 mm auf eine Platte geschweißt, umlaufende Kehlnaht a = 4 mm, S235, Torsionsmoment T = 9 kNm. Bei Torsion läuft die Schubspannung entlang der Naht (τ<sub>∥</sub>); maßgebend ist der äußere Rand der Naht.",
      "formeln": [
       "W<sub>t</sub> = I<sub>p</sub> / r<sub>max</sub> = 79.408 mm³",
       "τ<sub>∥</sub> = T / W<sub>t</sub> = 9.000.000 / 79.408 = 113,3 N/mm²",

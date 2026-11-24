@@ -66,11 +66,11 @@ KOPF = {
          "Calcule uniões parafusadas conforme VDI 2230 Parte 1: pré-carga, torque de aperto e segurança com memória de cálculo – exemplo M12 10.9. Teste grátis."),
  },
  "passung": {
-  "de": ("Passung berechnen nach ISO 286 | DT-ProfiPassung",
-         "Passung nach ISO 286 online berechnen: Grenzmaße, Spiel, Übermaß, Toleranzfeld, Pressverband nach DIN 7190. Mit Rechenweg – gratis im Browser testen."),
-  "en": ("ISO 286 Fit & Tolerance Calculator | DT-ProfiPassung",
+  "de": ("Passungsrechner ISO 286 online – Passung berechnen",
+         "Passung online berechnen: Grenzmaße, Spiel und Übermaß nach ISO 286, z. B. H7/g6, dazu Pressverband nach DIN 7190 mit Einpresskraft. Kostenlos testen."),
+  "en": ("ISO 286 Fit & Tolerance Calculator – H7/g6, Press Fit",
          "Calculate ISO 286 fits such as H7/g6: limit deviations, clearance, interference, tolerance zones and DIN 7190 press fits. Try it free online."),
-  "pt": ("Calculadora de Ajustes e Tolerâncias ISO 286",
+  "pt": ("Calculadora de ajustes ISO 286 – H7/g6 e interferência",
          "Calcule ajustes ISO 286 como H7/g6: desvios, folga, interferência, zonas de tolerância e ajuste prensado DIN 7190. Teste grátis no navegador."),
  },
  "schweissnaht": {
@@ -297,7 +297,7 @@ T["schweissnaht"]["en"]["aufgaben"] = {
  "text": "A typical case in machine and steel construction: a tube welded all round to a plate is twisted. This is how DT-ProfiSchweissnaht checks the circular weld.",
  "items": [
   {"id": "rohr-torsion", "h3": "Example: round tube under torsion – circular fillet weld to EN 1993-1-8",
-   "text": "Round tube Ø 114.3 × 6 mm welded to a plate, fillet weld all round with throat a = 4 mm, S235, torque T = 9 kNm. Under torsion the shear stress runs along the weld (τ<sub>∥</sub>); the outer edge of the weld governs.",
+   "text": "Round tube Ø 114.3 × 6 mm welded to a plate, fillet weld all round with throat a = 4 mm, S235, torque T = 9 kNm. Under torsion the shear stress runs along the weld (τ<sub>∥</sub>); the outer edge of the weld governs.",
    "formeln": ["W<sub>t</sub> = I<sub>p</sub> / r<sub>max</sub> = 79,408 mm³", "τ<sub>∥</sub> = T / W<sub>t</sub> = 9,000,000 / 79,408 = 113.3 N/mm²", "σ<sub>v</sub> = √3 · τ<sub>∥</sub> = 196.3 N/mm² ≤ 360 N/mm²", "η = 196.3 / 360 = 0.55 ✓"]},
   {"id": "selbst-rechnen", "h3": "Recalculate the example yourself",
    "text": "In the free version, choose “Circular tube 114.3×6 on plate, circular weld, torsion 9 kNm” under “Load example” and press “Calculate”. The calculation path shows all 36 steps with checks. With “Design (throat sought)” the program determines the required throat thickness instead. A classic mechanical-engineering variant (Roloff/Matek) with 6 kNm is included as well.",
@@ -310,7 +310,7 @@ T["schweissnaht"]["pt"]["aufgaben"] = {
  "text": "Um caso típico na construção mecânica e metálica: um tubo soldado em todo o contorno a uma chapa é submetido a torção. Veja como o DT-ProfiSchweissnaht verifica o cordão circular.",
  "items": [
   {"id": "rohr-torsion", "h3": "Exemplo: tubo redondo sob torção – solda de filete circular conforme EN 1993-1-8",
-   "text": "Tubo redondo Ø 114,3 × 6 mm soldado a uma chapa, solda de filete em todo o contorno com garganta a = 4 mm, S235, momento de torção T = 9 kNm. Na torção, a tensão de cisalhamento corre ao longo do cordão (τ<sub>∥</sub>); a borda externa do cordão é determinante.",
+   "text": "Tubo redondo Ø 114,3 × 6 mm soldado a uma chapa, solda de filete em todo o contorno com garganta a = 4 mm, S235, momento de torção T = 9 kNm. Na torção, a tensão de cisalhamento corre ao longo do cordão (τ<sub>∥</sub>); a borda externa do cordão é determinante.",
    "formeln": ["W<sub>t</sub> = I<sub>p</sub> / r<sub>max</sub> = 79.408 mm³", "τ<sub>∥</sub> = T / W<sub>t</sub> = 9.000.000 / 79.408 = 113,3 N/mm²", "σ<sub>v</sub> = √3 · τ<sub>∥</sub> = 196,3 N/mm² ≤ 360 N/mm²", "η = 196,3 / 360 = 0,55 ✓"]},
   {"id": "selbst-rechnen", "h3": "Refaça o exemplo você mesmo",
    "text": "Na versão de teste, escolha “Tubo redondo 114,3×6 sobre chapa, cordão circular, torção 9 kNm” em “Carregar exemplo” e clique em “Calcular”. A memória de cálculo mostra todos os 36 passos com verificações. Com “Dimensionamento (garganta procurada)”, o programa determina a garganta necessária. Também há uma variante clássica da construção mecânica (Roloff/Matek) com 6 kNm.",
@@ -350,3 +350,36 @@ T["schraube"]["pt"]["aufgaben"] = {
    "formeln": ["S<sub>F</sub> = R<sub>p0,2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1,23", "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48,9 / 4,8 = 10,27", "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3,15"]}],
  "btn": "Refazer o exemplo na versão de teste →"}
 T["schraube"]["pt"]["faq"].insert(2, ("Como calcular a pré-carga e o torque de aperto de um parafuso?", "Conforme a VDI 2230 Parte 1: força de aperto, força de serviço e perda por assentamento resultam na pré-carga mínima; com o fator de aperto obtém-se a pré-carga máxima. O torque de aperto resulta da pré-carga admissível e do atrito na rosca e sob a cabeça. Um exemplo completo (M12 10.9, M<sub>A</sub> = 103,4 N·m) está acima nesta página."))
+
+T["passung"]["en"]["aufgaben"] = {
+ "eyebrow": "Worked examples",
+ "h2": "Calculate fits: H7/g6 and press fit H7/s6",
+ "text": "Two typical workshop cases – a sliding fit and a shrink fit. Both examples are built into the program; all figures come from its calculation path to ISO 286 and DIN 7190.",
+ "items": [
+  {"id": "h7-g6", "h3": "Clearance fit H7/g6 – Ø 25 mm",
+   "text": "The classic close sliding fit: the shaft is always smaller than the hole, so there is always a gap. The ISO 286 deviations give the limits of size and the clearance.",
+   "formeln": ["Hole 25 H7: ES = +21 µm, EI = 0 → 25.000 … 25.021 mm", "Shaft 25 g6: es = −7 µm, ei = −20 µm → 24.980 … 24.993 mm", "Minimum clearance = EI − es = 0 − (−7) = 7 µm", "Maximum clearance = ES − ei = 21 − (−20) = 41 µm"]},
+  {"id": "pressverband", "h3": "Interference and press fit – shrink fit 60 H7/s6",
+   "text": "Steel gear on a steel shaft Ø 60 mm, hub outside diameter 120 mm, joint length 50 mm, dry (µ ≈ 0.14), required torque 250 N·m. Following DIN 7190 the program calculates joint pressure, transmittable torque, press-in force and joining temperature.",
+   "formeln": ["Interference 23 … 72 µm", "Joint pressure p = 24.3 … 88.6 N/mm² ≤ p<sub>zul</sub> = 153.7 N/mm²", "M<sub>t,max</sub> = 962.2 N·m → slip safety S<sub>H</sub> = 3.85", "Press-in force F<sub>e</sub> = 116.9 kN · heat hub to 211.3 °C"]},
+  {"id": "selbst-rechnen", "h3": "Recalculate the examples yourself",
+   "text": "In the free version choose “25 H7/g6” or “Zahnrad-Schrumpfsitz · 60 H7/s6 · Stahl/Stahl” under “Load example” and press “Calculate”. Any other fit can be typed in directly, for example “50 H7/k6”.",
+   "formeln": ["Clearance or interference = hole size − shaft size", "Fit tolerance = IT<sub>hole</sub> + IT<sub>shaft</sub> = 21 + 13 = 34 µm"]}],
+ "btn": "Calculate a fit in the free version →"}
+T["passung"]["en"]["faq"].insert(0, ("What does H7/g6 mean?", "H7 is the tolerance zone of the hole (fundamental deviation H, lower deviation 0, tolerance grade IT7), g6 that of the shaft. Together they form a clearance fit: at Ø 25 mm the clearance is between 7 and 41 µm."))
+T["passung"]["pt"]["aufgaben"] = {
+ "eyebrow": "Exemplos de cálculo",
+ "h2": "Calcular ajustes: H7/g6 e ajuste prensado H7/s6",
+ "text": "Dois casos típicos da oficina – um ajuste deslizante e um ajuste por contração. Os dois exemplos estão incluídos no programa; todos os valores vêm da memória de cálculo conforme ISO 286 e DIN 7190.",
+ "items": [
+  {"id": "h7-g6", "h3": "Ajuste com folga H7/g6 – Ø 25 mm",
+   "text": "O clássico ajuste deslizante justo: o eixo é sempre menor que o furo, por isso sempre há uma folga. Os afastamentos da ISO 286 dão as dimensões-limite e a folga.",
+   "formeln": ["Furo 25 H7: ES = +21 µm, EI = 0 → 25,000 … 25,021 mm", "Eixo 25 g6: es = −7 µm, ei = −20 µm → 24,980 … 24,993 mm", "Folga mínima = EI − es = 0 − (−7) = 7 µm", "Folga máxima = ES − ei = 21 − (−20) = 41 µm"]},
+  {"id": "pressverband", "h3": "Interferência e ajuste prensado – contração 60 H7/s6",
+   "text": "Engrenagem de aço sobre eixo de aço Ø 60 mm, diâmetro externo do cubo 120 mm, comprimento de ajuste 50 mm, a seco (µ ≈ 0,14), torque exigido 250 N·m. Conforme DIN 7190, o programa calcula pressão de contato, torque transmissível, força de prensagem e temperatura de montagem.",
+   "formeln": ["Interferência 23 … 72 µm", "Pressão de contato p = 24,3 … 88,6 N/mm² ≤ p<sub>zul</sub> = 153,7 N/mm²", "M<sub>t,max</sub> = 962,2 N·m → segurança ao deslizamento S<sub>H</sub> = 3,85", "Força de prensagem F<sub>e</sub> = 116,9 kN · aquecer o cubo a 211,3 °C"]},
+  {"id": "selbst-rechnen", "h3": "Refaça os exemplos você mesmo",
+   "text": "Na versão de teste, escolha “25 H7/g6” ou “Zahnrad-Schrumpfsitz · 60 H7/s6 · Stahl/Stahl” em “Carregar exemplo” e clique em “Calcular”. Qualquer outro ajuste pode ser digitado diretamente, por exemplo “50 H7/k6”.",
+   "formeln": ["Folga ou interferência = medida do furo − medida do eixo", "Tolerância do ajuste = IT<sub>furo</sub> + IT<sub>eixo</sub> = 21 + 13 = 34 µm"]}],
+ "btn": "Calcular um ajuste na versão de teste →"}
+T["passung"]["pt"]["faq"].insert(0, ("O que significa H7/g6?", "H7 é a zona de tolerância do furo (afastamento fundamental H, afastamento inferior 0, grau de tolerância IT7), g6 a do eixo. Juntos formam um ajuste com folga: em Ø 25 mm a folga fica entre 7 e 41 µm."))
