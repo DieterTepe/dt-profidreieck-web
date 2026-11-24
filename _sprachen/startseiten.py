@@ -18,7 +18,7 @@ DOM = "https://dt-profidreieck.de/"
 GH = "https://dietertepe.github.io/"
 HEUTE = "2026-11-23"
 # Letzte inhaltliche Aenderung je Startseite (fuer <lastmod> in der Sitemap); sonst HEUTE
-LASTMOD = {"dreieck": "2026-11-24"}
+LASTMOD = {"dreieck": "2026-11-24", "schweissnaht": "2026-11-24"}
 DIRS = {"de": "", "en": "en/", "pt": "pt/"}
 HTML_LANG = {"de": "de", "en": "en", "pt": "pt-BR"}
 OG = {"de": "de_DE", "en": "en_US", "pt": "pt_BR"}

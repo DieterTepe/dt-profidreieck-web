@@ -290,3 +290,30 @@ T["dreieck"]["pt"]["aufgaben"] = {
   {"id": "hoehe", "h3": "Calcular a altura do triângulo – pelos lados ou pelo ângulo", "formeln": _F["hoehe"],
    "text": "A altura é perpendicular a um lado. Com um ângulo conhecido, basta o seno. Se só os três lados forem dados, calcula-se primeiro a área e, a partir dela, a altura. O DT-ProfiDreieck mostra as três alturas e as desenha em escala."}],
  "btn": "Calcular área, ângulo ou altura agora →"}
+
+T["schweissnaht"]["en"]["aufgaben"] = {
+ "eyebrow": "Worked example",
+ "h2": "Weld calculation for a tube under torsion",
+ "text": "A typical case in machine and steel construction: a tube welded all round to a plate is twisted. This is how DT-ProfiSchweissnaht checks the circular weld.",
+ "items": [
+  {"id": "rohr-torsion", "h3": "Example: round tube under torsion – circular fillet weld to EN 1993-1-8",
+   "text": "Round tube Ø 114.3 × 6 mm welded to a plate, fillet weld all round with throat a = 4 mm, S235, torque T = 9 kNm. Under torsion the shear stress runs along the weld (τ<sub>∥</sub>); the outer edge of the weld governs.",
+   "formeln": ["W<sub>t</sub> = I<sub>p</sub> / r<sub>max</sub> = 79,408 mm³", "τ<sub>∥</sub> = T / W<sub>t</sub> = 9,000,000 / 79,408 = 113.3 N/mm²", "σ<sub>v</sub> = √3 · τ<sub>∥</sub> = 196.3 N/mm² ≤ 360 N/mm²", "η = 196.3 / 360 = 0.55 ✓"]},
+  {"id": "selbst-rechnen", "h3": "Recalculate the example yourself",
+   "text": "In the free version, choose “Circular tube 114.3×6 on plate, circular weld, torsion 9 kNm” under “Load example” and press “Calculate”. The calculation path shows all 36 steps with checks. With “Design (throat sought)” the program determines the required throat thickness instead. A classic mechanical-engineering variant (Roloff/Matek) with 6 kNm is included as well.",
+   "formeln": ["R<sub>d</sub> = f<sub>u</sub> / (β<sub>w</sub> · γ<sub>M2</sub>) = 360 / (0.80 · 1.25)"]}],
+ "btn": "Recalculate the example in the free version →"}
+T["schweissnaht"]["en"]["faq"].insert(2, ("Can I calculate a tube weld under torsion?", "Yes. For round tubes the program checks the circular weld all round using the polar moment of area and searches for the maximum stress at 72 points along the weld. A ready-made example (round tube 114.3 × 6 mm, torque 9 kNm) can be loaded directly."))
+T["schweissnaht"]["pt"]["aufgaben"] = {
+ "eyebrow": "Exemplo de cálculo",
+ "h2": "Cálculo de solda em tubo sob torção",
+ "text": "Um caso típico na construção mecânica e metálica: um tubo soldado em todo o contorno a uma chapa é submetido a torção. Veja como o DT-ProfiSchweissnaht verifica o cordão circular.",
+ "items": [
+  {"id": "rohr-torsion", "h3": "Exemplo: tubo redondo sob torção – solda de filete circular conforme EN 1993-1-8",
+   "text": "Tubo redondo Ø 114,3 × 6 mm soldado a uma chapa, solda de filete em todo o contorno com garganta a = 4 mm, S235, momento de torção T = 9 kNm. Na torção, a tensão de cisalhamento corre ao longo do cordão (τ<sub>∥</sub>); a borda externa do cordão é determinante.",
+   "formeln": ["W<sub>t</sub> = I<sub>p</sub> / r<sub>max</sub> = 79.408 mm³", "τ<sub>∥</sub> = T / W<sub>t</sub> = 9.000.000 / 79.408 = 113,3 N/mm²", "σ<sub>v</sub> = √3 · τ<sub>∥</sub> = 196,3 N/mm² ≤ 360 N/mm²", "η = 196,3 / 360 = 0,55 ✓"]},
+  {"id": "selbst-rechnen", "h3": "Refaça o exemplo você mesmo",
+   "text": "Na versão de teste, escolha “Tubo redondo 114,3×6 sobre chapa, cordão circular, torção 9 kNm” em “Carregar exemplo” e clique em “Calcular”. A memória de cálculo mostra todos os 36 passos com verificações. Com “Dimensionamento (garganta procurada)”, o programa determina a garganta necessária. Também há uma variante clássica da construção mecânica (Roloff/Matek) com 6 kNm.",
+   "formeln": ["R<sub>d</sub> = f<sub>u</sub> / (β<sub>w</sub> · γ<sub>M2</sub>) = 360 / (0,80 · 1,25)"]}],
+ "btn": "Refazer o exemplo na versão de teste →"}
+T["schweissnaht"]["pt"]["faq"].insert(2, ("Posso calcular a solda de um tubo sob torção?", "Sim. Para tubos redondos, o programa verifica o cordão circular com o momento polar de inércia e procura a tensão máxima em 72 pontos ao longo do cordão. Um exemplo pronto (tubo redondo 114,3 × 6 mm, torção 9 kNm) pode ser carregado diretamente."))
