@@ -58,12 +58,12 @@ KOPF = {
          "Calcule triângulos online a partir de três valores: lados, ângulos, área, alturas e circunferências. Com desenho, memória de cálculo e DXF."),
  },
  "schraube": {
-  "de": ("Schraubenberechnung nach VDI 2230 | DT-ProfiSchraube",
-         "Schraubenverbindung nach VDI 2230 Blatt 1 online berechnen: fünf Nachweise, Verspannungsschaubild und Rechenweg mit Quelle. Gratis im Browser testen."),
-  "en": ("Bolted Joint Calculator to VDI 2230 | DT-ProfiSchraube",
-         "Calculate bolted joints to VDI 2230 Part 1: five safety checks, joint diagram and a calculation path with sources. Try it free in your browser."),
-  "pt": ("Cálculo de Parafusos VDI 2230 | DT-ProfiSchraube",
-         "Calcule uniões parafusadas conforme VDI 2230 Parte 1: cinco verificações, diagrama de tensões e memória de cálculo com fontes. Teste grátis."),
+  "de": ("Schraubenberechnung online nach VDI 2230 mit Rechenweg",
+         "Schraube nach VDI 2230 online berechnen: Vorspannkraft, Anziehdrehmoment und Sicherheiten mit Rechenweg – Beispiel M12 10.9. Kostenlos testen."),
+  "en": ("VDI 2230 Bolt Calculator Online – Preload & Torque",
+         "Calculate bolted joints to VDI 2230 Part 1: preload, tightening torque and safety factors with a full calculation path – worked example M12 10.9. Try it free."),
+  "pt": ("Cálculo de parafusos VDI 2230 – pré-carga e torque",
+         "Calcule uniões parafusadas conforme VDI 2230 Parte 1: pré-carga, torque de aperto e segurança com memória de cálculo – exemplo M12 10.9. Teste grátis."),
  },
  "passung": {
   "de": ("Passung berechnen nach ISO 286 | DT-ProfiPassung",
@@ -317,3 +317,36 @@ T["schweissnaht"]["pt"]["aufgaben"] = {
    "formeln": ["R<sub>d</sub> = f<sub>u</sub> / (β<sub>w</sub> · γ<sub>M2</sub>) = 360 / (0,80 · 1,25)"]}],
  "btn": "Refazer o exemplo na versão de teste →"}
 T["schweissnaht"]["pt"]["faq"].insert(2, ("Posso calcular a solda de um tubo sob torção?", "Sim. Para tubos redondos, o programa verifica o cordão circular com o momento polar de inércia e procura a tensão máxima em 72 pontos ao longo do cordão. Um exemplo pronto (tubo redondo 114,3 × 6 mm, torção 9 kNm) pode ser carregado diretamente."))
+
+T["schraube"]["en"]["aufgaben"] = {
+ "eyebrow": "Worked example",
+ "h2": "Bolt calculation to VDI 2230 – example M12 10.9",
+ "text": "The VDI 2230 example “Hydraulikzylinder” (hydraulic cylinder) built into the program: through-bolted joint M12, property class 10.9, clamp length 42 mm, friction μ<sub>G</sub> = μ<sub>K</sub> = 0.10, axial load F<sub>A</sub> = 24.9 kN, torque-controlled tightening. All figures come from the program’s calculation path.",
+ "items": [
+  {"id": "vorspannkraft", "h3": "Bolt preload – minimum value and scatter",
+   "text": "The minimum assembly preload covers clamp load, working load and embedding loss. The tightening factor α<sub>A</sub> accounts for the scatter of the tightening method; the maximum preload must stay below the permissible value.",
+   "formeln": ["F<sub>Mmin</sub> = F<sub>Kerf</sub> + (1 − Φ<sub>en</sub>)·F<sub>A</sub> + F<sub>Z</sub>", "= 1,000 + (1 − 0.0322)·24,900 + 2,421 = 27,519 N", "F<sub>Mmax</sub> = α<sub>A</sub>·F<sub>Mmin</sub> = 1.70·27,519 = 46,782 N", "F<sub>Mmax</sub> ≤ F<sub>Mzul</sub> = 58,379 N ✓"]},
+  {"id": "anziehdrehmoment", "h3": "Tightening torque",
+   "text": "The tightening torque consists of thread friction and head friction. With this torque the bolt is tightened to the permissible assembly preload.",
+   "formeln": ["M<sub>A</sub> = F<sub>Mzul</sub>·(P/(2π) + 0.577·μ<sub>G</sub>·d<sub>2</sub> + μ<sub>K</sub>·D<sub>Km</sub>/2)", "M<sub>G</sub> = 52.87 N·m · M<sub>K</sub> = 50.51 N·m", "M<sub>A</sub> = 103.4 N·m"]},
+  {"id": "sicherheiten", "h3": "Safety factors: yield, fatigue, surface pressure",
+   "text": "For every check the program shows the formula, the inserted values and the VDI 2230 reference. To recalculate: in the free version choose “Hydraulikzylinder (M12, VDI-2230-Beispiel)” under “Load example” and press “Calculate”.",
+   "formeln": ["S<sub>F</sub> = R<sub>p0.2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1.23", "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48.9 / 4.8 = 10.27", "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3.15"]}],
+ "btn": "Recalculate the example in the free version →"}
+T["schraube"]["en"]["faq"].insert(2, ("How do I calculate bolt preload and tightening torque?", "According to VDI 2230 Part 1: clamp load, working load and embedding loss give the minimum preload, the tightening factor gives the maximum preload. The tightening torque follows from the permissible preload plus thread and head friction. A fully worked example (M12 10.9, M<sub>A</sub> = 103.4 N·m) is shown above on this page."))
+T["schraube"]["pt"]["aufgaben"] = {
+ "eyebrow": "Exemplo de cálculo",
+ "h2": "Cálculo de parafusos conforme VDI 2230 – exemplo M12 10.9",
+ "text": "O exemplo VDI 2230 “Hydraulikzylinder” (cilindro hidráulico) incluído no programa: união passante M12, classe de resistência 10.9, comprimento de aperto 42 mm, atrito μ<sub>G</sub> = μ<sub>K</sub> = 0,10, força axial F<sub>A</sub> = 24,9 kN, aperto controlado por torque. Todos os valores vêm da memória de cálculo do programa.",
+ "items": [
+  {"id": "vorspannkraft", "h3": "Pré-carga do parafuso – valor mínimo e dispersão",
+   "text": "A pré-carga mínima de montagem cobre a força de aperto, a força de serviço e a perda por assentamento. O fator de aperto α<sub>A</sub> considera a dispersão do método de aperto; a pré-carga máxima deve ficar abaixo do valor admissível.",
+   "formeln": ["F<sub>Mmin</sub> = F<sub>Kerf</sub> + (1 − Φ<sub>en</sub>)·F<sub>A</sub> + F<sub>Z</sub>", "= 1.000 + (1 − 0,0322)·24.900 + 2.421 = 27.519 N", "F<sub>Mmax</sub> = α<sub>A</sub>·F<sub>Mmin</sub> = 1,70·27.519 = 46.782 N", "F<sub>Mmax</sub> ≤ F<sub>Mzul</sub> = 58.379 N ✓"]},
+  {"id": "anziehdrehmoment", "h3": "Torque de aperto",
+   "text": "O torque de aperto é composto pelo atrito na rosca e sob a cabeça. Com esse torque, o parafuso é apertado até a pré-carga de montagem admissível.",
+   "formeln": ["M<sub>A</sub> = F<sub>Mzul</sub>·(P/(2π) + 0,577·μ<sub>G</sub>·d<sub>2</sub> + μ<sub>K</sub>·D<sub>Km</sub>/2)", "M<sub>G</sub> = 52,87 N·m · M<sub>K</sub> = 50,51 N·m", "M<sub>A</sub> = 103,4 N·m"]},
+  {"id": "sicherheiten", "h3": "Fatores de segurança: escoamento, fadiga, pressão superficial",
+   "text": "Para cada verificação, o programa mostra a fórmula, os valores usados e a referência na VDI 2230. Para refazer: na versão de teste, escolha “Hydraulikzylinder (M12, VDI-2230-Beispiel)” em “Carregar exemplo” e clique em “Calcular”.",
+   "formeln": ["S<sub>F</sub> = R<sub>p0,2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1,23", "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48,9 / 4,8 = 10,27", "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3,15"]}],
+ "btn": "Refazer o exemplo na versão de teste →"}
+T["schraube"]["pt"]["faq"].insert(2, ("Como calcular a pré-carga e o torque de aperto de um parafuso?", "Conforme a VDI 2230 Parte 1: força de aperto, força de serviço e perda por assentamento resultam na pré-carga mínima; com o fator de aperto obtém-se a pré-carga máxima. O torque de aperto resulta da pré-carga admissível e do atrito na rosca e sob a cabeça. Um exemplo completo (M12 10.9, M<sub>A</sub> = 103,4 N·m) está acima nesta página."))
