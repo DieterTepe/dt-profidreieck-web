@@ -8,7 +8,7 @@
   "kat": "Dreiecksrechner mit DXF-Export",
   "video": "dreieck-dxf-werkstatt",
   "h1": "Dreieck <em>berechnen</em> – Werte verstehen, Form sehen.",
-  "lead": "Mit <strong>DT-ProfiDreieck</strong> berechnen Sie ein Dreieck aus drei bekannten Größen. Der Dreiecksrechner ermittelt die übrigen Seiten, Winkel, Fläche und weitere Geometriewerte und zeigt das Ergebnis als Zeichnung mit nachvollziehbarem Rechenweg – in der Vollversion auch als DXF für CAD und CNC.",
+  "lead": "Mit <strong>DT-ProfiDreieck</strong> berechnen Sie ein Dreieck online aus drei bekannten Größen – direkt im Browser. Der Dreiecksrechner ermittelt die übrigen Seiten, Winkel, Fläche und weitere Geometriewerte und zeigt das Ergebnis als Zeichnung mit nachvollziehbarem Rechenweg – in der Vollversion auch als DXF für CAD und CNC.",
   "caption": "Seiten · Winkel · Höhe · Umkreis – Geometrie auf einen Blick",
   "trust": [
    [

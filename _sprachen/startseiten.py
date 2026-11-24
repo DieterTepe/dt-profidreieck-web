@@ -17,6 +17,8 @@ HERE = Path(__file__).resolve().parent
 DOM = "https://dt-profidreieck.de/"
 GH = "https://dietertepe.github.io/"
 HEUTE = "2026-11-23"
+# Letzte inhaltliche Aenderung je Startseite (fuer <lastmod> in der Sitemap); sonst HEUTE
+LASTMOD = {"dreieck": "2026-11-24"}
 DIRS = {"de": "", "en": "en/", "pt": "pt/"}
 HTML_LANG = {"de": "de", "en": "en", "pt": "pt-BR"}
 OG = {"de": "de_DE", "en": "en_US", "pt": "pt_BR"}
@@ -288,11 +290,11 @@ def seite(k, l):
 
 
 def sitemap(k):
-    d = DE[k]; base = GH + d["repo"] + "/"
+    d = DE[k]; base = GH + d["repo"] + "/"; lm = LASTMOD.get(k, HEUTE)
     alt = "".join(f'    <xhtml:link rel="alternate" hreflang="{x}" href="{base}{DIRS[x]}"/>\n' for x in DIRS)
     alt += f'    <xhtml:link rel="alternate" hreflang="x-default" href="{base}"/>\n'
-    urls = "".join(f"  <url>\n    <loc>{base}{DIRS[x]}</loc>\n    <lastmod>{HEUTE}</lastmod>\n{alt}  </url>\n" for x in DIRS)
-    urls += f"  <url>\n    <loc>{base}{d['app']}</loc>\n    <lastmod>{HEUTE}</lastmod>\n  </url>\n"
+    urls = "".join(f"  <url>\n    <loc>{base}{DIRS[x]}</loc>\n    <lastmod>{lm}</lastmod>\n{alt}  </url>\n" for x in DIRS)
+    urls += f"  <url>\n    <loc>{base}{d['app']}</loc>\n    <lastmod>{lm}</lastmod>\n  </url>\n"
     return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + urls + "</urlset>\n")
 

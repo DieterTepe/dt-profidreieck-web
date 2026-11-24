@@ -50,8 +50,8 @@ UI = {
 # Titel <= 60 Zeichen, Beschreibung 110-160 Zeichen (wird geprueft)
 KOPF = {
  "dreieck": {
-  "de": ("Dreieck berechnen: Seiten, Winkel, Fläche | DT-ProfiDreieck",
-         "Dreieck online berechnen: Seiten, Winkel, Fläche, Höhen und Kreise aus drei Angaben. Mit Zeichnung, Rechenweg und DXF-Export für CAD/CNC."),
+  "de": ("Dreiecksberechnung online – Dreieck berechnen mit Rechenweg",
+         "Dreieck online berechnen: drei Werte eingeben, Seiten, Winkel, Fläche und Höhen erhalten – mit Zeichnung und Rechenweg. Kostenlos testen, ohne Anmeldung."),
   "en": ("Triangle Calculator – Sides, Angles, Area | DT-ProfiDreieck",
          "Solve any triangle online from three values: sides, angles, area, heights and circles. With drawing, full calculation path and DXF export."),
   "pt": ("Calculadora de Triângulo Online | DT-ProfiDreieck",
