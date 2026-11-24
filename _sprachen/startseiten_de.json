@@ -213,6 +213,10 @@
     "Fünf Nachweise mit Ampelanzeige, dazu Nachgiebigkeiten, Kraftverhältnis und Verspannungsschaubild."
    ],
    [
+    "Wie berechne ich Vorspannkraft und Anziehdrehmoment einer Schraube?",
+    "Nach VDI 2230 Blatt 1: Aus Klemmkraft, Betriebskraft und Setzverlust folgt die Mindest-Vorspannkraft, mit dem Anziehfaktor die größte Vorspannkraft. Das Anziehdrehmoment ergibt sich aus der zulässigen Vorspannkraft sowie Gewinde- und Kopfreibung. Ein durchgerechnetes Beispiel (M12 10.9, M<sub>A</sub> = 103,4 N·m) steht oben auf dieser Seite."
+   ],
+   [
     "Wie wurde das Programm geprüft?",
     "Die Rechenkerne wurden mit über 2,2 Millionen automatisierten Testfällen gegen bekannte Ergebnisse abgeglichen."
    ],
@@ -237,7 +241,46 @@
   ],
   "accent": "#d99a3c",
   "accent_dark": "#8a5a12",
-  "img_alt": "Startansicht von DT-ProfiSchraube mit Eingabe und fünf grünen Sicherheitsnachweisen"
+  "img_alt": "Startansicht von DT-ProfiSchraube mit Eingabe und fünf grünen Sicherheitsnachweisen",
+  "aufgaben": {
+   "eyebrow": "Rechenbeispiel",
+   "h2": "Schraubenberechnung nach VDI 2230 – Beispiel M12 10.9",
+   "text": "Das im Programm hinterlegte VDI-2230-Beispiel „Hydraulikzylinder“: Durchsteckverbindung M12, Festigkeitsklasse 10.9, Klemmlänge 42 mm, Reibwerte μ<sub>G</sub> = μ<sub>K</sub> = 0,10, Axialkraft F<sub>A</sub> = 24,9 kN, drehmomentgesteuert angezogen. Alle Zahlen stammen aus dem Rechenweg des Programms.",
+   "items": [
+    {
+     "id": "vorspannkraft",
+     "h3": "Vorspannkraft berechnen – Mindestwert und Streuung",
+     "text": "Die Mindest-Montagevorspannkraft deckt Klemmkraft, Betriebskraft und Setzverlust ab. Der Anziehfaktor α<sub>A</sub> berücksichtigt die Streuung beim Anziehen; die größte Vorspannkraft muss unter dem zulässigen Wert bleiben.",
+     "formeln": [
+      "F<sub>Mmin</sub> = F<sub>Kerf</sub> + (1 − Φ<sub>en</sub>)·F<sub>A</sub> + F<sub>Z</sub>",
+      "= 1.000 + (1 − 0,0322)·24.900 + 2.421 = 27.519 N",
+      "F<sub>Mmax</sub> = α<sub>A</sub>·F<sub>Mmin</sub> = 1,70·27.519 = 46.782 N",
+      "F<sub>Mmax</sub> ≤ F<sub>Mzul</sub> = 58.379 N ✓"
+     ]
+    },
+    {
+     "id": "anziehdrehmoment",
+     "h3": "Anziehdrehmoment berechnen",
+     "text": "Das Anziehdrehmoment setzt sich aus Gewinde- und Kopfreibung zusammen. Mit diesem Moment wird die Schraube auf die zulässige Montagevorspannkraft angezogen.",
+     "formeln": [
+      "M<sub>A</sub> = F<sub>Mzul</sub>·(P/(2π) + 0,577·μ<sub>G</sub>·d<sub>2</sub> + μ<sub>K</sub>·D<sub>Km</sub>/2)",
+      "M<sub>G</sub> = 52,87 N·m · M<sub>K</sub> = 50,51 N·m",
+      "M<sub>A</sub> = 103,4 N·m"
+     ]
+    },
+    {
+     "id": "sicherheiten",
+     "h3": "Sicherheiten: Fließen, Dauerhaltbarkeit, Flächenpressung",
+     "text": "Für jeden Nachweis zeigt das Programm Formel, eingesetzte Werte und Quelle in der VDI 2230. Nachrechnen: in der Testversion unter „Beispiel laden“ den Eintrag „Hydraulikzylinder (M12, VDI-2230-Beispiel)“ wählen und „Berechnen“ drücken.",
+     "formeln": [
+      "S<sub>F</sub> = R<sub>p0,2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1,23",
+      "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48,9 / 4,8 = 10,27",
+      "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3,15"
+     ]
+    }
+   ],
+   "btn": "Beispiel in der Testversion nachrechnen →"
+  }
  },
  "passung": {
   "repo": "dt-profipassung-web",
