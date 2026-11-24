@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>DT-ProfiTools Projekt-Dashboard</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<!--
+  DT-ProfiTools Projekt-Dashboard – nur fuer Dieter. Nicht verlinken.
+  Inhalt = Projekt.md aus dem Claude-Projekt "Ueberarbeiten" (Stand siehe STAND unten).
+  Keine fremden Skripte, nichts wird gesendet. Nur die Haken bei den Aufgaben
+  werden im Browser dieses Geraets gespeichert (localStorage).
+  Aktualisieren: Claude sagen "Aktualisiere das Projekt-Dashboard aus Projekt.md".
+-->
+<style>
+:root{--bg:#0b1220;--panel:#121b2d;--panel2:#18233a;--line:#26344f;--text:#e8eef8;--muted:#9fb0c8;--accent:#38bdf8;--ok:#34d399;--warn:#fbbf24;--bad:#f87171;--r:14px}
+@media (prefers-color-scheme: light){:root{--bg:#f4f7fb;--panel:#fff;--panel2:#eef3fa;--line:#d7e0ec;--text:#0f1b2d;--muted:#5d6b80;--accent:#0b7a96;--ok:#0f8a5f;--warn:#a86b00;--bad:#c0392b}}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+a{color:var(--accent);text-decoration:none;word-break:break-word}a:hover{text-decoration:underline}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 14px 8px}
+.hrow{display:flex;align-items:center;gap:10px;justify-content:space-between}
+h1{font-size:1.05rem;margin:0}h1 small{color:var(--muted);font-weight:600}
+#suche{width:100%;margin-top:8px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit}
+main{padding:12px;max-width:1000px;margin:0 auto}
+section.tab{display:none}section.tab.on{display:block}
+nav.tabs{position:fixed;bottom:0;left:0;right:0;z-index:6;display:flex;background:var(--panel);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav.tabs button{flex:1;border:0;background:none;color:var(--muted);font:600 .72rem system-ui;padding:8px 2px 9px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:58px;cursor:pointer}
+nav.tabs button span{font-size:1.25rem;line-height:1}nav.tabs button.on{color:var(--accent)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:0 0 12px}
+.card>h2{font-size:1.02rem;margin:0 0 8px}
+.card>h3{font-size:.95rem;margin:14px 0 6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--panel2);border-radius:12px;padding:10px 12px}
+.kpi b{display:block;font-size:1.35rem;line-height:1.2}.kpi small{color:var(--muted);font-size:.78rem;display:block}
+.muted{color:var(--muted)}.s{font-size:.86rem}
+p{margin:.35em 0 .6em}ul{margin:.3em 0 .6em;padding-left:1.2em}li{margin:.2em 0}
+details{border:1px solid var(--line);border-radius:12px;background:var(--panel2);margin:8px 0;overflow:hidden}
+details>summary{cursor:pointer;padding:10px 12px;font-weight:600;list-style:none;display:flex;gap:8px;align-items:flex-start}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"▸";color:var(--accent);transition:transform .15s;flex:none}
+details[open]>summary::before{transform:rotate(90deg)}
+details>.in{padding:0 12px 10px 30px}
+.erkl{border-left:3px solid var(--accent);background:var(--panel2);padding:8px 10px;border-radius:0 10px 10px 0;margin:8px 0;font-size:.9rem}
+.erkl b{color:var(--accent)}
+.warn{border-left-color:var(--warn)}.warn b{color:var(--warn)}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.78rem}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);margin:1px 2px 1px 0;white-space:nowrap}
+.pill.ok{color:var(--ok);border-color:var(--ok)}.pill.warn{color:var(--warn);border-color:var(--warn)}.pill.bad{color:var(--bad);border-color:var(--bad)}
+.lang a{display:inline-block;margin-right:6px;font-weight:700;font-size:.8rem;padding:1px 8px;border:1px solid var(--line);border-radius:8px}
+.tl{position:relative;padding-left:18px;margin:6px 0}
+.tl::before{content:"";position:absolute;left:5px;top:6px;bottom:0;width:2px;background:var(--line)}
+.tl .dot{position:absolute;left:0;top:14px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.todo{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}
+.todo:last-child{border-bottom:0}
+.todo input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--ok)}
+.todo.done .tx{opacity:.5;text-decoration:line-through}
+.tx small{display:block;color:var(--muted);text-decoration:none}
+.bar{height:8px;border-radius:99px;background:var(--panel2);overflow:hidden;margin-top:3px}
+.bar i{display:block;height:100%;border-radius:99px}
+.lh{display:grid;grid-template-columns:1fr;gap:10px}
+.lh .row{background:var(--panel2);border-radius:12px;padding:10px 12px}
+.lh .vals{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.lh .vals div{font-size:.75rem;color:var(--muted)}.lh .vals b{display:block;font-size:1.05rem;color:var(--text)}
+button.copy{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:10px;padding:8px 10px;font:inherit;font-size:.86rem;cursor:pointer;text-align:left;width:100%;margin:4px 0;display:flex;gap:8px;align-items:center}
+button.copy::before{content:"💬";flex:none}
+button.copy.ok::after{content:"kopiert ✓";margin-left:auto;color:var(--ok);font-size:.78rem;font-weight:700}
+.w{border-bottom:1px dotted var(--accent);cursor:help}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--panel);border-top:2px solid var(--accent);padding:14px 16px calc(18px + env(safe-area-inset-bottom));transform:translateY(110%);visibility:hidden;transition:transform .2s,visibility .2s;box-shadow:0 -10px 30px rgba(0,0,0,.35)}
+#sheet.on{transform:none;visibility:visible}#sheet b{color:var(--accent)}#sheet button{float:right;border:0;background:none;color:var(--muted);font-size:1.3rem;cursor:pointer}
+.hide{display:none!important}
+mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
+.foot{color:var(--muted);font-size:.78rem;text-align:center;margin:18px 0 6px}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <h1>DT-ProfiTools <small>Projekt-Dashboard</small></h1>
+    <span class="pill" id="stand"></span>
+  </div>
+  <input id="suche" type="search" placeholder="Suchen … (z. B. Sitemap, Passung, Token)" autocomplete="off">
+</header>
+
+<main>
+
+<!-- ============ START ============ -->
+<section class="tab on" id="t-start">
+  <div class="card">
+    <h2>Worum geht es?</h2>
+    <p>Du hast vier Berechnungsprogramme (Dreieck, Schraube, Passung, Schweißnaht) und eine Hauptseite zum Kaufen. Seit dem 18.11.2026 machen wir alles fit für Suchmaschinen: Google, Bing und KI-Dienste sollen die Seiten finden, verstehen und gut anzeigen.</p>
+    <div class="grid">
+      <div class="kpi"><small>Webseiten</small><b>5</b><small>1 Hauptseite + 4 Testversionen</small></div>
+      <div class="kpi"><small>Sprachen</small><b>3</b><small>Deutsch · Englisch · Portugiesisch (BR)</small></div>
+      <div class="kpi"><small>Videoseiten</small><b>5</b><small>nur Deutsch</small></div>
+      <div class="kpi"><small>Lighthouse SEO</small><b>100</b><small>auf allen Seiten</small></div>
+    </div>
+    <div class="erkl"><b>So liest du das Dashboard:</b> Unten wechselst du zwischen den Bereichen. Alles mit <span class="muted">▸</span> lässt sich aufklappen, dort steht die genaue Erklärung. <span class="w" data-w="Sitemap">Gepunktet unterstrichene Begriffe</span> antippen, dann erscheint eine kurze Erklärung. Oben kannst du alles durchsuchen.</div>
+  </div>
+
+  <div class="card">
+    <h2>📅 Termine</h2>
+    <div class="todo"><div class="tx"><b>ab ca. 8.12.2026</b>: Erfolg des neuen Dreieck-Titels prüfen<small>Hat „dreiecksberechnung online“ jetzt Klicks? Im Monitor unter „Suche“ → Suchbegriffe ansehen. Vorher: 65 Impressionen, Platz 7,5, 0 Klicks.</small></div></div>
+    <div class="todo"><div class="tx"><b>Anfang Dezember 2026</b>: Google und Bing mit den Ausgangswerten vergleichen<small>Die Ausgangswerte stehen im Bereich „Zahlen“.</small></div></div>
+    <div class="todo"><div class="tx"><b>jeden Montag</b>: Automatik-Läufe auf GitHub<small>Linkprüfung und Lighthouse laufen von selbst. Bei einem Fehler kommt eine E-Mail von GitHub.</small></div></div>
+    <div class="todo"><div class="tx"><b>vor Ablauf des Testzugangs</b>: Windsor.ai prüfen<small>Testzugang mit Daten bis 30 Tage zurück. Danach vermutlich kostenpflichtig. Wer kündigt, verliert nur Claudes Zugriff auf die Zahlen, die Seiten laufen weiter.</small></div></div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Deine Aufgaben</h2>
+    <p class="s muted">Haken setzen, wenn erledigt. Die Haken bleiben nur auf diesem Gerät gespeichert.</p>
+    <div id="todos"></div>
+  </div>
+
+  <div class="card">
+    <h2>💬 Sätze für Claude</h2>
+    <p class="s muted">Antippen kopiert den Satz. Dann einfach im Projekt „Überarbeiten“ in einen neuen Chat einfügen.</p>
+    <button class="copy">Lies Projekt.md und mach weiter mit …</button>
+    <button class="copy">Vergleiche Google und Bing mit den Ausgangswerten in Projekt.md</button>
+    <button class="copy">Starte die Lighthouse-Messung von Hand und zeig mir die Werte</button>
+    <button class="copy">Prüfe die Klicks für „dreiecksberechnung online“ seit dem 24.11.</button>
+    <button class="copy">Leg das Ubersuggest-Projekt mit den 25 wichtigsten Begriffen an</button>
+    <button class="copy">Aktualisiere das Projekt-Dashboard aus Projekt.md</button>
+  </div>
+
+  <div class="card">
+    <h2>🔗 Schnellzugriff</h2>
+    <ul>
+      <li><a href="https://dt-profidreieck.de/" target="_blank" rel="noopener">Hauptseite dt-profidreieck.de</a></li>
+      <li><a href="../m-1cd737239a/">Traffic-Monitor 2.1</a> <span class="muted s">(deine Besucherzahlen)</span></li>
+      <li><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Google Search Console</a></li>
+      <li><a href="https://www.bing.com/webmasters" target="_blank" rel="noopener">Bing Webmaster Tools</a></li>
+      <li><a href="https://github.com/DieterTepe?tab=repositories" target="_blank" rel="noopener">Deine Repos auf GitHub</a></li>
+      <li><a href="https://github.com/DieterTepe/dt-profidreieck-web/actions" target="_blank" rel="noopener">GitHub Actions (Automatiken)</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SEITEN ============ -->
+<section class="tab" id="t-seiten">
+  <div class="card">
+    <h2>🌐 Die Webseiten</h2>
+    <p>Jede Seite gibt es in drei Sprachen. Deutsch hat keinen Zusatz in der Adresse, Englisch endet auf <code>/en/</code>, Portugiesisch auf <code>/pt/</code>. Die Programme öffnest du mit <code>?lang=en</code> oder <code>?lang=pt</code> direkt in der Sprache.</p>
+    <div class="erkl"><b>Startseite oder Programm?</b> Die <b>Startseite</b> erklärt das Programm mit Text, Beispielen und Fragen und Antworten. Sie wird bei Google gefunden. Das <b>Programm</b> ist die eigentliche Testversion zum Ausprobieren.</div>
+    <div id="seiten"></div>
+  </div>
+
+  <div class="card">
+    <h2>🎬 Videoseiten <span class="pill">nur Deutsch</span></h2>
+    <p class="s">Jede Videoseite hat genau ein Video als Hauptinhalt. Nur so zeigt Google die Seite auch bei den Video-Treffern an.</p>
+    <ul>
+      <li><a href="https://dt-profidreieck.de/videos/dreieck-dxf-werkstatt.html" target="_blank" rel="noopener">Dreieck – DXF in der Werkstatt</a></li>
+      <li><a href="https://dt-profidreieck.de/videos/dreieck-berechnen-demo.html" target="_blank" rel="noopener">Dreieck berechnen – Demo</a></li>
+      <li><a href="https://dt-profidreieck.de/videos/schraube-vdi-2230.html" target="_blank" rel="noopener">Schraube – VDI 2230</a></li>
+      <li><a href="https://dt-profidreieck.de/videos/passung-iso-286.html" target="_blank" rel="noopener">Passung – ISO 286</a></li>
+      <li><a href="https://dt-profidreieck.de/videos/schweissnaht-en-1993-1-8.html" target="_blank" rel="noopener">Schweißnaht – EN 1993-1-8</a></li>
+    </ul>
+    <div class="erkl warn"><b>Hinweis:</b> Die Dreieck-Videos V1 und V2 sind KI-generiert: Die Formeln sind unleserlich, und in V1 steht ein „Google“-Schriftzug. Echte Bildschirmaufnahmen wären glaubwürdiger.</div>
+  </div>
+
+  <div class="card">
+    <h2>💶 Preise Vollversion</h2>
+    <p class="s muted">Einmalzahlung über Digistore24</p>
+    <div class="grid">
+      <div class="kpi"><small>Dreieck</small><b>69 €</b></div>
+      <div class="kpi"><small>Schraube</small><b>159 €</b></div>
+      <div class="kpi"><small>Passung</small><b>139 €</b></div>
+      <div class="kpi"><small>Schweißnaht</small><b>169 €</b></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>⚠️ Wichtige Regeln</h2>
+    <p class="s muted">Was du (oder Claude) beim Ändern beachten musst. Zum Aufklappen antippen.</p>
+    <details><summary>config.js und index.html gehören zusammen</summary><div class="in">
+      <p><code>config.js</code> im Repo <code>dt-profidreieck-web</code> ist die zentrale Datei für Links, Bilder und Videos. <b>Dieselben Pfade stehen zusätzlich fest in <code>index.html</code>.</b></p>
+      <p>Warum doppelt? Viele Suchmaschinen, Messenger-Vorschauen und KI-Dienste führen kein JavaScript aus. Sie sehen nur, was direkt im HTML steht.</p>
+      <p>Willst du ein Bild oder Video dauerhaft tauschen, musst du deshalb <b>beide</b> Dateien ändern, bei Bildern auch das <span class="w" data-w="srcset">srcset</span>.</p>
+    </div></details>
+    <details><summary>Medien immer über dt-profidreieck.de verlinken</summary><div class="in">
+      <p>Alle Bild- und Video-Adressen beginnen mit <code>https://dt-profidreieck.de/…</code>, nicht mit <code>github.io</code>. Die github.io-Adresse leitet nur weiter, und eine Weiterleitung kostet Ladezeit und Vertrauen bei Google.</p>
+    </div></details>
+    <details><summary>IndexNow-Schlüsseldatei nie löschen</summary><div class="in">
+      <p>Die Datei <code>ae75103e91164e89baa52e9f013df398.txt</code> liegt in allen 5 Repos. Mit ihr weist du gegenüber Bing nach, dass die Seite dir gehört. Ohne sie funktioniert die automatische Meldung an Bing (<span class="w" data-w="IndexNow">IndexNow</span>) nicht mehr.</p>
+    </div></details>
+    <details><summary>Programm-Skripte sind verschlüsselt</summary><div class="in">
+      <p>Die Rechenlogik der Programme ist absichtlich unlesbar gemacht (obfuskiert), damit niemand sie kopiert. Daran ändert Claude nichts. Rechenlogik änderst du nur in deinem eigenen Quellcode.</p>
+    </div></details>
+    <details><summary>Sprachseiten nie von Hand bearbeiten</summary><div class="in">
+      <p>Die englischen und portugiesischen Seiten werden von einem <span class="w" data-w="Generator">Generator</span> erzeugt. Änderst du sie von Hand, überschreibt das der nächste Lauf.</p>
+      <p><b>Hauptseite:</b> Die deutsche <code>index.html</code> ist die Quelle. <code>python3 _sprachen/sprachen.py</code> erzeugt daraus <code>en/</code> und <code>pt/</code>. Die Übersetzungen stehen in <code>_sprachen/uebersetzungen.json</code>, Schlüssel ist jeweils der deutsche Text. Fehlt eine Übersetzung, meldet das Skript das.</p>
+      <p><b>Startseiten der vier Testversionen</b> (alle drei Sprachen und die Sitemaps): <code>python3 _sprachen/startseiten.py &lt;Ordner mit den Repos&gt;</code>. Die Texte stehen in <code>_sprachen/startseiten_de.json</code> und <code>_sprachen/startseiten_en_pt.py</code>. Der Abschnitt mit den Rechenbeispielen steht im Feld <code>aufgaben</code>, sein Stil in <code>_sprachen/startseiten_aufgaben.css</code>.</p>
+      <p>Beide Skripte prüfen automatisch: Titel höchstens 60 Zeichen, Beschreibung höchstens 160 Zeichen. Bei längeren Texten kürzen Google und Bing ab.</p>
+      <p class="muted s">Der Ordner <code>_sprachen/</code> wird von GitHub Pages nicht veröffentlicht, weil er mit einem Unterstrich beginnt.</p>
+    </div></details>
+    <details><summary>Sprache in den Programmen</summary><div class="in">
+      <p><code>?lang=en</code> oder <code>?lang=pt</code> öffnet ein Programm direkt in der Sprache. Ein Klick auf eine Flagge schreibt die Sprache in die Adresse, deshalb bleibt sie beim Aktualisieren erhalten. Dafür braucht es keinen Speicher und kein Cookie.</p>
+    </div></details>
+    <details><summary>Rechenbeispiele hängen an den Programmen</summary><div class="in">
+      <p>Alle vier Startseiten zeigen Werte aus den eingebauten Programmbeispielen. Ändert sich ein Programmbeispiel, müssen auch die Texte im Feld <code>aufgaben</code> in <code>_sprachen/startseiten_de.json</code> angepasst werden.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ VERLAUF ============ -->
+<section class="tab" id="t-verlauf">
+  <div class="card">
+    <h2>📜 Was erreicht wurde</h2>
+    <p class="s muted">Neueste zuerst. Antippen zeigt die Einzelheiten.</p>
+
+    <div class="tl"><span class="dot"></span><details><summary>24.11. – Schweißnaht: Beispiel „Rohr unter Torsion“</summary><div class="in">
+      <p><b>Anlass:</b> Bei Bing kam die einzige Suche, die nicht nach deinem Namen fragte: „schweißnahtberechnung rohr torsion“.</p>
+      <p>Neuer Abschnitt „Schweißnahtberechnung am Rohr unter Torsion“ in DE/EN/PT (Sprungmarke <code>#rohr-torsion</code>) und eine neue Frage in den FAQ.</p>
+      <p><b>Werte aus dem Programmbeispiel:</b> Rundrohr 114,3 × 6, Kehlnaht a = 4 mm, S235, T = 9 kNm → W<sub>t</sub> = 79.408 mm³, τ∥ = 113,3 N/mm², σ<sub>v</sub> = 196,3 ≤ 360 N/mm², Ausnutzung η = 0,55.</p>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>24.11. – Schraube und Passung: Rechenbeispiele und neue Titel</summary><div class="in">
+      <p><b>Schraube:</b> Abschnitt „Schraubenberechnung nach VDI 2230 – Beispiel M12 10.9“ mit drei Karten (Vorspannkraft, Anziehdrehmoment, Sicherheiten) und neuen FAQ.</p>
+      <p class="s">Quelle: Programmbeispiel „Hydraulikzylinder (M12, VDI-2230-Beispiel)“: F<sub>Mmin</sub> 27.519 N, F<sub>Mmax</sub> 46.782 N ≤ F<sub>Mzul</sub> 58.379 N, M<sub>A</sub> 103,4 N·m, S<sub>F</sub> 1,23, S<sub>D</sub> 10,27, S<sub>P</sub> 3,15.</p>
+      <p class="s">Titel: „Schraubenberechnung online nach VDI 2230 mit Rechenweg“ (EN: „VDI 2230 Bolt Calculator Online – Preload &amp; Torque“).</p>
+      <p><b>Passung:</b> Abschnitt „Passung berechnen: H7/g6 und Pressverband H7/s6“. Die neue Frage „Was bedeutet H7/g6?“ steht in den FAQ ganz oben.</p>
+      <p class="s">Beispiel „25 H7/g6“: Spiel 7 … 41 µm. Beispiel „Zahnrad-Schrumpfsitz · 60 H7/s6“: Übermaß 23 … 72 µm, Fugendruck 24,3 … 88,6 N/mm², M<sub>t,max</sub> 962,2 N·m, S<sub>H</sub> 3,85, Einpresskraft 116,9 kN, Nabe auf 211,3 °C.</p>
+      <p class="s">Titel: „Passungsrechner ISO 286 online – Passung berechnen“ (EN/PT mit „H7/g6“).</p>
+      <div class="erkl"><b>Warum diese Begriffe?</b> Die Google-Vorschläge über Ubersuggest zeigen, dass genau danach gesucht wird: Schraubenberechnung Beispiel/online, Vorspannkraft/Anziehdrehmoment berechnen, Passungsrechner, H7/g6 (sehr häufig in allen drei Sprachen), Übermaß, Einpresskraft.</div>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>24.11. – Dreieck: Titel für „Dreiecksberechnung online“</summary><div class="in">
+      <p><b>Anlass:</b> In der Search Console (28 Tage) hatte „dreiecksberechnung online“ 65 <span class="w" data-w="Impression">Impressionen</span> auf Platz 7,5, aber <b>0 Klicks</b>. Fast alle Dreieck-Suchen enthalten „online“, und alle landen auf der Dreieck-Startseite.</p>
+      <p>Neuer Titel: „Dreiecksberechnung online – Dreieck berechnen mit Rechenweg“. Neue Beschreibung: „Dreieck online berechnen: drei Werte eingeben … Kostenlos testen, ohne Anmeldung.“ In der Einleitung steht jetzt „online … direkt im Browser“. EN und PT sind unverändert.</p>
+      <p class="s">Der Generator setzt außerdem je Startseite ein eigenes Datum (<code>LASTMOD</code>) in die Sitemap.</p>
+      <div class="erkl"><b>Erfolg prüfen:</b> ab ca. 8.12.2026 im Monitor unter „Suche“ → Suchbegriffe.</div>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>23.11. – Bing-Website-Prüfung</summary><div class="in">
+      <p><b>„H1-Tag fehlt“</b> bei allen 4 Programmen behoben: Der sichtbare Programmname im Kopf ist jetzt die Hauptüberschrift (<code>&lt;h1 style="display:contents"&gt;</code>). Das Skript ist unverändert, und Bildschirmfotos vorher und nachher sind pixelgleich.</p>
+      <p><b>„HTML ist zu lang“</b> (Schweißnaht 1,1 MB, Bing empfiehlt 125 KB) bleibt bewusst so: Die Größe kommt vom verschlüsselten Skript, Google akzeptiert bis 15 MB, und die Startseiten sind klein.</p>
+      <p>GitHub Actions auf Node.js 24 umgestellt, die Warnung „Node.js 20 ist veraltet“ ist weg.</p>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>23.11. – Dreieck: Fläche, Winkel, Höhe</summary><div class="in">
+      <p>Neuer Abschnitt „Typische Aufgaben“ in DE/EN/PT mit drei Karten und Formeln, je mit Sprungmarke (<code>#flaeche</code>, <code>#winkel</code>, <code>#hoehe</code>):</p>
+      <ul class="s"><li>„Fläche eines Dreiecks berechnen – auch ohne Höhe“</li><li>„Winkel im Dreieck berechnen – aus drei Seiten“</li><li>„Höhe eines Dreiecks berechnen – mit Seiten oder Winkel“</li></ul>
+      <p class="s">Die Begriffe stammen aus den Google-Vorschlägen: Am häufigsten wird „mit 3 Seiten“, „ohne Höhe“, „mit Winkel“ und „Heron“ gesucht, in allen drei Sprachen gleich. Zusätzlich gibt es eine <code>featureList</code> im <span class="w" data-w="JSON-LD">JSON-LD</span>.</p>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>23.11. – Drei Sprachen</summary><div class="in">
+      <ul>
+        <li>Hauptseite und alle vier Startseiten zusätzlich auf Englisch (<code>/en/</code>) und Portugiesisch-Brasilien (<code>/pt/</code>), mit <span class="w" data-w="hreflang">hreflang</span> (de/en/pt/<span class="w" data-w="x-default">x-default</span>) in Seiten und Sitemaps.</li>
+        <li>Portugiesisch der Hauptseite von Portugal auf Brasilien umgestellt (72 Texte angepasst).</li>
+        <li>Die Flaggen sind echte Links. Alte <code>?lang=</code>-Links der Hauptseite leiten auf <code>/en/</code> bzw. <code>/pt/</code> weiter.</li>
+        <li>Deutsche Hauptseite ca. 45 KB kleiner, weil das Wörterbuch-Skript entfällt.</li>
+        <li>Alle Titel und Beschreibungen auf die Längen gekürzt, die Bing und Google anzeigen, und nach der Begriffs-Tabelle ausgerichtet.</li>
+        <li>Programme merken sich die Sprache über die Adresse. Vorher vergaß Schweißnaht die Sprache.</li>
+        <li>Die Linkprüfung wartet nach Änderungen jetzt 150 Sekunden auf GitHub Pages. Am 23.11. gab es deshalb einmal falsche Fehler-E-Mails.</li>
+      </ul>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>19.11. – Ladezeit und Darstellung (Lighthouse)</summary><div class="in">
+      <p>Die Programme springen beim Laden nicht mehr: Die <span class="w" data-w="Layout-Verschiebung">Layout-Verschiebung</span> sank von bis zu 1,0 auf ungefähr 0. Dazu kamen ein Favicon, bessere Kontraste und Bilder im <span class="w" data-w="WebP">WebP</span>-Format.</p>
+    </div></details></div>
+
+    <div class="tl"><span class="dot"></span><details><summary>18.–21.11. – Grundlagen für Suchmaschinen</summary><div class="in">
+      <ul>
+        <li>Bilder, Videos sowie Test- und Kauflinks der Hauptseite stehen direkt im HTML. Vorher kamen sie nur per JavaScript und waren für Bing, Messenger und KI-Dienste unsichtbar.</li>
+        <li>Strukturierte Daten (JSON-LD) mit Preisen und Gratis-Testversion auf allen Seiten.</li>
+        <li>Eigene Startseiten für Schraube, Passung und Schweißnaht.</li>
+        <li>Alle Sitemaps korrigiert. Die Hauptseite hat eine Bild- und Video-Sitemap, die Videoseiten haben Vorschaubilder (Poster).</li>
+        <li>21.11.: Search-Console-Hinweis „Feld url fehlt (in author)“ behoben und bestätigt.</li>
+      </ul>
+    </div></details></div>
+  </div>
+
+  <div class="card">
+    <h2>🤖 Automatik auf GitHub</h2>
+    <p class="s">Kostenlos, in allen 5 Repos unter „Actions“. Du musst nichts tun.</p>
+    <details><summary>IndexNow – meldet Änderungen an Bing</summary><div class="in">
+      <p>Nach jeder Änderung meldet GitHub alle Adressen aus der Sitemap an Bing und andere Suchmaschinen. Google nimmt an IndexNow nicht teil, dort beantragst du die Indexierung selbst in der Search Console.</p>
+    </div></details>
+    <details><summary>Links prüfen – findet kaputte Links</summary><div class="in">
+      <p>Läuft nach jeder Veröffentlichung und jeden Montag. Prüft alle Links, Bilder und Videos. Bei einem Fehler kommt eine E-Mail von GitHub.</p>
+      <p class="s">Seit 24.11. höchstens 4 Anfragen gleichzeitig, und „503“ (GitHub Pages kurz überlastet) zählt nicht als Fehler. Vorher gab es dadurch Fehlalarme.</p>
+    </div></details>
+    <details><summary>Lighthouse – misst Ladezeit und Qualität</summary><div class="in">
+      <p>Nur im Repo <code>dt-profidreieck-web</code>: jeden Montag 9 Seiten, je 3 Messungen.</p>
+      <p><b>Bericht holen:</b> Repo → Actions → Lighthouse → letzter Lauf → unten „Artifacts“ → „lighthouse-berichte“. Die ZIP-Datei kannst du in den Monitor laden oder an Claude schicken.</p>
+      <p class="s muted">GitHub verschiebt geplante Läufe manchmal (am 23.11. lief er nicht von selbst). Claude kann ihn jederzeit von Hand starten.</p>
+    </div></details>
+  </div>
+
+  <div class="card">
+    <h2>📈 Traffic-Monitor 2.1</h2>
+    <p><a href="../m-1cd737239a/">Monitor öffnen</a> <span class="pill warn">versteckt – nicht weitergeben</span></p>
+    <details><summary>Was kann der Monitor?</summary><div class="in">
+      <ul>
+        <li><b>Übersicht:</b> Besuche aller 5 Repos mit Verlauf</li>
+        <li><b>Suche:</b> Google- und Bing-Exporte als CSV oder ZIP laden</li>
+        <li><b>GitHub:</b> Aufrufe, Herkunft, beliebte Seiten</li>
+        <li><b>Lighthouse:</b> ZIP laden, dann siehst du den Verlauf je Seite</li>
+        <li><b>Mehr:</b> Token, Sicherung, Speicherbelegung, „Daten zurücksetzen“ und Erklärungen zum Aufklappen</li>
+      </ul>
+    </div></details>
+    <details><summary>Datenschutz und Token</summary><div class="in">
+      <p>Daten und GitHub-Token bleiben nur im Browser des jeweiligen Geräts (<span class="w" data-w="localStorage">localStorage</span>). Nichts geht an Dritte. Absichtlich ohne Digistore-Verkäufe und ohne fremde Zähler.</p>
+      <p><b>Token anlegen:</b> GitHub → Settings → Developer settings → Fine-grained token, nur Lesen „Administration“ für die 5 Repos.</p>
+      <div class="erkl warn"><b>Wichtig:</b> Den Token nie im Chat senden.</div>
+    </div></details>
+    <details><summary>Als App auf den Startbildschirm</summary><div class="in">
+      <p>In Chrome öffnen → Menü ⋮ → „Zum Startbildschirm hinzufügen“ bzw. „App installieren“. Das klappt auch mit diesem Dashboard.</p>
+    </div></details>
+    <details><summary>Bing nennt Impressionen „Aufrufe“</summary><div class="in">
+      <p>Der Import erkennt das seit 23.11., die Werte stimmen jetzt mit Windsor überein.</p>
+    </div></details>
+  </div>
+</section>
+
+<!-- ============ ZAHLEN ============ -->
+<section class="tab" id="t-zahlen">
+  <div class="card">
+    <h2>🔎 Ausgangswerte Google</h2>
+    <p class="s muted">28 Tage bis 18.11.2026, also vor der Überarbeitung. Das ist die Vergleichsbasis.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Seite</th><th>Impressionen</th><th>Klicks</th><th>Ø Position</th></tr></thead>
+      <tbody>
+        <tr><td>Dreieck – Startseite</td><td>116</td><td>0</td><td>16,2</td></tr>
+        <tr><td>dt-profidreieck.de</td><td>29</td><td>4</td><td>17,9</td></tr>
+        <tr><td>Schraube – Programm</td><td>2</td><td>0</td><td>7</td></tr>
+        <tr><td>Schraube – Startseite</td><td>1</td><td>1</td><td>3</td></tr>
+        <tr><td>Schweißnaht – Startseite</td><td>1</td><td>0</td><td>30</td></tr>
+        <tr><td>Passung, Videoseiten</td><td>–</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table></div>
+    <details><summary>Was bedeuten die Spalten?</summary><div class="in">
+      <p><b>Impressionen:</b> So oft wurde die Seite in den Suchergebnissen angezeigt, egal ob jemand geklickt hat.</p>
+      <p><b>Klicks:</b> So oft wurde in den Suchergebnissen auf die Seite geklickt.</p>
+      <p><b>Ø Position:</b> der durchschnittliche Platz in den Ergebnissen. 1 ist ganz oben. Ab Platz 11 steht die Seite auf der zweiten Ergebnisseite, dort klickt kaum noch jemand.</p>
+    </div></details>
+  </div>
+
+  <div class="card">
+    <h2>🔎 Ausgangswerte Bing</h2>
+    <p class="s muted">30 Tage bis 19.11.2026</p>
+    <div class="grid">
+      <div class="kpi"><small>Impressionen</small><b>9</b></div>
+      <div class="kpi"><small>Klicks</small><b>3</b></div>
+    </div>
+    <p class="s">Fast nur Suchen mit „dt-profi“, also Leute, die dich schon kennen. Einzige fremde Suche: „schweißnahtberechnung rohr torsion“. Daraus entstand am 24.11. das Rohr-Beispiel auf der Schweißnaht-Seite.</p>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Lighthouse live</h2>
+    <p class="s muted">Median aus 3 Messungen, 23.11.2026. Reihenfolge: Leistung · Barrierefreiheit · Best Practices · SEO</p>
+    <div class="lh" id="lh"></div>
+    <p class="s">Die <span class="w" data-w="Layout-Verschiebung">Layout-Verschiebung</span> liegt überall bei 0,000–0,003, also praktisch null.</p>
+    <details><summary>Was bedeuten die vier Werte?</summary><div class="in">
+      <p><b>Leistung:</b> wie schnell die Seite lädt und benutzbar ist.</p>
+      <p><b>Barrierefreiheit:</b> ob die Seite auch mit Sehschwäche, Vorlese-Software oder nur mit Tastatur gut bedienbar ist (z. B. Kontraste, Beschriftungen).</p>
+      <p><b>Best Practices:</b> Technik und Sicherheit nach aktuellem Stand.</p>
+      <p><b>SEO:</b> ob Suchmaschinen die Seite technisch gut lesen können.</p>
+      <p class="s">90–100 ist grün (sehr gut), 50–89 orange, darunter rot.</p>
+    </div></details>
+    <details><summary>Warum hat Schweißnaht nur 77 bei der Leistung?</summary><div class="in">
+      <p>Das verschlüsselte Skript ist 1,1 MB groß und braucht ca. 0,5 Sekunden Rechenzeit. Besser geht es nur über den Programmcode selbst.</p>
+    </div></details>
+  </div>
+
+  <div class="card">
+    <h2>🎯 Begriffs-Tabelle</h2>
+    <p class="s">Welche Seite zielt auf welche Suche? Jede Seite hat ihr eigenes Hauptthema, damit sich deine Seiten bei Google nicht gegenseitig Konkurrenz machen.</p>
+    <p class="s muted">Zahlen = Suchen pro Monat laut Ubersuggest (23.11.2026; DE = Deutschland, EN = USA, PT = Brasilien)</p>
+    <div class="tw"><table>
+      <thead><tr><th>Seite</th><th>Deutsch</th><th>Englisch</th><th>Portugiesisch</th></tr></thead>
+      <tbody>
+        <tr><td><b>Hauptseite</b></td><td>Berechnungsprogramme Maschinenbau offline (Marke DT-ProfiTools)</td><td>engineering calculators workshop &amp; CNC</td><td>calculadoras de engenharia mecânica</td></tr>
+        <tr><td><b>Dreieck – Startseite</b></td><td><b>Dreieck berechnen (14.800)</b>, Fläche/Winkel/Höhe Dreieck berechnen (8.100/5.400/3.600), Dreieck berechnen online (1.000)</td><td><b>triangle calculator (40.500)</b>, area/angle/height of a triangle, triangle solver</td><td>calculadora de triângulo (online), calcular área/ângulo/altura do triângulo</td></tr>
+        <tr><td>Dreieck – Programm</td><td>Dreiecksrechner Testversion, Winkel &amp; Höhe berechnen</td><td>–</td><td>–</td></tr>
+        <tr><td>Dreieck – Video</td><td>Winkel am Werkstück berechnen, DXF, CNC</td><td>–</td><td>–</td></tr>
+        <tr><td><b>Schraube – Startseite</b></td><td>Schraubenberechnung VDI 2230</td><td>bolted joint calculator (70), VDI 2230</td><td>cálculo de parafusos VDI 2230, torque de aperto (sehr wenig)</td></tr>
+        <tr><td>Schraube – Programm</td><td>Schraube berechnen VDI 2230 Testversion</td><td>–</td><td>–</td></tr>
+        <tr><td><b>Passung – Startseite</b></td><td>Passung berechnen (140), ISO 286</td><td>ISO 286 fit &amp; tolerance calculator, H7/g6</td><td>tabela de tolerância ISO 286, ajuste H7 g6</td></tr>
+        <tr><td>Passung – Programm</td><td>Passungsrechner ISO 286 (H7/g6)</td><td>–</td><td>–</td></tr>
+        <tr><td><b>Schweißnaht – Startseite</b></td><td>Schweißnaht berechnen (90), EN 1993-1-8</td><td>weld strength calculator (260), fillet weld</td><td>cálculo de solda de filete, EN 1993-1-8</td></tr>
+        <tr><td>Schweißnaht – Programm</td><td>Kehlnaht berechnen Testversion</td><td>–</td><td>–</td></tr>
+      </tbody>
+    </table></div>
+    <details><summary>Häufige Zusätze aus den Google-Vorschlägen</summary><div class="in">
+      <p><b>DE:</b> „mit 3 Seiten“, „ohne Höhe“, „mit Winkel“, „Formel“, „online/Rechner“, „rechtwinklig/90 Grad“, „gleichschenklig“</p>
+      <p><b>EN:</b> „3 sides“, „without height“, „Heron's formula“, „2 sides and angle“</p>
+      <p><b>PT:</b> „com 3 lados diferentes“, „sem altura“, „com dois lados e um ângulo“, „pelo ângulo“, „escaleno“</p>
+    </div></details>
+    <div class="erkl"><b>Erkenntnis:</b> Das größte Potenzial hat der Dreiecksrechner, auf Deutsch und vor allem auf Englisch. Nach Schraube, Passung und Schweißnaht sucht wenig Publikum, dafür sehr gezielt (Fachleute). Für Portugiesisch hat Ubersuggest nur wenige Daten.</div>
+  </div>
+</section>
+
+<!-- ============ WERKZEUGE ============ -->
+<section class="tab" id="t-werkzeuge">
+  <div class="card">
+    <h2>🔌 Claudes Zugriff (Konnektoren)</h2>
+    <p class="s">Claude kann nur auf das zugreifen, was du selbst freigegeben hast. Trennst du eine Verbindung, laufen deine Webseiten unverändert weiter, Claude kann dann dort nur nicht mehr nachsehen.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Dienst</th><th>Über</th><th>Was Claude kann</th></tr></thead>
+      <tbody>
+        <tr><td>GitHub (5 Repos)</td><td>direkt</td><td>lesen, ändern, Pull Requests, mergen, Actions starten</td></tr>
+        <tr><td>Google Search Console</td><td>Windsor.ai</td><td><span class="pill ok">nur lesen</span> Klicks, Impressionen, Position, Suchbegriffe</td></tr>
+        <tr><td>Bing Webmaster Tools</td><td>Windsor.ai (API-Schlüssel)</td><td><span class="pill ok">nur lesen</span> Klicks, Impressionen, Suchbegriffe</td></tr>
+        <tr><td>Facebook-Werbekonto</td><td>Windsor.ai</td><td><span class="pill warn">nur nach Freigabe</span> Kampagnen anlegen/pausieren, aktuell ungenutzt</td></tr>
+        <tr><td>Windsor.ai for Social Media</td><td>Konnektor</td><td>Beiträge auf LinkedIn-/Facebook-Seite, YouTube-Texte – noch keine Seite verbunden</td></tr>
+        <tr><td>Ubersuggest (Gratis)</td><td>Konnektor</td><td>Suchvolumen DE/EN/PT, Google-Vorschläge, Platzierung verfolgen</td></tr>
+        <tr><td>Claude in Chrome</td><td>Erweiterung</td><td><span class="pill">nur am PC</span> Webseiten bedienen, z. B. „Indexierung beantragen“. Auf Android nicht möglich.</td></tr>
+      </tbody>
+    </table></div>
+    <details><summary>Grenzen der Gratis-Tarife</summary><div class="in">
+      <p><b>Ubersuggest:</b> 3 Abfragen pro Tag, 1 Projekt mit 25 Suchbegriffen (Platzierung wöchentlich), 1 Website-Prüfung, 3 Suchbegriff-Listen. Google-Vorschläge ohne Zahlen zählen nicht mit.</p>
+      <p><b>Windsor.ai:</b> Testzugang, Daten höchstens 30 Tage zurück.</p>
+      <p>Neue Verbindung gewünscht? Claude fragen: „Gib mir den Windsor-Link für …“</p>
+    </div></details>
+    <div class="erkl"><b>Bewusst nicht dabei:</b> kein Meta-Pixel und kein Google Analytics (DSGVO, keine fremden Skripte). Der Konnektor „Gemini“ im Verzeichnis ist eine Krypto-Börse und nicht Googles KI, er wurde entfernt.</div>
+  </div>
+
+  <div class="card">
+    <h2>📝 Indexierung beantragen (Google)</h2>
+    <p class="s">Search Console → oben links die passende <span class="w" data-w="Property">Property</span> wählen → Adresse oben ins Suchfeld → „Indexierung beantragen“. Etwa 10 pro Tag sind möglich.</p>
+    <ul class="s">
+      <li><b>dt-profidreieck.de:</b> <code>/</code>, <code>/en/</code>, <code>/pt/</code> und die 5 Videoseiten</li>
+      <li><b>je Testversion:</b> <code>/</code>, <code>/en/</code>, <code>/pt/</code> und die Programm-Datei (nicht <code>index.html</code>)</li>
+      <li><b>Dreieck-Startseite</b> nach den Änderungen erneut: <code>/</code>, <code>/en/</code>, <code>/pt/</code></li>
+    </ul>
+    <div class="erkl"><b>Und Bing?</b> Dort musst du nichts tun, IndexNow meldet die Seiten automatisch.</div>
+  </div>
+
+  <div class="card">
+    <h2>🧰 Werkzeuge im Überblick</h2>
+    <p class="s muted">Was es ist und wo du es verwaltest</p>
+
+    <h3>Claude</h3>
+    <details><summary>Claude-Projekt „Überarbeiten“</summary><div class="in">
+      <p>Ein Ordner in Claude, in dem die Projekt.md liegt. Jeder neue Chat im Projekt kann sie lesen. Dieses Dashboard ist eine aufbereitete Fassung davon.</p>
+      <p><b>Verwalten:</b> claude.ai → links „Projekte“ → „Überarbeiten“</p>
+    </div></details>
+    <details><summary>Konnektoren in Claude</summary><div class="in">
+      <p>Steckverbindungen, über die Claude auf andere Dienste zugreift (Windsor.ai, GitHub, Ubersuggest).</p>
+      <p><b>Verwalten/trennen:</b> <a href="https://claude.ai/settings/connectors" target="_blank" rel="noopener">claude.ai/settings/connectors</a>, alternativ: unten links auf deinen Namen → Einstellungen → Konnektoren.</p>
+    </div></details>
+    <details><summary>Erinnerung und frühere Chats</summary><div class="in">
+      <p>Claude merkt sich wichtige Dinge über dich und deine Projekte und kann frühere Chats durchsuchen. Beides lässt sich in den Einstellungen ein- und ausschalten.</p>
+    </div></details>
+
+    <h3>GitHub</h3>
+    <details><summary>Repos – hier liegen deine Webseiten</summary><div class="in">
+      <p>Jedes Repo ist ein Projektordner bei GitHub. Was im Zweig „main“ liegt, ist automatisch live (GitHub Pages).</p>
+      <p><a href="https://github.com/DieterTepe?tab=repositories" target="_blank" rel="noopener">Alle Repos ansehen</a></p>
+    </div></details>
+    <details><summary>Pull Request (PR)</summary><div class="in">
+      <p>Ein Änderungsvorschlag. Claude legt jede Änderung erst als PR an, danach wird sie übernommen („gemergt“). Alte Stände bleiben in der Versionsgeschichte und lassen sich jederzeit zurückholen.</p>
+      <p><b>Ansehen:</b> im Repo oben „Pull requests“ → Filter „Closed“</p>
+    </div></details>
+    <details><summary>Actions – die drei Automatiken</summary><div class="in">
+      <p>Grüner Haken = alles gut, rotes Kreuz = bitte prüfen.</p>
+      <p><a href="https://github.com/DieterTepe/dt-profidreieck-web/actions" target="_blank" rel="noopener">Actions der Hauptseite</a></p>
+      <p class="s"><b>Abschalten:</b> Actions → links die Automatik wählen → oben rechts „…“ → „Disable workflow“</p>
+    </div></details>
+    <details><summary>GitHub Pages – Veröffentlichung</summary><div class="in">
+      <p>Macht aus einem Repo eine Webseite. Bei <code>dt-profidreieck-web</code> ist dort die Domain dt-profidreieck.de eingetragen.</p>
+      <p><a href="https://github.com/DieterTepe/dt-profidreieck-web/settings/pages" target="_blank" rel="noopener">Pages-Einstellungen</a></p>
+    </div></details>
+    <details><summary>E-Mails von GitHub</summary><div class="in">
+      <p>GitHub meldet sich z. B., wenn die Linkprüfung einen Fehler findet.</p>
+      <p><a href="https://github.com/settings/notifications" target="_blank" rel="noopener">Benachrichtigungen einstellen</a> (Abschnitt „Actions“)</p>
+    </div></details>
+    <details><summary>Claudes Zugriff auf GitHub entziehen</summary><div class="in">
+      <p><a href="https://github.com/settings/installations" target="_blank" rel="noopener">Installierte Apps</a> · <a href="https://github.com/settings/applications" target="_blank" rel="noopener">Autorisierte Apps</a></p>
+    </div></details>
+
+    <h3>Suchmaschinen</h3>
+    <details><summary>Google Search Console</summary><div class="in">
+      <p>Googles kostenloses Werkzeug für Webseitenbetreiber: zeigt, wie oft deine Seiten bei Google erscheinen und angeklickt werden, und nimmt Sitemaps und Indexierungsanträge an.</p>
+      <p><a href="https://search.google.com/search-console" target="_blank" rel="noopener">Öffnen</a>. Wichtig: Oben links die richtige Property wählen. Sitemaps findest du links unter „Sitemaps“.</p>
+    </div></details>
+    <details><summary>Bing Webmaster Tools</summary><div class="in">
+      <p>Dasselbe für Bing, und damit auch für DuckDuckGo und viele KI-Suchen, die Bing nutzen.</p>
+      <p><a href="https://www.bing.com/webmasters" target="_blank" rel="noopener">Öffnen</a>. API-Schlüssel für Windsor: Zahnrad oben rechts → „API-Zugriff“. Erzeugst du einen neuen Schlüssel, muss er in Windsor neu eingetragen werden.</p>
+    </div></details>
+    <details><summary>IndexNow</summary><div class="in">
+      <p>Ein „Klingel-System“: Nach jeder Änderung meldet GitHub automatisch an Bing &amp; Co., dass es Neues gibt. Du brauchst kein Konto und musst nichts tun. Nur die Schlüsseldatei muss liegen bleiben.</p>
+    </div></details>
+    <details><summary>Ubersuggest</summary><div class="in">
+      <p>Zeigt, wonach Leute in welcher Sprache und welchem Land wie oft suchen, und verfolgt wöchentlich die Google-Platzierung ausgewählter Begriffe.</p>
+      <p><a href="https://app.neilpatel.com/" target="_blank" rel="noopener">Öffnen</a> (Anmeldung mit deiner E-Mail). Gratis: 3 Abfragen pro Tag.</p>
+    </div></details>
+
+    <h3>Windsor.ai</h3>
+    <details><summary>Die Brücke zu Google, Bing und Facebook</summary><div class="in">
+      <p>Ein eigenständiger Dienst (nicht von Google oder Facebook). Er bindet deine Konten an, damit Claude die Zahlen lesen kann bzw. bei Facebook nach deiner Freigabe handeln kann. Windsor liefert keine neuen Daten, nur Zugang zu deinen vorhandenen.</p>
+      <p><a href="https://onboard.windsor.ai/" target="_blank" rel="noopener">Verbindungen und Abo verwalten</a></p>
+      <p><b>Zugriff direkt beim Anbieter entziehen:</b></p>
+      <ul class="s">
+        <li>Google: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">Drittanbieter-Apps</a></li>
+        <li>Facebook: <a href="https://www.facebook.com/settings/?tab=business_tools" target="_blank" rel="noopener">Unternehmensintegrationen</a></li>
+        <li>Bing: in den Webmaster Tools einen neuen API-Schlüssel erzeugen, dann ist der alte ungültig</li>
+      </ul>
+    </div></details>
+
+    <h3>Verkauf</h3>
+    <details><summary>Digistore24</summary><div class="in">
+      <p>Zahlungs- und Download-Dienst für die Vollversionen (Kauflinks <code>checkout-ds24.com/product/…</code>).</p>
+      <p><a href="https://www.digistore24.com/" target="_blank" rel="noopener">Öffnen</a></p>
+      <p class="s"><b>Kauflinks ändern:</b> in <code>config.js</code> <b>und</b> <code>index.html</code>, danach <code>python3 _sprachen/sprachen.py</code>. Für die vier Startseiten in <code>_sprachen/startseiten_de.json</code>. Am einfachsten beauftragst du Claude.</p>
+    </div></details>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ Pläne für später</h2>
+    <details><summary>YouTube</summary><div class="in"><p>Videos hochladen, Titel und Beschreibung in DE/EN/PT schreibt Claude, mit Link zur Testversion.</p></div></details>
+    <details><summary>Kostenlose Verbreitung</summary><div class="in"><p>Fachforen (CNC/Zerspanung, Techniker-Forum, Reddit), Software-Verzeichnisse (AlternativeTo, Product Hunt), Berufs- und Technikerschulen.</p></div></details>
+    <details><summary>LinkedIn</summary><div class="in">
+      <p>Profil: <a href="https://www.linkedin.com/in/dieter-tepe-702117430" target="_blank" rel="noopener">Dieter Tepe</a></p>
+      <p>Ideen: Fachbeiträge aus den Rechenbeispielen (Rohr unter Torsion, H7/g6, VDI 2230 M12, Fläche/Winkel/Höhe) mit Link zur Startseite. Claude schreibt die Texte in DE/EN/PT, du postest selbst. Windsor bedient meist nur Unternehmensseiten, keine persönlichen Profile.</p>
+      <p>Später eine Unternehmensseite „DT-ProfiTools“ anlegen und in Windsor verbinden.</p>
+    </div></details>
+    <details><summary>Reddit</summary><div class="in">
+      <p>Profil: <a href="https://www.reddit.com/user/DieterTepe" target="_blank" rel="noopener">u/DieterTepe</a></p>
+      <p>Vorgehen: zuerst Fachfragen beantworten, nur passend verlinken, offen sagen, dass es dein eigenes Programm ist, und die Regeln der Foren zur Eigenwerbung beachten.</p>
+      <p class="s">Foren: r/Machinists, r/CNC, r/MechanicalEngineering, r/Welding, r/engineering (englisch → <code>/en/</code>-Seiten). Claude entwirft Antworten zu konkreten Fragen.</p>
+    </div></details>
+    <details><summary>sameAs im JSON-LD</summary><div class="in"><p>LinkedIn- und Reddit-Profil beim Autor „Dieter Tepe“ als <code>sameAs</code> eintragen, auf allen Seiten und in den Generatoren. So erkennt Google, dass diese Profile zu dir gehören.</p></div></details>
+    <details><summary>Bezahlte Werbung (Facebook) – zurückgestellt</summary><div class="in"><p>Vorschlag für später: 1 Programm (Dreieck), 5–10 € pro Tag, 1 Woche, auf Link-Klicks optimiert. Erst wenn du Bescheid sagst.</p></div></details>
+  </div>
+
+  <div class="card">
+    <h2>🤝 Entscheidungen</h2>
+    <ul class="s">
+      <li>Portugiesisch = Brasilien (pt-BR), Ordner <code>/pt/</code>, <code>hreflang="pt"</code>, das gilt für alle Portugiesisch-Sprecher.</li>
+      <li>Englisch = international, Ordner <code>/en/</code>.</li>
+      <li><code>x-default</code> = Deutsch.</li>
+      <li>Keine automatische Umleitung nach Browsersprache. Grund: Der Googlebot meldet sich auf Englisch, und sonst würde Google die deutsche Seite auf Englisch speichern.</li>
+    </ul>
+    <details><summary>Bewusst offen gelassen</summary><div class="in">
+      <ul class="s">
+        <li><b>Passung:</b> fehlende Feldbeschriftungen im verschlüsselten Skript, nur im Quellcode lösbar</li>
+        <li><b>Schweißnaht:</b> Leistung 77, nur im Programmcode verbesserbar</li>
+        <li><b>Schraube/Passung:</b> Der Programmname überlappt auf schmalen Handys mit dem Sprachumschalter, das wäre reines CSS</li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="card">
+    <h2>📖 Wörterbuch</h2>
+    <div class="tw"><table id="wb"><tbody></tbody></table></div>
+  </div>
+</section>
+
+<p class="foot">Inhalt: Projekt.md aus dem Claude-Projekt „Überarbeiten“ · Keine fremden Skripte · Nur die Haken werden auf diesem Gerät gespeichert</p>
+</main>
+
+<div id="sheet" role="dialog" aria-live="polite"><button aria-label="Schließen">×</button><div id="sheetTx"></div></div>
+
+<nav class="tabs">
+  <button class="on" data-t="start"><span>🏠</span>Start</button>
+  <button data-t="seiten"><span>🌐</span>Seiten</button>
+  <button data-t="verlauf"><span>📜</span>Verlauf</button>
+  <button data-t="zahlen"><span>📊</span>Zahlen</button>
+  <button data-t="werkzeuge"><span>🧰</span>Werkzeuge</button>
+</nav>
+
+<script>
+"use strict";
+const STAND = "24.11.2026";
+document.getElementById("stand").textContent = "Stand " + STAND;
+
+/* ---------- Wörterbuch ---------- */
+const WB = {
+  "Sitemap":"Inhaltsverzeichnis der Webseite für Suchmaschinen. Darin steht, welche Seiten es gibt und wann sie zuletzt geändert wurden.",
+  "Indexierung":"Google nimmt eine Seite in seinen Suchkatalog auf. Erst dann kann sie in den Ergebnissen erscheinen.",
+  "Property":"Eine in der Search Console angemeldete Webseite. Du hast 5 davon, eine je Seite.",
+  "Impression":"Deine Seite wurde in den Suchergebnissen angezeigt, egal ob jemand geklickt hat.",
+  "Klick":"Jemand hat in den Suchergebnissen auf deine Seite geklickt.",
+  "Position":"Durchschnittlicher Platz in den Suchergebnissen. 1 = ganz oben, ab 11 = zweite Seite.",
+  "JSON-LD":"Unsichtbare Zusatzinfos für Suchmaschinen (strukturierte Daten): Name, Preis, Gratis-Testversion, Video, Autor …",
+  "Canonical":"Die „Haupt-Adresse“ einer Seite, wenn sie unter mehreren Adressen erreichbar ist. So zählt Google sie nur einmal.",
+  "hreflang":"Hinweis an Google, welche Seite für welche Sprache gedacht ist. So zeigt Google Englischsprachigen die /en/-Seite.",
+  "x-default":"Die Seite, die Google zeigt, wenn keine Sprache passt. Bei dir: Deutsch.",
+  "Lighthouse":"Googles Messwerkzeug für Ladezeit, Barrierefreiheit, Technik und SEO, jeweils 0–100 Punkte.",
+  "Median":"Der mittlere von mehreren Messwerten. Ausreißer nach oben oder unten zählen so nicht.",
+  "WebP":"Modernes Bildformat, deutlich kleiner als JPG bei gleicher Qualität. Die Seiten laden dadurch schneller.",
+  "PWA / Web-App":"Eine Webseite, die sich wie eine App auf den Startbildschirm legen lässt (Monitor und dieses Dashboard).",
+  "Repo":"Ein Projektordner bei GitHub.",
+  "Pull Request / mergen":"Änderungsvorschlag / Änderung übernehmen.",
+  "Konnektor":"Verbindung zwischen Claude und einem anderen Dienst.",
+  "Generator":"Kleines Skript, das aus einer Vorlage und Texten die fertigen Seiten in allen Sprachen erzeugt.",
+  "IndexNow":"Automatische Meldung an Bing & Co., dass sich eine Seite geändert hat. Google macht nicht mit.",
+  "Layout-Verschiebung":"Wie stark Inhalte beim Laden noch springen (CLS). 0 = gar nicht, ab 0,25 gilt es als schlecht.",
+  "localStorage":"Kleiner Speicher im Browser des Geräts. Er bleibt dort und wird nicht ins Internet geschickt.",
+  "srcset":"Liste mehrerer Bildgrößen. Der Browser wählt die passende, Handys laden so kleinere Bilder.",
+  "SEO":"Suchmaschinenoptimierung: die Seite so gestalten, dass Suchmaschinen sie finden, verstehen und gut einordnen."
+};
+const wbBody = document.querySelector("#wb tbody");
+Object.keys(WB).forEach(k=>{
+  const tr=document.createElement("tr");
+  tr.innerHTML="<td><b></b></td><td></td>";
+  tr.children[0].firstChild.textContent=k; tr.children[1].textContent=WB[k];
+  wbBody.appendChild(tr);
+});
+const sheet=document.getElementById("sheet"), sheetTx=document.getElementById("sheetTx");
+document.addEventListener("click",e=>{
+  const w=e.target.closest(".w");
+  if(w){ const k=w.dataset.w; sheetTx.innerHTML="<b></b><br><span></span>";
+    sheetTx.children[0].textContent=k; sheetTx.children[2].textContent=WB[k]||"";
+    sheet.classList.add("on"); return; }
+  if(!e.target.closest("#sheet")) sheet.classList.remove("on");
+});
+sheet.querySelector("button").onclick=()=>sheet.classList.remove("on");
+
+/* ---------- Seiten ---------- */
+const SEITEN = [
+  {n:"Hauptseite", z:"alle 4 Programme, Kauf", start:"https://dt-profidreieck.de/", repo:"dt-profidreieck-web"},
+  {n:"Dreieck", z:"Dreiecksberechnung online", start:"https://dietertepe.github.io/test-dreieck/", prog:"https://dietertepe.github.io/test-dreieck/DT-ProfiDreieck_Test_1-1-0.html", repo:"test-dreieck", bsp:"Fläche, Winkel, Höhe"},
+  {n:"Schraube", z:"Schraubenberechnung VDI 2230", start:"https://dietertepe.github.io/dt-profischraube-web/", prog:"https://dietertepe.github.io/dt-profischraube-web/DT-ProfiSchraube_Test.html", repo:"dt-profischraube-web", bsp:"M12 10.9 – Vorspannkraft, Anziehdrehmoment"},
+  {n:"Passung", z:"Passungsrechner ISO 286", start:"https://dietertepe.github.io/dt-profipassung-web/", prog:"https://dietertepe.github.io/dt-profipassung-web/DT-ProfiPassung_Testversion.html", repo:"dt-profipassung-web", bsp:"H7/g6 und Pressverband H7/s6"},
+  {n:"Schweißnaht", z:"Schweißnaht berechnen EN 1993-1-8", start:"https://dietertepe.github.io/dt-profischweissnaht-web/", prog:"https://dietertepe.github.io/dt-profischweissnaht-web/DT-ProfiSchweissnaht_Testversion.html", repo:"dt-profischweissnaht-web", bsp:"Rohr unter Torsion"}
+];
+const sx=document.getElementById("seiten");
+function a(href,txt){return '<a href="'+href+'" target="_blank" rel="noopener">'+txt+'</a>';}
+SEITEN.forEach(s=>{
+  const d=document.createElement("details");
+  let h='<summary>'+s.n+' <span class="muted s" style="font-weight:400">– '+s.z+'</span></summary><div class="in">';
+  h+='<p><b>'+(s.prog?'Startseite':'Seite')+':</b> <span class="lang">'+a(s.start,"DE")+a(s.start+"en/","EN")+a(s.start+"pt/","PT")+'</span></p>';
+  if(s.prog) h+='<p><b>Programm (Test):</b> <span class="lang">'+a(s.prog,"DE")+a(s.prog+"?lang=en","EN")+a(s.prog+"?lang=pt","PT")+'</span></p>';
+  if(s.bsp) h+='<p class="s"><b>Rechenbeispiel auf der Startseite:</b> '+s.bsp+'</p>';
+  h+='<p class="s"><b>Repo:</b> '+a("https://github.com/DieterTepe/"+s.repo,s.repo)+'</p></div>';
+  d.innerHTML=h; sx.appendChild(d);
+});
+
+/* ---------- Lighthouse ---------- */
+const LH=[
+  ["dt-profidreieck.de",[96,100,100,100],"vorher 82–87 Leistung"],
+  ["Dreieck-Programm",[99,100,100,100],"vorher 75 / 96 / 96 / 100"],
+  ["Passung-Programm",[97,93,100,100],"unverändert"],
+  ["Schraube-Programm",[92,100,100,100],"vorher 93"],
+  ["Schweißnaht-Programm",[77,100,100,100],"vorher 79 – Skript 1,1 MB"],
+  ["4 Startseiten",[99,100,100,100],"99–100 Leistung, neu"]
+];
+const LBL=["Leistung","Barrierefr.","Best Pract.","SEO"];
+function col(v){return v>=90?"var(--ok)":v>=50?"var(--warn)":"var(--bad)";}
+const lhx=document.getElementById("lh");
+LH.forEach(r=>{
+  const d=document.createElement("div"); d.className="row";
+  let h='<b>'+r[0]+'</b> <span class="muted s">'+r[2]+'</span><div class="vals">';
+  r[1].forEach((v,i)=>{h+='<div>'+LBL[i]+'<b style="color:'+col(v)+'">'+v+'</b><div class="bar"><i style="width:'+v+'%;background:'+col(v)+'"></i></div></div>';});
+  d.innerHTML=h+'</div>'; lhx.appendChild(d);
+});
+
+/* ---------- Aufgaben ---------- */
+const TODOS=[
+  ["gsc","Indexierung in der Search Console beantragen","Neue Adressen je Property (/en/, /pt/), Dreieck-Startseite erneut. Liste unter „Werkzeuge“."],
+  ["frau","Ehefrau auf die portugiesischen Seiten schauen lassen","dt-profidreieck.de/pt/ und die Dreieck-Startseite /pt/#aufgaben"],
+  ["mon","Lighthouse-ZIP und Search-Console-Export in den Monitor laden",""],
+  ["ub","Ubersuggest-Projekt mit 25 Begriffen anlegen","Wöchentliche Platzierung für die wichtigsten Begriffe aus der Begriffs-Tabelle (Claude)"],
+  ["vid","Videoseiten auf EN/PT (optional)","Videos haben keinen Ton, nur Titel und Text übersetzen"],
+  ["gsc2","Sitemap-Status und restliche URL-Prüfung kontrollieren","nach einigen Tagen in der Search Console"]
+];
+let done={}; try{done=JSON.parse(localStorage.getItem("dtProjektTodos")||"{}");}catch(e){}
+const tx=document.getElementById("todos");
+TODOS.forEach(t=>{
+  const l=document.createElement("label"); l.className="todo"+(done[t[0]]?" done":"");
+  l.innerHTML='<input type="checkbox"><div class="tx"><b></b><small></small></div>';
+  const cb=l.querySelector("input"); cb.checked=!!done[t[0]];
+  l.querySelector("b").textContent=t[1]; l.querySelector("small").textContent=t[2];
+  cb.onchange=()=>{done[t[0]]=cb.checked; l.classList.toggle("done",cb.checked);
+    try{localStorage.setItem("dtProjektTodos",JSON.stringify(done));}catch(e){}};
+  tx.appendChild(l);
+});
+
+/* ---------- Kopieren ---------- */
+document.querySelectorAll("button.copy").forEach(b=>b.onclick=async()=>{
+  const t=b.textContent.trim();
+  try{await navigator.clipboard.writeText(t);}catch(e){
+    const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");}catch(_){} ta.remove();}
+  b.classList.add("ok"); setTimeout(()=>b.classList.remove("ok"),1600);
+});
+
+/* ---------- Tabs ---------- */
+const tabs=document.querySelectorAll("nav.tabs button");
+function zeige(id){
+  tabs.forEach(b=>b.classList.toggle("on",b.dataset.t===id));
+  document.querySelectorAll("section.tab").forEach(s=>s.classList.toggle("on",s.id==="t-"+id));
+  try{history.replaceState(null,"","#"+id);}catch(e){}
+  window.scrollTo(0,0);
+}
+tabs.forEach(b=>b.onclick=()=>{suche.value="";filter("");zeige(b.dataset.t);});
+const h0=location.hash.slice(1); if(document.getElementById("t-"+h0)) zeige(h0);
+
+/* ---------- Suche ---------- */
+const suche=document.getElementById("suche");
+const blocks=()=>document.querySelectorAll("section.tab .card");
+function unmark(){document.querySelectorAll("mark").forEach(m=>m.replaceWith(document.createTextNode(m.textContent)));document.body.normalize();}
+function markIn(el,q){
+  const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null); const hits=[]; let n;
+  while(n=w.nextNode()){ if(n.parentNode.closest("script,style")) continue;
+    const i=n.nodeValue.toLowerCase().indexOf(q); if(i>=0) hits.push([n,i]); }
+  hits.forEach(([n,i])=>{const r=document.createRange();r.setStart(n,i);r.setEnd(n,i+q.length);
+    const m=document.createElement("mark");try{r.surroundContents(m);}catch(e){}});
+  return hits.length;
+}
+function filter(q){
+  unmark(); q=q.trim().toLowerCase();
+  const secs=document.querySelectorAll("section.tab");
+  if(!q){ secs.forEach(s=>s.classList.remove("hide")); blocks().forEach(c=>c.classList.remove("hide"));
+    const on=document.querySelector("nav.tabs button.on").dataset.t;
+    secs.forEach(s=>s.classList.toggle("on",s.id==="t-"+on)); return; }
+  secs.forEach(s=>s.classList.add("on"));
+  blocks().forEach(c=>{
+    const hit=c.textContent.toLowerCase().includes(q); c.classList.toggle("hide",!hit);
+    if(hit){ c.querySelectorAll("details").forEach(d=>{ if(d.textContent.toLowerCase().includes(q)) d.open=true; }); markIn(c,q); }
+  });
+}
+let tmr; suche.addEventListener("input",()=>{clearTimeout(tmr);tmr=setTimeout(()=>filter(suche.value),180);});
+</script>
+</body>
+</html>
