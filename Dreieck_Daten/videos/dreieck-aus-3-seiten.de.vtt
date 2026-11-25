@@ -1,0 +1,89 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:05.400
+Dreieck berechnen aus 3 Seiten – Winkel, Fläche und Höhen mit vollständigem Rechenweg
+
+2
+00:00:05.600 --> 00:00:10.900
+Gegeben: a = 7 mm, b = 5 mm, c = 6 mm. Gesucht: Winkel α, β, γ, Fläche A und Höhen ha, hb, hc
+
+3
+00:00:11.000 --> 00:00:13.400
+Größe 1: Seite a antippen
+
+4
+00:00:13.400 --> 00:00:15.350
+Wert eingeben: a = 7 mm
+
+5
+00:00:15.350 --> 00:00:16.850
+Größe 2: Seite b antippen
+
+6
+00:00:16.850 --> 00:00:18.500
+Wert eingeben: b = 5 mm
+
+7
+00:00:18.500 --> 00:00:20.000
+Größe 3: Seite c antippen
+
+8
+00:00:20.000 --> 00:00:21.650
+Wert eingeben: c = 6 mm
+
+9
+00:00:21.650 --> 00:00:24.250
+Fertig – alle Werte sind berechnet
+
+10
+00:00:24.250 --> 00:00:25.250
+Alle Werte auf einen Blick
+
+11
+00:00:25.250 --> 00:00:27.150
+Winkel α = 78,46°, β = 44,42°, γ = 57,12°
+
+12
+00:00:27.150 --> 00:00:28.750
+Fläche A = 14,70 mm²
+
+13
+00:00:28.750 --> 00:00:30.650
+Höhen ha = 4,20 mm, hb = 5,88 mm, hc = 4,90 mm
+
+14
+00:00:30.650 --> 00:00:32.250
+Rechenweg aufklappen
+
+15
+00:00:32.250 --> 00:00:37.750
+Winkel mit dem Kosinussatz: α = arccos((b² + c² − a²) / (2·b·c))
+
+16
+00:00:37.750 --> 00:00:41.850
+Probe: Winkelsumme α + β + γ = 180°
+
+17
+00:00:41.850 --> 00:00:47.750
+Fläche nach Heron – ganz ohne Höhe: s = 9 mm, A = √(s·(s−a)·(s−b)·(s−c)) = 14,70 mm²
+
+18
+00:00:47.750 --> 00:00:53.250
+Höhen aus der Fläche: h = 2·A / Seite
+
+19
+00:00:53.250 --> 00:00:56.250
+Mit Proben – jeder Schritt nachvollziehbar
+
+20
+00:00:56.250 --> 00:00:59.650
+Maßstäbliche Zeichnung mit Umkreis und Inkreis
+
+21
+00:00:59.650 --> 00:01:04.250
+Höhen einblenden – mit einem Tipp
+
+22
+00:01:04.750 --> 00:01:12.200
+Jetzt kostenlos testen: dietertepe.github.io/test-dreieck – Vollversion 69 € einmalig
