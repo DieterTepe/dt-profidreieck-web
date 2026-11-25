@@ -15,6 +15,8 @@ from startseiten_en_pt import UI, KOPF, T
 
 HERE = Path(__file__).resolve().parent
 DOM = "https://dt-profidreieck.de/"
+# Autor-Profile (JSON-LD sameAs)
+SAME_AS = ["https://www.linkedin.com/in/dieter-tepe-702117430", "https://www.reddit.com/user/DieterTepe"]
 GH = "https://dietertepe.github.io/"
 HEUTE = "2026-11-23"
 # Letzte inhaltliche Aenderung je Startseite (fuer <lastmod> in der Sitemap); sonst HEUTE
@@ -85,7 +87,7 @@ def seite(k, l):
          "applicationCategory": "BusinessApplication", "applicationSubCategory": t["kat"],
          "operatingSystem": "Webbrowser (Windows, macOS, Linux, Android, iOS)", "browserRequirements": "JavaScript",
          "inLanguage": ["de", "en", "pt-BR"], "image": img_url, "description": plain(t["lead"]),
-         "author": {"@type": "Person", "name": "Dieter Tepe", "url": DOM},
+         "author": {"@type": "Person", "name": "Dieter Tepe", "url": DOM, "sameAs": SAME_AS},
          "offers": [
              {"@type": "Offer", "name": ui["start"], "price": "0.00", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": app},
              {"@type": "Offer", "name": ui["k_eyebrow"], "price": f"{preis:.2f}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": d["kauf"]}]}]}

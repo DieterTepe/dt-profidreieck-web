@@ -16,6 +16,8 @@ from bs4 import BeautifulSoup, NavigableString, Comment
 
 REPO = Path(__file__).resolve().parent.parent
 DOM = "https://dt-profidreieck.de/"
+# Autor-Profile (JSON-LD sameAs)
+SAME_AS = ["https://www.linkedin.com/in/dieter-tepe-702117430", "https://www.reddit.com/user/DieterTepe"]
 LANGS = {"de": "", "en": "en/", "pt": "pt/"}
 HTML_LANG = {"de": "de", "en": "en", "pt": "pt-BR"}
 OG_LOCALE = {"de": "de_DE", "en": "en_US", "pt": "pt_BR"}
@@ -86,7 +88,8 @@ def esc(s): return s.replace("&", "&amp;").replace('"', "&quot;").replace("<", "
 def jsonld(l):
     test_q = "" if l == "de" else f"?lang={l}"
     graph = [
-        {"@type": "Person", "@id": DOM + "#dieter-tepe", "name": "Dieter Tepe", "url": DOM},
+        {"@type": "Person", "@id": DOM + "#dieter-tepe", "name": "Dieter Tepe", "url": DOM,
+         "sameAs": SAME_AS},
         {"@type": "WebSite", "@id": DOM + "#website", "url": DOM, "name": "DT-ProfiTools",
          "inLanguage": ["de", "en", "pt-BR"], "publisher": {"@id": DOM + "#dieter-tepe"}},
         {"@type": "WebPage", "@id": url(l) + "#webpage", "url": url(l), "name": KOPF[l]["title"],

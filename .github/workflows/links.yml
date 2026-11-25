@@ -36,6 +36,8 @@ jobs:
             --accept 200,206,429,503
             --exclude "checkout-ds24\.com"
             --exclude "localhost"
+            --exclude "linkedin\.com"
+            --exclude "reddit\.com"
             --exclude-path "google[0-9a-f]+\.html"
             --exclude-path "werkzeuge/p-"
             './**/*.html' config.js
