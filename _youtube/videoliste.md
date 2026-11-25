@@ -28,7 +28,7 @@ dem wichtigsten Moment.
 - **Stand 25.11.:** Entwurf 1 fertig (72 s): Vorspann → Aufgabe (a = 7, b = 5, c = 6 mm) →
   Eingabe über den Assistenten → Ergebnis mit Hervorhebung (Winkel, Fläche 14,70 mm², Höhen) →
   Rechenweg (Kosinussatz, Winkelsumme, Heron, Höhen, Proben) → Zeichnung mit Höhen → Abspann
-  „Jetzt kostenlos testen“. Wartet auf Dieters Freigabe.
+  „Jetzt kostenlos testen“. **Von Dieter freigegeben (25.11.).** Eingebaut mit Untertiteln (`.de.vtt`), Kapiteln (`.kapitel.vtt`), Sprungmarken (`?t=…`) und Beispieltext.
 
 ## Y02 – Dreieck: vom Werkstück zur DXF für die CNC
 

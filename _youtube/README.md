@@ -57,7 +57,7 @@ noch in Suchmaschinen auf.
 
 | Nr. | Video | Ersetzt | Status |
 |---|---|---|---|
-| Y01 | Dreieck: Fläche, Winkel, Höhe aus 3 Seiten | V1 (KI, `videos/dreieck-berechnen-demo.html`) | Entwurf 1 (25.11., 72 s) – wartet auf Freigabe |
+| Y01 | Dreieck: Fläche, Winkel, Höhe aus 3 Seiten | V1 (KI, `videos/dreieck-berechnen-demo.html`) | **Freigegeben 25.11.** · Webseite: `Dreieck_Daten/videos/dreieck-aus-3-seiten.mp4` (5,7 MB) auf `videos/dreieck-berechnen-demo.html` + Hauptseite · YouTube: offen |
 | Y02 | Dreieck: Werkstück, Zeichnung, DXF für CNC | V2 (KI, `videos/dreieck-dxf-werkstatt.html`) | Idee |
 | Y03 | Schraube: VDI 2230 Beispiel M12 10.9 | `schraube-teaser.mp4` | Idee |
 | Y04 | Passung: H7/g6 und Pressverband H7/s6 | `passung-teaser.mp4` | Idee |
@@ -69,7 +69,7 @@ Einzelheiten: [videoliste.md](videoliste.md)
 
 | Datei | Größe | Verwendet auf | Bemerkung |
 |---|---|---|---|
-| `Dreieck_Daten/videos/V1.mp4` | 2,9 MB, 10 s | `videos/dreieck-berechnen-demo.html` | KI-generiert, Formeln unleserlich, „Google“-Schriftzug |
+| ~~`Dreieck_Daten/videos/V1.mp4`~~ | – | – | gelöscht 25.11., ersetzt durch Y01 |
 | `Dreieck_Daten/videos/V2.mp4` | 2,6 MB, 10 s | `videos/dreieck-dxf-werkstatt.html` | KI-generiert |
 | `Dreieck_Daten/videos/V3.mp4` … `V8.mp4` | je 2,4–3,0 MB | nirgends verlinkt | ungenutzt – ansehen, ob brauchbar, sonst später löschen |
 | `Schraube_Daten/videos/schraube-teaser.mp4` | 4,1 MB, 40 s | `videos/schraube-vdi-2230.html` | Teaser |

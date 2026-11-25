@@ -50,11 +50,11 @@ window.DT_CONFIG = {
     videoWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/videos/V2.mp4",
 
     // Zweites Video in Pos. 01 ("Von der Eingabe bis zum Ergebnis")
-    videoDemo: "https://dt-profidreieck.de/Dreieck_Daten/videos/V1.mp4",
+    videoDemo: "https://dt-profidreieck.de/Dreieck_Daten/videos/dreieck-aus-3-seiten.mp4",
 
     // Vorschaubilder (Poster) der beiden Videos – Standbild aus dem Video
     posterWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg",
-    posterDemo: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v1-demo.jpg",
+    posterDemo: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg",
 
     // Screenshot-Paar unter den Videos in Pos. 01 – links: Eingabemaske
     bildEingabe: "https://dt-profidreieck.de/Dreieck_Daten/bilder/app-eingabe.jpg",

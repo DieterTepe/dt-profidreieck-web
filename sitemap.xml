@@ -13,7 +13,7 @@
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-eingabe.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-ergebnis.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v1-demo.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-assistent.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-beratung.jpg</image:loc></image:image>
@@ -65,14 +65,14 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/dreieck-berechnen-demo.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v1-demo.jpg</video:thumbnail_loc>
-      <video:title>Dreieck berechnen: von der Eingabe bis zum Rechenweg</video:title>
-      <video:description>Kurzvideo: Drei Größen eingeben, Dreieck berechnen lassen und den vollständigen Rechenweg mit Formeln und Zeichnung ansehen – DT-ProfiDreieck im Browser.</video:description>
-      <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/V1.mp4</video:content_loc>
-      <video:duration>10</video:duration>
-      <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg</video:thumbnail_loc>
+      <video:title>Dreieck aus 3 Seiten berechnen – Video mit Rechenweg</video:title>
+      <video:description>Video: Dreieck aus drei Seiten berechnen – Winkel mit Kosinussatz, Fläche nach Heron ohne Höhe, alle Höhen. Mit Rechenweg und Zeichnung.</video:description>
+      <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/dreieck-aus-3-seiten.mp4</video:content_loc>
+      <video:duration>72</video:duration>
+      <video:publication_date>2026-11-25T22:00:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
