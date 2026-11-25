@@ -108,7 +108,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
 
   <div class="card">
     <h2>📅 Termine</h2>
-    <div class="todo"><div class="tx"><b>ab ca. 8.12.2026</b>: Erfolg des neuen Dreieck-Titels prüfen<small>Hat „dreiecksberechnung online“ jetzt Klicks? Im Monitor unter „Suche“ → Suchbegriffe ansehen. Vorher: 65 Impressionen, Platz 7,5, 0 Klicks.</small></div></div>
+    <div class="todo"><div class="tx"><b>ab ca. 8.12.2026</b>: Erfolg des neuen Dreieck-Titels prüfen<small>Hat „dreiecksberechnung online“ jetzt Klicks? Im Monitor unter „Suche“ → Suchbegriffe ansehen. Vorher: 65 Impressionen, Platz 7,5, 0 Klicks. Danach kann die Pinterest-Pinnwand folgen (siehe Werkzeuge → Pläne).</small></div></div>
     <div class="todo"><div class="tx"><b>Anfang Dezember 2026</b>: Google und Bing mit den Ausgangswerten vergleichen<small>Die Ausgangswerte stehen im Bereich „Zahlen“.</small></div></div>
     <div class="todo"><div class="tx"><b>jeden Montag</b>: Automatik-Läufe auf GitHub<small>Linkprüfung und Lighthouse laufen von selbst. Bei einem Fehler kommt eine E-Mail von GitHub.</small></div></div>
     <div class="todo"><div class="tx"><b>vor Ablauf des Testzugangs</b>: Windsor.ai prüfen<small>Testzugang mit Daten bis 30 Tage zurück. Danach vermutlich kostenpflichtig. Wer kündigt, verliert nur Claudes Zugriff auf die Zahlen, die Seiten laufen weiter.</small></div></div>
@@ -128,6 +128,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
     <button class="copy">Starte die Lighthouse-Messung von Hand und zeig mir die Werte</button>
     <button class="copy">Prüfe die Klicks für „dreiecksberechnung online“ seit dem 24.11.</button>
     <button class="copy">Leg das Ubersuggest-Projekt mit den 25 wichtigsten Begriffen an</button>
+    <button class="copy">Entwirf die Pinterest-Pinnwand mit den Pins zum Freigeben</button>
     <button class="copy">Aktualisiere das Projekt-Dashboard aus Projekt.md</button>
   </div>
 
@@ -413,6 +414,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
         <tr><td>Facebook-Werbekonto</td><td>Windsor.ai</td><td><span class="pill warn">nur nach Freigabe</span> Kampagnen anlegen/pausieren, aktuell ungenutzt</td></tr>
         <tr><td>Windsor.ai for Social Media</td><td>Konnektor</td><td>Beiträge auf LinkedIn-/Facebook-Seite, YouTube-Texte – noch keine Seite verbunden</td></tr>
         <tr><td>Ubersuggest (Gratis)</td><td>Konnektor</td><td>Suchvolumen DE/EN/PT, Google-Vorschläge, Platzierung verfolgen</td></tr>
+        <tr><td>Pinterest (Konto „dieter2136“)</td><td>Windsor.ai</td><td><span class="pill warn">nur nach Freigabe</span> Pinnwände anlegen, Pins veröffentlichen – aktuell ungenutzt</td></tr>
         <tr><td>Claude in Chrome</td><td>Erweiterung</td><td><span class="pill">nur am PC</span> Webseiten bedienen, z. B. „Indexierung beantragen“. Auf Android nicht möglich.</td></tr>
       </tbody>
     </table></div>
@@ -524,6 +526,13 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
       <p>Ideen: Fachbeiträge aus den Rechenbeispielen (Rohr unter Torsion, H7/g6, VDI 2230 M12, Fläche/Winkel/Höhe) mit Link zur Startseite. Claude schreibt die Texte in DE/EN/PT, du postest selbst. Windsor bedient meist nur Unternehmensseiten, keine persönlichen Profile.</p>
       <p>Später eine Unternehmensseite „DT-ProfiTools“ anlegen und in Windsor verbinden.</p>
     </div></details>
+    <details><summary>Pinterest <span class="pill ok">seit 25.11. verbunden</span></summary><div class="in">
+      <p>Konto „dieter2136“, über Windsor.ai verbunden. Claude kann Pinnwände anlegen und Pins veröffentlichen (Bild, Titel, Beschreibung, Link).</p>
+      <p><b>Idee nach der Auswertung (ca. 8.12.):</b> eine Pinnwand „DT-ProfiTools – Berechnungen für Werkstatt &amp; Konstruktion“ mit 2–3 Pins je Programm, auf Deutsch und Englisch.</p>
+      <p class="s"><b>Bilder:</b> Dreieckszeichnung, Toleranzfeld H7/g6, Nahtbild Kreisnaht, Schrauben-Bild. Jeder Pin verlinkt auf die passende Startseite.</p>
+      <div class="erkl warn"><b>Wichtig:</b> Jeder Pin erst nach deiner Freigabe.</div>
+      <div class="erkl"><b>Warum Pinterest?</b> Pinterest ist auch eine Suchmaschine für Bilder. Pins bleiben lange auffindbar und bringen Besucher über ihren Link direkt auf deine Seite, ohne dass du Geld für Werbung ausgibst.</div>
+    </div></details>
     <details><summary>Reddit</summary><div class="in">
       <p>Profil: <a href="https://www.reddit.com/user/DieterTepe" target="_blank" rel="noopener">u/DieterTepe</a></p>
       <p>Vorgehen: zuerst Fachfragen beantworten, nur passend verlinken, offen sagen, dass es dein eigenes Programm ist, und die Regeln der Foren zur Eigenwerbung beachten.</p>
@@ -571,7 +580,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
 
 <script>
 "use strict";
-const STAND = "24.11.2026";
+const STAND = "25.11.2026";
 document.getElementById("stand").textContent = "Stand " + STAND;
 
 /* ---------- Wörterbuch ---------- */
