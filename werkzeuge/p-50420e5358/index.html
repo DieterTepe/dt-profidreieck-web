@@ -131,6 +131,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
     <button class="copy">Prüfe die Klicks für „dreiecksberechnung online“ seit dem 24.11.</button>
     <button class="copy">Zeig mir die Ubersuggest-Platzierungen und schlag vor, welche Begriffe wir tauschen</button>
     <button class="copy">Entwirf die Pinterest-Pinnwand mit den Pins zum Freigeben</button>
+    <button class="copy">Lies _youtube/README.md und mach weiter mit dem nächsten Video</button>
     <button class="copy">Aktualisiere das Projekt-Dashboard aus Projekt.md</button>
   </div>
 
@@ -166,7 +167,8 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
       <li><a href="https://dt-profidreieck.de/videos/passung-iso-286.html" target="_blank" rel="noopener">Passung – ISO 286</a></li>
       <li><a href="https://dt-profidreieck.de/videos/schweissnaht-en-1993-1-8.html" target="_blank" rel="noopener">Schweißnaht – EN 1993-1-8</a></li>
     </ul>
-    <div class="erkl warn"><b>Hinweis:</b> Die Dreieck-Videos V1 und V2 sind KI-generiert: Die Formeln sind unleserlich, und in V1 steht ein „Google“-Schriftzug. Echte Bildschirmaufnahmen wären glaubwürdiger.</div>
+    <div class="erkl warn"><b>Hinweis:</b> Die Dreieck-Videos V1 und V2 sind KI-generiert: Die Formeln sind unleserlich, und in V1 steht ein „Google“-Schriftzug. Echte Bildschirmaufnahmen wären glaubwürdiger. Sie werden durch die neuen Videos Y01 und Y02 ersetzt (siehe Werkzeuge → Pläne → YouTube).</div>
+    <div class="erkl"><b>Ungenutzt:</b> Die Dreieck-Videos V3 bis V8 (je ca. 2,5 MB) sind auf keiner Seite verlinkt. Ansehen, ob sie brauchbar sind, sonst später löschen.</div>
   </div>
 
   <div class="card">
@@ -207,6 +209,10 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
     <details><summary>Sprache in den Programmen</summary><div class="in">
       <p><code>?lang=en</code> oder <code>?lang=pt</code> öffnet ein Programm direkt in der Sprache. Ein Klick auf eine Flagge schreibt die Sprache in die Adresse, deshalb bleibt sie beim Aktualisieren erhalten. Dafür braucht es keinen Speicher und kein Cookie.</p>
     </div></details>
+    <details><summary>YouTube-Planung und Videodateien</summary><div class="in">
+      <p>Planung, Drehbücher, Titel und Beschreibungen liegen im Ordner <code>_youtube/</code> (Repo <code>dt-profidreieck-web</code>). Er wird nicht veröffentlicht.</p>
+      <p><b>Fertige Videodateien gehören nicht dorthin</b>, sondern in den öffentlichen Ordner des Programms, z. B. <code>Dreieck_Daten/videos/</code>. Grund: Windsor lädt Videos nur von einer Internetadresse zu YouTube hoch (bis 100 MB).</p>
+    </div></details>
     <details><summary>Rechenbeispiele hängen an den Programmen</summary><div class="in">
       <p>Alle vier Startseiten zeigen Werte aus den eingebauten Programmbeispielen. Ändert sich ein Programmbeispiel, müssen auch die Texte im Feld <code>aufgaben</code> in <code>_sprachen/startseiten_de.json</code> angepasst werden.</p>
     </div></details>
@@ -218,6 +224,13 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
   <div class="card">
     <h2>📜 Was erreicht wurde</h2>
     <p class="s muted">Neueste zuerst. Antippen zeigt die Einzelheiten.</p>
+
+    <div class="tl"><span class="dot"></span><details><summary>25.11. – YouTube-Arbeitsordner angelegt</summary><div class="in">
+      <p>Neuer Ordner <code>_youtube/</code> im Repo <code>dt-profidreieck-web</code> (<span class="w" data-w="Pull Request / mergen">PR</span> #29). Er wird nicht veröffentlicht, weil er mit einem Unterstrich beginnt, und taucht deshalb in keiner Suchmaschine auf.</p>
+      <p class="s"><b>README.md:</b> Regeln, Ablauf je Video (Idee → Drehbuch → Aufnahme → Schnitt → Webseite → YouTube), Status und Liste der vorhandenen Videos.</p>
+      <p class="s"><b>videoliste.md:</b> Entwurf für 5 Videos Y01–Y05. Jedes zeigt das Rechenbeispiel der passenden Startseite, mit Ziel-Seite und Suchbegriffen in DE/EN/PT. Noch nicht freigegeben.</p>
+      <p class="s">Die Planung läuft in einem eigenen Chat im Projekt „Überarbeiten“.</p>
+    </div></details></div>
 
     <div class="tl"><span class="dot"></span><details><summary>25.11. – Autor-Profile in den Seitendaten (sameAs)</summary><div class="in">
       <p>In den unsichtbaren Seitendaten (<span class="w" data-w="JSON-LD">JSON-LD</span>) steht beim Autor „Dieter Tepe“ jetzt dein LinkedIn- und dein Reddit-Profil. So erkennt Google, dass diese Profile zu dir gehören und ein echter Fachmann hinter den Programmen steht.</p>
@@ -446,6 +459,7 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
         <tr><td>Ubersuggest (Gratis)</td><td>Konnektor</td><td>Suchvolumen DE/EN/PT, Google-Vorschläge, Platzierung verfolgen</td></tr>
         <tr><td>Pinterest (Konto „dieter2136“)</td><td>Windsor.ai</td><td><span class="pill warn">nur nach Freigabe</span> Pinnwände anlegen, Pins veröffentlichen – aktuell ungenutzt</td></tr>
         <tr><td>YouTube (Dieter.Tepe@live.de)</td><td>Windsor.ai</td><td><span class="pill warn">nur nach Freigabe</span> Videos hochladen (direkt von dt-profidreieck.de), Titel/Beschreibung ändern, Playlists, Kommentare beantworten – aktuell ungenutzt</td></tr>
+        <tr><td>HyperFrames by HeyGen</td><td>Konnektor</td><td>Videos aus Vorlagen zusammenstellen und rendern, z. B. Vor- und Abspann, Texteinblendungen – für die YouTube-Videos vorgesehen</td></tr>
         <tr><td>Claude in Chrome</td><td>Erweiterung</td><td><span class="pill">nur am PC</span> Webseiten bedienen, z. B. „Indexierung beantragen“. Auf Android nicht möglich.</td></tr>
       </tbody>
     </table></div>
@@ -551,9 +565,19 @@ mark{background:rgba(251,191,36,.35);color:inherit;border-radius:3px}
 
   <div class="card">
     <h2>🗺️ Pläne für später</h2>
-    <details><summary>YouTube <span class="pill">zurückgestellt</span></summary><div class="in">
+    <details><summary>YouTube <span class="pill">Planung läuft</span></summary><div class="in">
       <p><b>Entscheidung 25.11.:</b> Erst bessere Videos erstellen, und erst hochladen, wenn die Seiten in den Suchmaschinen bekannter sind.</p>
       <p>Konto Dieter.Tepe@live.de, über Windsor.ai verbunden. Claude kann die 5 Videos direkt von dt-profidreieck.de hochladen (bis 100 MB je Video), mit Titel und Beschreibung in DE/EN/PT und einem Link zur passenden Startseite.</p>
+      <p><b>In Arbeit (seit 25.11.):</b> neue Videos statt der KI-Videos und Teaser. Arbeitsordner <code>_youtube/</code>, Status in <code>README.md</code>, Inhalte in <code>videoliste.md</code>.</p>
+      <ul class="s">
+        <li><b>Y01</b> Dreieck: Fläche, Winkel, Höhe aus 3 Seiten (ersetzt V1)</li>
+        <li><b>Y02</b> Dreieck: vom Werkstück zur DXF für die CNC (ersetzt V2)</li>
+        <li><b>Y03</b> Schraube: VDI 2230 Beispiel M12 10.9</li>
+        <li><b>Y04</b> Passung: H7/g6 und Pressverband H7/s6</li>
+        <li><b>Y05</b> Schweißnaht: Rohr unter Torsion</li>
+      </ul>
+      <p class="s"><b>Vorschlag Reihenfolge:</b> Y01 → Y05 → Y03 → Y04 → Y02.</p>
+      <p class="s"><b>So entstehen sie:</b> Bildschirmaufnahme der Testversion auf deinem Android-Tablet (Querformat), dazu Vor- und Abspann (z. B. HyperFrames). Ohne Ton, deshalb reicht ein Video für alle drei Sprachen. Nur Titel, Beschreibung und Untertitel werden übersetzt.</p>
       <div class="erkl warn"><b>Wichtig:</b> Jedes Video erst nach deiner Freigabe.</div>
     </div></details>
     <details><summary>Kostenlose Verbreitung</summary><div class="in"><p>Fachforen (CNC/Zerspanung, Techniker-Forum, Reddit), Software-Verzeichnisse (AlternativeTo, Product Hunt), Berufs- und Technikerschulen.</p></div></details>
@@ -642,7 +666,8 @@ const WB = {
   "Layout-Verschiebung":"Wie stark Inhalte beim Laden noch springen (CLS). 0 = gar nicht, ab 0,25 gilt es als schlecht.",
   "localStorage":"Kleiner Speicher im Browser des Geräts. Er bleibt dort und wird nicht ins Internet geschickt.",
   "srcset":"Liste mehrerer Bildgrößen. Der Browser wählt die passende, Handys laden so kleinere Bilder.",
-  "SEO":"Suchmaschinenoptimierung: die Seite so gestalten, dass Suchmaschinen sie finden, verstehen und gut einordnen."
+  "SEO":"Suchmaschinenoptimierung: die Seite so gestalten, dass Suchmaschinen sie finden, verstehen und gut einordnen.",
+  "Short":"Kurzes YouTube-Video im Hochformat (9:16, unter 60 Sekunden), vor allem für Handys."
 };
 const wbBody = document.querySelector("#wb tbody");
 Object.keys(WB).forEach(k=>{
@@ -706,6 +731,7 @@ const TODOS=[
   ["frau","Ehefrau auf die portugiesischen Seiten schauen lassen","dt-profidreieck.de/pt/ und die Dreieck-Startseite /pt/#aufgaben"],
   ["mon","Lighthouse-ZIP und Search-Console-Export in den Monitor laden",""],
   ["vid","Videoseiten auf EN/PT (optional)","Videos haben keinen Ton, nur Titel und Text übersetzen"],
+  ["v38","Dreieck-Videos V3 bis V8 ansehen","Auf keiner Seite verlinkt: brauchbar für YouTube oder löschen?"],
   ["gsc2","Sitemap-Status und restliche URL-Prüfung kontrollieren","nach einigen Tagen in der Search Console"]
 ];
 let done={}; try{done=JSON.parse(localStorage.getItem("dtProjektTodos")||"{}");}catch(e){}

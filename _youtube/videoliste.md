@@ -72,7 +72,7 @@ dem wichtigsten Moment.
 ## Offene Fragen
 
 - Reihenfolge: Vorschlag Y01 → Y05 → Y03 → Y04 → Y02.
-- Aufnahme auf dem Tablet (Querformat) oder am PC?
+- ~~Aufnahme auf dem Tablet oder am PC?~~ → **Android-Tablet** (Querformat), Steuerung über die Claude-App (Entscheidung 25.11.).
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.
 - Playlists: je Programm eine, oder eine gemeinsame?
