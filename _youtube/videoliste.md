@@ -6,7 +6,7 @@ Grundidee: Jedes Video zeigt **genau das Rechenbeispiel, das schon auf der passe
 Startseite steht**. Dann passen Video, Seitentext und Suchbegriff zusammen, und die
 Zahlen sind geprüft (sie stammen aus den eingebauten Programmbeispielen).
 
-Format für alle: 16:9, 1920 × 1080, ohne Ton, 60–120 s. Texte im Bild kurz und groß
+Format für alle: 16:9, 1920 × 1080, 30 fps, mit ruhiger Musik, 60–120 s. Texte im Bild kurz und groß
 (aufs Handy achten). Aufbau: Vorspann 3–5 s → Eingabe → Ergebnis/Rechenweg →
 Abspann mit Adresse der Startseite und „Kostenlos testen, ohne Anmeldung“.
 
@@ -25,6 +25,10 @@ dem wichtigsten Moment.
 - **Inhalt:** drei Seiten eingeben → Winkel, Fläche (Heron), Höhen erscheinen →
   maßstäbliche Zeichnung → Rechenweg aufklappen.
 - **Hinweis:** größtes Potenzial aller Videos (vor allem EN). Als Erstes machen.
+- **Stand 25.11.:** Entwurf 1 fertig (72 s): Vorspann → Aufgabe (a = 7, b = 5, c = 6 mm) →
+  Eingabe über den Assistenten → Ergebnis mit Hervorhebung (Winkel, Fläche 14,70 mm², Höhen) →
+  Rechenweg (Kosinussatz, Winkelsumme, Heron, Höhen, Proben) → Zeichnung mit Höhen → Abspann
+  „Jetzt kostenlos testen“. Wartet auf Dieters Freigabe.
 
 ## Y02 – Dreieck: vom Werkstück zur DXF für die CNC
 
@@ -72,7 +76,7 @@ dem wichtigsten Moment.
 ## Offene Fragen
 
 - Reihenfolge: Vorschlag Y01 → Y05 → Y03 → Y04 → Y02.
-- ~~Aufnahme auf dem Tablet oder am PC?~~ → **Android-Tablet** (Querformat), Steuerung über die Claude-App (Entscheidung 25.11.).
+- ~~Aufnahme auf dem Tablet oder am PC?~~ → **Claude filmt selbst im Browser** (Entscheidung 25.11.), Dieter gibt nur frei.
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.
 - Playlists: je Programm eine, oder eine gemeinsame?

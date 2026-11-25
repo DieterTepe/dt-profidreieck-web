@@ -11,15 +11,34 @@ noch in Suchmaschinen auf.
 
 ## Wichtige Regeln
 
-- **Fertige Videodateien gehören nicht hierher**, sondern in den öffentlichen Ordner des
-  Programms, z. B. `Dreieck_Daten/videos/`. Grund: Windsor lädt Videos von einer
-  Internetadresse zu YouTube hoch (max. 100 MB), die Datei muss also online erreichbar sein.
-- Hier stehen nur Texte und Planung (Markdown), höchstens kleine Hilfsbilder.
-- Hochgeladen wird **jedes Video erst nach Dieters Freigabe**.
-- Zeitpunkt: erst wenn die Videos besser sind und die Seiten in den Suchmaschinen
-  bekannter sind (Entscheidung 25.11.2026).
-- Videos haben keinen Ton → Text im Bild oder Untertitel. So reicht **ein Video für alle
-  drei Sprachen**; nur Titel, Beschreibung und Untertitel werden übersetzt.
+- **Claude filmt selbst:** Das Programm läuft in Claudes Browser (aus dem GitHub-Repo, ohne
+  Internet). Ein Skript tippt die Werte ein und macht scharfe Bilder (doppelte Auflösung).
+  Dieter muss nichts aufnehmen. Werkzeuge dazu in `werkzeuge/` (siehe unten).
+- **In jedem Video wird der Ergebnisbereich mit Rechenweg und Formeln aufgeklappt** und
+  lange genug gezeigt, dass man alles lesen kann – das ist das Wichtigste.
+- **Ton:** ruhige Hintergrundmusik und leise Bediengeräusche, von Claude selbst erzeugt
+  (keine fremden Musikstücke → keine Lizenzfragen). Lautheit −16 LUFS.
+- **Freigabe:** Jedes Video schickt Claude zuerst **hier im Chat** (lässt sich auf dem Tablet
+  direkt abspielen). Erst nach „freigegeben“ wird es per Pull Request eingebaut; den PR-Link
+  bekommt Dieter vor dem Mergen. YouTube-Hochladen braucht eine **zweite Freigabe**.
+- **Keine Entwürfe ins Repo** – jede Videodatei bliebe sonst für immer in der Versionsgeschichte.
+- **Fertige Videodateien** gehören in den öffentlichen Ordner des Programms, z. B.
+  `Dreieck_Daten/videos/`, mit **neuem Dateinamen** (dann merkt Google die Änderung). Die
+  alten Videos werden danach gelöscht. Für die Webseite klein halten (ca. 5–10 MB).
+- **Ersetzen auf den Webseiten:** Hauptseite (`config.js` **und** `index.html`), Video-Sitemap
+  (`sitemap.xml`) und die Videoseite unter `videos/` – mit Länge, Vorschaubild und Datum im JSON-LD.
+- **Auf den eigenen Seiten kein eingebettetes YouTube** (lädt Google-Skripte und Cookies);
+  höchstens ein einfacher Link „Auf YouTube ansehen“.
+- **Bessere Einbindung für Suchmaschinen:** Untertitel-Datei (WebVTT) mit den eingeblendeten
+  Texten und Werten, Sprungmarken („Eingabe“, „Ergebnis“, „Rechenweg“), VideoObject im JSON-LD,
+  Vorschaubild mit Ergebnis, kurzer Text zum Beispiel auf der Videoseite.
+- **Sprachen:** Claude kann das Programm auf EN/PT umstellen → echte Fassungen je Sprache möglich.
+- **Beschreibung (YouTube und Videoseite)** enthält immer den Satz
+  „Bildschirmaufnahme des Programms, Schnitt mit KI-Unterstützung.“ (EN/PT übersetzt).
+  Beim YouTube-Upload „Veränderte Inhalte“ = **Nein** (echte Aufnahme, keine Täuschung).
+- **V1/V2 (KI-Videos) bleiben vorerst unverändert**, bis Y01/Y02 sie ersetzen (Entscheidung 25.11.).
+- Hochgeladen wird **jedes Video erst nach Dieters Freigabe**; YouTube erst, wenn die Seiten
+  in den Suchmaschinen bekannter sind (Entscheidung 25.11.2026).
 - Begriffe für Titel und Beschreibung nach der Begriffs-Tabelle in Projekt.md (Abschnitt 4b).
 
 ## Ablauf je Video
@@ -28,8 +47,9 @@ noch in Suchmaschinen auf.
 |---|---|---|
 | 1. Idee | Inhalt, Ziel-Suchbegriff, Ziel-Seite festlegen | Claude + Dieter |
 | 2. Drehbuch | Szenen, Eingabewerte, Texte im Bild | Claude |
-| 3. Aufnahme | Bildschirmaufnahme der Testversion (Android: Schnelleinstellungen → „Bildschirmaufnahme“) | Dieter |
-| 4. Schnitt | Vorspann/Abspann (z. B. HyperFrames), Texte einblenden, kürzen | Claude + Dieter |
+| 3. Aufnahme | Programm in Claudes Browser, Skript gibt die Werte ein (`werkzeuge/capture.py`) | Claude |
+| 4. Schnitt & Ton | Vorspann, Bildunterschriften, Rechenweg, Abspann, Musik (`werkzeuge/`) | Claude |
+| 4b. Freigabe | Video im Chat ansehen, Änderungswünsche, „freigegeben“ | Dieter |
 | 5. Webseite | Datei in `…_Daten/videos/`, Videoseite und JSON-LD (Dauer, Poster) anpassen | Claude |
 | 6. YouTube | Titel/Beschreibung DE/EN/PT, Playlist, Link zur Startseite, Hochladen nach Freigabe | Claude nach Freigabe |
 
@@ -37,7 +57,7 @@ noch in Suchmaschinen auf.
 
 | Nr. | Video | Ersetzt | Status |
 |---|---|---|---|
-| Y01 | Dreieck: Fläche, Winkel, Höhe aus 3 Seiten | V1 (KI, `videos/dreieck-berechnen-demo.html`) | Idee |
+| Y01 | Dreieck: Fläche, Winkel, Höhe aus 3 Seiten | V1 (KI, `videos/dreieck-berechnen-demo.html`) | Entwurf 1 (25.11., 72 s) – wartet auf Freigabe |
 | Y02 | Dreieck: Werkstück, Zeichnung, DXF für CNC | V2 (KI, `videos/dreieck-dxf-werkstatt.html`) | Idee |
 | Y03 | Schraube: VDI 2230 Beispiel M12 10.9 | `schraube-teaser.mp4` | Idee |
 | Y04 | Passung: H7/g6 und Pressverband H7/s6 | `passung-teaser.mp4` | Idee |
@@ -56,8 +76,24 @@ Einzelheiten: [videoliste.md](videoliste.md)
 | `Passung_Daten/videos/passung-teaser.mp4` | 3,8 MB, 40 s | `videos/passung-iso-286.html` | Teaser |
 | `Schweissnaht_Daten/videos/schweissnaht-teaser.mp4` | 5,2 MB, 40 s | `videos/schweissnaht-en-1993-1-8.html` | Teaser |
 
+## Werkzeuge (`werkzeuge/`)
+
+Skripte, mit denen Y01 entstanden ist (Python + Playwright + ffmpeg, laufen in Claudes Umgebung).
+Für ein neues Video kopieren und anpassen.
+
+| Datei | Aufgabe |
+|---|---|
+| `capture.py` | Programm öffnen, Werte über den Assistenten eingeben, Bildschirmfotos (2×), Rechenweg und Zeichnung |
+| `tiles.py` | Lage der Ergebnis-Kacheln für die Hervorhebungen |
+| `cards.py` | Vorspann, Aufgaben-Karte, Abspann als Ebenen (HTML → PNG) |
+| `render.py` | Szenen zusammensetzen (Kamera, Bildunterschriften, Übergänge) → je Szene eine MP4 |
+| `audio.py` | Hintergrundmusik und Geräusche erzeugen |
+
+Zusammenfügen: `ffmpeg -f concat -safe 0 -i list.txt -c copy` und Ton mit `loudnorm=I=-16:TP=-1.5`.
+
 ## Ordner-Inhalt
 
 - `README.md` – diese Übersicht (Regeln, Ablauf, Status)
 - `videoliste.md` – Inhalt, Ziel-Suchbegriffe und Ziel-Seite je Video
+- `werkzeuge/` – Skripte zum Filmen, Schneiden und für den Ton
 - später je Video eine Datei `Y01-….md` mit Drehbuch, Titeln und Beschreibungen DE/EN/PT
