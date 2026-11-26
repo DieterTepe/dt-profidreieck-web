@@ -894,10 +894,10 @@
 <p class="lead reveal" style="margin:0 auto;">Calcula soldas em constru&ccedil;&atilde;o met&aacute;lica conforme EN 1993-1-8 e na engenharia mec&acirc;nica cl&aacute;ssica &ndash; mostrando cada passo do percurso: da geometria do cord&atilde;o ao centro de gravidade, momentos de in&eacute;rcia e eixos principais, at&eacute; &agrave; tens&atilde;o equivalente no ponto determinante. Nenhum resultado sem mem&oacute;ria de c&aacute;lculo, nenhum n&uacute;mero sem fonte.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="V&iacute;deo em breve" style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiSchweissnaht &ndash; vis&atilde;o geral de 40 segundos" class="demo-video" controls id="video-schweissnaht-teaser" playsinline poster="../Schweissnaht_Daten/bilder/schweissnaht-start.jpg" preload="none" src="../Schweissnaht_Daten/videos/schweissnaht-teaser.mp4"></video>
+<video aria-label="DT-ProfiSchweissnaht &ndash; v&iacute;deo: tubo sob tor&ccedil;&atilde;o com mem&oacute;ria de c&aacute;lculo" class="demo-video" controls id="video-schweissnaht-teaser" playsinline poster="../Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg" preload="none" src="../Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/schweissnaht-en-1993-1-8.html">Ver o v&iacute;deo em p&aacute;gina pr&oacute;pria (em alem&atilde;o)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 segundos: geometria do cord&atilde;o, mem&oacute;ria de c&aacute;lculo com fontes, provas de c&aacute;lculo &ndash; e os limites do c&aacute;lculo.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:27 minutos: tubo 114,3 &times; 6 sob tor&ccedil;&atilde;o &ndash; entrada, geometria do cord&atilde;o, mem&oacute;ria de c&aacute;lculo com autoverifica&ccedil;&atilde;o.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--glut reveal"><div class="ico">◫</div><div><h3>Geometria do cord&atilde;o em vez do comprimento</h3><p>A geometria real do cord&atilde;o resulta do perfil e das arestas efetivamente soldadas: segmentos, centro de gravidade, momentos de in&eacute;rcia, eixos principais, m&oacute;dulos de flex&atilde;o &ndash; e da&iacute; o ponto determinante. A geometria &eacute; desenhada, com cruz do centro de gravidade e eixos.</p></div></div>
 <div class="feature feature--glut reveal"><div class="ico">&sum;</div><div><h3>A mem&oacute;ria de c&aacute;lculo &eacute; o produto</h3><p>Mais de trinta passos, cada um com f&oacute;rmula, valores aplicados, resultado e fonte &ndash; norma, manual t&eacute;cnico ou expressamente assinalado como valor pr&aacute;tico de refer&ecirc;ncia.</p></div></div>
@@ -1101,7 +1101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchweissnaht
   bild("img-schweissnaht-karte",     w.bildStart);
-  video("video-schweissnaht-teaser", w.videoTeaser, w.bildStart);
+  video("video-schweissnaht-teaser", w.videoTeaser, w.posterVideo || w.bildStart);
   bild("img-schweissnaht-nahtbild",  w.bildNahtbild);
   bild("img-schweissnaht-rechenweg", w.bildRechenweg);
   bild("img-schweissnaht-assistent", w.bildAssistent);

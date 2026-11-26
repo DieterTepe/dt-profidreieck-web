@@ -1,0 +1,97 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:05.400
+Schweißnaht am Rohr unter Torsion – Kehlnaht nach EN 1993-1-8 mit vollständigem Rechenweg
+
+2
+00:00:05.600 --> 00:00:11.400
+Gegeben: Rundrohr 114,3 × 6 auf Platte, umlaufende Kehlnaht a = 4 mm, Stahl S235, Torsion T = 9 kNm. Gesucht: τ∥, σ_v und der Nachweis
+
+3
+00:00:11.500 --> 00:00:13.650
+Beispiel laden: Rundrohr unter Torsion
+
+4
+00:00:13.650 --> 00:00:15.250
+Rundrohr 114,3 × 6 auf Platte, Torsion 9 kNm
+
+5
+00:00:15.250 --> 00:00:18.300
+Werkstoff: S235 – f_u = 360 N/mm²
+
+6
+00:00:18.300 --> 00:00:21.350
+Umlaufende Kehlnaht, a = 4 mm
+
+7
+00:00:21.350 --> 00:00:24.400
+Rundrohr: d = 114,3 mm, Wanddicke 6 mm
+
+8
+00:00:24.400 --> 00:00:27.450
+Last: Torsionsmoment T = 9 kNm
+
+9
+00:00:27.450 --> 00:00:28.200
+Berechnen
+
+10
+00:00:28.200 --> 00:00:30.800
+Nachweis erfüllt – das Ergebnis steht rechts
+
+11
+00:00:30.800 --> 00:00:31.700
+Das Ergebnis
+
+12
+00:00:31.700 --> 00:00:33.400
+Nachweis erfüllt
+
+13
+00:00:33.400 --> 00:00:35.400
+Vergleichsspannung σ_v = 196,3 N/mm² ≤ Grenzwert 360 N/mm²
+
+14
+00:00:35.400 --> 00:00:38.300
+Ausnutzung η = 0,545
+
+15
+00:00:38.300 --> 00:00:43.300
+Nahtbild: Kreisnaht rund um das Rohr, 359 mm lang
+
+16
+00:00:43.300 --> 00:00:44.900
+Rechenweg im Detail aufklappen
+
+17
+00:00:44.900 --> 00:00:48.500
+Werkstoff S235: f_u = 360 N/mm², f_y = 235 N/mm²
+
+18
+00:00:49.700 --> 00:00:53.900
+Polares Flächenmoment I_p = 4.696.995 mm⁴, Widerstandsmoment W_t = I_p / r_max = 79.408 mm³
+
+19
+00:00:55.100 --> 00:00:59.100
+Schubspannung aus Torsion: τ∥ = 113,34 N/mm²
+
+20
+00:01:00.300 --> 00:01:04.300
+Vergleichsspannung σ_v = √(σ⊥² + 3·(τ⊥² + τ∥²)) = 196,31 N/mm²
+
+21
+00:01:05.500 --> 00:01:09.300
+Grenzspannung R_d = f_u / (β_w · γ_M2) = 360 / (0,80 · 1,25) = 360 N/mm²
+
+22
+00:01:10.500 --> 00:01:14.500
+Ausnutzung η = 196,31 / 360 = 0,545 – Nachweis erfüllt
+
+23
+00:01:15.700 --> 00:01:19.100
+Selbstprüfung: 21 von 21 Rechenproben bestanden
+
+24
+00:01:19.600 --> 00:01:27.000
+Jetzt kostenlos testen: dietertepe.github.io/dt-profischweissnaht-web – Vollversion 169 € einmalig

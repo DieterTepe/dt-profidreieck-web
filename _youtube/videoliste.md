@@ -70,12 +70,13 @@ dem wichtigsten Moment.
   „weld strength calculator“ (260)
 - **Inhalt:** Rundrohr 114,3 × 6, Kehlnaht a = 4 mm, S235, T = 9 kNm →
   W_t = 79.408 mm³ → τ∥ = 113,3 N/mm² → σ_v = 196,3 ≤ 360 N/mm² → η = 0,55.
+- **Stand 26.11.:** Freigegeben ohne Änderungen und eingebaut (87 s). Programmbeispiel „Rundrohr 114,3×6 auf Platte, Kreisnaht, Torsion 9 kNm“ → η = 0,545, σ_v = 196,3 N/mm², 21/21 Rechenproben.
 
 ---
 
 ## Offene Fragen
 
-- Reihenfolge: Vorschlag Y01 → Y05 → Y03 → Y04 → Y02.
+- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 → Y04 → Y02.
 - ~~Aufnahme auf dem Tablet oder am PC?~~ → **Claude filmt selbst im Browser** (Entscheidung 25.11.), Dieter gibt nur frei.
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.
