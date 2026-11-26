@@ -847,10 +847,10 @@
 <p class="lead reveal" style="margin:0 auto;">Digite &ldquo;&Oslash;50 H7/g6&rdquo; &ndash; segundos depois voc&ecirc; tem os desvios, medidas limite, folga ou interfer&ecirc;ncia e a toler&acirc;ncia do ajuste conforme ISO 286. E cada passo fica documentado: com mem&oacute;ria de c&aacute;lculo expans&iacute;vel e autoverificada, em vez de folhear tabelas.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="V&iacute;deo de demonstra&ccedil;&atilde;o em breve &ndash; a vers&atilde;o gratuita j&aacute; est&aacute; dispon&iacute;vel: toque em &ldquo;Testar gr&aacute;tis&rdquo; acima." style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiPassung &ndash; vis&atilde;o geral" class="demo-video" controls id="video-passung-teaser" playsinline poster="../Passung_Daten/bilder/passung-start.jpg" preload="none" src="../Passung_Daten/videos/passung-teaser.mp4"></video>
+<video aria-label="DT-ProfiPassung &ndash; v&iacute;deo: H7/g6 e ajuste prensado H7/s6 com mem&oacute;ria de c&aacute;lculo" class="demo-video" controls id="video-passung-teaser" playsinline poster="../Passung_Daten/bilder/poster-passung-h7s6.jpg" preload="none" src="../Passung_Daten/videos/passung-h7g6-h7s6.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/passung-iso-286.html">Ver o v&iacute;deo em p&aacute;gina pr&oacute;pria (em alem&atilde;o)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 segundos: entrada r&aacute;pida, mem&oacute;ria de c&aacute;lculo, campos de toler&acirc;ncia, assistente, ajuste por interfer&ecirc;ncia.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:26 minutos: digitar o ajuste deslizante H7/g6, ajuste prensado H7/s6 conforme DIN 7190, mem&oacute;ria de c&aacute;lculo.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--green reveal"><div class="ico">ISO</div><div><h3>ISO 286 em segundos</h3><p>Desvios, medida m&aacute;xima e m&iacute;nima, folga/interfer&ecirc;ncia e toler&acirc;ncia do ajuste &ndash; no sistema furo-base ou eixo-base, por sele&ccedil;&atilde;o ou entrada r&aacute;pida.</p></div></div>
 <div class="feature feature--green reveal"><div class="ico">&checkmark;</div><div><h3>Mem&oacute;ria de c&aacute;lculo autoverificada</h3><p>F&oacute;rmula, valores aplicados e uma marca de verifica&ccedil;&atilde;o por passo &ndash; prova para produ&ccedil;&atilde;o, qualidade, clientes e treinamento.</p></div></div>
@@ -1092,7 +1092,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiPassung
   bild("img-passung-karte",        p.bildStart);
-  video("video-passung-teaser",    p.videoTeaser, p.bildStart);
+  video("video-passung-teaser",    p.videoTeaser, p.posterVideo || p.bildStart);
   bild("img-passung-schaubild",    p.bildSchaubild);
   bild("img-passung-rechenweg",    p.bildRechenweg);
   bild("img-passung-assistent",    p.bildAssistent);

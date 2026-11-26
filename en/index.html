@@ -847,10 +847,10 @@
 <p class="lead reveal" style="margin:0 auto;">Type &ldquo;&Oslash;50 H7/g6&rdquo; &ndash; seconds later you have the deviations, limit sizes, clearance or interference and the fit tolerance to ISO 286. And every step is documented: with an expandable, self-checking calculation path instead of leafing through tables.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="Demo video coming soon &ndash; the free version is already available: just tap &ldquo;Try for free&rdquo; above." style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiPassung &ndash; overview" class="demo-video" controls id="video-passung-teaser" playsinline poster="../Passung_Daten/bilder/passung-start.jpg" preload="none" src="../Passung_Daten/videos/passung-teaser.mp4"></video>
+<video aria-label="DT-ProfiPassung &ndash; video: H7/g6 and interference fit H7/s6 with calculation steps" class="demo-video" controls id="video-passung-teaser" playsinline poster="../Passung_Daten/bilder/poster-passung-h7s6.jpg" preload="none" src="../Passung_Daten/videos/passung-h7g6-h7s6.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/passung-iso-286.html">Watch the video on its own page (German)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 seconds: quick entry, calculation path, tolerance zones, assistant, interference fit.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:26 minutes: type in a sliding fit H7/g6, interference fit H7/s6 to DIN 7190, calculation path.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--green reveal"><div class="ico">ISO</div><div><h3>ISO 286 in seconds</h3><p>Deviations, maximum and minimum size, clearance/interference and fit tolerance &ndash; as hole basis or shaft basis, by selection or quick entry.</p></div></div>
 <div class="feature feature--green reveal"><div class="ico">&checkmark;</div><div><h3>Self-checking calculation path</h3><p>Formula, inserted values and a check mark per step &ndash; evidence for production, QA, customers and training.</p></div></div>
@@ -1092,7 +1092,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiPassung
   bild("img-passung-karte",        p.bildStart);
-  video("video-passung-teaser",    p.videoTeaser, p.bildStart);
+  video("video-passung-teaser",    p.videoTeaser, p.posterVideo || p.bildStart);
   bild("img-passung-schaubild",    p.bildSchaubild);
   bild("img-passung-rechenweg",    p.bildRechenweg);
   bild("img-passung-assistent",    p.bildAssistent);

@@ -91,14 +91,14 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/passung-iso-286.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-start.jpg</video:thumbnail_loc>
-      <video:title>Passungen nach ISO 286 und Pressverband nach DIN 7190 – DT-ProfiPassung im Überblick</video:title>
-      <video:description>40-Sekunden-Überblick: DT-ProfiPassung bestimmt Grenzmaße, Spiel und Übermaß nach ISO 286, zeigt das Toleranzfeld und rechnet Pressverbände nach DIN 7190.</video:description>
-      <video:content_loc>https://dt-profidreieck.de/Passung_Daten/videos/passung-teaser.mp4</video:content_loc>
-      <video:duration>40</video:duration>
-      <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Passung_Daten/bilder/poster-passung-h7s6.jpg</video:thumbnail_loc>
+      <video:title>Passung H7/g6 und Pressverband H7/s6 – Video mit Rechenweg</video:title>
+      <video:description>Video: Passung nach ISO 286 berechnen – Gleitsitz 25 H7/g6 und Schrumpfsitz 60 H7/s6 nach DIN 7190 mit Fugendruck, Drehmoment und Rechenweg.</video:description>
+      <video:content_loc>https://dt-profidreieck.de/Passung_Daten/videos/passung-h7g6-h7s6.mp4</video:content_loc>
+      <video:duration>86</video:duration>
+      <video:publication_date>2026-11-26T22:00:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
