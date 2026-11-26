@@ -72,8 +72,11 @@ window.DT_CONFIG = {
     // Vorschaubild (Poster) des Teaser-Videos in Pos. 02.
     bildStart: "https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-start.jpg",
 
-    // 40-Sekunden-Teaser oben in Pos. 02 – MP4 (H.264), 1280x720, < 10 MB
-    videoTeaser: "https://dt-profidreieck.de/Schraube_Daten/videos/schraube-teaser.mp4",
+    // Video oben in Pos. 02 (Y03: M16 10.9, 1:33 Min., seit 26.11.2026) – MP4 (H.264), 1920x1080, < 10 MB
+    videoTeaser: "https://dt-profidreieck.de/Schraube_Daten/videos/schraube-m16-vdi-2230.mp4",
+
+    // Vorschaubild (Poster) des Videos – Standbild aus dem Video
+    posterVideo: "https://dt-profidreieck.de/Schraube_Daten/bilder/poster-schraube-m16.jpg",
 
     // Großes Screenshot-Paar in Pos. 02 – links: dokumentierter Rechenweg
     bildRechenweg: "https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-rechenweg.jpg",

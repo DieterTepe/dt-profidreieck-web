@@ -49,6 +49,7 @@ dem wichtigsten Moment.
 - **Inhalt:** Programmbeispiel „Hydraulikzylinder (M12, VDI-2230-Beispiel)“ laden →
   F_Mmin 27.519 N, F_Mmax 46.782 N ≤ F_Mzul 58.379 N → M_A 103,4 N·m →
   Sicherheiten S_F 1,23 · S_D 10,27 · S_P 3,15.
+- **Stand 26.11.:** Auf Dieters Wunsch mit **M16 10.9** statt M12 – Programmbeispiel „Kombiniert M16 10.9 (axial + Querkraft)“: F_Mzul = 106.119 N, M_A = 274 N·m, S_F 1,25 · S_P 1,38 · S_G 1,30 (Ampel gelb: Dauerhaltbarkeit/Einschraubtiefe nicht gefordert). Mit Verspannungsdiagramm und Schnittdarstellung. Freigegeben und eingebaut.
 
 ## Y04 – Passung: H7/g6 und Pressverband H7/s6
 
@@ -76,7 +77,7 @@ dem wichtigsten Moment.
 
 ## Offene Fragen
 
-- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 → Y04 → Y02.
+- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 ✓ → Y04 → Y02.
 - ~~Aufnahme auf dem Tablet oder am PC?~~ → **Claude filmt selbst im Browser** (Entscheidung 25.11.), Dieter gibt nur frei.
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.

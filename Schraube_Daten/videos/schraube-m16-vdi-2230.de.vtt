@@ -1,0 +1,109 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:05.400
+Schraube M16 10.9 nach VDI 2230 – Vorspannkraft, Anziehdrehmoment und Sicherheiten mit vollständigem Rechenweg
+
+2
+00:00:05.600 --> 00:00:11.400
+Gegeben: M16 10.9, Durchsteckverbindung, Klemmlänge 40 mm, Betriebskraft F_A = 12 kN axial, Querkraft F_Q = 4 kN. Gesucht: Vorspannkraft, Anziehdrehmoment M_A, Sicherheiten S_F, S_P, S_G
+
+3
+00:00:11.500 --> 00:00:13.650
+Beispiel laden: M16 10.9, axial + Querkraft
+
+4
+00:00:13.650 --> 00:00:15.150
+Kombiniert M16 10.9 – axial + Querkraft
+
+5
+00:00:15.150 --> 00:00:17.450
+Schraube M16, Festigkeitsklasse 10.9
+
+6
+00:00:17.450 --> 00:00:19.750
+Reibung μ = 0,12 · drehmomentgesteuert angezogen
+
+7
+00:00:19.750 --> 00:00:22.050
+Durchsteckverbindung, Klemmlänge l_K = 40 mm
+
+8
+00:00:22.050 --> 00:00:22.700
+Bereich „Belastung“ öffnen
+
+9
+00:00:22.700 --> 00:00:25.500
+Betriebskraft F_A = 12 kN axial, Querkraft F_Q = 4 kN
+
+10
+00:00:25.500 --> 00:00:26.250
+Berechnen
+
+11
+00:00:26.250 --> 00:00:28.650
+Berechnet – das Ergebnis steht rechts
+
+12
+00:00:28.650 --> 00:00:29.550
+Das Ergebnis
+
+13
+00:00:29.550 --> 00:00:31.350
+Verbindung ausreichend dimensioniert
+
+14
+00:00:31.350 --> 00:00:33.350
+Sicherheit gegen Fließen S_F = 1,25
+
+15
+00:00:33.350 --> 00:00:36.150
+Flächenpressung S_P = 1,38 · Gleiten S_G = 1,30
+
+16
+00:00:36.150 --> 00:00:40.750
+Verspannungsdiagramm: Montagevorspannkraft, Setzen, Betriebskraft
+
+17
+00:00:41.950 --> 00:00:46.750
+Schnittdarstellung der Verbindung, maßstäblich
+
+18
+00:00:46.750 --> 00:00:48.350
+Rechenweg aufklappen
+
+19
+00:00:48.350 --> 00:00:52.150
+Kraftverhältnis Φ_K = δ_P / (δ_S + δ_P) = 0,1711
+
+20
+00:00:53.250 --> 00:00:56.650
+Vorspannkraftverlust durch Setzen F_Z = 5.346 N
+
+21
+00:00:57.750 --> 00:01:01.350
+Mindest-Montagevorspannkraft F_Mmin = F_Kerf + (1 − Φ_en)·F_A + F_Z = 42.319 N
+
+22
+00:01:02.450 --> 00:01:06.250
+Zulässige Montagevorspannkraft F_Mzul = 106.119 N (90 % der Streckgrenze)
+
+23
+00:01:07.350 --> 00:01:11.350
+Anziehdrehmoment M_A = 273,98 N·m
+
+24
+00:01:12.450 --> 00:01:16.050
+Sicherheit gegen Fließen S_F = R_p0,2 / σ_red,B = 900 / 719 = 1,25
+
+25
+00:01:17.150 --> 00:01:20.750
+Flächenpressung p_max = 506 N/mm², Sicherheit S_P = 700 / 506 = 1,38
+
+26
+00:01:21.850 --> 00:01:25.450
+Sicherheit gegen Gleiten S_G = F_KR / F_KQ,erf = 26.000 / 20.000 = 1,30
+
+27
+00:01:25.950 --> 00:01:33.300
+Jetzt kostenlos testen: dietertepe.github.io/dt-profischraube-web – Vollversion 159 € einmalig

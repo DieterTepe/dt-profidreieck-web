@@ -78,14 +78,14 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/schraube-vdi-2230.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Schraube_Daten/bilder/schraube-start.jpg</video:thumbnail_loc>
-      <video:title>Schraubenverbindung nach VDI 2230 berechnen – DT-ProfiSchraube im Überblick</video:title>
-      <video:description>40-Sekunden-Überblick: DT-ProfiSchraube berechnet vorgespannte Schraubenverbindungen nach VDI 2230 Blatt 1 mit fünf Nachweisen, Verspannungsschaubild und Rechenweg.</video:description>
-      <video:content_loc>https://dt-profidreieck.de/Schraube_Daten/videos/schraube-teaser.mp4</video:content_loc>
-      <video:duration>40</video:duration>
-      <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Schraube_Daten/bilder/poster-schraube-m16.jpg</video:thumbnail_loc>
+      <video:title>Schraube M16 10.9 nach VDI 2230 – Video mit Rechenweg</video:title>
+      <video:description>Video: Schraubenverbindung M16 10.9 nach VDI 2230 – Vorspannkraft, Anziehdrehmoment 274 N·m und Sicherheiten mit vollständigem Rechenweg.</video:description>
+      <video:content_loc>https://dt-profidreieck.de/Schraube_Daten/videos/schraube-m16-vdi-2230.mp4</video:content_loc>
+      <video:duration>93</video:duration>
+      <video:publication_date>2026-11-26T21:30:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>

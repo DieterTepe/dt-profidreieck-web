@@ -800,10 +800,10 @@
 <p class="lead reveal" style="margin:0 auto;">From clamping force to thread engagement: five safety checks with a traffic-light rating, every calculation step documented with formula, inserted values and reference to the standard.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="Video coming soon" style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiSchraube &ndash; 40-second overview" class="demo-video" controls id="video-schraube-teaser" playsinline poster="../Schraube_Daten/bilder/schraube-start.jpg" preload="none" src="../Schraube_Daten/videos/schraube-teaser.mp4"></video>
+<video aria-label="DT-ProfiSchraube &ndash; video: M16 10.9 with calculation steps" class="demo-video" controls id="video-schraube-teaser" playsinline poster="../Schraube_Daten/bilder/poster-schraube-m16.jpg" preload="none" src="../Schraube_Daten/videos/schraube-m16-vdi-2230.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/schraube-vdi-2230.html">Watch the video on its own page (German)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 seconds: checks, calculation path, diagram, assistants, export.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:33 minutes: M16 10.9 to VDI 2230 &ndash; result, joint diagram, calculation path.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--brass reveal"><div class="ico">VDI</div><div><h3>Five checks with traffic lights</h3><p>Yielding, fatigue strength, surface pressure, slipping/friction grip and thread engagement &ndash; rated at a glance.</p></div></div>
 <div class="feature feature--brass reveal"><div class="ico">&sum;</div><div><h3>A calculation path like a textbook</h3><p>Every step: general formula, inserted values, result, reference to the standard. Verifiable for documentation and customers.</p></div></div>
@@ -1083,7 +1083,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchraube
   bild("img-schraube-karte",       s.bildStart);
-  video("video-schraube-teaser",   s.videoTeaser, s.bildStart);
+  video("video-schraube-teaser",   s.videoTeaser, s.posterVideo || s.bildStart);
   bild("img-schraube-rechenweg",   s.bildRechenweg);
   bild("img-schraube-schaubild",   s.bildSchaubild);
   bild("img-schraube-flansch",     s.bildFlansch);

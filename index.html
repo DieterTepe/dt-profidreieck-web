@@ -819,10 +819,10 @@
       </div>
 
       <figure class="blueprint media-slot reveal" style="max-width:860px; margin:0 auto;" data-hinweis="Video folgt in Kürze">
-        <video id="video-schraube-teaser" src="Schraube_Daten/videos/schraube-teaser.mp4" poster="Schraube_Daten/bilder/schraube-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – 40-Sekunden-Überblick"></video>
+        <video id="video-schraube-teaser" src="Schraube_Daten/videos/schraube-m16-vdi-2230.mp4" poster="Schraube_Daten/bilder/poster-schraube-m16.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchraube – Video: M16 10.9 mit Rechenweg"></video>
           <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/schraube-vdi-2230.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
-      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nachweise, Rechenweg, Schaubild, Assistenten, Export.</p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:33 Minuten: M16 10.9 nach VDI 2230 – Ergebnis, Verspannungsdiagramm, Rechenweg.</p>
 
       <div class="features" style="margin-top:var(--sp-8);">
         <div class="feature feature--brass reveal"><div class="ico">VDI</div><div><h3>Fünf Nachweise mit Ampel</h3><p>Fließen, Dauerhaltbarkeit, Flächenpressung, Gleiten/Reibschluss und Einschraubtiefe – auf einen Blick bewertet.</p></div></div>
@@ -1130,7 +1130,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchraube
   bild("img-schraube-karte",       s.bildStart);
-  video("video-schraube-teaser",   s.videoTeaser, s.bildStart);
+  video("video-schraube-teaser",   s.videoTeaser, s.posterVideo || s.bildStart);
   bild("img-schraube-rechenweg",   s.bildRechenweg);
   bild("img-schraube-schaubild",   s.bildSchaubild);
   bild("img-schraube-flansch",     s.bildFlansch);
