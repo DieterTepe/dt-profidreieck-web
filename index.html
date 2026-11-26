@@ -874,10 +874,10 @@
       </div>
 
       <figure class="blueprint media-slot reveal" data-hinweis="Demo-Video folgt in Kürze – die Gratis-Version läuft schon: einfach oben „Gratis testen“ antippen" style="max-width:860px; margin:0 auto;">
-        <video id="video-passung-teaser" src="Passung_Daten/videos/passung-teaser.mp4" poster="Passung_Daten/bilder/passung-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiPassung – Überblick"></video>
+        <video id="video-passung-teaser" src="Passung_Daten/videos/passung-h7g6-h7s6.mp4" poster="Passung_Daten/bilder/poster-passung-h7s6.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiPassung – Video: H7/g6 und Pressverband H7/s6 mit Rechenweg"></video>
           <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/passung-iso-286.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
-      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Kurzeingabe, Rechenweg, Toleranzfeld, Assistent, Pressverband.</p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:26 Minuten: Gleitsitz H7/g6 eintippen, Pressverband H7/s6 nach DIN 7190, Rechenweg.</p>
 
       <div class="features" style="margin-top:var(--sp-8);">
         <div class="feature feature--green reveal"><div class="ico">ISO</div><div><h3>ISO 286 in Sekunden</h3><p>Abmaße, Höchst- und Mindestmaß, Spiel/Übermaß und Passtoleranz – als Einheitsbohrung oder Einheitswelle, per Auswahl oder Schnelleingabe.</p></div></div>
@@ -1139,7 +1139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiPassung
   bild("img-passung-karte",        p.bildStart);
-  video("video-passung-teaser",    p.videoTeaser, p.bildStart);
+  video("video-passung-teaser",    p.videoTeaser, p.posterVideo || p.bildStart);
   bild("img-passung-schaubild",    p.bildSchaubild);
   bild("img-passung-rechenweg",    p.bildRechenweg);
   bild("img-passung-assistent",    p.bildAssistent);

@@ -60,7 +60,7 @@ noch in Suchmaschinen auf.
 | Y01 | Dreieck: Fläche, Winkel, Höhe aus 3 Seiten | V1 (KI, `videos/dreieck-berechnen-demo.html`) | **Freigegeben 25.11.** · Webseite: `Dreieck_Daten/videos/dreieck-aus-3-seiten.mp4` (5,7 MB) auf `videos/dreieck-berechnen-demo.html` + Hauptseite · YouTube: offen |
 | Y02 | Dreieck: Werkstück, Zeichnung, DXF für CNC | V2 (KI, `videos/dreieck-dxf-werkstatt.html`) | Idee |
 | Y03 | Schraube: VDI 2230, Beispiel „Kombiniert M16 10.9 (axial + Querkraft)“ | `schraube-teaser.mp4` | **Freigegeben 26.11.** · Webseite: `Schraube_Daten/videos/schraube-m16-vdi-2230.mp4` (8,9 MB, 1:33) auf `videos/schraube-vdi-2230.html` + Hauptseite · YouTube: offen |
-| Y04 | Passung: H7/g6 und Pressverband H7/s6 | `passung-teaser.mp4` | Idee |
+| Y04 | Passung: H7/g6 (Kurzeingabe) und Pressverband H7/s6 | `passung-teaser.mp4` | **Freigegeben 26.11.** · Webseite: `Passung_Daten/videos/passung-h7g6-h7s6.mp4` (8,3 MB, 1:26) auf `videos/passung-iso-286.html` + Hauptseite · YouTube: offen · Hinweis: im Rechenweg steht bei Schritt 27/32 „— artok“ (Fehler im Programm, behebt Dieter im Quellcode; danach Video neu) |
 | Y05 | Schweißnaht: Rohr unter Torsion | `schweissnaht-teaser.mp4` | **Freigegeben 26.11.** · Webseite: `Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4` (9,1 MB, 1:27) auf `videos/schweissnaht-en-1993-1-8.html` + Hauptseite · YouTube: offen |
 
 Einzelheiten: [videoliste.md](videoliste.md)
@@ -73,7 +73,7 @@ Einzelheiten: [videoliste.md](videoliste.md)
 | `Dreieck_Daten/videos/V2.mp4` | 3,4 MB, 10 s | `videos/dreieck-dxf-werkstatt.html` | KI-generiert, seit 26.11. mit Hinweis „KI-generierte Darstellung“ im Bild |
 | `Dreieck_Daten/videos/V3.mp4` … `V8.mp4` | je 2,4–3,0 MB | nirgends verlinkt | ungenutzt – ansehen, ob brauchbar, sonst später löschen |
 | ~~`Schraube_Daten/videos/schraube-teaser.mp4`~~ | – | – | gelöscht 26.11., ersetzt durch Y03 |
-| `Passung_Daten/videos/passung-teaser.mp4` | 3,8 MB, 40 s | `videos/passung-iso-286.html` | Teaser |
+| ~~`Passung_Daten/videos/passung-teaser.mp4`~~ | – | – | gelöscht 26.11., ersetzt durch Y04 |
 | ~~`Schweissnaht_Daten/videos/schweissnaht-teaser.mp4`~~ | – | – | gelöscht 26.11., ersetzt durch Y05 |
 
 ## Werkzeuge (`werkzeuge/`)
@@ -92,6 +92,8 @@ Für ein neues Video kopieren und anpassen.
 Y05: angepasste Fassung in `werkzeuge/y05/` (Beispiel laden, Bereiche aufklappen, Ergebnis, Nahtbild, „Rechenweg im Detail“ mit 7 Stationen).
 
 Y03: Fassung in `werkzeuge/y03/` (Beispiel laden, Bereiche, Ergebnis kurz, Visualisierung mit Kamerafahrt, Rechenweg mit 8 Stationen).
+
+Y04: Fassung in `werkzeuge/y04/` (zwei Teile, Kamerafahrten innerhalb eines Bildes, Rechenweg mit hohem Browserfenster aufnehmen).
 
 Zusammenfügen: `ffmpeg -f concat -safe 0 -i list.txt -c copy` und Ton mit `loudnorm=I=-16:TP=-1.5`.
 

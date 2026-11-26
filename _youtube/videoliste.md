@@ -61,6 +61,7 @@ dem wichtigsten Moment.
   Teil 2 „Zahnrad-Schrumpfsitz · 60 H7/s6“ → Übermaß 23 … 72 µm,
   Fugendruck 24,3 … 88,6 N/mm², M_t,max 962,2 N·m, Einpresskraft 116,9 kN,
   Nabe auf 211,3 °C.
+- **Stand 26.11.:** Freigegeben und eingebaut (86 s). Teil 1: „25 H7/g6“ in die Kurzeingabe getippt (rechnet sofort). Teil 2: Beispiel „Zahnrad-Schrumpfsitz · 60 H7/s6“ mit Pressverband und Rechenweg (7 Stationen). Programmfehler „— artok“ in Schritt 27/32 noch sichtbar.
 
 ## Y05 – Schweißnaht: Rohr unter Torsion
 
@@ -77,7 +78,7 @@ dem wichtigsten Moment.
 
 ## Offene Fragen
 
-- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 ✓ → Y04 → Y02.
+- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 ✓ → Y04 ✓ → Y02.
 - ~~Aufnahme auf dem Tablet oder am PC?~~ → **Claude filmt selbst im Browser** (Entscheidung 25.11.), Dieter gibt nur frei.
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.

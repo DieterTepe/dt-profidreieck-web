@@ -103,8 +103,11 @@ window.DT_CONFIG = {
     // Vorschaubild (Poster) des Teaser-Videos in Pos. 03.
     bildStart: "https://dt-profidreieck.de/Passung_Daten/bilder/passung-start.jpg",
 
-    // 40-Sekunden-Teaser oben in Pos. 03
-    videoTeaser: "https://dt-profidreieck.de/Passung_Daten/videos/passung-teaser.mp4",
+    // Video oben in Pos. 03 (Y04: H7/g6 + Pressverband H7/s6, 1:26 Min., seit 26.11.2026)
+    videoTeaser: "https://dt-profidreieck.de/Passung_Daten/videos/passung-h7g6-h7s6.mp4",
+
+    // Vorschaubild (Poster) des Videos – Standbild aus dem Video
+    posterVideo: "https://dt-profidreieck.de/Passung_Daten/bilder/poster-passung-h7s6.jpg",
 
     // Großes Screenshot-Paar – links: Toleranzfeld-Schaubild
     bildSchaubild: "https://dt-profidreieck.de/Passung_Daten/bilder/passung-schaubild.jpg",

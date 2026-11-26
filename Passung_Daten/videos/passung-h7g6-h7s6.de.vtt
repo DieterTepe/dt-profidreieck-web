@@ -1,0 +1,97 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:05.400
+Passung berechnen nach ISO 286 – Spielpassung H7/g6 und Pressverband H7/s6 mit vollständigem Rechenweg
+
+2
+00:00:05.600 --> 00:00:11.900
+Teil 1: Gleitsitz Ø25 H7/g6. Teil 2: Zahnrad-Schrumpfsitz Ø60 H7/s6, Stahl auf Stahl, Fugenlänge 50 mm, Nabe Ø120, M_t = 250 Nm. Gesucht: Spiel bzw. Übermaß, Fugendruck, Drehmoment, Einpresskraft, Fügetemperatur
+
+3
+00:00:12.000 --> 00:00:14.350
+Teil 1: Passung direkt eintippen
+
+4
+00:00:14.350 --> 00:00:15.890
+Kurzeingabe: 25 H7/g6
+
+5
+00:00:15.890 --> 00:00:17.890
+Sofort berechnet – ohne Knopfdruck
+
+6
+00:00:17.890 --> 00:00:20.890
+Spielpassung: 7 … 41 µm Spiel
+
+7
+00:00:20.890 --> 00:00:23.890
+Toleranzfeld: H7 über, g6 unter der Nulllinie
+
+8
+00:00:23.890 --> 00:00:24.640
+Teil 2: Beispiel Zahnrad-Schrumpfsitz laden
+
+9
+00:00:24.640 --> 00:00:26.240
+Ø60 H7/s6 · Stahl auf Stahl
+
+10
+00:00:26.240 --> 00:00:29.240
+Werkstoffe, Fugenlänge 50 mm, Nabe Ø120, M_t = 250 Nm
+
+11
+00:00:29.240 --> 00:00:29.990
+Berechnen
+
+12
+00:00:29.990 --> 00:00:31.790
+Übermaßpassung: schwerer Presssitz
+
+13
+00:00:31.790 --> 00:00:35.390
+Fugendruck 24,3 … 88,6 N/mm² · Sicherheit S_F = 1,73
+
+14
+00:00:35.390 --> 00:00:38.990
+Drehmoment 962 Nm · Einpresskraft 116,9 kN · Nabe auf 211 °C
+
+15
+00:00:38.990 --> 00:00:41.990
+Toleranzfeld: s6 liegt ganz über H7 – immer Übermaß
+
+16
+00:00:42.000 --> 00:00:43.600
+Rechenweg aufklappen
+
+17
+00:00:43.600 --> 00:00:47.600
+Höchstspiel −23 µm, Mindestspiel −72 µm → Übermaßpassung (Übermaß 23 … 72 µm)
+
+18
+00:00:48.800 --> 00:00:52.400
+Rautiefen: wirksames Übermaß Ü = 23 − 0,8·5,6 = 18,5 µm
+
+19
+00:00:53.600 --> 00:00:57.600
+Fugendruck p_max = 88,62 N/mm², p_min = 24,31 N/mm²
+
+20
+00:00:58.800 --> 00:01:02.400
+Sicherheit gegen Fließen S_F = p_zul / p_max = 153,72 / 88,62 = 1,73
+
+21
+00:01:03.600 --> 00:01:07.400
+Übertragbares Drehmoment M_t,max = 962,19 Nm
+
+22
+00:01:08.600 --> 00:01:12.400
+Rutschsicherheit S_H = 3,85 · Einpresskraft F_e = 116.931 N
+
+23
+00:01:13.600 --> 00:01:17.600
+Fügen: Nabe auf 211,3 °C erwärmen oder Welle auf −171,3 °C kühlen
+
+24
+00:01:18.100 --> 00:01:25.500
+Jetzt kostenlos testen: dietertepe.github.io/dt-profipassung-web – Vollversion 139 € einmalig
