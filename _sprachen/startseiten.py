@@ -20,7 +20,7 @@ SAME_AS = ["https://www.linkedin.com/in/dieter-tepe-702117430", "https://www.red
 GH = "https://dietertepe.github.io/"
 HEUTE = "2026-11-23"
 # Letzte inhaltliche Aenderung je Startseite (fuer <lastmod> in der Sitemap); sonst HEUTE
-LASTMOD = {"dreieck": "2026-11-24", "schweissnaht": "2026-11-24", "schraube": "2026-11-24", "passung": "2026-11-24"}
+LASTMOD = {"dreieck": "2026-11-26", "schweissnaht": "2026-11-26", "schraube": "2026-11-26", "passung": "2026-11-24"}
 DIRS = {"de": "", "en": "en/", "pt": "pt/"}
 HTML_LANG = {"de": "de", "en": "en", "pt": "pt-BR"}
 OG = {"de": "de_DE", "en": "en_US", "pt": "pt_BR"}
@@ -29,9 +29,10 @@ SITEMAP = {"test-dreieck": "sitemap_profidreieck.xml", "dt-profischraube-web": "
            "dt-profipassung-web": "sitemap_profipassung.xml", "dt-profischweissnaht-web": "sitemap_profischweissnaht.xml"}
 VIDEO_POSTER = {
     "dreieck-dxf-werkstatt": "Dreieck_Daten/bilder/poster-v2-werkstatt.jpg",
-    "schraube-vdi-2230": "Schraube_Daten/bilder/schraube-start.jpg",
+    "dreieck-berechnen-demo": "Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg",
+    "schraube-vdi-2230": "Schraube_Daten/bilder/poster-schraube-m16.jpg",
     "passung-iso-286": "Passung_Daten/bilder/passung-start.jpg",
-    "schweissnaht-en-1993-1-8": "Schweissnaht_Daten/bilder/schweissnaht-start.jpg",
+    "schweissnaht-en-1993-1-8": "Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg",
 }
 ORDER = ["dreieck", "schraube", "passung", "schweissnaht"]
 DE = json.loads((HERE / "startseiten_de.json").read_text(encoding="utf-8"))
