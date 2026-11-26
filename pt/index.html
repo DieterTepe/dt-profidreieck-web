@@ -800,10 +800,10 @@
 <p class="lead reveal" style="margin:0 auto;">Da for&ccedil;a de aperto &agrave; profundidade de aperto: cinco verifica&ccedil;&otilde;es de seguran&ccedil;a com sem&aacute;foro, cada passo documentado com f&oacute;rmula, valores aplicados e refer&ecirc;ncia &agrave; norma.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="V&iacute;deo em breve" style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiSchraube &ndash; vis&atilde;o geral de 40 segundos" class="demo-video" controls id="video-schraube-teaser" playsinline poster="../Schraube_Daten/bilder/schraube-start.jpg" preload="none" src="../Schraube_Daten/videos/schraube-teaser.mp4"></video>
+<video aria-label="DT-ProfiSchraube &ndash; v&iacute;deo: M16 10.9 com mem&oacute;ria de c&aacute;lculo" class="demo-video" controls id="video-schraube-teaser" playsinline poster="../Schraube_Daten/bilder/poster-schraube-m16.jpg" preload="none" src="../Schraube_Daten/videos/schraube-m16-vdi-2230.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/schraube-vdi-2230.html">Ver o v&iacute;deo em p&aacute;gina pr&oacute;pria (em alem&atilde;o)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 segundos: verifica&ccedil;&otilde;es, mem&oacute;ria de c&aacute;lculo, diagrama, assistentes, exporta&ccedil;&atilde;o.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:33 minutos: M16 10.9 conforme VDI 2230 &ndash; resultado, diagrama de aperto, mem&oacute;ria de c&aacute;lculo.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--brass reveal"><div class="ico">VDI</div><div><h3>Cinco verifica&ccedil;&otilde;es com sem&aacute;foro</h3><p>Escoamento, resist&ecirc;ncia &agrave; fadiga, press&atilde;o superficial, deslizamento/atrito e profundidade de aperto &ndash; avaliados de relance.</p></div></div>
 <div class="feature feature--brass reveal"><div class="ico">&sum;</div><div><h3>Mem&oacute;ria de c&aacute;lculo como no manual</h3><p>Cada passo: f&oacute;rmula geral, valores aplicados, resultado, refer&ecirc;ncia &agrave; norma. Verific&aacute;vel para documenta&ccedil;&atilde;o e clientes.</p></div></div>
@@ -1083,7 +1083,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchraube
   bild("img-schraube-karte",       s.bildStart);
-  video("video-schraube-teaser",   s.videoTeaser, s.bildStart);
+  video("video-schraube-teaser",   s.videoTeaser, s.posterVideo || s.bildStart);
   bild("img-schraube-rechenweg",   s.bildRechenweg);
   bild("img-schraube-schaubild",   s.bildSchaubild);
   bild("img-schraube-flansch",     s.bildFlansch);
