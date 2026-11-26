@@ -894,10 +894,10 @@
 <p class="lead reveal" style="margin:0 auto;">Calculates welds in structural steelwork to EN 1993-1-8 and in classical mechanical engineering &ndash; showing every single step on the way: from the weld layout via centroid, second moments of area and principal axes to the equivalent stress at the governing point. No result without a calculation path, no figure without a source.</p>
 </div>
 <figure class="blueprint media-slot reveal" data-hinweis="Video coming soon" style="max-width:860px; margin:0 auto;">
-<video aria-label="DT-ProfiSchweissnaht &ndash; 40-second overview" class="demo-video" controls id="video-schweissnaht-teaser" playsinline poster="../Schweissnaht_Daten/bilder/schweissnaht-start.jpg" preload="none" src="../Schweissnaht_Daten/videos/schweissnaht-teaser.mp4"></video>
+<video aria-label="DT-ProfiSchweissnaht &ndash; video: tube under torsion with calculation steps" class="demo-video" controls id="video-schweissnaht-teaser" playsinline poster="../Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg" preload="none" src="../Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4"></video>
 <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="../videos/schweissnaht-en-1993-1-8.html">Watch the video on its own page (German)</a></figcaption>
 </figure>
-<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 seconds: weld layout, calculation path with sources, arithmetic checks &ndash; and the limits of the calculation.</p>
+<p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:27 minutes: tube 114.3 &times; 6 under torsion &ndash; input, weld layout, calculation path with self-check.</p>
 <div class="features" style="margin-top:var(--sp-8);">
 <div class="feature feature--glut reveal"><div class="ico">◫</div><div><h3>Weld layout instead of weld length</h3><p>The real weld geometry arises from the profile and the edges actually welded: segments, centroid, second moments of area, principal axes, section moduli &ndash; and from these the governing point. The weld layout is drawn, with centroid cross and axes.</p></div></div>
 <div class="feature feature--glut reveal"><div class="ico">&sum;</div><div><h3>The calculation path is the product</h3><p>More than thirty steps, each with formula, inserted figures, result and source &ndash; standard, textbook or expressly marked as a practical guide value.</p></div></div>
@@ -1101,7 +1101,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchweissnaht
   bild("img-schweissnaht-karte",     w.bildStart);
-  video("video-schweissnaht-teaser", w.videoTeaser, w.bildStart);
+  video("video-schweissnaht-teaser", w.videoTeaser, w.posterVideo || w.bildStart);
   bild("img-schweissnaht-nahtbild",  w.bildNahtbild);
   bild("img-schweissnaht-rechenweg", w.bildRechenweg);
   bild("img-schweissnaht-assistent", w.bildAssistent);

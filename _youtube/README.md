@@ -61,7 +61,7 @@ noch in Suchmaschinen auf.
 | Y02 | Dreieck: Werkstück, Zeichnung, DXF für CNC | V2 (KI, `videos/dreieck-dxf-werkstatt.html`) | Idee |
 | Y03 | Schraube: VDI 2230 Beispiel M12 10.9 | `schraube-teaser.mp4` | Idee |
 | Y04 | Passung: H7/g6 und Pressverband H7/s6 | `passung-teaser.mp4` | Idee |
-| Y05 | Schweißnaht: Rohr unter Torsion | `schweissnaht-teaser.mp4` | Idee |
+| Y05 | Schweißnaht: Rohr unter Torsion | `schweissnaht-teaser.mp4` | **Freigegeben 26.11.** · Webseite: `Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4` (9,1 MB, 1:27) auf `videos/schweissnaht-en-1993-1-8.html` + Hauptseite · YouTube: offen |
 
 Einzelheiten: [videoliste.md](videoliste.md)
 
@@ -70,11 +70,11 @@ Einzelheiten: [videoliste.md](videoliste.md)
 | Datei | Größe | Verwendet auf | Bemerkung |
 |---|---|---|---|
 | ~~`Dreieck_Daten/videos/V1.mp4`~~ | – | – | gelöscht 25.11., ersetzt durch Y01 |
-| `Dreieck_Daten/videos/V2.mp4` | 2,6 MB, 10 s | `videos/dreieck-dxf-werkstatt.html` | KI-generiert |
+| `Dreieck_Daten/videos/V2.mp4` | 3,4 MB, 10 s | `videos/dreieck-dxf-werkstatt.html` | KI-generiert, seit 26.11. mit Hinweis „KI-generierte Darstellung“ im Bild |
 | `Dreieck_Daten/videos/V3.mp4` … `V8.mp4` | je 2,4–3,0 MB | nirgends verlinkt | ungenutzt – ansehen, ob brauchbar, sonst später löschen |
 | `Schraube_Daten/videos/schraube-teaser.mp4` | 4,1 MB, 40 s | `videos/schraube-vdi-2230.html` | Teaser |
 | `Passung_Daten/videos/passung-teaser.mp4` | 3,8 MB, 40 s | `videos/passung-iso-286.html` | Teaser |
-| `Schweissnaht_Daten/videos/schweissnaht-teaser.mp4` | 5,2 MB, 40 s | `videos/schweissnaht-en-1993-1-8.html` | Teaser |
+| ~~`Schweissnaht_Daten/videos/schweissnaht-teaser.mp4`~~ | – | – | gelöscht 26.11., ersetzt durch Y05 |
 
 ## Werkzeuge (`werkzeuge/`)
 
@@ -88,6 +88,8 @@ Für ein neues Video kopieren und anpassen.
 | `cards.py` | Vorspann, Aufgaben-Karte, Abspann als Ebenen (HTML → PNG) |
 | `render.py` | Szenen zusammensetzen (Kamera, Bildunterschriften, Übergänge) → je Szene eine MP4 |
 | `audio.py` | Hintergrundmusik und Geräusche erzeugen |
+
+Y05: angepasste Fassung in `werkzeuge/y05/` (Beispiel laden, Bereiche aufklappen, Ergebnis, Nahtbild, „Rechenweg im Detail“ mit 7 Stationen).
 
 Zusammenfügen: `ffmpeg -f concat -safe 0 -i list.txt -c copy` und Ton mit `loudnorm=I=-16:TP=-1.5`.
 

@@ -129,9 +129,12 @@ window.DT_CONFIG = {
     // Querformat, ca. 1500 px breit, JPG < 300 KB
     bildStart: "https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg",
 
-    // 40-Sekunden-Teaser oben in Pos. 04
-    // MP4 (H.264), 1280x720, < 10 MB
-    videoTeaser: "https://dt-profidreieck.de/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4",
+    // Video oben in Pos. 04 (Y05: Rohr unter Torsion, 1:27 Min., seit 26.11.2026)
+    // MP4 (H.264), 1920x1080, < 10 MB
+    videoTeaser: "https://dt-profidreieck.de/Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4",
+
+    // Vorschaubild (Poster) des Videos – Standbild aus dem Video
+    posterVideo: "https://dt-profidreieck.de/Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg",
 
     // Großes Screenshot-Paar – links: gezeichnetes Nahtbild mit Schwerpunkt
     // (das Alleinstellungsmerkmal – Hochformat)

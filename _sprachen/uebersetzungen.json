@@ -712,6 +712,14 @@
   "Video auf eigener Seite ansehen": {
    "en": "Watch the video on its own page (German)",
    "pt": "Ver o vídeo em página própria (em alemão)"
+  },
+  "DT-ProfiSchweissnaht – Video: Rohr unter Torsion mit Rechenweg": {
+   "en": "DT-ProfiSchweissnaht – video: tube under torsion with calculation steps",
+   "pt": "DT-ProfiSchweissnaht – vídeo: tubo sob torção com memória de cálculo"
+  },
+  "1:27 Minuten: Rohr 114,3 × 6 unter Torsion – Eingabe, Nahtbild, Rechenweg mit Selbstprüfung.": {
+   "en": "1:27 minutes: tube 114.3 × 6 under torsion – input, weld layout, calculation path with self-check.",
+   "pt": "1:27 minutos: tubo 114,3 × 6 sob torção – entrada, geometria do cordão, memória de cálculo com autoverificação."
   }
  },
  "html": {

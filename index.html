@@ -929,10 +929,10 @@
       </div>
 
       <figure class="blueprint media-slot reveal" data-hinweis="Video folgt in Kürze" style="max-width:860px; margin:0 auto;">
-        <video id="video-schweissnaht-teaser" src="Schweissnaht_Daten/videos/schweissnaht-teaser.mp4" poster="Schweissnaht_Daten/bilder/schweissnaht-start.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchweissnaht – 40-Sekunden-Überblick"></video>
+        <video id="video-schweissnaht-teaser" src="Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4" poster="Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg" class="demo-video" controls preload="none" playsinline aria-label="DT-ProfiSchweissnaht – Video: Rohr unter Torsion mit Rechenweg"></video>
           <figcaption style="font-size:.85rem; padding:6px 4px 0;"><a href="videos/schweissnaht-en-1993-1-8.html">Video auf eigener Seite ansehen</a></figcaption>
       </figure>
-      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">40 Sekunden: Nahtbild, Rechenweg mit Quellen, Rechenproben – und die Grenzen der Berechnung.</p>
+      <p class="reveal" style="text-align:center; color:var(--muted); font-size:14px; margin-top:12px;">1:27 Minuten: Rohr 114,3 × 6 unter Torsion – Eingabe, Nahtbild, Rechenweg mit Selbstprüfung.</p>
 
       <div class="features" style="margin-top:var(--sp-8);">
         <div class="feature feature--glut reveal"><div class="ico">◫</div><div><h3>Nahtbild statt Nahtlänge</h3><p>Aus Profil und tatsächlich geschweißten Kanten entsteht die echte Nahtgeometrie: Segmente, Schwerpunkt, Flächenmomente, Hauptachsen, Widerstandsmomente – und daraus der maßgebende Punkt. Das Nahtbild wird gezeichnet, mit Schwerpunktkreuz und Achsen.</p></div></div>
@@ -1148,7 +1148,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // DT-ProfiSchweissnaht
   bild("img-schweissnaht-karte",     w.bildStart);
-  video("video-schweissnaht-teaser", w.videoTeaser, w.bildStart);
+  video("video-schweissnaht-teaser", w.videoTeaser, w.posterVideo || w.bildStart);
   bild("img-schweissnaht-nahtbild",  w.bildNahtbild);
   bild("img-schweissnaht-rechenweg", w.bildRechenweg);
   bild("img-schweissnaht-assistent", w.bildAssistent);

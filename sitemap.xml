@@ -104,14 +104,14 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/schweissnaht-en-1993-1-8.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/schweissnaht-start.jpg</video:thumbnail_loc>
-      <video:title>Schweißnaht nach EN 1993-1-8 berechnen – DT-ProfiSchweissnaht im Überblick</video:title>
-      <video:description>40-Sekunden-Überblick: DT-ProfiSchweissnaht weist Kehl- und Stumpfnähte nach EN 1993-1-8 nach, zeichnet das Nahtbild maßstäblich und zeigt den Rechenweg mit Quellen.</video:description>
-      <video:content_loc>https://dt-profidreieck.de/Schweissnaht_Daten/videos/schweissnaht-teaser.mp4</video:content_loc>
-      <video:duration>40</video:duration>
-      <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg</video:thumbnail_loc>
+      <video:title>Schweißnaht am Rohr unter Torsion – Video mit Rechenweg</video:title>
+      <video:description>Video: Kehlnaht am Rundrohr 114,3 × 6 unter Torsion nach EN 1993-1-8 – τ∥, Vergleichsspannung und Nachweis mit vollständigem Rechenweg.</video:description>
+      <video:content_loc>https://dt-profidreieck.de/Schweissnaht_Daten/videos/schweissnaht-rohr-torsion.mp4</video:content_loc>
+      <video:duration>87</video:duration>
+      <video:publication_date>2026-11-26T21:00:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
