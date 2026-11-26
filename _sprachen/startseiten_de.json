@@ -6,7 +6,7 @@
   "preis": 69,
   "kauf": "https://www.checkout-ds24.com/product/722585",
   "kat": "Dreiecksrechner mit DXF-Export",
-  "video": "dreieck-dxf-werkstatt",
+  "video": "dreieck-berechnen-demo",
   "h1": "Dreieck <em>berechnen</em> – Werte verstehen, Form sehen.",
   "lead": "Mit <strong>DT-ProfiDreieck</strong> berechnen Sie ein Dreieck online aus drei bekannten Größen – direkt im Browser. Der Dreiecksrechner ermittelt die übrigen Seiten, Winkel, Fläche und weitere Geometriewerte und zeigt das Ergebnis als Zeichnung mit nachvollziehbarem Rechenweg – in der Vollversion auch als DXF für CAD und CNC.",
   "caption": "Seiten · Winkel · Höhe · Umkreis – Geometrie auf einen Blick",
@@ -244,7 +244,7 @@
   "img_alt": "Startansicht von DT-ProfiSchraube mit Eingabe und fünf grünen Sicherheitsnachweisen",
   "aufgaben": {
    "eyebrow": "Rechenbeispiel",
-   "h2": "Schraubenberechnung nach VDI 2230 – Beispiel M12 10.9",
+   "h2": "Schraubenberechnung nach VDI 2230 – Beispiele M12 und M16 10.9",
    "text": "Das im Programm hinterlegte VDI-2230-Beispiel „Hydraulikzylinder“: Durchsteckverbindung M12, Festigkeitsklasse 10.9, Klemmlänge 42 mm, Reibwerte μ<sub>G</sub> = μ<sub>K</sub> = 0,10, Axialkraft F<sub>A</sub> = 24,9 kN, drehmomentgesteuert angezogen. Alle Zahlen stammen aus dem Rechenweg des Programms.",
    "items": [
     {
@@ -276,6 +276,16 @@
       "S<sub>F</sub> = R<sub>p0,2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1,23",
       "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48,9 / 4,8 = 10,27",
       "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3,15"
+     ]
+    },
+    {
+     "id": "m16",
+     "h3": "Zweites Beispiel: M16 10.9 mit Axial- und Querkraft",
+     "text": "Programmbeispiel „Kombiniert M16 10.9 (axial + Querkraft)“: Durchsteckverbindung, Klemmlänge 40 mm, μ = 0,12, F<sub>A</sub> = 12 kN axial, F<sub>Q</sub> = 4 kN quer, geforderte Klemmkraft 26 kN. Schritt für Schritt im <a href=\"https://dt-profidreieck.de/videos/schraube-vdi-2230.html\">Video mit Rechenweg</a>.",
+     "formeln": [
+      "F<sub>Mmin</sub> = 26.000 + (1 − 0,0856)·12.000 + 5.346 = 42.319 N",
+      "F<sub>Mzul</sub> = 106.119 N · M<sub>A</sub> = 274 N·m",
+      "S<sub>F</sub> = 1,25 · S<sub>P</sub> = 1,38 · S<sub>G</sub> = 26.000 / 20.000 = 1,30"
      ]
     }
    ],

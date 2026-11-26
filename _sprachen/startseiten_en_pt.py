@@ -320,7 +320,7 @@ T["schweissnaht"]["pt"]["faq"].insert(2, ("Posso calcular a solda de um tubo sob
 
 T["schraube"]["en"]["aufgaben"] = {
  "eyebrow": "Worked example",
- "h2": "Bolt calculation to VDI 2230 – example M12 10.9",
+ "h2": "Bolt calculation to VDI 2230 – examples M12 and M16 10.9",
  "text": "The VDI 2230 example “Hydraulikzylinder” (hydraulic cylinder) built into the program: through-bolted joint M12, property class 10.9, clamp length 42 mm, friction μ<sub>G</sub> = μ<sub>K</sub> = 0.10, axial load F<sub>A</sub> = 24.9 kN, torque-controlled tightening. All figures come from the program’s calculation path.",
  "items": [
   {"id": "vorspannkraft", "h3": "Bolt preload – minimum value and scatter",
@@ -336,7 +336,7 @@ T["schraube"]["en"]["aufgaben"] = {
 T["schraube"]["en"]["faq"].insert(2, ("How do I calculate bolt preload and tightening torque?", "According to VDI 2230 Part 1: clamp load, working load and embedding loss give the minimum preload, the tightening factor gives the maximum preload. The tightening torque follows from the permissible preload plus thread and head friction. A fully worked example (M12 10.9, M<sub>A</sub> = 103.4 N·m) is shown above on this page."))
 T["schraube"]["pt"]["aufgaben"] = {
  "eyebrow": "Exemplo de cálculo",
- "h2": "Cálculo de parafusos conforme VDI 2230 – exemplo M12 10.9",
+ "h2": "Cálculo de parafusos conforme VDI 2230 – exemplos M12 e M16 10.9",
  "text": "O exemplo VDI 2230 “Hydraulikzylinder” (cilindro hidráulico) incluído no programa: união passante M12, classe de resistência 10.9, comprimento de aperto 42 mm, atrito μ<sub>G</sub> = μ<sub>K</sub> = 0,10, força axial F<sub>A</sub> = 24,9 kN, aperto controlado por torque. Todos os valores vêm da memória de cálculo do programa.",
  "items": [
   {"id": "vorspannkraft", "h3": "Pré-carga do parafuso – valor mínimo e dispersão",
@@ -350,6 +350,12 @@ T["schraube"]["pt"]["aufgaben"] = {
    "formeln": ["S<sub>F</sub> = R<sub>p0,2</sub> / σ<sub>red,B</sub> = 900 / 733 = 1,23", "S<sub>D</sub> = σ<sub>A</sub> / σ<sub>a</sub> = 48,9 / 4,8 = 10,27", "S<sub>P</sub> = p<sub>G</sub> / p<sub>max</sub> = 900 / 286 = 3,15"]}],
  "btn": "Refazer o exemplo na versão de teste →"}
 T["schraube"]["pt"]["faq"].insert(2, ("Como calcular a pré-carga e o torque de aperto de um parafuso?", "Conforme a VDI 2230 Parte 1: força de aperto, força de serviço e perda por assentamento resultam na pré-carga mínima; com o fator de aperto obtém-se a pré-carga máxima. O torque de aperto resulta da pré-carga admissível e do atrito na rosca e sob a cabeça. Um exemplo completo (M12 10.9, M<sub>A</sub> = 103,4 N·m) está acima nesta página."))
+T["schraube"]["en"]["aufgaben"]["items"].append({"id": "m16", "h3": "Second example: M16 10.9 with axial and transverse load",
+ "text": "Built-in example “Kombiniert M16 10.9 (axial + Querkraft)”: through-bolted joint, clamp length 40 mm, μ = 0.12, F<sub>A</sub> = 12 kN axial, F<sub>Q</sub> = 4 kN transverse, required clamp load 26 kN. Step by step in the <a href=\"https://dt-profidreieck.de/videos/schraube-vdi-2230.html\">video with calculation path</a> (German).",
+ "formeln": ["F<sub>Mmin</sub> = 26,000 + (1 − 0.0856)·12,000 + 5,346 = 42,319 N", "F<sub>Mzul</sub> = 106,119 N · M<sub>A</sub> = 274 N·m", "S<sub>F</sub> = 1.25 · S<sub>P</sub> = 1.38 · S<sub>G</sub> = 26,000 / 20,000 = 1.30"]})
+T["schraube"]["pt"]["aufgaben"]["items"].append({"id": "m16", "h3": "Segundo exemplo: M16 10.9 com carga axial e transversal",
+ "text": "Exemplo do programa “Kombiniert M16 10.9 (axial + Querkraft)”: união passante, comprimento de aperto 40 mm, μ = 0,12, F<sub>A</sub> = 12 kN axial, F<sub>Q</sub> = 4 kN transversal, força de aperto exigida 26 kN. Passo a passo no <a href=\"https://dt-profidreieck.de/videos/schraube-vdi-2230.html\">vídeo com memória de cálculo</a> (em alemão).",
+ "formeln": ["F<sub>Mmin</sub> = 26.000 + (1 − 0,0856)·12.000 + 5.346 = 42.319 N", "F<sub>Mzul</sub> = 106.119 N · M<sub>A</sub> = 274 N·m", "S<sub>F</sub> = 1,25 · S<sub>P</sub> = 1,38 · S<sub>G</sub> = 26.000 / 20.000 = 1,30"]})
 
 T["passung"]["en"]["aufgaben"] = {
  "eyebrow": "Worked examples",
