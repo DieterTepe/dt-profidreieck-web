@@ -1,0 +1,117 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:05.400
+Vom Werkstück zur DXF – Knotenblech mit DT-ProfiDreieck berechnen, Kontur prüfen und als DXF in echten Millimetern an Laser oder CNC
+
+2
+00:00:05.600 --> 00:00:11.400
+Werkstück: Knotenblech. Kante a = 400 mm, Kante b = 250 mm, Winkel dazwischen γ = 70°. Gesucht: dritte Kante c, Winkel α und β, Fläche – und die DXF für den Zuschnitt
+
+3
+00:00:11.500 --> 00:00:13.650
+Größe 1: Seite a antippen
+
+4
+00:00:13.650 --> 00:00:15.800
+Kante a = 400 mm
+
+5
+00:00:15.800 --> 00:00:17.250
+Größe 2: Seite b antippen
+
+6
+00:00:17.250 --> 00:00:19.400
+Kante b = 250 mm
+
+7
+00:00:19.400 --> 00:00:20.850
+Größe 3: Winkel γ antippen
+
+8
+00:00:20.850 --> 00:00:22.800
+Winkel γ = 70° zwischen a und b
+
+9
+00:00:22.800 --> 00:00:25.200
+Fall SWS – alle Werte berechnet
+
+10
+00:00:25.200 --> 00:00:26.200
+Alle Werte auf einen Blick
+
+11
+00:00:26.200 --> 00:00:28.100
+Dritte Kante c = 392,55 mm
+
+12
+00:00:28.100 --> 00:00:29.700
+Winkel α = 73,24° · β = 36,76°
+
+13
+00:00:29.700 --> 00:00:31.600
+Fläche A = 46.984,63 mm²
+
+14
+00:00:31.600 --> 00:00:33.200
+Rechenweg aufklappen
+
+15
+00:00:33.200 --> 00:00:37.600
+Dritte Kante mit dem Kosinussatz: c = 392,55 mm
+
+16
+00:00:38.900 --> 00:00:42.500
+Winkel α = 73,24°
+
+17
+00:00:43.800 --> 00:00:47.400
+Winkel β = 36,76° – Probe: Summe 180°
+
+18
+00:00:48.700 --> 00:00:52.900
+Fläche nach Heron: A = 46.984,63 mm²
+
+19
+00:00:52.900 --> 00:00:55.500
+Maßstäbliche Zeichnung des Knotenblechs
+
+20
+00:00:55.500 --> 00:00:57.150
+Für den Laser nur die Kontur: Hilfslinien ausblenden
+
+21
+00:00:57.150 --> 00:00:59.550
+Übrig bleibt die reine Kontur mit Maßen
+
+22
+00:00:59.550 --> 00:01:00.100
+Bezeichnung eintragen
+
+23
+00:01:00.100 --> 00:01:01.840
+Bezeichnung: Knotenblech K1
+
+24
+00:01:01.840 --> 00:01:03.690
+DXF-Einheit: Millimeter
+
+25
+00:01:03.690 --> 00:01:04.590
+DXF (CAD) exportieren
+
+26
+00:01:04.590 --> 00:01:06.190
+DXF gespeichert
+
+27
+00:01:06.190 --> 00:01:08.490
+Inhalt der DXF-Datei: die Kontur – so fährt der Laser
+
+28
+00:01:08.590 --> 00:01:13.690
+Echte Millimeter, getrennte Ebenen – direkt für CAD und CNC
+
+29
+00:01:13.990 --> 00:01:21.690
+Jetzt kostenlos testen: dietertepe.github.io/test-dreieck – Vollversion 69 € einmalig, mit DXF-, SVG- und PDF-Export

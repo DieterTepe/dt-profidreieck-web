@@ -28,7 +28,7 @@ FLAG = {"de": "DE", "en": "EN", "pt": "PT"}
 SITEMAP = {"test-dreieck": "sitemap_profidreieck.xml", "dt-profischraube-web": "sitemap_profischraube.xml",
            "dt-profipassung-web": "sitemap_profipassung.xml", "dt-profischweissnaht-web": "sitemap_profischweissnaht.xml"}
 VIDEO_POSTER = {
-    "dreieck-dxf-werkstatt": "Dreieck_Daten/bilder/poster-v2-werkstatt.jpg",
+    "dreieck-dxf-werkstatt": "Dreieck_Daten/bilder/poster-knotenblech-dxf.jpg",
     "dreieck-berechnen-demo": "Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg",
     "schraube-vdi-2230": "Schraube_Daten/bilder/poster-schraube-m16.jpg",
     "passung-iso-286": "Passung_Daten/bilder/poster-passung-h7s6.jpg",

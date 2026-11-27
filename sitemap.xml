@@ -9,12 +9,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://dt-profidreieck.de/"/>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-eingabe.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-ergebnis.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg</image:loc></image:image>
-    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg</image:loc></image:image>
+    <image:image><image:loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-knotenblech-dxf.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-assistent.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-beratung.jpg</image:loc></image:image>
     <image:image><image:loc>https://dt-profidreieck.de/Passung_Daten/bilder/passung-pressverband.jpg</image:loc></image:image>
@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/en/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://dt-profidreieck.de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/pt/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://dt-profidreieck.de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://dt-profidreieck.de/en/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://dt-profidreieck.de/pt/"/>
@@ -52,20 +52,20 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/dreieck-dxf-werkstatt.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <video:video>
-      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg</video:thumbnail_loc>
-      <video:title>Winkel am Werkstück berechnen und als DXF an die CNC</video:title>
-      <video:description>Kurzvideo: Ein Winkel wird am Werkstück gemessen, mit DT-ProfiDreieck berechnet und Sekunden später als DXF in CAD und CNC übernommen.</video:description>
-      <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/V2.mp4</video:content_loc>
-      <video:duration>10</video:duration>
-      <video:publication_date>2026-09-25T08:00:00+02:00</video:publication_date>
+      <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-knotenblech-dxf.jpg</video:thumbnail_loc>
+      <video:title>Knotenblech berechnen und als DXF an die CNC – Video mit Rechenweg</video:title>
+      <video:description>Video: Knotenblech mit a = 400 mm, b = 250 mm und γ = 70° berechnen – Kosinussatz, Heron, maßstäbliche Kontur und DXF in Millimetern für Laser und CNC.</video:description>
+      <video:content_loc>https://dt-profidreieck.de/Dreieck_Daten/videos/dreieck-knotenblech-dxf.mp4</video:content_loc>
+      <video:duration>82</video:duration>
+      <video:publication_date>2026-11-27T18:00:00+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/dreieck-berechnen-demo.html</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg</video:thumbnail_loc>
       <video:title>Dreieck aus 3 Seiten berechnen – Video mit Rechenweg</video:title>
@@ -78,7 +78,7 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/schraube-vdi-2230.html</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Schraube_Daten/bilder/poster-schraube-m16.jpg</video:thumbnail_loc>
       <video:title>Schraube M16 10.9 nach VDI 2230 – Video mit Rechenweg</video:title>
@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/passung-iso-286.html</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Passung_Daten/bilder/poster-passung-h7s6.jpg</video:thumbnail_loc>
       <video:title>Passung H7/g6 und Pressverband H7/s6 – Video mit Rechenweg</video:title>
@@ -104,7 +104,7 @@
   </url>
   <url>
     <loc>https://dt-profidreieck.de/videos/schweissnaht-en-1993-1-8.html</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <video:video>
       <video:thumbnail_loc>https://dt-profidreieck.de/Schweissnaht_Daten/bilder/poster-schweissnaht-rohr-torsion.jpg</video:thumbnail_loc>
       <video:title>Schweißnaht am Rohr unter Torsion – Video mit Rechenweg</video:title>
