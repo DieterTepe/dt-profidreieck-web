@@ -45,15 +45,14 @@ window.DT_CONFIG = {
     // Querformat, ca. 1200-1600 px breit, JPG < 300 KB
     bildZeichnung: "https://dt-profidreieck.de/Dreieck_Daten/bilder/app-zeichnung.jpg",
 
-    // Erstes Video in Pos. 01 ("ein Winkel am Werkstück ... DXF in CAD/CNC")
-    // MP4 (H.264), 1280x720, optimiert für Web, ideal < 15 MB
-    videoWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/videos/V2.mp4",
+    // Erstes Video in Pos. 01 (Y02: Knotenblech vom Werkstück zur DXF, 1:22 Min., seit 27.11.2026)
+    videoWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/videos/dreieck-knotenblech-dxf.mp4",
 
     // Zweites Video in Pos. 01 ("Von der Eingabe bis zum Ergebnis")
     videoDemo: "https://dt-profidreieck.de/Dreieck_Daten/videos/dreieck-aus-3-seiten.mp4",
 
     // Vorschaubilder (Poster) der beiden Videos – Standbild aus dem Video
-    posterWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-v2-werkstatt.jpg",
+    posterWerkstatt: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-knotenblech-dxf.jpg",
     posterDemo: "https://dt-profidreieck.de/Dreieck_Daten/bilder/poster-dreieck-aus-3-seiten.jpg",
 
     // Screenshot-Paar unter den Videos in Pos. 01 – links: Eingabemaske

@@ -736,6 +736,14 @@
   "1:26 Minuten: Gleitsitz H7/g6 eintippen, Pressverband H7/s6 nach DIN 7190, Rechenweg.": {
    "en": "1:26 minutes: type in a sliding fit H7/g6, interference fit H7/s6 to DIN 7190, calculation path.",
    "pt": "1:26 minutos: digitar o ajuste deslizante H7/g6, ajuste prensado H7/s6 conforme DIN 7190, memória de cálculo."
+  },
+  "Vom Werkstück zur DXF: Knotenblech berechnen und an Laser oder CNC": {
+   "en": "From workpiece to DXF: calculate a gusset plate and send it to the laser or CNC",
+   "pt": "Da peça ao DXF: calcular uma chapa de ligação e enviá-la ao laser ou CNC"
+  },
+  "DT-ProfiDreieck – Video: Knotenblech berechnen und als DXF exportieren": {
+   "en": "DT-ProfiDreieck – video: calculate a gusset plate and export it as DXF",
+   "pt": "DT-ProfiDreieck – vídeo: calcular uma chapa de ligação e exportar como DXF"
   }
  },
  "html": {

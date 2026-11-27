@@ -36,9 +36,12 @@ dem wichtigsten Moment.
 - **Ziel-Seite:** https://dietertepe.github.io/test-dreieck/
 - **Suchbegriffe:** DE „winkel am werkstück berechnen“, „dreieck dxf“, CNC ·
   EN „triangle solver dxf“
-- **Inhalt:** Maß aus der Werkstatt (z. B. Schräge an einem Blech) → zwei Seiten und
-  Winkel eingeben → Zeichnung → DXF-Export zeigen (in der Testversion gesperrt →
-  im Bild erwähnen: „DXF-Export in der Vollversion“).
+- **Inhalt (umgesetzt):** Knotenblech a = 400 mm, b = 250 mm, γ = 70° (Fall SWS) im Assistenten
+  der **Vollversion** → c = 392,55 mm, α = 73,24°, β = 36,76°, A = 46.984,63 mm² → Rechenweg
+  (Kosinussatz, Heron) → Zeichnung, Hilfslinien aus → Bezeichnung „Knotenblech K1“, DXF mm →
+  DXF-Vorschau aus der echten Datei (Kontur wie Laserbahn) → Abspann Testversion / Vollversion 69 €.
+- **Status:** freigegeben und live seit 27.11.2026 (`Dreieck_Daten/videos/dreieck-knotenblech-dxf.mp4`, 1:22).
+- **Hinweis:** Die Vollversion liegt nur lokal bei der Aufnahme, nie im Repo.
 
 ## Y03 – Schraube: VDI 2230 Beispiel M12 10.9
 
@@ -78,7 +81,7 @@ dem wichtigsten Moment.
 
 ## Offene Fragen
 
-- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 ✓ → Y04 ✓ → Y02.
+- Reihenfolge: Vorschlag Y01 ✓ → Y05 ✓ → Y03 ✓ → Y04 ✓ → Y02 ✓.
 - ~~Aufnahme auf dem Tablet oder am PC?~~ → **Claude filmt selbst im Browser** (Entscheidung 25.11.), Dieter gibt nur frei.
 - V3–V8 ansehen: brauchbar oder löschen?
 - YouTube-Kanal: Name „DT-ProfiTools“? Kanalbild und Banner nötig.
